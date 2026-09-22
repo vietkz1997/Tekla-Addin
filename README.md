@@ -36,7 +36,7 @@ Công cụ kiểm tra chất lượng mô hình cốt thép tự động:
 
 ## 📁 Cấu Trúc Dự Án (Repository Structure)
 
-`	ext
+```text
 Tekla-Addin/
 │
 ├── .gitignore                      # Cấu hình lọc file rác biên dịch, IDE và cache
@@ -75,7 +75,7 @@ Tekla-Addin/
 │
 └── docs/                           # Tài liệu kỹ thuật
     └── GEOMETRY_HELPER_GUIDE.md
-`
+```
 
 ---
 
@@ -97,18 +97,18 @@ Tekla-Addin/
 ### Cách 1: Sử dụng Command Line (.NET CLI)
 
 1. Mở PowerShell hoặc Terminal tại thư mục gốc của repository:
-   `powershell
+   ```powershell
    cd c:\Users\BIM\Documents\Github\Tekla-Addin
-   `
+   ```
 2. Biên dịch toàn bộ Solution ở chế độ Release:
-   `powershell
+   ```powershell
    # Mặc định (Tekla 2025):
    dotnet build TeklaAddin.slnx -c Release
 
    # Hoặc chuyển đổi linh hoạt sang phiên bản khác (2020, 2025, 2026):
    dotnet build TeklaAddin.slnx -c Release /p:TeklaVersion=2020
    dotnet build TeklaAddin.slnx -c Release /p:TeklaVersion=2026
-   `
+   ```
    *(Hoặc biên dịch từng module riêng lẻ, ví dụ: dotnet build src/ClashCheck/ClashCheck.csproj -c Release)*
 3. Các file thực thi (Clash-check.exe, MyTool.exe, Rebar-error.exe) và các DLL cần thiết sẽ được tự động xuất ra thư mục `release/`.
 
@@ -128,7 +128,7 @@ Tekla-Addin/
    - **Thép cần kiểm tra:** Chọn các thanh thép trực tiếp trên mô hình Tekla (hoặc chọn toàn bộ mô hình).
    - **Mô hình IFC:** Chọn quét tự động các file IFC giao cắt với vùng thép (AutoSpatialAllIfc) hoặc chọn file IFC cụ thể.
    - **Dung sai va chạm (Tolerance):** Đặt độ lẹm tối thiểu để tính là va chạm (mặc định: 1.0 mm).
-   - **Khoảng hở an toàn (Clearance):** Đặt khoảng cách an toàn mong muốn (mặc định:  .0 mm).
+   - **Khoảng hở an toàn (Clearance):** Đặt khoảng cách an toàn mong muốn (mặc định: 0.0 mm).
    - **Lược bỏ cấu kiện IFC:** Tích chọn ☑ Lược bỏ cấu kiện IFC: và tùy chỉnh danh sách từ khóa (ví dụ: Bolt assembly, SAFETY_BAR, LUG, LADDER) để tối ưu hóa thời gian tính toán.
 4. **Bấm "Quét Va Chạm":** Theo dõi tiến trình phân tích trên thanh trạng thái.
 5. **Kiểm tra kết quả:** Nhấp chuột vào từng dòng va chạm trên bảng để camera Tekla tự động zoom và highlight cấu kiện va chạm trên màn hình 3D.
