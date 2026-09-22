@@ -1,55 +1,78 @@
-# Prerequisites
-*.d
+﻿# ====================================================================
+# .gitignore for Tekla-Addin (.NET Framework 4.8 / Tekla Open API / C#)
+# ====================================================================
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# --------------------------------------------------------------------
+# Build Outputs & Intermediate Files
+# --------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Aa]rms/
+[Aa]rm64/
+x64/
+x86/
+[Dd]ebug/
+[Rr]elease/
+*.binlog
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# --------------------------------------------------------------------
+# Visual Studio / IDE & User Settings
+# --------------------------------------------------------------------
+.vs/
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+UpgradeLog*.XML
+UpgradeLog*.htm
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
+# --------------------------------------------------------------------
+# Debugging & Symbol Files
+# --------------------------------------------------------------------
 *.pdb
+*.ilk
+*.idb
+*.dSYM/
+*.opendb
+*.db
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# --------------------------------------------------------------------
+# Temporary, Backup & Log Files
+# --------------------------------------------------------------------
+*.tmp
+*.bak
+*.old
+*.log
+*.tlog
+*.cache
+*.swp
+*~
+Thumbs.db
+[Dd]esktop.ini
 
-# debug information files
-*.dwo
+# --------------------------------------------------------------------
+# Tekla Structures Logs & Crash Dumps
+# --------------------------------------------------------------------
+TeklaStructures_*.log
+*.dump
+CrashDump*.dmp
+TeklaModel.log
+
+# --------------------------------------------------------------------
+# Dependency DLLs Preservation
+# (Preserve vendor & internal GeometryHelper/Xbim assemblies in libs/)
+# --------------------------------------------------------------------
+!/libs/**
+!/libs/**/*.dll
+!/libs/**/*.so
+!/libs/**/*.dylib
+
+# Re-ignore any DLLs/EXEs generated in source build output folders
+src/**/[Bb]in/**
+src/**/[Oo]bj/**

@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>Clash-check</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>latest</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\..\release</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Tekla.Structures">
+      <HintPath>C:\TeklaStructures\2020.0\nt\bin\plugins\Tekla.Structures.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Tekla.Structures.Model">
+      <HintPath>C:\TeklaStructures\2020.0\nt\bin\plugins\Tekla.Structures.Model.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="GeometryHelper">
+      <HintPath>..\..\libs\GeometryHelper\GeometryHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="GeometryHelper.TeklaConvert">
+      <HintPath>..\..\libs\GeometryHelper\GeometryHelper.TeklaConvert.dll</HintPath>
+    </Reference>
+    <Reference Include="GeometryHelper.SolidGeometry">
+      <HintPath>..\..\libs\GeometryHelper\GeometryHelper.SolidGeometry.dll</HintPath>
+    </Reference>
+    <Reference Include="GeometryHelper.PlaneGeometry">
+      <HintPath>..\..\libs\GeometryHelper\GeometryHelper.PlaneGeometry.dll</HintPath>
+    </Reference>
+    <Reference Include="GeometryHelper.CommonGeometry">
+      <HintPath>..\..\libs\GeometryHelper\GeometryHelper.CommonGeometry.dll</HintPath>
+    </Reference>
+    <Reference Include="GeometryHelper.IfcConvert">
+      <HintPath>..\..\libs\GeometryHelper\GeometryHelper.IfcConvert.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>..\..\libs\Framework\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging">
+      <HintPath>..\..\libs\Framework\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.Common">
+      <HintPath>..\..\libs\Xbim\Xbim.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.Ifc">
+      <HintPath>..\..\libs\Xbim\Xbim.Ifc.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.Ifc2x3">
+      <HintPath>..\..\libs\Xbim\Xbim.Ifc2x3.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.Ifc4">
+      <HintPath>..\..\libs\Xbim\Xbim.Ifc4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.ModelGeometry.Scene">
+      <HintPath>..\..\libs\Xbim\Xbim.ModelGeometry.Scene.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.Tessellator">
+      <HintPath>..\..\libs\Xbim\Xbim.Tessellator.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.Geometry.Engine.Interop">
+      <HintPath>..\..\libs\Xbim\Xbim.Geometry.Engine.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Xbim.IO.MemoryModel">
+      <HintPath>..\..\libs\Xbim\Xbim.IO.MemoryModel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
