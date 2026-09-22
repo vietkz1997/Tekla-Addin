@@ -18,6 +18,7 @@ public class MainForm : Form
 	[STAThread]
 	public static void Main(string[] args)
 	{
+		AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 		if (args != null && args.Length > 0)
 		{
 			string arg = args[0].ToLowerInvariant();
@@ -32,9 +33,46 @@ public class MainForm : Form
 				return;
 			}
 		}
+		RunApp();
+	}
+
+	[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+	private static void RunApp()
+	{
 		Application.EnableVisualStyles();
 		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
 		Application.Run(new MainForm());
+	}
+
+	private static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+	{
+		try
+		{
+			string reqName = new System.Reflection.AssemblyName(args.Name).Name;
+			string appDir = AppDomain.CurrentDomain.BaseDirectory;
+
+			// 1. Kiểm tra thư mục ứng dụng hiện tại (release/)
+			string localTarget = Path.Combine(appDir, reqName + ".dll");
+			if (File.Exists(localTarget)) return System.Reflection.Assembly.LoadFrom(localTarget);
+
+			// 2. Tìm từ tiến trình TeklaStructures.exe đang chạy
+			var procs = Process.GetProcessesByName("TeklaStructures");
+			if (procs.Length > 0)
+			{
+				try
+				{
+					string teklaBin = Path.GetDirectoryName(procs[0].MainModule.FileName);
+					if (!string.IsNullOrEmpty(teklaBin))
+					{
+						string candidate = Path.Combine(teklaBin, reqName + ".dll");
+						if (File.Exists(candidate)) return System.Reflection.Assembly.LoadFrom(candidate);
+					}
+				}
+				catch { }
+			}
+		}
+		catch { }
+		return null;
 	}
 
 	public MainForm()

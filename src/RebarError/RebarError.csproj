@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <AssemblyName>Rebar-error</AssemblyName>
     <OutputType>WinExe</OutputType>
@@ -12,11 +12,11 @@
 
   <ItemGroup>
     <Reference Include="Tekla.Structures">
-      <HintPath>C:\TeklaStructures\2020.0\nt\bin\plugins\Tekla.Structures.dll</HintPath>
+      <HintPath>$(TeklaDir)\Tekla.Structures.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Tekla.Structures.Model">
-      <HintPath>C:\TeklaStructures\2020.0\nt\bin\plugins\Tekla.Structures.Model.dll</HintPath>
+      <HintPath>$(TeklaDir)\Tekla.Structures.Model.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

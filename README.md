@@ -1,4 +1,4 @@
-﻿# Tekla-Addin - Structural Modeling & Clash Detection Toolkit
+# Tekla-Addin - Structural Modeling & Clash Detection Toolkit
 
 Bộ công cụ mở rộng (Add-in / External Tools) dành cho **Tekla Structures**, cung cấp các giải pháp tự động hóa mô hình kết cấu, phân tích hình học nâng cao và kiểm tra va chạm vật lý siêu tốc giữa cốt thép (Rebar) và cấu kiện tham chiếu IFC.
 
@@ -41,7 +41,6 @@ Tekla-Addin/
 │
 ├── .gitignore                      # Cấu hình lọc file rác biên dịch, IDE và cache
 ├── README.md                       # Tài liệu hướng dẫn dự án
-├── TeklaAddin.sln                  # Visual Studio Solution quản lý toàn bộ các projects
 ├── TeklaAddin.slnx                 # Solution format XML thế hệ mới
 │
 ├── src/                            # Thư mục mã nguồn (Source Code)
@@ -103,15 +102,20 @@ Tekla-Addin/
    `
 2. Biên dịch toàn bộ Solution ở chế độ Release:
    `powershell
+   # Mặc định (Tekla 2025):
    dotnet build TeklaAddin.slnx -c Release
+
+   # Hoặc chuyển đổi linh hoạt sang phiên bản khác (2020, 2025, 2026):
+   dotnet build TeklaAddin.slnx -c Release /p:TeklaVersion=2020
+   dotnet build TeklaAddin.slnx -c Release /p:TeklaVersion=2026
    `
    *(Hoặc biên dịch từng module riêng lẻ, ví dụ: dotnet build src/ClashCheck/ClashCheck.csproj -c Release)*
-3. Các file thực thi (Clash-check.exe, MyTool.exe, Rebar-error.exe) và các DLL cần thiết sẽ được tự động xuất ra thư mục elease/.
+3. Các file thực thi (Clash-check.exe, MyTool.exe, Rebar-error.exe) và các DLL cần thiết sẽ được tự động xuất ra thư mục `release/`.
 
-### Cách 2: Sử dụng Visual Studio
+### Cách 2: Sử dụng Visual Studio 2022
 
-1. Mở file TeklaAddin.sln trong Visual Studio 2019 / 2022.
-2. Đặt cấu hình giải pháp thành **Release | x64**.
+1. Mở file `TeklaAddin.slnx` trong Visual Studio 2022 (v17.10 trở lên).
+2. Đổi phiên bản Tekla mong muốn trong file `Directory.Build.props` (dòng `<TeklaVersion>2025</TeklaVersion>`).
 3. Chọn menu **Build > Build Solution** (hoặc nhấn Ctrl + Shift + B).
 
 ---
