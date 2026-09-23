@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -34,7 +35,8 @@ namespace BimCommands.Tekla.ClashCheck
         private Model _model;
         private ClashDetector _detector;
         private List<ClashResultItem> _currentClashes = new List<ClashResultItem>();
-        private List<GraphicPolyLine> _activeHighlights = new List<GraphicPolyLine>();
+        private readonly List<int> _activeHighlights = new List<int>();
+        private readonly object _highlightLock = new object();
         private CancellationTokenSource _cts;
 
         // Các thành phần điều khiển giao diện (UI Controls)
@@ -46,13 +48,17 @@ namespace BimCommands.Tekla.ClashCheck
         private Panel controlPanel;
         private RadioButton rbRebarAll;
         private RadioButton rbRebarSelected;
-        private ComboBox cboIfcFiles;
+        private Button btnIfcSelect;
+        private readonly List<string> _availableIfcFiles = new List<string>();
+        private readonly HashSet<string> _selectedIfcFiles = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private bool _ifcSelectedPartsOnly = false;
+        private ToolTip _ifcTooltip;
         private NumericUpDown numTolerance;
         private NumericUpDown numClearance;
         private CheckBox chkIgnoreFilter;
         private TextBox txtIgnoreKeywords;
         private Button btnResetIgnore;
-        private const string DefaultIgnoredList = "Bolt assembly\r\nSAFETY_BAR\r\nLUG\r\nLADDER\r\nSAFETY_HOOK\r\nVBRACE\r\nWELD_COUPLER(10)\r\nCHECK_COUPLER(10)";
+        private const string DefaultIgnoredList = "Bolt assembly\r\nSAFETY_BAR\r\nLUG\r\nLADDER\r\nSAFETY_HOOK\r\nVBRACE\r\nWELD_COUPLER\r\nCHECK_COUPLER";
 
         private CheckBox chkOnlyFilter;
         private TextBox txtOnlyKeywords;
@@ -125,6 +131,13 @@ namespace BimCommands.Tekla.ClashCheck
         private ToolStripProgressBar progressBar;
         private ToolStripStatusLabel lblCountText;
 
+        // Context Menu chuột phải cho DataGridView kết quả va chạm
+        private ContextMenuStrip _clashContextMenu;
+        private ToolStripMenuItem _menuItemHideRow;
+        private ToolStripMenuItem _menuItemUnhideAll;
+        private ToolStripMenuItem _menuItemZoom;
+        private ToolStripMenuItem _menuItemCopy;
+
         /// <summary>
         /// Tải danh sách từ khóa bỏ qua đã lưu từ cấu hình hoặc trả về danh sách mặc định.
         /// </summary>
@@ -132,6 +145,10 @@ namespace BimCommands.Tekla.ClashCheck
         {
             try
             {
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.SkipNames))
+                {
+                    return Properties.Settings.Default.SkipNames;
+                }
                 if (File.Exists(FilterSettingsFile))
                 {
                     string content = File.ReadAllText(FilterSettingsFile).Trim();
@@ -148,7 +165,7 @@ namespace BimCommands.Tekla.ClashCheck
                             }
                             return string.Join("\r\n", lines.ToArray());
                         }
-                        return content;
+                        return content.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "\r\n");
                     }
                 }
             }
@@ -163,6 +180,10 @@ namespace BimCommands.Tekla.ClashCheck
         {
             try
             {
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.OnlyNames))
+                {
+                    return Properties.Settings.Default.OnlyNames;
+                }
                 if (File.Exists(OnlyFilterSettingsFile))
                 {
                     string content = File.ReadAllText(OnlyFilterSettingsFile).Trim();
@@ -179,7 +200,7 @@ namespace BimCommands.Tekla.ClashCheck
                             }
                             return string.Join("\r\n", lines.ToArray());
                         }
-                        return content;
+                        return content.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "\r\n");
                     }
                 }
             }
@@ -204,11 +225,12 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Hàm khởi tạo MainForm, thiết lập giao diện và kết nối Tekla Open API.
+        /// Hàm khởi tạo MainForm, thiết lập giao diện, nạp cấu hình đã lưu và kết nối Tekla Open API.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
+            LoadSettings();
             ConnectTekla();
         }
 
@@ -348,15 +370,23 @@ namespace BimCommands.Tekla.ClashCheck
                 Location = new DrawPoint(365, 14),
                 AutoSize = true
             };
-            cboIfcFiles = new ComboBox
+            _ifcTooltip = new ToolTip();
+            btnIfcSelect = new Button
             {
                 Location = new DrawPoint(425, 10),
                 Width = 295,
-                DropDownStyle = ComboBoxStyle.DropDownList,
+                Height = 28,
+                FlatStyle = FlatStyle.Flat,
                 BackColor = DrawColor.FromArgb(18, 22, 29),
                 ForeColor = DrawColor.White,
-                FlatStyle = FlatStyle.Flat
+                TextAlign = ContentAlignment.MiddleLeft,
+                Font = new DrawFont("Segoe UI", 8.5F),
+                Text = "⭐ Tất cả file IFC (Navisworks Auto)  ▼",
+                Cursor = Cursors.Hand
             };
+            btnIfcSelect.FlatAppearance.BorderColor = DrawColor.FromArgb(51, 65, 85);
+            btnIfcSelect.Click += (s, e) => ShowIfcSelectionDropdown();
+            _ifcTooltip.SetToolTip(btnIfcSelect, "Nhấp để mở bảng chọn và tích chọn nhiều file IFC");
 
             // Group 3: Tolerance & Clearance
             Label lblTol = new Label
@@ -495,7 +525,7 @@ namespace BimCommands.Tekla.ClashCheck
             controlPanel.Controls.Add(rbRebarSelected);
             controlPanel.Controls.Add(rbRebarAll);
             controlPanel.Controls.Add(lblIfc);
-            controlPanel.Controls.Add(cboIfcFiles);
+            controlPanel.Controls.Add(btnIfcSelect);
             controlPanel.Controls.Add(lblTol);
             controlPanel.Controls.Add(numTolerance);
             controlPanel.Controls.Add(lblClearance);
@@ -556,6 +586,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             dgvClashes.CellFormatting += DgvClashes_CellFormatting;
             dgvClashes.CellDoubleClick += (s, e) => ZoomToSelectedClash();
+            SetupClashesContextMenu();
 
             // 4. Status Strip
             statusStrip = new StatusStrip
@@ -649,26 +680,298 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Nạp các lựa chọn chế độ quét và danh sách các file IFC tham chiếu vào ComboBox.
+        /// Cập nhật nhãn văn bản và tooltip hiển thị trên nút chọn file IFC dựa trên các lựa chọn hiện tại.
+        /// </summary>
+        private void UpdateIfcButtonDisplay()
+        {
+            if (_ifcSelectedPartsOnly)
+            {
+                btnIfcSelect.Text = "🎯 Chỉ cấu kiện IFC đang chọn  ▼";
+                btnIfcSelect.ForeColor = DrawColor.FromArgb(96, 165, 250);
+                _ifcTooltip.SetToolTip(btnIfcSelect, "Chế độ: Chỉ quét các cấu kiện IFC hoặc Part được chọn trực tiếp trong mô hình Tekla");
+            }
+            else if (_selectedIfcFiles.Count == 0)
+            {
+                btnIfcSelect.Text = "⭐ Tất cả file IFC (Navisworks Auto)  ▼";
+                btnIfcSelect.ForeColor = DrawColor.White;
+                _ifcTooltip.SetToolTip(btnIfcSelect, "Chế độ: Tự động quét tất cả các file IFC giao cắt trong vùng không gian cốt thép");
+            }
+            else if (_selectedIfcFiles.Count == 1)
+            {
+                string singleFile = _selectedIfcFiles.First();
+                btnIfcSelect.Text = singleFile + "  ▼";
+                btnIfcSelect.ForeColor = DrawColor.FromArgb(134, 239, 172);
+                _ifcTooltip.SetToolTip(btnIfcSelect, "Đã chọn 1 file IFC:\n• " + singleFile);
+            }
+            else
+            {
+                btnIfcSelect.Text = string.Format("☑ Đã chọn: {0} file IFC  ▼", _selectedIfcFiles.Count);
+                btnIfcSelect.ForeColor = DrawColor.FromArgb(134, 239, 172);
+                _ifcTooltip.SetToolTip(btnIfcSelect, string.Format("Đã chọn {0} file IFC:\n• {1}", _selectedIfcFiles.Count, string.Join("\n• ", _selectedIfcFiles)));
+            }
+        }
+
+        /// <summary>
+        /// Hiển thị menu thả xuống (Dropdown) hiện đại có thanh tìm kiếm và Checkbox để người dùng tích chọn 1 hoặc nhiều file IFC.
+        /// </summary>
+        private void ShowIfcSelectionDropdown()
+        {
+            var dropDown = new ToolStripDropDown
+            {
+                AutoClose = true,
+                DropShadowEnabled = true,
+                Padding = Padding.Empty,
+                Margin = Padding.Empty
+            };
+
+            dropDown.Closing += (s, e) =>
+            {
+                if (e.CloseReason == ToolStripDropDownCloseReason.ItemClicked)
+                {
+                    e.Cancel = true;
+                }
+            };
+
+            var pnlHost = new Panel
+            {
+                Width = 380,
+                Height = 420,
+                BackColor = DrawColor.FromArgb(24, 28, 36),
+                ForeColor = DrawColor.FromArgb(226, 232, 240),
+                BorderStyle = BorderStyle.FixedSingle,
+                Padding = new Padding(10)
+            };
+
+            // 1. Chế độ quét toàn cục (Auto vs Selected)
+            var rbAuto = new RadioButton
+            {
+                Text = "⭐ Tự động quét tất cả file IFC (Navisworks Auto)",
+                Checked = !_ifcSelectedPartsOnly && _selectedIfcFiles.Count == 0,
+                Location = new DrawPoint(10, 10),
+                AutoSize = true,
+                ForeColor = DrawColor.White,
+                Font = new DrawFont("Segoe UI", 8.5F, FontStyle.Bold),
+                Cursor = Cursors.Hand
+            };
+
+            var rbSelectedParts = new RadioButton
+            {
+                Text = "🎯 Chỉ cấu kiện IFC / Part đang chọn trong Tekla",
+                Checked = _ifcSelectedPartsOnly,
+                Location = new DrawPoint(10, 32),
+                AutoSize = true,
+                ForeColor = DrawColor.FromArgb(147, 197, 253),
+                Font = new DrawFont("Segoe UI", 8.5F, FontStyle.Bold),
+                Cursor = Cursors.Hand
+            };
+
+            var rbCustom = new RadioButton
+            {
+                Text = "📁 Tùy chọn tích chọn các file IFC cụ thể bên dưới:",
+                Checked = !_ifcSelectedPartsOnly && _selectedIfcFiles.Count > 0,
+                Location = new DrawPoint(10, 54),
+                AutoSize = true,
+                ForeColor = DrawColor.FromArgb(134, 239, 172),
+                Font = new DrawFont("Segoe UI", 8.5F, FontStyle.Bold),
+                Cursor = Cursors.Hand
+            };
+
+            // 2. Ô tìm kiếm nhanh file IFC
+            var txtSearch = new TextBox
+            {
+                Location = new DrawPoint(10, 80),
+                Width = 358,
+                Height = 24,
+                BackColor = DrawColor.FromArgb(18, 22, 29),
+                ForeColor = DrawColor.White,
+                BorderStyle = BorderStyle.FixedSingle,
+                Font = new DrawFont("Segoe UI", 8.5F)
+            };
+
+            // 3. Thanh nút thao tác nhanh
+            var btnSelectAll = new Button
+            {
+                Text = "☑ Chọn tất cả",
+                Location = new DrawPoint(10, 108),
+                Size = new DrawSize(90, 24),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = DrawColor.FromArgb(37, 99, 235),
+                ForeColor = DrawColor.White,
+                Font = new DrawFont("Segoe UI", 7.5F),
+                Cursor = Cursors.Hand
+            };
+            btnSelectAll.FlatAppearance.BorderSize = 0;
+
+            var btnClearAll = new Button
+            {
+                Text = "☐ Bỏ chọn hết",
+                Location = new DrawPoint(105, 108),
+                Size = new DrawSize(90, 24),
+                FlatStyle = FlatStyle.Flat,
+                BackColor = DrawColor.FromArgb(51, 65, 85),
+                ForeColor = DrawColor.FromArgb(203, 213, 225),
+                Font = new DrawFont("Segoe UI", 7.5F),
+                Cursor = Cursors.Hand
+            };
+            btnClearAll.FlatAppearance.BorderSize = 0;
+
+            var lblSelectedCount = new Label
+            {
+                Text = string.Format("Đã chọn: {0} file", _selectedIfcFiles.Count),
+                Location = new DrawPoint(205, 112),
+                AutoSize = true,
+                ForeColor = DrawColor.FromArgb(148, 163, 184),
+                Font = new DrawFont("Segoe UI", 8F)
+            };
+
+            // 4. Danh sách CheckedListBox
+            var clbFiles = new CheckedListBox
+            {
+                Location = new DrawPoint(10, 136),
+                Width = 358,
+                Height = 235,
+                CheckOnClick = true,
+                BackColor = DrawColor.FromArgb(18, 22, 29),
+                ForeColor = DrawColor.FromArgb(226, 232, 240),
+                BorderStyle = BorderStyle.FixedSingle,
+                Font = new DrawFont("Segoe UI", 8.5F)
+            };
+
+            Action refreshList = () =>
+            {
+                clbFiles.BeginUpdate();
+                clbFiles.Items.Clear();
+                string filter = (txtSearch.Text ?? string.Empty).Trim().ToLowerInvariant();
+                foreach (var fn in _availableIfcFiles)
+                {
+                    if (string.IsNullOrEmpty(filter) || fn.ToLowerInvariant().Contains(filter))
+                    {
+                        bool isChecked = _selectedIfcFiles.Contains(fn);
+                        clbFiles.Items.Add(fn, isChecked);
+                    }
+                }
+                clbFiles.EndUpdate();
+                lblSelectedCount.Text = string.Format("Đã chọn: {0} / {1} file", _selectedIfcFiles.Count, _availableIfcFiles.Count);
+            };
+
+            refreshList();
+
+            txtSearch.TextChanged += (s, e) => refreshList();
+
+            clbFiles.ItemCheck += (s, e) =>
+            {
+                string fn = clbFiles.Items[e.Index].ToString();
+                if (e.NewValue == CheckState.Checked)
+                {
+                    _selectedIfcFiles.Add(fn);
+                    rbCustom.Checked = true;
+                    _ifcSelectedPartsOnly = false;
+                }
+                else
+                {
+                    _selectedIfcFiles.Remove(fn);
+                }
+                lblSelectedCount.Text = string.Format("Đã chọn: {0} / {1} file", _selectedIfcFiles.Count, _availableIfcFiles.Count);
+                UpdateIfcButtonDisplay();
+            };
+
+            btnSelectAll.Click += (s, e) =>
+            {
+                foreach (var fn in _availableIfcFiles) _selectedIfcFiles.Add(fn);
+                rbCustom.Checked = true;
+                _ifcSelectedPartsOnly = false;
+                refreshList();
+                UpdateIfcButtonDisplay();
+            };
+
+            btnClearAll.Click += (s, e) =>
+            {
+                _selectedIfcFiles.Clear();
+                refreshList();
+                UpdateIfcButtonDisplay();
+            };
+
+            rbAuto.CheckedChanged += (s, e) =>
+            {
+                if (rbAuto.Checked)
+                {
+                    _ifcSelectedPartsOnly = false;
+                    _selectedIfcFiles.Clear();
+                    refreshList();
+                    UpdateIfcButtonDisplay();
+                }
+            };
+
+            rbSelectedParts.CheckedChanged += (s, e) =>
+            {
+                if (rbSelectedParts.Checked)
+                {
+                    _ifcSelectedPartsOnly = true;
+                    _selectedIfcFiles.Clear();
+                    refreshList();
+                    UpdateIfcButtonDisplay();
+                }
+            };
+
+            // 5. Nút Hoàn tất
+            var btnApply = new Button
+            {
+                Text = "✓ Áp Dụng",
+                Location = new DrawPoint(10, 380),
+                Width = 358,
+                Height = 30,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = DrawColor.FromArgb(16, 185, 129),
+                ForeColor = DrawColor.White,
+                Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold),
+                Cursor = Cursors.Hand
+            };
+            btnApply.FlatAppearance.BorderSize = 0;
+            btnApply.Click += (s, e) =>
+            {
+                UpdateIfcButtonDisplay();
+                dropDown.Close();
+            };
+
+            pnlHost.Controls.Add(rbAuto);
+            pnlHost.Controls.Add(rbSelectedParts);
+            pnlHost.Controls.Add(rbCustom);
+            pnlHost.Controls.Add(txtSearch);
+            pnlHost.Controls.Add(btnSelectAll);
+            pnlHost.Controls.Add(btnClearAll);
+            pnlHost.Controls.Add(lblSelectedCount);
+            pnlHost.Controls.Add(clbFiles);
+            pnlHost.Controls.Add(btnApply);
+
+            var host = new ToolStripControlHost(pnlHost)
+            {
+                Padding = Padding.Empty,
+                Margin = Padding.Empty,
+                AutoSize = false,
+                Size = pnlHost.Size
+            };
+
+            dropDown.Items.Add(host);
+            dropDown.Show(btnIfcSelect, new DrawPoint(0, btnIfcSelect.Height + 2));
+        }
+
+        /// <summary>
+        /// Nạp danh sách các file IFC tham chiếu từ mô hình Tekla vào danh sách lựa chọn.
         /// </summary>
         private void PopulateIfcComboBox()
         {
-            cboIfcFiles.Items.Clear();
-            cboIfcFiles.Items.Add("⭐ Tự động lọc tất cả file IFC (Navisworks Auto)");
-            cboIfcFiles.Items.Add("🎯 Chỉ cấu kiện IFC / Part đang chọn trong Tekla");
-
+            _availableIfcFiles.Clear();
             if (_detector == null) return;
             var refModels = _detector.GetReferenceModels();
             foreach (var r in refModels)
             {
                 string fn = Path.GetFileName(r.Filename ?? string.Empty);
-                if (!string.IsNullOrEmpty(fn) && !cboIfcFiles.Items.Contains(fn))
+                if (!string.IsNullOrEmpty(fn) && !_availableIfcFiles.Contains(fn))
                 {
-                    cboIfcFiles.Items.Add(fn);
+                    _availableIfcFiles.Add(fn);
                 }
             }
-            if (cboIfcFiles.Items.Count > 0)
-                cboIfcFiles.SelectedIndex = 0;
+            UpdateIfcButtonDisplay();
         }
 
         /// <summary>
@@ -697,24 +1000,24 @@ namespace BimCommands.Tekla.ClashCheck
             ClearHighlights();
 
             IfcScopeMode ifcMode = IfcScopeMode.AutoSpatialAllIfc;
-            if (cboIfcFiles.SelectedIndex == 1)
-                ifcMode = IfcScopeMode.SelectedIfcOnly;
-            else if (cboIfcFiles.SelectedIndex > 1)
-                ifcMode = IfcScopeMode.SpecificFile;
-
-            // Lưu cài đặt bộ lọc từ khóa vào file cấu hình
-            try
+            if (_ifcSelectedPartsOnly)
             {
-                File.WriteAllText(FilterSettingsFile, txtIgnoreKeywords.Text);
-                File.WriteAllText(OnlyFilterSettingsFile, txtOnlyKeywords.Text);
+                ifcMode = IfcScopeMode.SelectedIfcOnly;
             }
-            catch { }
+            else if (_selectedIfcFiles.Count > 0)
+            {
+                ifcMode = IfcScopeMode.SpecificFile;
+            }
+
+            // Lưu cài đặt hiện hành vào Properties.Settings
+            SaveSettings();
 
             var settings = new ClashSettings
             {
                 OnlySelectedRebars = rbRebarSelected.Checked,
                 IfcMode = ifcMode,
-                TargetIfcFileName = cboIfcFiles.SelectedIndex > 1 ? cboIfcFiles.SelectedItem.ToString() : "ALL",
+                TargetIfcFileName = _selectedIfcFiles.Count == 1 ? _selectedIfcFiles.First() : (_selectedIfcFiles.Count > 1 ? string.Join(";", _selectedIfcFiles) : "ALL"),
+                TargetIfcFileNames = new HashSet<string>(_selectedIfcFiles, StringComparer.OrdinalIgnoreCase),
                 ToleranceMm = (double)numTolerance.Value,
                 ClearanceMm = (double)numClearance.Value,
                 EnableIgnoredComponents = chkIgnoreFilter.Checked,
@@ -968,7 +1271,20 @@ namespace BimCommands.Tekla.ClashCheck
                 var filtered = new List<ClashResultItem>();
                 foreach (var c in _currentClashes)
                 {
-                    if (ClashDetector.IsIgnoredComponent(c.IfcEntityName, settings.IgnoredKeywords))
+                    string searchable = c.IfcEntityName ?? string.Empty;
+                    if (c.IfcObject != null)
+                    {
+                        try
+                        {
+                            string teklaName = string.Empty;
+                            c.IfcObject.GetReportProperty("NAME", ref teklaName);
+                            string teklaDesc = string.Empty;
+                            c.IfcObject.GetReportProperty("DESCRIPTION", ref teklaDesc);
+                            searchable = $"{searchable} {teklaName} {teklaDesc}".Trim();
+                        }
+                        catch { }
+                    }
+                    if (ClashDetector.IsIgnoredComponent(searchable, settings.IgnoredKeywords))
                         continue;
                     filtered.Add(c);
                 }
@@ -1016,7 +1332,7 @@ namespace BimCommands.Tekla.ClashCheck
             }
             dgvClashes.ResumeLayout();
 
-            lblCountText.Text = string.Format("{0} va chạm", _currentClashes.Count);
+            UpdateClashCountStatus();
             lblStatusText.Text = string.Format("Hoàn tất quét! Phát hiện {0} va chạm trong {1:F1} giây.", _currentClashes.Count, sw.Elapsed.TotalSeconds);
             ResetUiState();
         }
@@ -1029,6 +1345,199 @@ namespace BimCommands.Tekla.ClashCheck
             btnScan.Enabled = true;
             btnStop.Enabled = false;
             progressBar.Visible = false;
+        }
+
+        /// <summary>
+        /// Khởi tạo Menu chuột phải (ContextMenuStrip) và phím tắt cho bảng danh sách va chạm.
+        /// Cho phép người dùng ẩn các dòng đã kiểm tra, hiện lại tất cả, zoom nhanh hoặc sao chép thông tin.
+        /// </summary>
+        private void SetupClashesContextMenu()
+        {
+            _clashContextMenu = new ContextMenuStrip
+            {
+                BackColor = DrawColor.FromArgb(30, 35, 45),
+                ForeColor = DrawColor.FromArgb(226, 232, 240),
+                ShowImageMargin = false
+            };
+
+            _menuItemHideRow = new ToolStripMenuItem("👁️ Ẩn dòng này (Đã kiểm tra xong)       [Phím H / Delete]")
+            {
+                ForeColor = DrawColor.FromArgb(253, 224, 71), // Màu vàng nổi bật
+                Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold)
+            };
+            _menuItemHideRow.Click += (s, e) => HideSelectedClashRows();
+
+            _menuItemZoom = new ToolStripMenuItem("🔍 Zoom & Chọn cấu kiện trên Tekla")
+            {
+                ForeColor = DrawColor.FromArgb(147, 197, 253)
+            };
+            _menuItemZoom.Click += (s, e) => ZoomToSelectedClash();
+
+            _menuItemCopy = new ToolStripMenuItem("📋 Sao chép thông tin dòng va chạm (Copy)")
+            {
+                ForeColor = DrawColor.FromArgb(203, 213, 225)
+            };
+            _menuItemCopy.Click += (s, e) => CopySelectedClashInfo();
+
+            _menuItemUnhideAll = new ToolStripMenuItem("🔄 Hiện lại tất cả các dòng đã ẩn")
+            {
+                ForeColor = DrawColor.FromArgb(134, 239, 172)
+            };
+            _menuItemUnhideAll.Click += (s, e) => UnhideAllClashRows();
+
+            _clashContextMenu.Items.Add(_menuItemHideRow);
+            _clashContextMenu.Items.Add(_menuItemZoom);
+            _clashContextMenu.Items.Add(new ToolStripSeparator());
+            _clashContextMenu.Items.Add(_menuItemUnhideAll);
+            _clashContextMenu.Items.Add(new ToolStripSeparator());
+            _clashContextMenu.Items.Add(_menuItemCopy);
+
+            dgvClashes.ContextMenuStrip = _clashContextMenu;
+
+            // Xử lý CellMouseDown: Chuột phải vào bất kỳ ô nào thì dòng đó được chọn ngay lập tức
+            dgvClashes.CellMouseDown += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+                {
+                    if (!dgvClashes.Rows[e.RowIndex].Selected)
+                    {
+                        dgvClashes.ClearSelection();
+                        dgvClashes.Rows[e.RowIndex].Selected = true;
+                    }
+                    try
+                    {
+                        dgvClashes.CurrentCell = dgvClashes.Rows[e.RowIndex].Cells[Math.Max(0, e.ColumnIndex)];
+                    }
+                    catch { }
+
+                    // Cập nhật số lượng dòng đã ẩn trên nhãn của menu
+                    int hiddenCount = GetHiddenRowCount();
+                    _menuItemUnhideAll.Enabled = hiddenCount > 0;
+                    _menuItemUnhideAll.Text = hiddenCount > 0
+                        ? string.Format("🔄 Hiện lại tất cả các dòng đã ẩn ({0} dòng)", hiddenCount)
+                        : "🔄 Hiện lại tất cả các dòng đã ẩn";
+                }
+            };
+
+            // Hỗ trợ phím tắt H hoặc Delete để ẩn dòng nhanh khi đang duyệt danh sách
+            dgvClashes.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.H)
+                {
+                    HideSelectedClashRows();
+                    e.Handled = true;
+                }
+            };
+        }
+
+        /// <summary>
+        /// Đếm số lượng dòng va chạm hiện đang bị ẩn trong bảng.
+        /// </summary>
+        private int GetHiddenRowCount()
+        {
+            int count = 0;
+            foreach (DataGridViewRow r in dgvClashes.Rows)
+            {
+                if (!r.Visible) count++;
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Cập nhật nhãn hiển thị số lượng va chạm trên thanh trạng thái (số dòng còn lại và số dòng đã ẩn).
+        /// </summary>
+        private void UpdateClashCountStatus()
+        {
+            int total = dgvClashes.Rows.Count;
+            int hidden = GetHiddenRowCount();
+            int visible = total - hidden;
+
+            if (hidden > 0)
+            {
+                lblCountText.Text = string.Format("{0} còn lại / {1} tổng (Đã ẩn {2})", visible, total, hidden);
+            }
+            else
+            {
+                lblCountText.Text = string.Format("{0} va chạm", total);
+            }
+        }
+
+        /// <summary>
+        /// Ẩn các dòng va chạm đang được chọn (đánh dấu đã kiểm tra xong).
+        /// Tự động chuyển con trỏ chọn sang dòng tiếp theo để người dùng tiếp tục kiểm tra mượt mà.
+        /// </summary>
+        private void HideSelectedClashRows()
+        {
+            if (dgvClashes.SelectedRows.Count == 0) return;
+
+            int lastSelectedIndex = -1;
+            var rowsToHide = new List<DataGridViewRow>();
+            foreach (DataGridViewRow r in dgvClashes.SelectedRows)
+            {
+                rowsToHide.Add(r);
+                if (r.Index > lastSelectedIndex) lastSelectedIndex = r.Index;
+            }
+
+            dgvClashes.CurrentCell = null; // Tránh ngoại lệ InvalidOperationException khi ẩn dòng hiện hành
+
+            foreach (var r in rowsToHide)
+            {
+                r.Visible = false;
+            }
+
+            // Tự động tìm và chọn dòng hiển thị tiếp theo
+            if (lastSelectedIndex >= 0)
+            {
+                for (int i = lastSelectedIndex + 1; i < dgvClashes.Rows.Count; i++)
+                {
+                    if (dgvClashes.Rows[i].Visible)
+                    {
+                        dgvClashes.Rows[i].Selected = true;
+                        try { dgvClashes.CurrentCell = dgvClashes.Rows[i].Cells[0]; } catch { }
+                        break;
+                    }
+                }
+            }
+
+            UpdateClashCountStatus();
+        }
+
+        /// <summary>
+        /// Hiện lại toàn bộ các dòng va chạm đã bị ẩn trước đó.
+        /// </summary>
+        private void UnhideAllClashRows()
+        {
+            dgvClashes.SuspendLayout();
+            foreach (DataGridViewRow r in dgvClashes.Rows)
+            {
+                r.Visible = true;
+            }
+            dgvClashes.ResumeLayout();
+            UpdateClashCountStatus();
+            lblStatusText.Text = "Đã hiển thị lại toàn bộ các dòng va chạm.";
+        }
+
+        /// <summary>
+        /// Sao chép nội dung chi tiết của dòng va chạm đang chọn vào Clipboard.
+        /// </summary>
+        private void CopySelectedClashInfo()
+        {
+            if (dgvClashes.SelectedRows.Count == 0) return;
+            var sb = new StringBuilder();
+            foreach (DataGridViewRow r in dgvClashes.SelectedRows)
+            {
+                var item = r.Tag as ClashResultItem;
+                if (item != null)
+                {
+                    sb.AppendLine(string.Format("#{0}\tThép: {1} (ID:{2}, {3})\tCấu kiện: {4}\tĐộ lấn: {5} mm\tMức độ: {6}\tTọa độ: {7}",
+                        item.Index, item.RebarName, item.RebarId, item.RebarSize, item.IfcEntityName, item.OverlapMm, item.Severity, item.ClashPointDisplay));
+                }
+            }
+            if (sb.Length > 0)
+            {
+                Clipboard.SetText(sb.ToString());
+                lblStatusText.Text = "Đã sao chép thông tin va chạm vào Clipboard!";
+            }
         }
 
         /// <summary>
@@ -1189,42 +1698,15 @@ namespace BimCommands.Tekla.ClashCheck
                     Width = 3,
                     PolyLine = new PolyLine(pts)
                 };
-                if (trackHighlight) _activeHighlights.Add(gLine);
-                drawer.DrawPolyLine(gLine);
+                int id = drawer.DrawPolyLine(gLine);
+                if (trackHighlight && id > 0)
+                {
+                    lock (_highlightLock)
+                    {
+                        _activeHighlights.Add(id);
+                    }
+                }
             }
-
-            // 3. Vẽ bề mặt 3D của khối lập phương bán trong suốt (Mesh Surfaces)
-            try
-            {
-                var mesh = new Mesh();
-                int i0 = mesh.AddPoint(p0);
-                int i1 = mesh.AddPoint(p1);
-                int i2 = mesh.AddPoint(p2);
-                int i3 = mesh.AddPoint(p3);
-                int i4 = mesh.AddPoint(p4);
-                int i5 = mesh.AddPoint(p5);
-                int i6 = mesh.AddPoint(p6);
-                int i7 = mesh.AddPoint(p7);
-
-                // 6 mặt lập phương (12 tam giác)
-                mesh.AddTriangle(i0, i2, i1); mesh.AddTriangle(i0, i3, i2); // Mặt đáy (Z-)
-                mesh.AddTriangle(i4, i5, i6); mesh.AddTriangle(i4, i6, i7); // Mặt đỉnh (Z+)
-                mesh.AddTriangle(i0, i1, i5); mesh.AddTriangle(i0, i5, i4); // Mặt trước (Y-)
-                mesh.AddTriangle(i3, i6, i2); mesh.AddTriangle(i3, i7, i6); // Mặt sau (Y+)
-                mesh.AddTriangle(i0, i4, i7); mesh.AddTriangle(i0, i7, i3); // Mặt trái (X-)
-                mesh.AddTriangle(i1, i2, i6); mesh.AddTriangle(i1, i6, i5); // Mặt phải (X+)
-
-                drawer.DrawMeshSurface(mesh, fillColor);
-            }
-            catch { }
-
-            // 4. Vẽ nhãn văn bản chỉ dẫn số thứ tự và độ lấn va chạm ngay phía trên hình hộp
-            try
-            {
-                var labelPos = new TeklaPoint(p.X, p.Y, p.Z + h + 25.0);
-                drawer.DrawText(labelPos, string.Format("#{0} [{1:F1}mm]", c.Index, c.OverlapMm), labelColor);
-            }
-            catch { }
         }
 
         /// <summary>
@@ -1263,17 +1745,21 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Xóa bỏ toàn bộ các đường vẽ đánh dấu 3D trên màn hình Tekla Structures.
+        /// Xóa bỏ toàn bộ các đường vẽ đánh dấu 3D trên màn hình Tekla Structures bằng GraphicsDrawer.
+        /// Sử dụng RemoveTemporaryGraphicsObjects để xóa tức thì mà không cần RedrawView, loại bỏ hiện tượng giật lag.
         /// </summary>
         private void ClearHighlights()
         {
             try
             {
-                _activeHighlights.Clear();
-                var viewEnum = ViewHandler.GetVisibleViews();
-                while (viewEnum.MoveNext())
+                lock (_highlightLock)
                 {
-                    ViewHandler.RedrawView(viewEnum.Current);
+                    if (_activeHighlights.Count > 0)
+                    {
+                        var drawer = new GraphicsDrawer();
+                        drawer.RemoveTemporaryGraphicsObjects(_activeHighlights);
+                        _activeHighlights.Clear();
+                    }
                 }
             }
             catch { }
@@ -1335,10 +1821,146 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Xử lý sự kiện khi đóng Form: giải phóng bộ nhớ đệm hình học của IfcGeometryBridge.
+        /// Nạp toàn bộ cài đặt từ Properties.Settings khi mở Form.
+        /// </summary>
+        private void LoadSettings()
+        {
+            try
+            {
+                var s = Properties.Settings.Default;
+
+                // 1. Phạm vi kiểm tra cốt thép
+                if (s.OnlySelectedRebars)
+                {
+                    rbRebarSelected.Checked = true;
+                    rbRebarAll.Checked = false;
+                }
+                else
+                {
+                    rbRebarSelected.Checked = false;
+                    rbRebarAll.Checked = true;
+                }
+
+                // 2. Dung sai & Khoảng hở
+                if (s.Tolerance >= numTolerance.Minimum && s.Tolerance <= numTolerance.Maximum)
+                {
+                    numTolerance.Value = s.Tolerance;
+                }
+                if (s.Clearance >= numClearance.Minimum && s.Clearance <= numClearance.Maximum)
+                {
+                    numClearance.Value = s.Clearance;
+                }
+
+                // 3. Bộ lọc SkipNames
+                chkIgnoreFilter.Checked = s.EnableSkipNames;
+                txtIgnoreKeywords.Enabled = s.EnableSkipNames;
+                if (!string.IsNullOrEmpty(s.SkipNames))
+                {
+                    txtIgnoreKeywords.Text = s.SkipNames;
+                }
+
+                // 4. Bộ lọc OnlyNames
+                chkOnlyFilter.Checked = s.EnableOnlyNames;
+                txtOnlyKeywords.Enabled = s.EnableOnlyNames;
+                if (!string.IsNullOrEmpty(s.OnlyNames))
+                {
+                    txtOnlyKeywords.Text = s.OnlyNames;
+                }
+
+                // 5. Cấu hình file IFC đã chọn
+                _ifcSelectedPartsOnly = s.IfcSelectedPartsOnly;
+                _selectedIfcFiles.Clear();
+                if (!string.IsNullOrEmpty(s.SelectedIfcFiles))
+                {
+                    var files = s.SelectedIfcFiles.Split(new char[] { ';', '|' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var f in files)
+                    {
+                        string trimmed = f.Trim();
+                        if (!string.IsNullOrEmpty(trimmed)) _selectedIfcFiles.Add(trimmed);
+                    }
+                }
+                UpdateIfcButtonDisplay();
+
+                // 6. Kích thước và trạng thái cửa sổ Form
+                if (s.WindowWidth >= this.MinimumSize.Width && s.WindowHeight >= this.MinimumSize.Height)
+                {
+                    this.Size = new DrawSize(s.WindowWidth, s.WindowHeight);
+                }
+                if (s.WindowState == (int)FormWindowState.Maximized)
+                {
+                    this.WindowState = FormWindowState.Maximized;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Lỗi khi nạp Properties.Settings: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Lưu toàn bộ cài đặt của Form vào Properties.Settings khi tắt Form hoặc bắt đầu quét.
+        /// </summary>
+        private void SaveSettings()
+        {
+            try
+            {
+                var s = Properties.Settings.Default;
+
+                // 1. Phạm vi cốt thép
+                s.OnlySelectedRebars = rbRebarSelected.Checked;
+
+                // 2. Dung sai & Khoảng hở
+                s.Tolerance = numTolerance.Value;
+                s.Clearance = numClearance.Value;
+
+                // 3. Bộ lọc SkipNames
+                s.EnableSkipNames = chkIgnoreFilter.Checked;
+                s.SkipNames = txtIgnoreKeywords.Text;
+
+                // 4. Bộ lọc OnlyNames
+                s.EnableOnlyNames = chkOnlyFilter.Checked;
+                s.OnlyNames = txtOnlyKeywords.Text;
+
+                // 5. Cấu hình file IFC
+                s.IfcSelectedPartsOnly = _ifcSelectedPartsOnly;
+                s.SelectedIfcFiles = string.Join(";", _selectedIfcFiles);
+
+                // 6. Kích thước và trạng thái Form
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    s.WindowWidth = this.Width;
+                    s.WindowHeight = this.Height;
+                    s.WindowState = 0;
+                }
+                else if (this.WindowState == FormWindowState.Maximized)
+                {
+                    s.WindowState = (int)FormWindowState.Maximized;
+                }
+
+                // Ghi vĩnh viễn vào user.config thông qua .NET Settings Provider
+                s.Save();
+
+                // Lưu kèm ra file text dự phòng để tương thích ngược
+                try
+                {
+                    File.WriteAllText(FilterSettingsFile, txtIgnoreKeywords.Text);
+                    File.WriteAllText(OnlyFilterSettingsFile, txtOnlyKeywords.Text);
+                }
+                catch { }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Lỗi khi lưu Properties.Settings: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Xử lý sự kiện khi đóng Form: lưu cài đặt vào Properties.Settings và giải phóng bộ nhớ đệm hình học của IfcGeometryBridge.
         /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            try { SaveSettings(); } catch { }
+            try { ClearHighlights(); } catch { }
             try { IfcGeometryBridge.ClearCache(); } catch { }
             base.OnFormClosing(e);
         }

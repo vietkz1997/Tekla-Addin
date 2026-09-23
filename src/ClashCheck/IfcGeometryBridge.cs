@@ -125,6 +125,9 @@ namespace BimCommands.Tekla.ClashCheck
                 IReadOnlyList<IfcProductGeometry> ifcGeoms = uncachedList.ToIfcGeometries(options);
                 if (ifcGeoms != null)
                 {
+                    var matchedIds = new HashSet<long>();
+                    int fallbackIdx = 0;
+
                     foreach (var geom in ifcGeoms)
                     {
                         if (geom == null || geom.IsEmpty) continue;
@@ -133,6 +136,23 @@ namespace BimCommands.Tekla.ClashCheck
                         if (!string.IsNullOrEmpty(geom.GlobalId) && guidMap.TryGetValue(geom.GlobalId, out var q) && q.Count > 0)
                         {
                             matchedObj = q.Dequeue();
+                        }
+                        else
+                        {
+                            // Fallback: match by sequence for items without GUID or unmatched GlobalId
+                            while (fallbackIdx < uncachedList.Count && matchedIds.Contains(uncachedList[fallbackIdx].Identifier.ID))
+                            {
+                                fallbackIdx++;
+                            }
+                            if (fallbackIdx < uncachedList.Count)
+                            {
+                                matchedObj = uncachedList[fallbackIdx++];
+                            }
+                        }
+
+                        if (matchedObj != null)
+                        {
+                            matchedIds.Add(matchedObj.Identifier.ID);
                         }
 
                         string fileName = string.Empty;

@@ -43,6 +43,29 @@ namespace BimCommands.Tekla.ClashCheck
         /// <summary>Tên file IFC mục tiêu cần quét (mặc định "ALL" cho tất cả các file).</summary>
         public string TargetIfcFileName { get; set; } = "ALL";
 
+        /// <summary>Danh sách các file IFC mục tiêu cần quét (hỗ trợ chọn đồng thời nhiều file IFC).</summary>
+        public HashSet<string> TargetIfcFileNames { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>Kiểm tra xem tên file có khớp với danh sách file IFC mục tiêu hay không.</summary>
+        public bool MatchesIfcFile(string fileName)
+        {
+            if (string.IsNullOrEmpty(fileName)) return false;
+            if (TargetIfcFileNames == null || TargetIfcFileNames.Count == 0 || TargetIfcFileNames.Contains("ALL"))
+                return true;
+
+            foreach (var target in TargetIfcFileNames)
+            {
+                if (string.Equals(target, "ALL", StringComparison.OrdinalIgnoreCase)) return true;
+                if (fileName.Equals(target, StringComparison.OrdinalIgnoreCase) ||
+                    fileName.IndexOf(target, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    target.IndexOf(fileName, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>Dung sai độ lấn tối thiểu để ghi nhận va chạm (đơn vị: mm, mặc định 1.0mm).</summary>
         public double ToleranceMm { get; set; } = 1.0;
 
@@ -253,8 +276,7 @@ namespace BimCommands.Tekla.ClashCheck
                     {
                         if (boxEnum.Current is ReferenceModelObject refObj)
                         {
-                            if (settings.IfcMode == IfcScopeMode.SpecificFile &&
-                                !string.Equals(settings.TargetIfcFileName, "ALL", StringComparison.OrdinalIgnoreCase))
+                            if (settings.IfcMode == IfcScopeMode.SpecificFile && settings.TargetIfcFileNames != null && settings.TargetIfcFileNames.Count > 0)
                             {
                                 string fileName = string.Empty;
                                 try
@@ -264,10 +286,7 @@ namespace BimCommands.Tekla.ClashCheck
                                 }
                                 catch { }
 
-                                if (!string.IsNullOrEmpty(fileName) &&
-                                    !fileName.Equals(settings.TargetIfcFileName, StringComparison.OrdinalIgnoreCase) &&
-                                    fileName.IndexOf(settings.TargetIfcFileName, StringComparison.OrdinalIgnoreCase) < 0 &&
-                                    settings.TargetIfcFileName.IndexOf(fileName, StringComparison.OrdinalIgnoreCase) < 0)
+                                if (!string.IsNullOrEmpty(fileName) && !settings.MatchesIfcFile(fileName))
                                 {
                                     continue;
                                 }
@@ -287,8 +306,9 @@ namespace BimCommands.Tekla.ClashCheck
                         if (refModel == null) continue;
                         string fileName = Path.GetFileName(refModel.Filename ?? string.Empty);
                         if (settings.IfcMode == IfcScopeMode.SpecificFile &&
-                            !string.Equals(settings.TargetIfcFileName, "ALL", StringComparison.OrdinalIgnoreCase) &&
-                            !string.Equals(fileName, settings.TargetIfcFileName, StringComparison.OrdinalIgnoreCase))
+                            settings.TargetIfcFileNames != null &&
+                            settings.TargetIfcFileNames.Count > 0 &&
+                            !settings.MatchesIfcFile(fileName))
                         {
                             continue;
                         }
@@ -521,6 +541,27 @@ namespace BimCommands.Tekla.ClashCheck
                     foreach (var target in candidateTargets)
                     {
                         if (target == null || !target.HasSolids) continue;
+
+                        // Lọc sớm SkipNames: Bỏ qua tính toán hình học cho cấu kiện bị bỏ qua
+                        if (settings.EnableIgnoredComponents && settings.IgnoredKeywords != null && settings.IgnoredKeywords.Count > 0)
+                        {
+                            if (IsIgnoredComponent(target.EntityName, settings.IgnoredKeywords) ||
+                                (!string.IsNullOrEmpty(target.IfcType) && IsIgnoredComponent(target.IfcType, settings.IgnoredKeywords)))
+                            {
+                                continue;
+                            }
+                        }
+
+                        // Lọc sớm OnlyNames: Bỏ qua nếu không khớp danh sách cấu kiện chỉ định
+                        if (settings.EnableOnlyComponents && settings.OnlyKeywords != null && settings.OnlyKeywords.Count > 0)
+                        {
+                            bool matchName = MatchesOnlyComponent(target.EntityName, settings.OnlyKeywords);
+                            bool matchType = !string.IsNullOrEmpty(target.IfcType) && MatchesOnlyComponent(target.IfcType, settings.OnlyKeywords);
+                            if (!matchName && !matchType)
+                            {
+                                continue;
+                            }
+                        }
 
                         double maxOverlap = 0.0;
                         Point bestClashPt = null;

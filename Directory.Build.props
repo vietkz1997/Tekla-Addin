@@ -2,7 +2,7 @@
   <PropertyGroup>
     <!-- Biến lựa chọn phiên bản Tekla: Mặc định là 2025 (Hỗ trợ 2020, 2025, 2026...) -->
     <!-- Người dùng có thể chỉnh sửa trực tiếp tại đây hoặc truyền qua CLI: /p:TeklaVersion=2020 -->
-    <TeklaVersion Condition="'$(TeklaVersion)' == ''">2025</TeklaVersion>
+    <TeklaVersion Condition="'$(TeklaVersion)' == ''">2020</TeklaVersion>
 
     <!-- Trỏ trực tiếp vào thư mục libs\Tekla$(TeklaVersion) của dự án -->
     <TeklaDir>$(MSBuildThisFileDirectory)libs\Tekla$(TeklaVersion)</TeklaDir>
