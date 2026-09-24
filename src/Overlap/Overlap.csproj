@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <AssemblyName>My-tool</AssemblyName>
+    <AssemblyName>Overlap</AssemblyName>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net48</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
@@ -11,18 +11,26 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)MyTool.exe" SkipUnchangedFiles="true" />
-  </Target>
-
   <ItemGroup>
     <Reference Include="Tekla.Structures">
       <HintPath>$(TeklaDir)\Tekla.Structures.dll</HintPath>
-      <Private>false</Private>
+      <Private>true</Private>
     </Reference>
     <Reference Include="Tekla.Structures.Model">
       <HintPath>$(TeklaDir)\Tekla.Structures.Model.dll</HintPath>
-      <Private>false</Private>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Tekla.Structures.Datatype">
+      <HintPath>$(TeklaDir)\Tekla.Structures.Datatype.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Tekla.Structures.Catalogs">
+      <HintPath>$(TeklaDir)\Tekla.Structures.Catalogs.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Tekla.Structures.Plugins">
+      <HintPath>$(TeklaDir)\Tekla.Structures.Plugins.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 </Project>

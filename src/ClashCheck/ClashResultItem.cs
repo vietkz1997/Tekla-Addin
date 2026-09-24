@@ -76,8 +76,8 @@ namespace BimCommands.Tekla.ClashCheck
         /// <summary>Tên thực thể hoặc loại cấu kiện IFC (ví dụ: IfcBeam, IfcColumn, IfcPipeSegment).</summary>
         public string IfcEntityName { get; set; } = string.Empty;
 
-        /// <summary>Tham chiếu đến đối tượng ReferenceModelObject gốc trong Tekla Open API.</summary>
-        public ReferenceModelObject IfcObject { get; set; }
+        /// <summary>Tham chiếu đến đối tượng gốc trong Tekla Open API (ReferenceModelObject hoặc Part/Item).</summary>
+        public ModelObject IfcObject { get; set; }
 
         #endregion
 

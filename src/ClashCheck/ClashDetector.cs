@@ -176,9 +176,24 @@ namespace BimCommands.Tekla.ClashCheck
                     }
                 }
 
-                if (target.Contains(kwUpper) || normTarget.Contains(normKw))
+                // Với từ khóa ngắn (<= 3 ký tự như "LUG"), so khớp nguyên từ để tránh loại trừ nhầm các từ như "PLUG", "SLUG"
+                if (kwUpper.Length <= 3)
                 {
-                    return true;
+                    var tokens = target.Split(new char[] { '_', '-', ' ', '.', '/', '\\', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var token in tokens)
+                    {
+                        if (token.Equals(kwUpper, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return true;
+                        }
+                    }
+                }
+                else
+                {
+                    if (target.Contains(kwUpper) || normTarget.Contains(normKw))
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -220,7 +235,60 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Thu thập danh sách các cấu kiện cản trở tiềm năng từ ReferenceModelObject trong Tekla,
+        /// Thu thập đệ quy tất cả các nút lá (leaf objects có chứa hình học B-Rep) của cây ReferenceModelObject.
+        /// Đồng thời lọc sơ bộ theo hộp bao AABB để tăng tốc độ xử lý tối đa.
+        /// </summary>
+        private static void CollectLeafReferenceModelObjects(
+            ReferenceModelObject parent,
+            List<ReferenceModelObject> list,
+            HashSet<long> visitedIds,
+            Point boxMin = null,
+            Point boxMax = null)
+        {
+            if (parent == null || !visitedIds.Add(parent.Identifier.ID)) return;
+
+            // KIỂM TRA SỚM HỘP BAO (EARLY HIERARCHICAL BOUNDING BOX PRUNING):
+            // Nếu node này (tầng, khối nhà, nhóm cụm IFC) đã có tọa độ Bounding Box
+            // và nằm hoàn toàn NGOÀI phạm vi vùng thép (boxMin -> boxMax):
+            // -> TOÀN BỘ CÁC CẤU KIỆN CON BÊN DƯỚI CŨNG NẰM NGOÀI! CẮT TỈA (SKIP) CẢ CÂY CON NGAY TỨC THÌ!
+            if (boxMin != null && boxMax != null)
+            {
+                double minX = 0, minY = 0, minZ = 0, maxX = 0, maxY = 0, maxZ = 0;
+                if (parent.GetReportProperty("BOUNDING_BOX_MIN_X", ref minX) &&
+                    parent.GetReportProperty("BOUNDING_BOX_MIN_Y", ref minY) &&
+                    parent.GetReportProperty("BOUNDING_BOX_MIN_Z", ref minZ) &&
+                    parent.GetReportProperty("BOUNDING_BOX_MAX_X", ref maxX) &&
+                    parent.GetReportProperty("BOUNDING_BOX_MAX_Y", ref maxY) &&
+                    parent.GetReportProperty("BOUNDING_BOX_MAX_Z", ref maxZ) && maxX > minX)
+                {
+                    if (maxX < boxMin.X || minX > boxMax.X ||
+                        maxY < boxMin.Y || minY > boxMax.Y ||
+                        maxZ < boxMin.Z || minZ > boxMax.Z)
+                    {
+                        return; // Toàn bộ nhánh cây này nằm ngoài vùng thép -> Bỏ qua lập tức!
+                    }
+                }
+            }
+
+            var children = parent.GetChildren();
+            bool hasChild = false;
+            while (children.MoveNext())
+            {
+                if (children.Current is ReferenceModelObject chObj)
+                {
+                    hasChild = true;
+                    CollectLeafReferenceModelObjects(chObj, list, visitedIds, boxMin, boxMax);
+                }
+            }
+
+            if (!hasChild)
+            {
+                list.Add(parent);
+            }
+        }
+
+        /// <summary>
+        /// Thu thập danh sách các cấu kiện cản trở tiềm năng từ ReferenceModelObject (IFC) và Tekla Part/Item,
         /// trích xuất hình học B-Rep chuẩn xác 100% bằng extension method ToIfcGeometries() của GeometryHelper.
         /// </summary>
         public List<IfcTargetObject> CollectObstacles(
@@ -231,73 +299,104 @@ namespace BimCommands.Tekla.ClashCheck
             Action<string> onStatusUpdate = null)
         {
             var refObjs = new List<ReferenceModelObject>();
+            var directTargets = new List<IfcTargetObject>();
             var addedIds = new HashSet<long>();
 
-            Action<ReferenceModelObject> addRefObj = (ro) =>
-            {
-                if (ro != null && addedIds.Add(ro.Identifier.ID))
-                {
-                    refObjs.Add(ro);
-                }
-            };
+            double buffer = 500.0 + settings.ClearanceMm;
+            Point searchMin = new Point(rebarZoneMin.X - buffer, rebarZoneMin.Y - buffer, rebarZoneMin.Z - buffer);
+            Point searchMax = new Point(rebarZoneMax.X + buffer, rebarZoneMax.Y + buffer, rebarZoneMax.Z + buffer);
 
-            // Trường hợp A: Người dùng chọn trực tiếp vật thể tham chiếu IFC trên mô hình Tekla
-            if (settings.IfcMode == IfcScopeMode.SelectedIfcOnly || (userSelectedObstacles != null && userSelectedObstacles.Count > 0))
+            // Trường hợp A: Người dùng chọn trực tiếp vật thể tham chiếu IFC hoặc cấu kiện Tekla trên mô hình
+            if (settings.IfcMode == IfcScopeMode.SelectedIfcOnly)
             {
-                onStatusUpdate?.Invoke("Đang thu thập các cấu kiện IFC được chọn...");
-                foreach (var obj in userSelectedObstacles)
+                onStatusUpdate?.Invoke("Collecting selected obstacle objects...");
+                if (userSelectedObstacles != null)
                 {
-                    if (obj is ReferenceModel refM)
+                    foreach (var obj in userSelectedObstacles)
                     {
-                        var ch = refM.GetChildren();
-                        while (ch.MoveNext())
+                        if (obj is Part part)
                         {
-                            if (ch.Current is ReferenceModelObject ro) addRefObj(ro);
+                            try
+                            {
+                                var s = part.GetSolid();
+                                if (s != null && SolidConvert.TryToGeoSolid3(s, out GeoSolid3 partSolid))
+                                {
+                                    directTargets.Add(new IfcTargetObject
+                                    {
+                                        ModelObject = part,
+                                        Id = part.Identifier.ID,
+                                        FileName = "Tekla Model",
+                                        EntityName = !string.IsNullOrEmpty(part.Name) ? part.Name : "Tekla Part",
+                                        IfcType = part.GetType().Name,
+                                        GlobalId = part.Identifier.GUID.ToString(),
+                                        BoundingBox = partSolid.GetAabb(),
+                                        Solids = new GeoSolid3[] { partSolid }
+                                    });
+                                }
+                            }
+                            catch { }
                         }
-                    }
-                    else if (obj is ReferenceModelObject refObj)
-                    {
-                        addRefObj(refObj);
+                        else if (obj is ReferenceModel refM)
+                        {
+                            var ch = refM.GetChildren();
+                            while (ch.MoveNext())
+                            {
+                                if (ch.Current is ReferenceModelObject ro)
+                                {
+                                    CollectLeafReferenceModelObjects(ro, refObjs, addedIds);
+                                }
+                            }
+                        }
+                        else if (obj is ReferenceModelObject refObj)
+                        {
+                            CollectLeafReferenceModelObjects(refObj, refObjs, addedIds);
+                        }
                     }
                 }
             }
             else
             {
-                // Trường hợp B: Quét vùng không gian 3D BoundingBox xung quanh cốt thép
-                double buffer = 500.0 + settings.ClearanceMm;
-                Point searchMin = new Point(rebarZoneMin.X - buffer, rebarZoneMin.Y - buffer, rebarZoneMin.Z - buffer);
-                Point searchMax = new Point(rebarZoneMax.X + buffer, rebarZoneMax.Y + buffer, rebarZoneMax.Z + buffer);
+                // Trường hợp B: Quét cấu kiện trong file IFC (SpecificFile hoặc AutoSpatialAllIfc)
+                onStatusUpdate?.Invoke("Querying spatial index for IFC obstacles in rebar bounding range...");
 
-                onStatusUpdate?.Invoke("Đang quét cấu kiện IFC trong phạm vi không gian cốt thép...");
+                // 1. Tận dụng trực tiếp Spatial Index C++ của Tekla qua GetObjectsByBoundingBox (O(log N))
+                // Chỉ thu thập ReferenceModelObject thuộc file IFC được chọn, KHÔNG quét Part gốc của Tekla (coupler, anchor...)
                 try
                 {
                     var boxEnum = _model.GetModelObjectSelector().GetObjectsByBoundingBox(searchMin, searchMax);
                     while (boxEnum.MoveNext())
                     {
-                        if (boxEnum.Current is ReferenceModelObject refObj)
+                        if (boxEnum.Current is ReferenceModelObject rmo)
                         {
-                            if (settings.IfcMode == IfcScopeMode.SpecificFile && settings.TargetIfcFileNames != null && settings.TargetIfcFileNames.Count > 0)
+                            if (addedIds.Add(rmo.Identifier.ID))
                             {
-                                string fileName = string.Empty;
-                                try
+                                bool matchFile = true;
+                                if (settings.IfcMode == IfcScopeMode.SpecificFile &&
+                                    settings.TargetIfcFileNames != null &&
+                                    settings.TargetIfcFileNames.Count > 0)
                                 {
-                                    var parent = refObj.GetReferenceModel();
-                                    if (parent != null) fileName = Path.GetFileName(parent.Filename);
+                                    try
+                                    {
+                                        var rm = rmo.GetReferenceModel();
+                                        string fileName = rm != null ? Path.GetFileName(rm.Filename ?? string.Empty) : string.Empty;
+                                        matchFile = settings.MatchesIfcFile(fileName);
+                                    }
+                                    catch { }
                                 }
-                                catch { }
 
-                                if (!string.IsNullOrEmpty(fileName) && !settings.MatchesIfcFile(fileName))
+                                if (matchFile)
                                 {
-                                    continue;
+                                    refObjs.Add(rmo);
                                 }
                             }
-                            addRefObj(refObj);
                         }
                     }
                 }
                 catch { }
 
-                // Dự phòng nếu selector không trả về đối tượng
+                // 2. Cơ chế dự phòng (Fallback): Chỉ khi Spatial Index không trả về ReferenceModelObject nào
+                // (ví dụ công tắc chọn Reference Model trong thanh công cụ Tekla bị người dùng tắt),
+                // mới duyệt đệ quy cây đối tượng có cắt tỉa cành cha.
                 if (refObjs.Count == 0)
                 {
                     var refModels = GetReferenceModels();
@@ -316,46 +415,59 @@ namespace BimCommands.Tekla.ClashCheck
                         var children = refModel.GetChildren();
                         while (children.MoveNext())
                         {
-                            if (children.Current is ReferenceModelObject refObj)
+                            if (children.Current is ReferenceModelObject rootRo)
                             {
-                                addRefObj(refObj);
+                                CollectLeafReferenceModelObjects(rootRo, refObjs, addedIds, searchMin, searchMax);
                             }
                         }
                     }
                 }
             }
 
-            if (refObjs.Count == 0) return new List<IfcTargetObject>();
-
-            onStatusUpdate?.Invoke(string.Format("Đang nạp hình học B-Rep {0} cấu kiện IFC qua ToIfcGeometries...", refObjs.Count));
-
-            // Thiết lập cấu hình IfcConvertOptions tích hợp SkipNames và OnlyNames
-            var opts = new IfcConvertOptions
+            var allTargets = new List<IfcTargetObject>();
+            if (directTargets.Count > 0)
             {
-                CoordinateSpace = CoordinateSpace.Global,
-                TargetUnit = LengthUnit.Millimeters,
-                ApplyVoids = false,
-                TessellateNonPlanarFaces = true
-            };
+                allTargets.AddRange(directTargets);
+            }
 
-            if (settings.EnableIgnoredComponents && settings.IgnoredKeywords != null)
+            if (refObjs.Count > 0)
             {
-                foreach (var k in settings.IgnoredKeywords)
+                onStatusUpdate?.Invoke(string.Format("Loading B-Rep geometries for {0} IFC objects...", refObjs.Count));
+
+                // Thiết lập cấu hình IfcConvertOptions tích hợp SkipNames và OnlyNames
+                var opts = new IfcConvertOptions
                 {
-                    if (!string.IsNullOrWhiteSpace(k)) opts.AddSkipNames(k.Trim());
+                    CoordinateSpace = CoordinateSpace.Global,
+                    TargetUnit = LengthUnit.Millimeters,
+                    ApplyVoids = false,
+                    TessellateNonPlanarFaces = true
+                };
+
+                if (settings.EnableIgnoredComponents && settings.IgnoredKeywords != null)
+                {
+                    foreach (var k in settings.IgnoredKeywords)
+                    {
+                        if (!string.IsNullOrWhiteSpace(k)) opts.AddSkipNames(k.Trim());
+                    }
+                }
+
+                if (settings.EnableOnlyComponents && settings.OnlyKeywords != null)
+                {
+                    foreach (var k in settings.OnlyKeywords)
+                    {
+                        if (!string.IsNullOrWhiteSpace(k)) opts.AddOnlyNames(k.Trim());
+                    }
+                }
+
+                // Gọi trích xuất sạch sẽ qua GeometryHelper.TeklaConvert
+                var ifcTargets = IfcGeometryBridge.ExtractIfcTargets(refObjs, opts);
+                if (ifcTargets != null && ifcTargets.Count > 0)
+                {
+                    allTargets.AddRange(ifcTargets);
                 }
             }
 
-            if (settings.EnableOnlyComponents && settings.OnlyKeywords != null)
-            {
-                foreach (var k in settings.OnlyKeywords)
-                {
-                    if (!string.IsNullOrWhiteSpace(k)) opts.AddOnlyNames(k.Trim());
-                }
-            }
-
-            // Gọi trích xuất sạch sẽ qua GeometryHelper.TeklaConvert
-            return IfcGeometryBridge.ExtractIfcTargets(refObjs, opts);
+            return allTargets;
         }
 
         /// <summary>

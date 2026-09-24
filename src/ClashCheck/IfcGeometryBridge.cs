@@ -19,8 +19,8 @@ namespace BimCommands.Tekla.ClashCheck
     /// </summary>
     public class IfcTargetObject
     {
-        /// <summary>Đối tượng ReferenceModelObject gốc trong Tekla Structures (dùng để tương tác, highlight, zoom).</summary>
-        public ReferenceModelObject ModelObject { get; set; }
+        /// <summary>Đối tượng gốc trong Tekla Structures (ReferenceModelObject hoặc Part/Item).</summary>
+        public ModelObject ModelObject { get; set; }
 
         /// <summary>Mã định danh ID của đối tượng trong Tekla.</summary>
         public long Id { get; set; }
@@ -204,6 +204,12 @@ namespace BimCommands.Tekla.ClashCheck
         /// - Bước 2: Kiểm tra đâm xuyên B-Rep chuẩn xác 100% bằng TrySplitBy của GeometryHelper.
         /// - Bước 3: Kiểm tra vi phạm khoảng hở an toàn (Clearance Check) nếu được thiết lập > 0.
         /// </summary>
+        /// <summary>
+        /// Thuật toán kiểm tra va chạm hình học chuẩn xác giữa một thanh thép (dạng polyline + bán kính r)
+        /// và một cấu kiện cản trở (chứa các khối B-Rep GeoSolid3).
+        /// Hỗ trợ chuẩn hóa Navisworks: phân biệt rõ ràng giữa tiếp giáp bề mặt rất nhỏ (end-point touch / kissing surface)
+        /// và va chạm đâm xuyên thực thể (hard penetration).
+        /// </summary>
         public static bool TestPolylineVsIfcTarget(
             GeoPolyline3 rebarPolyline,
             double rebarRadius,
@@ -219,9 +225,9 @@ namespace BimCommands.Tekla.ClashCheck
             if (rebarPolyline == null || target == null || !target.HasSolids) return false;
 
             double effRadius = rebarRadius + clearance;
+            double effectiveTolerance = Math.Max(tolerance, 0.0);
 
             // BƯỚC 1: Lọc nhanh Hộp bao AABB siêu tốc (O(1))
-            // Nếu hộp bao của thanh thép (đã mở rộng thêm effRadius) không chạm vào BoundingBox của cấu kiện IFC -> Thoát ngay!
             if (!target.BoundingBox.IsEmpty && !polyAabb.IsEmpty)
             {
                 if (!polyAabb.Expand(effRadius).CollidesWith(target.BoundingBox))
@@ -230,112 +236,158 @@ namespace BimCommands.Tekla.ClashCheck
                 }
             }
 
-            // BƯỚC 2: Kiểm tra va chạm đâm xuyên thực thể chính thức với các khối B-Rep GeoSolid3
+            // BƯỚC 2: Kiểm tra đâm xuyên ruột thực thể (Internal Penetration qua B-Rep Split)
             bool splitSuccess = false;
             GeoPolyline3[] inside = null;
             GeoPolyline3[] outside = null;
 
-            if (target.Solids.Length == 1)
+            try
             {
-                splitSuccess = rebarPolyline.TrySplitBy(target.Solids[0], out inside, out outside, S_ClashTolerance);
+                if (target.Solids.Length == 1)
+                {
+                    splitSuccess = rebarPolyline.TrySplitBy(target.Solids[0], out inside, out outside, S_ClashTolerance);
+                }
+                else
+                {
+                    splitSuccess = rebarPolyline.TrySplitBy(target.Solids, out inside, out outside, S_ClashTolerance);
+                }
             }
-            else
-            {
-                splitSuccess = rebarPolyline.TrySplitBy(target.Solids, out inside, out outside, S_ClashTolerance);
-            }
+            catch { }
 
             if (splitSuccess && inside != null && inside.Length > 0)
             {
-                double totalInsideLen = 0.0;
-                GeoPoint3 bestPt = inside[0].StartPoint;
-                double maxPieceLen = 0.0;
+                double maxInsideLen = 0.0;
+                GeoPoint3 bestInsidePt = inside[0].StartPoint;
+                bool isTruePenetration = false;
 
                 foreach (var piece in inside)
                 {
-                    if (piece != null && piece.Length > 0.0)
+                    if (piece == null || piece.Length <= 0.0) continue;
+
+                    GeoPoint3 midPt;
+                    if (piece.VertexCount >= 2)
                     {
-                        totalInsideLen += piece.Length;
-                        if (piece.Length > maxPieceLen)
-                        {
-                            maxPieceLen = piece.Length;
-                            if (piece.VertexCount >= 2)
-                            {
-                                var p0 = piece[0];
-                                var p1 = piece[piece.VertexCount - 1];
-                                bestPt = new GeoPoint3((p0.X + p1.X) / 2.0, (p0.Y + p1.Y) / 2.0, (p0.Z + p1.Z) / 2.0);
-                            }
-                            else
-                            {
-                                bestPt = piece.StartPoint;
-                            }
-                        }
+                        var p0 = piece[0];
+                        var p1 = piece[piece.VertexCount - 1];
+                        midPt = new GeoPoint3((p0.X + p1.X) / 2.0, (p0.Y + p1.Y) / 2.0, (p0.Z + p1.Z) / 2.0);
                     }
-                }
+                    else
+                    {
+                        midPt = piece.StartPoint;
+                    }
 
-                if (totalInsideLen >= tolerance || maxPieceLen >= tolerance)
-                {
-                    overlap = totalInsideLen + rebarRadius;
-                    clashPt = new Point(bestPt.X, bestPt.Y, bestPt.Z);
-                    return true; // Va chạm đâm xuyên thực thể, thoát ngay lập tức!
-                }
-            }
-
-            // BƯỚC 3: Kiểm tra khoảng hở an toàn (Skin / Clearance Check) nếu effRadius > 0 và chưa đâm xuyên
-            if (effRadius > 0.0)
-            {
-                for (int eIdx = 0; eIdx < rebarPolyline.EdgeCount; eIdx++)
-                {
-                    var edge = rebarPolyline.GetEdgeAt(eIdx);
-                    double eMinX = Math.Min(edge.StartPoint.X, edge.EndPoint.X) - effRadius;
-                    double eMaxX = Math.Max(edge.StartPoint.X, edge.EndPoint.X) + effRadius;
-                    double eMinY = Math.Min(edge.StartPoint.Y, edge.EndPoint.Y) - effRadius;
-                    double eMaxY = Math.Max(edge.StartPoint.Y, edge.EndPoint.Y) + effRadius;
-                    double eMinZ = Math.Min(edge.StartPoint.Z, edge.EndPoint.Z) - effRadius;
-                    double eMaxZ = Math.Max(edge.StartPoint.Z, edge.EndPoint.Z) + effRadius;
-
+                    // Kiểm tra vị trí của điểm giữa đối với các khối Solid
+                    bool insideSolid = false;
                     foreach (var solid in target.Solids)
                     {
                         if (solid == null) continue;
-                        var sAabb = solid.GetAabb();
-                        if (!sAabb.IsEmpty)
+                        try
                         {
-                            if (eMinX > sAabb.Max.X || eMaxX < sAabb.Min.X ||
-                                eMinY > sAabb.Max.Y || eMaxY < sAabb.Min.Y ||
-                                eMinZ > sAabb.Max.Z || eMaxZ < sAabb.Min.Z)
+                            var loc = solid.Locate(midPt, S_ClashTolerance);
+                            if (loc == GeometryHelper.Enums.PointLocation.Inside)
                             {
-                                continue;
+                                insideSolid = true;
+                                break;
                             }
                         }
+                        catch { }
+                    }
 
-                        double dist = Distance3.DistanceTo(edge, solid, S_ClashTolerance);
-                        if (dist <= effRadius)
+                    // Bỏ qua tiếp xúc bề mặt rất nhỏ: chỉ ghi nhận khi đoạn cắt trong ruột có chiều dài đáng kể (>= tolerance và >= 0.5mm)
+                    if (insideSolid || piece.Length >= Math.Max(0.5, effectiveTolerance))
+                    {
+                        if (piece.Length > maxInsideLen)
                         {
-                            double skinOverlap = effRadius - dist;
-                            if (skinOverlap > overlap)
-                            {
-                                overlap = skinOverlap;
-                                double dStart = solid.DistanceTo(edge.StartPoint);
-                                double dEnd = solid.DistanceTo(edge.EndPoint);
-                                GeoPoint3 candidatePt;
-                                if (dStart <= effRadius && dStart <= dEnd)
-                                    candidatePt = edge.StartPoint;
-                                else if (dEnd <= effRadius && dEnd <= dStart)
-                                    candidatePt = edge.EndPoint;
-                                else
-                                    candidatePt = new GeoPoint3((edge.StartPoint.X + edge.EndPoint.X) / 2.0,
-                                                               (edge.StartPoint.Y + edge.EndPoint.Y) / 2.0,
-                                                               (edge.StartPoint.Z + edge.EndPoint.Z) / 2.0);
-
-                                clashPt = new Point(candidatePt.X, candidatePt.Y, candidatePt.Z);
-                            }
+                            maxInsideLen = piece.Length;
+                            bestInsidePt = midPt;
+                            isTruePenetration = true;
                         }
                     }
                 }
 
-                if (overlap >= tolerance && clashPt != null)
+                // Nếu là đâm xuyên thực sự và chiều sâu đâm xuyên vượt qua ngưỡng dung sai (>= tolerance và >= 0.5mm)
+                // Trường hợp tiếp giáp 0.01mm (maxInsideLen = 0.01mm < tolerance): BỎ QUA HOÀN TOÀN!
+                if (isTruePenetration && maxInsideLen >= effectiveTolerance && maxInsideLen >= 0.5)
                 {
+                    double actualDepth = Math.Min(maxInsideLen, rebarRadius * 2.0);
+                    overlap = Math.Round(actualDepth, 2);
+                    clashPt = new Point(bestInsidePt.X, bestInsidePt.Y, bestInsidePt.Z);
                     return true;
                 }
+            }
+
+            // BƯỚC 3: Kiểm tra tiếp xúc mặt bên (Lateral / Radial Skin Contact)
+            // Chỉ xét khi có vi phạm khoảng hở hoặc thân thanh thép tiếp xúc lún vào mặt bên
+            double maxLateralPenetration = 0.0;
+            Point bestLateralContactPt = null;
+
+            for (int eIdx = 0; eIdx < rebarPolyline.EdgeCount; eIdx++)
+            {
+                var edge = rebarPolyline.GetEdgeAt(eIdx);
+                double eMinX = Math.Min(edge.StartPoint.X, edge.EndPoint.X) - effRadius;
+                double eMaxX = Math.Max(edge.StartPoint.X, edge.EndPoint.X) + effRadius;
+                double eMinY = Math.Min(edge.StartPoint.Y, edge.EndPoint.Y) - effRadius;
+                double eMaxY = Math.Max(edge.StartPoint.Y, edge.EndPoint.Y) + effRadius;
+                double eMinZ = Math.Min(edge.StartPoint.Z, edge.EndPoint.Z) - effRadius;
+                double eMaxZ = Math.Max(edge.StartPoint.Z, edge.EndPoint.Z) + effRadius;
+
+                foreach (var solid in target.Solids)
+                {
+                    if (solid == null) continue;
+                    var sAabb = solid.GetAabb();
+                    if (!sAabb.IsEmpty)
+                    {
+                        if (eMinX > sAabb.Max.X || eMaxX < sAabb.Min.X ||
+                            eMinY > sAabb.Max.Y || eMaxY < sAabb.Min.Y ||
+                            eMinZ > sAabb.Max.Z || eMaxZ < sAabb.Min.Z)
+                        {
+                            continue;
+                        }
+                    }
+
+                    double dist = Distance3.DistanceTo(edge, solid, S_ClashTolerance);
+                    if (dist <= effRadius)
+                    {
+                        double dStart = solid.DistanceTo(edge.StartPoint);
+                        double dEnd = solid.DistanceTo(edge.EndPoint);
+
+                        // QUAN TRỌNG: Kiểm tra xem điểm gần nhất có phải là đầu mút thanh thép hay không!
+                        // Nếu điểm gần nhất là StartPoint hoặc EndPoint (chênh lệch <= 0.05mm so với dist):
+                        // Đây là trường hợp ĐẦU MÚT thanh thép hướng vào mặt phẳng!
+                        // Với đầu mút phẳng (flat end cut), nếu tim thép chưa vào ruột (đã xét ở Bước 2),
+                        // thì độ lún dọc trục = 0 (chỉ là tiếp xúc đầu mút 0.01mm hoặc cách 0.01mm) => BỎ QUA!
+                        bool isEndPointContact = Math.Abs(dStart - dist) <= 0.05 || Math.Abs(dEnd - dist) <= 0.05;
+                        if (isEndPointContact)
+                        {
+                            // Đầu mút tiếp giáp bề mặt rất nhỏ (<= 0.01mm) -> BỎ QUA HOÀN TOÀN!
+                            continue;
+                        }
+
+                        // Điểm gần nhất nằm ở THÂN THANH THÉP (Tiếp xúc mặt bên):
+                        double lateralPenetration = effRadius - dist;
+                        if (lateralPenetration > maxLateralPenetration)
+                        {
+                            maxLateralPenetration = lateralPenetration;
+
+                            GeoPoint3 candidatePt = new GeoPoint3(
+                                (edge.StartPoint.X + edge.EndPoint.X) / 2.0,
+                                (edge.StartPoint.Y + edge.EndPoint.Y) / 2.0,
+                                (edge.StartPoint.Z + edge.EndPoint.Z) / 2.0);
+
+                            bestLateralContactPt = new Point(candidatePt.X, candidatePt.Y, candidatePt.Z);
+                        }
+                    }
+                }
+            }
+
+            // Với tiếp xúc mặt bên:
+            // Bỏ qua nếu độ lún mặt bên rất nhỏ (< tolerance hoặc < 0.5mm khi không đo khoảng hở)
+            double minLateralThreshold = (clearance <= 0.0 && effectiveTolerance < 0.5) ? 0.5 : effectiveTolerance;
+            if (maxLateralPenetration >= minLateralThreshold && bestLateralContactPt != null)
+            {
+                overlap = Math.Round(maxLateralPenetration, 2);
+                clashPt = bestLateralContactPt;
+                return true;
             }
 
             return false;

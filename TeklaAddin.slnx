@@ -2,4 +2,7 @@
   <Project Path="src/ClashCheck/ClashCheck.csproj" />
   <Project Path="src/RebarError/RebarError.csproj" />
   <Project Path="src/MyTool/MyTool.csproj" />
+  <Project Path="src/ConvertRebar/ConvertRebar.csproj" />
+  <Project Path="src/Overlap/Overlap.csproj" />
 </Solution>
+

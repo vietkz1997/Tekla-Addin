@@ -5,42 +5,25 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
-namespace BimCommands.Tekla.ClashCheck
+namespace BimCommands.Tekla.OverlapChecker
 {
-    /// <summary>
-    /// Điểm khởi nhập chính của ứng dụng kiểm tra va chạm (Clash-check).
-    /// Thiết lập bộ phân giải Assembly động từ Tekla Structures trước khi khởi tạo UI.
-    /// </summary>
     internal static class Program
     {
-        /// <summary>
-        /// Điểm vào (Entry point) chính của ứng dụng.
-        /// Cấu hình sự kiện nạp thư viện động trước khi gọi giao diện MainForm.
-        /// </summary>
         [STAThread]
-        private static void Main()
+        private static void Main(string[] args)
         {
             try
             {
-                // Đăng ký bộ phân giải Assembly trước khi JIT compiler phân giải các kiểu dữ liệu Tekla
                 AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
                 RunApp();
             }
             catch (Exception ex)
             {
-                File.WriteAllText("clash_error.log", ex.ToString());
-                MessageBox.Show("Failed to launch Clash-check: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                File.WriteAllText("overlap_error.log", ex.ToString());
+                MessageBox.Show("Error launching Overlap Checker: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        /// <summary>
-        /// Tự động phân giải các file DLL phụ thuộc khi ứng dụng không tìm thấy trong thư mục mặc định:
-        /// 1. Kiểm tra trong thư mục ứng dụng hiện tại (thư mục release/).
-        /// 2. Tìm trong thư mục cài đặt bin của tiến trình TeklaStructures.exe đang chạy trên máy.
-        /// </summary>
-        /// <param name="sender">Nguồn phát sự kiện.</param>
-        /// <param name="args">Thông tin Assembly cần tìm kiếm.</param>
-        /// <returns>Assembly đã nạp thành công hoặc null nếu không tìm thấy.</returns>
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
             try
@@ -48,14 +31,14 @@ namespace BimCommands.Tekla.ClashCheck
                 string reqName = new AssemblyName(args.Name).Name;
                 string appDir = AppDomain.CurrentDomain.BaseDirectory;
 
-                // 1. Kiểm tra thư mục ứng dụng hiện tại (release/)
+                // 1. Check local application directory
                 string localTarget = Path.Combine(appDir, reqName + ".dll");
                 if (File.Exists(localTarget))
                 {
                     return Assembly.LoadFrom(localTarget);
                 }
 
-                // 2. Tìm từ tiến trình TeklaStructures.exe đang chạy
+                // 2. Check running TeklaStructures process directory
                 var procs = Process.GetProcessesByName("TeklaStructures");
                 if (procs.Length > 0)
                 {
@@ -73,17 +56,43 @@ namespace BimCommands.Tekla.ClashCheck
                     }
                     catch { }
                 }
+
+                // 3. Check XBIN environment variable
+                string xbin = Environment.GetEnvironmentVariable("XBIN");
+                if (!string.IsNullOrEmpty(xbin) && Directory.Exists(xbin))
+                {
+                    string candidate = Path.Combine(xbin, reqName + ".dll");
+                    if (File.Exists(candidate)) return Assembly.LoadFrom(candidate);
+                }
+
+                // 4. Check common Tekla installation roots
+                string[] searchRoots = new string[]
+                {
+                    @"C:\TeklaStructures",
+                    @"C:\Program Files\Trimble\Tekla Structures",
+                    @"D:\TeklaStructures",
+                    @"D:\Program Files\Trimble\Tekla Structures"
+                };
+
+                foreach (var root in searchRoots)
+                {
+                    if (!Directory.Exists(root)) continue;
+                    try
+                    {
+                        var dlls = Directory.GetFiles(root, reqName + ".dll", SearchOption.AllDirectories);
+                        if (dlls.Length > 0)
+                        {
+                            return Assembly.LoadFrom(dlls[0]);
+                        }
+                    }
+                    catch { }
+                }
             }
             catch { }
 
             return null;
         }
 
-        /// <summary>
-        /// Khởi chạy giao diện chính Windows Forms.
-        /// Phải tách biệt trong hàm NoInlining để tránh việc CLR nạp trước các kiểu dữ liệu của Tekla
-        /// khi hàm Main() chưa kịp đăng ký sự kiện AssemblyResolve.
-        /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static void RunApp()
         {
@@ -93,4 +102,3 @@ namespace BimCommands.Tekla.ClashCheck
         }
     }
 }
-

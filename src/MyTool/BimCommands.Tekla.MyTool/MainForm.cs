@@ -27,6 +27,11 @@ public class MainForm : Form
 				LaunchClashCheckApp();
 				return;
 			}
+			if (arg.Contains("convert"))
+			{
+				LaunchConvertRebarApp();
+				return;
+			}
 			if (arg.Contains("error") || arg.Contains("rebar"))
 			{
 				LaunchRebarErrorApp();
@@ -84,7 +89,7 @@ public class MainForm : Form
 	private void InitializeToolbar()
 	{
 		Text = "My-tool";
-		base.Size = new Size(1115, 116);
+		base.ClientSize = new Size(1106, 86);
 		base.FormBorderStyle = FormBorderStyle.FixedDialog;
 		base.MaximizeBox = false;
 		base.MinimizeBox = true;
@@ -158,6 +163,14 @@ public class MainForm : Form
 		};
 		base.Controls.Add(buttonClash);
 		num4 += num2 + num3;
+		Button buttonConvert = CreateToolButton("🔄 Rebarconvert", num4, num5, num2, h, Color.FromArgb(224, 242, 254), Color.FromArgb(3, 105, 161));
+		buttonConvert.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
+		buttonConvert.Click += delegate
+		{
+			LaunchConvertRebarApp();
+		};
+		base.Controls.Add(buttonConvert);
+		num4 += num2 + num3;
 		base.Controls.Add(CreateAppButton("⚙\ufe0f Preference", "AppPreference.exe", num4, num5, num2, h));
 	}
 
@@ -209,83 +222,124 @@ public class MainForm : Form
 
 	private void LaunchOverlapChecker()
 	{
-		string text = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Overlap.exe");
-		if (!File.Exists(text))
+		string[] searchPaths = new string[]
 		{
-			text = "D:\\tekla\\My-tool\\Overlap.exe";
-		}
-		if (File.Exists(text))
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Overlap.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Overlap", "Overlap.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "Overlap", "Overlap.exe"),
+			"D:\\tekla\\My-tool\\Overlap.exe",
+			"D:\\tekla\\My-tool\\Overlap\\Overlap.exe"
+		};
+
+		foreach (string path in searchPaths)
 		{
-			try
+			if (File.Exists(path))
 			{
-				Process.Start(text);
-				return;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi: " + ex.Message);
-				return;
+				try
+				{
+					Process.Start(path);
+					return;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Lỗi khởi chạy Overlap: " + ex.Message);
+					return;
+				}
 			}
 		}
-		MessageBox.Show("Không tìm thấy: " + text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy: " + searchPaths[0], "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 	}
 
 	private static void LaunchClashCheckApp()
 	{
-		string text = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Clash-check.exe");
-		if (!File.Exists(text))
+		string[] searchPaths = new string[]
 		{
-			text = "D:\\tekla\\My-tool\\Clash-check.exe";
-		}
-		if (!File.Exists(text))
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Clash-check.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ClashCheck", "Clash-check.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "ClashCheck", "Clash-check.exe"),
+			"D:\\tekla\\My-tool\\Clash-check.exe",
+			"D:\\Tekla_\\My-tool\\Clash-check.exe",
+			"D:\\Tekla_\\v20\\application\\AppClashCheck.exe"
+		};
+
+		foreach (string path in searchPaths)
 		{
-			text = "D:\\Tekla_\\My-tool\\Clash-check.exe";
-		}
-		if (!File.Exists(text))
-		{
-			text = "D:\\Tekla_\\v20\\application\\AppClashCheck.exe";
-		}
-		if (File.Exists(text))
-		{
-			try
+			if (File.Exists(path))
 			{
-				Process.Start(text);
-				return;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khởi chạy Clash-check: " + ex.Message);
-				return;
+				try
+				{
+					Process.Start(path);
+					return;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Lỗi khởi chạy Clash-check: " + ex.Message);
+					return;
+				}
 			}
 		}
-		MessageBox.Show("Không tìm thấy công cụ: " + text, "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy công cụ: " + searchPaths[0], "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 	}
 
 	private static void LaunchRebarErrorApp()
 	{
-		string text = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Rebar-error.exe");
-		if (!File.Exists(text))
+		string[] searchPaths = new string[]
 		{
-			text = "D:\\tekla\\My-tool\\Rebar-error.exe";
-		}
-		if (!File.Exists(text))
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Rebar-error.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RebarError", "Rebar-error.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "RebarError", "Rebar-error.exe"),
+			"D:\\tekla\\My-tool\\Rebar-error.exe",
+			"D:\\Tekla_\\My-tool\\Rebar-error.exe"
+		};
+
+		foreach (string path in searchPaths)
 		{
-			text = "D:\\Tekla_\\My-tool\\Rebar-error.exe";
-		}
-		if (File.Exists(text))
-		{
-			try
+			if (File.Exists(path))
 			{
-				Process.Start(text);
-				return;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khởi chạy Rebar-error: " + ex.Message);
-				return;
+				try
+				{
+					Process.Start(path);
+					return;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Lỗi khởi chạy Rebar-error: " + ex.Message);
+					return;
+				}
 			}
 		}
-		MessageBox.Show("Không tìm thấy công cụ: " + text, "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy công cụ: " + searchPaths[0], "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+	}
+
+	private static void LaunchConvertRebarApp()
+	{
+		string[] searchPaths = new string[]
+		{
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Convert-rebar.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ConvertRebar", "Convert-rebar.exe"),
+			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "ConvertRebar", "Convert-rebar.exe"),
+			"D:\\tekla\\My-tool\\Convert-rebar.exe",
+			"D:\\tekla\\My-tool\\ConvertRebar\\Convert-rebar.exe",
+			"D:\\Tekla_\\My-tool\\Convert-rebar.exe"
+		};
+
+		foreach (string path in searchPaths)
+		{
+			if (File.Exists(path))
+			{
+				try
+				{
+					Process.Start(path);
+					return;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Lỗi khởi chạy Convert-rebar: " + ex.Message);
+					return;
+				}
+			}
+		}
+		MessageBox.Show("Không tìm thấy công cụ: " + searchPaths[0], "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 	}
 
 	private void ConnectTekla()

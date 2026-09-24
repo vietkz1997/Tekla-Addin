@@ -1,128 +1,134 @@
-# =============================================================================
+﻿# =============================================================================
 # SCRIPT: Generate_ClashCheck_Presentation.ps1
-# DESCRIPTION: Generate professional, native PowerPoint (.pptx) presentation
-#              for Tekla Clash Check tool using PowerPoint COM Automation.
+# DESCRIPTION: Tao slide PowerPoint (.pptx) va PDF huong dan su dung Clash-check
+#              voi day du tieng Viet co dau, danh so tung buoc tren giao dien.
 # =============================================================================
 
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 $RepoRoot = "c:\Users\BIM\Documents\Github\Tekla-Addin"
 $ImagesDir = Join-Path $RepoRoot "docs\images"
-$OutputPptxDocs = Join-Path $RepoRoot "docs\Huong_Dan_Su_Dung_Clash_Check.pptx"
-$OutputPptxDist = Join-Path $RepoRoot "dist\ClashCheck_Tekla2020\Huong_Dan_Su_Dung_Clash_Check.pptx"
 
-# Modern Engineering Dark Theme Color Palette (Ole BGR values)
+# Cac vi tri luu file (ra ngoai thu muc goc, Desktop, docs va dist)
+$OutputPptxRoot    = Join-Path $RepoRoot "Huong_Dan_Su_Dung_Clash_Check.pptx"
+$OutputPdfRoot     = Join-Path $RepoRoot "Huong_Dan_Su_Dung_Clash_Check.pdf"
+$DesktopDir        = [Environment]::GetFolderPath("Desktop")
+$OutputPptxDesktop = Join-Path $DesktopDir "Huong_Dan_Su_Dung_Clash_Check.pptx"
+$OutputPdfDesktop  = Join-Path $DesktopDir "Huong_Dan_Su_Dung_Clash_Check.pdf"
+$OutputPptxDocs    = Join-Path $RepoRoot "docs\Huong_Dan_Su_Dung_Clash_Check.pptx"
+$OutputPdfDocs     = Join-Path $RepoRoot "docs\Huong_Dan_Su_Dung_Clash_Check.pdf"
+$OutputPptxDist    = Join-Path $RepoRoot "dist\ClashCheck_Tekla2020\Huong_Dan_Su_Dung_Clash_Check.pptx"
+
+# He mau chuan Light Theme Executive Engineering
 Add-Type -AssemblyName System.Drawing
 function To-OleColor([int]$r, [int]$g, [int]$b) {
     return [System.Drawing.ColorTranslator]::ToOle([System.Drawing.Color]::FromArgb($r, $g, $b))
 }
 
-$COLOR_BG_DARK     = To-OleColor 15 23 42    # #0F172A (Deep Slate Navy)
-$COLOR_CARD_DARK   = To-OleColor 30 41 59    # #1E293B (Slate 800)
-$COLOR_CARD_BORDER = To-OleColor 51 65 85    # #334155 (Slate 700)
-$COLOR_CYAN        = To-OleColor 56 189 248  # #38BDF8 (Cyan 400)
-$COLOR_BLUE        = To-OleColor 37 99 235   # #2563EB (Blue 600)
-$COLOR_EMERALD     = To-OleColor 52 211 153  # #34D399 (Emerald 400)
-$COLOR_AMBER       = To-OleColor 251 191 36  # #FBBF24 (Amber Gold)
-$COLOR_ROSE        = To-OleColor 244 63 94   # #F43F5E (Rose Pink)
-$COLOR_PURPLE      = To-OleColor 168 85 247  # #A855F7 (Purple 500)
-$COLOR_TEXT_WHITE  = To-OleColor 248 250 252 # #F8FAFC (Slate 50)
-$COLOR_TEXT_MUTED  = To-OleColor 203 213 225 # #CBD5E1 (Slate 300)
-$COLOR_TEXT_SUB    = To-OleColor 148 163 184 # #94A3B8 (Slate 400)
-$COLOR_BADGE_BG    = To-OleColor 24 33 47    # #18212F
+$COLOR_BG_LIGHT     = To-OleColor 248 250 252 # #F8FAFC (Slate 50 - Nen trang sang tinh te)
+$COLOR_CARD_LIGHT   = To-OleColor 255 255 255 # #FFFFFF (Trang tinh khoi cho Card)
+$COLOR_CARD_BORDER  = To-OleColor 203 213 225 # #CBD5E1 (Slate 300 - Vien card ro rang)
+$COLOR_CYAN         = To-OleColor 2 132 199   # #0284C7 (Sky/Cyan 600 - Xanh lo dam net tren nen sang)
+$COLOR_BLUE         = To-OleColor 29 78 216   # #1D4ED8 (Blue 700 - Xanh duong dam thanh lich)
+$COLOR_EMERALD      = To-OleColor 4 120 87    # #047857 (Emerald 700 - Xanh la cay dam)
+$COLOR_AMBER        = To-OleColor 180 83 9    # #B45309 (Amber 700 - Vang ho phach dam)
+$COLOR_ROSE         = To-OleColor 190 18 60   # #BE123C (Rose 700 - Do crimson sang trong)
+$COLOR_PURPLE       = To-OleColor 109 40 217  # #6D28D9 (Purple 700 - Tim dam net)
+$COLOR_TEXT_MAIN    = To-OleColor 15 23 42    # #0F172A (Slate 900 - Chu tieu de den than dam)
+$COLOR_TEXT_MUTED   = To-OleColor 51 65 85    # #334155 (Slate 700 - Chu noi dung de doc nhat)
+$COLOR_TEXT_SUB     = To-OleColor 100 116 139 # #64748B (Slate 500 - Chu phu chu thich)
+$COLOR_BADGE_BG     = To-OleColor 241 245 249 # #F1F5F9 (Slate 100 - Nen badge nhe)
+$COLOR_FOOTER       = To-OleColor 148 163 184 # #94A3B8 (Slate 400 - Footer)
 
 Write-Host ">>> Khoi chay Microsoft PowerPoint Automation..." -ForegroundColor Cyan
 $pptApp = New-Object -ComObject PowerPoint.Application
 $pptApp.Visible = [Microsoft.Office.Core.MsoTriState]::msoTrue
 
-# Create new presentation (16:9 Widescreen: 960 x 540 points)
+# Tao presentation 16:9 Widescreen (960 x 540 pt)
 $pres = $pptApp.Presentations.Add([Microsoft.Office.Core.MsoTriState]::msoTrue)
 $pres.PageSetup.SlideWidth  = 960
 $pres.PageSetup.SlideHeight = 540
 $ppLayoutBlank = 12
 
 # -----------------------------------------------------------------------------
-# Helper: Setup Slide Dark Background & Header
+# Helper: Background & Headers
 # -----------------------------------------------------------------------------
 function Init-SlideBackground {
     param($slide, $categoryTag, $slideTitle, $slideSub)
 
-    # Dark Background
+    # Nen sang
     $bg = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRectangle, 0, 0, 960, 540)
     $bg.Fill.Solid()
-    $bg.Fill.ForeColor.RGB = $COLOR_BG_DARK
+    $bg.Fill.ForeColor.RGB = $COLOR_BG_LIGHT
     $bg.Line.Visible = [Microsoft.Office.Core.MsoTriState]::msoFalse
 
-    # Top Category Badge / Pill
+    # Top Badge
     if ($categoryTag) {
-        $tagW = [Math]::Max(220, ($categoryTag.Length * 7.5))
-        $tagShape = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, 50, 24, $tagW, 24)
+        $tagW = [Math]::Max(240, ($categoryTag.Length * 7.5))
+        $tagShape = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, 50, 18, $tagW, 24)
         $tagShape.Fill.Solid()
-        $tagShape.Fill.ForeColor.RGB = $COLOR_CARD_DARK
-        $tagShape.Line.ForeColor.RGB = $COLOR_CYAN
+        $tagShape.Fill.ForeColor.RGB = $COLOR_CARD_LIGHT
+        $tagShape.Line.ForeColor.RGB = $COLOR_BLUE
         $tagShape.Line.Weight = 1.0
         $tagShape.TextFrame.TextRange.Text = $categoryTag
         $tagShape.TextFrame.TextRange.Font.Name = "Segoe UI"
         $tagShape.TextFrame.TextRange.Font.Size = 9.5
         $tagShape.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
-        $tagShape.TextFrame.TextRange.Font.Color.RGB = $COLOR_CYAN
+        $tagShape.TextFrame.TextRange.Font.Color.RGB = $COLOR_BLUE
         $tagShape.TextFrame.TextRange.ParagraphFormat.Alignment = [Microsoft.Office.Interop.PowerPoint.PpParagraphAlignment]::ppAlignCenter
     }
 
-    # Header Title
+    # Tieu de slide
     if ($slideTitle) {
-        $titleBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 52, 860, 36)
+        $titleBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 46, 860, 32)
         $titleBox.TextFrame.TextRange.Text = $slideTitle
         $titleBox.TextFrame.TextRange.Font.Name = "Segoe UI"
-        $titleBox.TextFrame.TextRange.Font.Size = 20
+        $titleBox.TextFrame.TextRange.Font.Size = 18.5
         $titleBox.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
-        $titleBox.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_WHITE
+        $titleBox.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_MAIN
         $titleBox.TextFrame.MarginLeft = 0
         $titleBox.TextFrame.MarginTop = 0
     }
 
-    # Subtitle / Description
+    # Phu de slide
     if ($slideSub) {
-        $subBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 88, 860, 22)
+        $subBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 78, 860, 20)
         $subBox.TextFrame.TextRange.Text = $slideSub
         $subBox.TextFrame.TextRange.Font.Name = "Segoe UI"
-        $subBox.TextFrame.TextRange.Font.Size = 11
+        $subBox.TextFrame.TextRange.Font.Size = 10.5
         $subBox.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_SUB
         $subBox.TextFrame.MarginLeft = 0
         $subBox.TextFrame.MarginTop = 0
     }
 
-    # Footer Branding
-    $footerBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 514, 860, 18)
-    $footerBox.TextFrame.TextRange.Text = "TEKLA STRUCTURES ADDIN - CLASH CHECK (REBAR VS IFC) - VIET (BIM & SHOP) 2026"
+    # Footer
+    $footerBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 516, 860, 18)
+    $footerBox.TextFrame.TextRange.Text = "TEKLA ADDIN - CLASH CHECK (REBAR VS IFC) - HƯỚNG DẪN SỬ DỤNG 2026"
     $footerBox.TextFrame.TextRange.Font.Name = "Segoe UI"
     $footerBox.TextFrame.TextRange.Font.Size = 8.5
-    $footerBox.TextFrame.TextRange.Font.Color.RGB = $COLOR_CARD_BORDER
+    $footerBox.TextFrame.TextRange.Font.Color.RGB = $COLOR_FOOTER
     $footerBox.TextFrame.MarginLeft = 0
 }
 
 # -----------------------------------------------------------------------------
-# Helper: Create Feature Card
+# Helper: Feature Card
 # -----------------------------------------------------------------------------
 function Add-FeatureCard {
     param($slide, $x, $y, $w, $h, $cmdTag, $tagColor, $title, $bodyText)
 
-    # Card Base Container
     $card = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, $x, $y, $w, $h)
     $card.Fill.Solid()
-    $card.Fill.ForeColor.RGB = $COLOR_CARD_DARK
+    $card.Fill.ForeColor.RGB = $COLOR_CARD_LIGHT
     $card.Line.ForeColor.RGB = $COLOR_CARD_BORDER
     $card.Line.Weight = 1.0
 
-    # Left Accent Strip
     $strip = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, ($x + 3), ($y + 5), 4, ($h - 10))
     $strip.Fill.Solid()
     $strip.Fill.ForeColor.RGB = $tagColor
     $strip.Line.Visible = [Microsoft.Office.Core.MsoTriState]::msoFalse
 
-    # Badge Tag
     $badgeW = [Math]::Max(70, ($cmdTag.Length * 8.5))
-    $badge = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, ($x + 14), ($y + 10), $badgeW, 20)
+    $badge = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, ($x + 14), ($y + 9), $badgeW, 20)
     $badge.Fill.Solid()
     $badge.Fill.ForeColor.RGB = $COLOR_BADGE_BG
     $badge.Line.ForeColor.RGB = $tagColor
@@ -134,19 +140,17 @@ function Add-FeatureCard {
     $badge.TextFrame.TextRange.Font.Color.RGB = $tagColor
     $badge.TextFrame.TextRange.ParagraphFormat.Alignment = [Microsoft.Office.Interop.PowerPoint.PpParagraphAlignment]::ppAlignCenter
 
-    # Card Title
     $titleX = $x + 14 + $badgeW + 8
-    $titleBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, $titleX, ($y + 9), ($w - ($badgeW + 28)), 22)
+    $titleBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, $titleX, ($y + 8), ($w - ($badgeW + 28)), 22)
     $titleBox.TextFrame.TextRange.Text = $title
     $titleBox.TextFrame.TextRange.Font.Name = "Segoe UI"
     $titleBox.TextFrame.TextRange.Font.Size = 11.5
     $titleBox.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
-    $titleBox.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_WHITE
+    $titleBox.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_MAIN
     $titleBox.TextFrame.MarginLeft = 0
     $titleBox.TextFrame.MarginTop = 0
 
-    # Body
-    $bodyBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, ($x + 14), ($y + 34), ($w - 28), ($h - 38))
+    $bodyBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, ($x + 14), ($y + 32), ($w - 28), ($h - 36))
     $bodyBox.TextFrame.TextRange.Text = $bodyText
     $bodyBox.TextFrame.TextRange.Font.Name = "Segoe UI"
     $bodyBox.TextFrame.TextRange.Font.Size = 9.5
@@ -157,27 +161,27 @@ function Add-FeatureCard {
 }
 
 # -----------------------------------------------------------------------------
-# Helper: Add Framed Image
+# Helper: Framed Image
 # -----------------------------------------------------------------------------
 function Add-FramedImage {
     param($slide, $imagePath, $x, $y, $w, $h, $caption)
 
     if (Test-Path $imagePath) {
-        # Outer Card Frame
-        $frameH = if ($caption) { $h + 30 } else { $h + 8 }
-        $frame = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, ($x - 4), ($y - 4), ($w + 8), $frameH)
+        $frameH = $h + 6
+        if ($caption) { $frameH = $h + 28 }
+
+        $frame = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, ($x - 3), ($y - 3), ($w + 6), $frameH)
         $frame.Fill.Solid()
-        $frame.Fill.ForeColor.RGB = $COLOR_CARD_DARK
+        $frame.Fill.ForeColor.RGB = $COLOR_CARD_LIGHT
         $frame.Line.ForeColor.RGB = $COLOR_CARD_BORDER
         $frame.Line.Weight = 1.0
 
-        # Picture
         $pic = $slide.Shapes.AddPicture($imagePath, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoTrue, $x, $y, $w, $h)
-        $pic.Line.ForeColor.RGB = $COLOR_CYAN
+        $pic.Line.ForeColor.RGB = $COLOR_CARD_BORDER
         $pic.Line.Weight = 1.0
 
         if ($caption) {
-            $capBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, $x, ($y + $h + 5), $w, 20)
+            $capBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, $x, ($y + $h + 4), $w, 18)
             $capBox.TextFrame.TextRange.Text = $caption
             $capBox.TextFrame.TextRange.Font.Name = "Segoe UI"
             $capBox.TextFrame.TextRange.Font.Size = 8.5
@@ -190,6 +194,38 @@ function Add-FramedImage {
     }
 }
 
+# -----------------------------------------------------------------------------
+# Helper: Step Badge Marker
+# -----------------------------------------------------------------------------
+function Add-StepBadge {
+    param($slide, $x, $y, $number, $color, $label)
+
+    $badge = $slide.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeOval, $x, $y, 24, 24)
+    $badge.Fill.Solid()
+    $badge.Fill.ForeColor.RGB = $color
+    $badge.Line.ForeColor.RGB = To-OleColor 255 255 255
+    $badge.Line.Weight = 1.8
+    $badge.TextFrame.TextRange.Text = [string]$number
+    $badge.TextFrame.TextRange.Font.Name = "Segoe UI"
+    $badge.TextFrame.TextRange.Font.Size = 11.5
+    $badge.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
+    $badge.TextFrame.TextRange.Font.Color.RGB = To-OleColor 255 255 255
+    $badge.TextFrame.TextRange.ParagraphFormat.Alignment = [Microsoft.Office.Interop.PowerPoint.PpParagraphAlignment]::ppAlignCenter
+    $badge.TextFrame.MarginLeft = 0
+    $badge.TextFrame.MarginTop = 0
+
+    if ($label) {
+        $lblBox = $slide.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, ($x + 28), ($y + 2), 220, 22)
+        $lblBox.TextFrame.TextRange.Text = $label
+        $lblBox.TextFrame.TextRange.Font.Name = "Segoe UI"
+        $lblBox.TextFrame.TextRange.Font.Size = 10
+        $lblBox.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
+        $lblBox.TextFrame.TextRange.Font.Color.RGB = $color
+        $lblBox.TextFrame.MarginLeft = 0
+        $lblBox.TextFrame.MarginTop = 0
+    }
+}
+
 # =============================================================================
 # SLIDE 1: TRANG BIA (COVER SLIDE)
 # =============================================================================
@@ -197,318 +233,290 @@ Write-Host ">>> Slide 1: Trang bia tong quan..." -ForegroundColor Yellow
 $s1 = $pres.Slides.Add(1, $ppLayoutBlank)
 Init-SlideBackground -slide $s1 -categoryTag $null -slideTitle $null -slideSub $null
 
-# Ambient Glow
-$glow = $s1.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeOval, 640, 60, 260, 260)
+$glow = $s1.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeOval, 640, 50, 270, 270)
 $glow.Fill.Solid()
-$glow.Fill.ForeColor.RGB = To-OleColor 20 35 60
-$glow.Line.ForeColor.RGB = $COLOR_CYAN
+$glow.Fill.ForeColor.RGB = To-OleColor 224 242 254
+$glow.Line.ForeColor.RGB = To-OleColor 186 230 253
 $glow.Line.Weight = 1.5
 
-# Top Badge
-$badge1 = $s1.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, 50, 75, 340, 28)
+$badge1 = $s1.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, 50, 70, 360, 30)
 $badge1.Fill.Solid()
-$badge1.Fill.ForeColor.RGB = $COLOR_CARD_DARK
-$badge1.Line.ForeColor.RGB = $COLOR_CYAN
-$badge1.TextFrame.TextRange.Text = "★ TEKLA STRUCTURES ADDIN - V2020 DEN V2026"
+$badge1.Fill.ForeColor.RGB = $COLOR_CARD_LIGHT
+$badge1.Line.ForeColor.RGB = $COLOR_BLUE
+$badge1.TextFrame.TextRange.Text = "★ TEKLA STRUCTURES ADDIN - 2020 - 2025 - 2026"
 $badge1.TextFrame.TextRange.Font.Name = "Segoe UI"
 $badge1.TextFrame.TextRange.Font.Size = 10.5
 $badge1.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
-$badge1.TextFrame.TextRange.Font.Color.RGB = $COLOR_CYAN
+$badge1.TextFrame.TextRange.Font.Color.RGB = $COLOR_BLUE
 $badge1.TextFrame.TextRange.ParagraphFormat.Alignment = [Microsoft.Office.Interop.PowerPoint.PpParagraphAlignment]::ppAlignCenter
 
-# Main Big Title
-$tBox1 = $s1.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 115, 660, 120)
-$tBox1.TextFrame.TextRange.Text = "TEKLA CLASH CHECK`nREBAR VS CAU KIEN IFC"
+$tBox1 = $s1.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 110, 700, 120)
+$tBox1.TextFrame.TextRange.Text = "HƯỚNG DẪN SỬ DỤNG`nTOOL CLASH-CHECK"
 $tBox1.TextFrame.TextRange.Font.Name = "Segoe UI"
 $tBox1.TextFrame.TextRange.Font.Size = 34
 $tBox1.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
-$tBox1.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_WHITE
+$tBox1.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_MAIN
 
-# Subtitle
-$subBox1 = $s1.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 235, 680, 50)
-$subBox1.TextFrame.TextRange.Text = "Giai phap kiem tra va cham & khoang ho an toan tu dong giua Cot thep mo hinh Tekla va cac file tham chieu IFC (Navisworks Style toc do cao)."
+$subBox1 = $s1.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, 50, 230, 700, 50)
+$subBox1.TextFrame.TextRange.Text = "Kiểm tra va chạm và khoảng hở an toàn tự động giữa Cốt thép (Tekla Model) và Cấu kiện tham chiếu IFC (Navisworks Style tốc độ cao)."
 $subBox1.TextFrame.TextRange.Font.Name = "Segoe UI"
-$subBox1.TextFrame.TextRange.Font.Size = 13.5
+$subBox1.TextFrame.TextRange.Font.Size = 13
 $subBox1.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_MUTED
 $subBox1.TextFrame.WordWrap = [Microsoft.Office.Core.MsoTriState]::msoTrue
 
-# 3 Feature Summary Cards on Cover
-$card1Text = "• Thuat toan loc khong gian AABB 2 pha (Broad-phase & Narrow-phase).`n• Tan dung 100% tat ca cac nhan CPU da luong.`n• Quet hang nghin thanh thep chi trong vai giay."
-Add-FeatureCard -slide $s1 -x 50 -y 300 -w 270 -h 175 `
-    -cmdTag "SPEED" -tagColor $COLOR_CYAN `
-    -title "Quet Song Song Da Luong" `
-    -bodyText $card1Text
+$s1c1 = "• Thuật toán lọc 2 pha: Broad-phase AABB và Narrow-phase chính xác.`n• Tận dụng 100% tất cả các nhân CPU máy tính.`n• Quét hàng ngàn thanh thép chỉ trong vài giây."
+Add-FeatureCard -slide $s1 -x 50 -y 295 -w 270 -h 180 -cmdTag "TỐC ĐỘ" -tagColor $COLOR_CYAN -title "Quét Đa Luồng CPU" -bodyText $s1c1
 
-$card2Text = "• Bo qua chi tiet phu (SkipNames): Bu long, lan can, tai cau, moi han.`n• Chi quet doi tuong chi dinh (OnlyNames).`n• Ho tro tich chon dong thoi nhieu file IFC."
-Add-FeatureCard -slide $s1 -x 345 -y 300 -w 270 -h 175 `
-    -cmdTag "FILTER" -tagColor $COLOR_EMERALD `
-    -title "Loc Thong Minh 3 Lop" `
-    -bodyText $card2Text
+$s1c2 = "• Lược bỏ chi tiết phụ (SkipNames): Bu lông, lan can, tai cẩu, mối hàn.`n• Chỉ quét cấu kiện chỉ định (OnlyNames).`n• Tích chọn đồng thời nhiều file IFC linh hoạt."
+Add-FeatureCard -slide $s1 -x 345 -y 295 -w 270 -h 180 -cmdTag "BỘ LỌC" -tagColor $COLOR_EMERALD -title "Bộ Lọc 3 Tầng Triệt Để" -bodyText $s1c2
 
-$card3Text = "• Chuot phai hoac phim H / Delete de an dong da duyet.`n• Tu dong nhay xuong dong ke tiep.`n• Zoom can canh va ve hop lap phuong 3D mau do danh dau va cham."
-Add-FeatureCard -slide $s1 -x 640 -y 300 -w 270 -h 175 `
-    -cmdTag "AUDIT" -tagColor $COLOR_AMBER `
-    -title "Kiem Duyet Nhanh & 3D" `
-    -bodyText $card3Text
+$s1c3 = "• Chuột phải hoặc phím H / Delete để ẩn dòng đã duyệt.`n• Tự động nhảy dòng kế tiếp.`n• Zoom cận cảnh và vẽ hộp lập phương 3D màu đỏ đánh dấu va chạm."
+Add-FeatureCard -slide $s1 -x 640 -y 295 -w 270 -h 180 -cmdTag "KIỂM DUYỆT" -tagColor $COLOR_AMBER -title "Kiểm Duyệt Nhanh 3D" -bodyText $s1c3
 
 # =============================================================================
-# SLIDE 2: KHOI CHAY TU RIBBON TEKLA
+# SLIDE 2: SƠ ĐỒ ĐÁNH SỐ TỪNG BƯỚC TRÊN GIAO DIỆN CHÍNH
 # =============================================================================
-Write-Host ">>> Slide 2: Khoi chay Ribbon..." -ForegroundColor Yellow
+Write-Host ">>> Slide 2: So do danh so tung buoc..." -ForegroundColor Yellow
 $s2 = $pres.Slides.Add(2, $ppLayoutBlank)
-Init-SlideBackground -slide $s2 `
-    -categoryTag "BUOC 1: KHOI CHAY & KET NOI" `
-    -slideTitle "Khoi chay cong cu tu Ribbon Tekla Structures" `
-    -slideSub "Tich hop truc quan vao thanh cong cu Tekla Ribbon hoac chay file thuc thi doc lap"
+Init-SlideBackground -slide $s2 -categoryTag "TỔNG QUAN GIAO DIỆN VÀ CÁC BƯỚC THAO TÁC" -slideTitle "Sơ đồ 7 bước thao tác trên giao diện chính của Tool" -slideSub "Hình ảnh trực quan đánh dấu từng vị trí điều khiển từ Bước 1 đến Bước 7 để dễ dàng làm theo"
 
-Add-FramedImage -slide $s2 `
-    -imagePath (Join-Path $ImagesDir "media_1790148432146.png") `
-    -x 50 -y 125 -w 460 -h 100 `
-    -caption "Vi tri nut bam Clash-check tren thanh Ribbon Tekla Structures"
+$imgOverview = Join-Path $ImagesDir "main_form_overview.png"
+$imgX = 40
+$imgY = 105
+$imgW = 600
+$imgH = 350
+Add-FramedImage -slide $s2 -imagePath $imgOverview -x $imgX -y $imgY -w $imgW -h $imgH -caption "Giao diện chính công cụ Tekla Clash Check với 7 vị trí điều khiển đánh số"
 
-$s2Card1 = "• Mo tab My-tool tren thanh Ribbon Tekla Structures.`n• Nhaps vao nut Clash-check de mo giao dien kiem tra va cham.`n• Cong cu tu dong lien ket voi Tekla Open API cua mo hinh dang mo."
-Add-FeatureCard -slide $s2 -x 50 -y 255 -w 460 -h 110 `
-    -cmdTag "RIBBON" -tagColor $COLOR_CYAN `
-    -title "Goi truc tiep tu Ribbon Tekla" `
-    -bodyText $s2Card1
+# Danh dau 7 nut tron tren anh chup
+Add-StepBadge -slide $s2 -x ($imgX + 110) -y ($imgY + 50)  -number 1 -color $COLOR_CYAN
+Add-StepBadge -slide $s2 -x ($imgX + 245) -y ($imgY + 50)  -number 2 -color $COLOR_EMERALD
+Add-StepBadge -slide $s2 -x ($imgX + 440) -y ($imgY + 50)  -number 3 -color $COLOR_AMBER
+Add-StepBadge -slide $s2 -x ($imgX + 390) -y ($imgY + 95)  -number 4 -color $COLOR_PURPLE
+Add-StepBadge -slide $s2 -x ($imgX + 45)  -y ($imgY + 110) -number 5 -color $COLOR_BLUE
+Add-StepBadge -slide $s2 -x ($imgX + 180) -y ($imgY + 110) -number 6 -color $COLOR_ROSE
+Add-StepBadge -slide $s2 -x ($imgX + 280) -y ($imgY + 230) -number 7 -color $COLOR_CYAN
 
-$s2Card2 = "• Co the chay truc tiep file Clash-check.exe trong thu muc dist ma khong can mo Ribbon.`n• Ung dung tu dong phan giai tien trinh TeklaStructures.exe dang hoat dong de ket noi."
-Add-FeatureCard -slide $s2 -x 50 -y 380 -w 460 -h 105 `
-    -cmdTag "STANDALONE" -tagColor $COLOR_EMERALD `
-    -title "Chay doc lap (Standalone EXE)" `
-    -bodyText $s2Card2
+$panelX = 660
+$panelY = 105
+$panelW = 260
+$panelH = 380
 
-$s2Card3 = "• Den bao xanh: [Ten Model Tekla]: Cong cu da lien ket thanh cong voi mo hinh, san sang quet.`n• Den bao do: [Chua ket noi Tekla]: Hay mo phan mem Tekla Structures va mo mot du an truoc khi su dung.`n• Tu dong nap thu vien Tekla phien ban hien hanh."
-Add-FeatureCard -slide $s2 -x 535 -y 125 -w 375 -h 170 `
-    -cmdTag "API STATUS" -tagColor $COLOR_AMBER `
-    -title "Den Bao Trang Thai Ket Noi" `
-    -bodyText $s2Card3
+$guideCard = $s2.Shapes.AddShape([Microsoft.Office.Core.MsoAutoShapeType]::msoShapeRoundedRectangle, $panelX, $panelY, $panelW, $panelH)
+$guideCard.Fill.Solid()
+$guideCard.Fill.ForeColor.RGB = $COLOR_CARD_LIGHT
+$guideCard.Line.ForeColor.RGB = $COLOR_CARD_BORDER
 
-$s2Card4 = "• Ngay khi ket noi, cong cu tu dong quet danh muc Reference Models dang co trong du an Tekla.`n• Tu dong dien day du danh sach ten file IFC vao menu tha xuong de nguoi dung lua chon.`n• Khong can chon duong dan file thu cong."
-Add-FeatureCard -slide $s2 -x 535 -y 310 -w 375 -h 175 `
-    -cmdTag "REF MODELS" -tagColor $COLOR_PURPLE `
-    -title "Tu Dong Nap File Tham Chieu IFC" `
-    -bodyText $s2Card4
+$guideTitle = $s2.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, ($panelX + 12), ($panelY + 10), ($panelW - 24), 24)
+$guideTitle.TextFrame.TextRange.Text = "DANH MỤC 7 BƯỚC THAO TÁC"
+$guideTitle.TextFrame.TextRange.Font.Name = "Segoe UI"
+$guideTitle.TextFrame.TextRange.Font.Size = 10.5
+$guideTitle.TextFrame.TextRange.Font.Bold = [Microsoft.Office.Core.MsoTriState]::msoTrue
+$guideTitle.TextFrame.TextRange.Font.Color.RGB = $COLOR_BLUE
+
+$guideText = "① Rebar Scope: [Selected Rebars] / [All Rebars]`n`n② IFC Model: Tích chọn IFC / Auto scan`n`n③ Tolerance (mm) và Clearance (mm)`n`n④ Filter: SkipNames và OnlyNames`n`n⑤ Bấm [Run Clash Check] (hoặc Stop)`n`n⑥ Zoom Selected, Highlight 3D, Clear 3D, Export Report`n`n⑦ Chuột phải ẩn dòng / Phím H, Del"
+$guideBody = $s2.Shapes.AddTextbox([Microsoft.Office.Core.MsoTextOrientation]::msoTextOrientationHorizontal, ($panelX + 12), ($panelY + 38), ($panelW - 24), ($panelH - 45))
+$guideBody.TextFrame.TextRange.Text = $guideText
+$guideBody.TextFrame.TextRange.Font.Name = "Segoe UI"
+$guideBody.TextFrame.TextRange.Font.Size = 9.5
+$guideBody.TextFrame.TextRange.Font.Color.RGB = $COLOR_TEXT_MUTED
+$guideBody.TextFrame.WordWrap = [Microsoft.Office.Core.MsoTriState]::msoTrue
 
 # =============================================================================
-# SLIDE 3: PHAM VI THEP & CHON DA FILE IFC
+# SLIDE 3: BƯỚC 1 - CHỌN PHẠM VI CỐT THÉP (REBAR SCOPE)
 # =============================================================================
-Write-Host ">>> Slide 3: Pham vi thep & Chon da IFC..." -ForegroundColor Yellow
+Write-Host ">>> Slide 3: Buoc 1 - Rebar Scope..." -ForegroundColor Yellow
 $s3 = $pres.Slides.Add(3, $ppLayoutBlank)
-Init-SlideBackground -slide $s3 `
-    -categoryTag "BUOC 2: THIET LAP DAU VAO" `
-    -slideTitle "Thiet lap Cot thep muc tieu & Tich chon nhieu File IFC" `
-    -slideSub "Linh hoat lua chon pham vi doi tuong quet va quan ly dong thoi nhieu nguon mo hinh IFC"
+Init-SlideBackground -slide $s3 -categoryTag "BƯỚC 1 TRÊN GIAO DIỆN" -slideTitle "Bước 1: Chọn Phạm Vi Cốt Thép Cần Kiểm Tra (Rebar Scope)" -slideSub "Xác định rõ đối tượng mục tiêu để tối ưu thời gian quét và tập trung đúng khu vực cần xử lý"
 
-Add-FramedImage -slide $s3 `
-    -imagePath (Join-Path $ImagesDir "media_1790152101503.png") `
-    -x 50 -y 125 -w 270 -h 360 `
-    -caption "Menu tha xuong tich chon linh hoat nhieu file IFC"
+Add-StepBadge -slide $s3 -x 50 -y 110 -number 1 -color $COLOR_CYAN -label "Rebar Scope"
 
-$s3Card1 = "• Thep dang chon: Chi quet cac thanh cot thep hoac cau kien be tong dang duoc chon truc tiep trong man hinh Tekla 3D. Thich hop kiem tra nhanh tung vung/tung cau kien.`n• Toan bo thep: Tu dong quet toan bo cot thep trong toan bo mo hinh du an."
-Add-FeatureCard -slide $s3 -x 345 -y 125 -w 565 -h 110 `
-    -cmdTag "REBAR SCOPE" -tagColor $COLOR_CYAN `
-    -title "Lua Chon Pham Vi Cot Thep Quet" `
-    -bodyText $s3Card1
+$s3Text1 = "• Định nghĩa: Chỉ quét những thanh cốt thép hoặc dầm/cột bê tông đang được chọn trực tiếp trong khung nhìn Tekla 3D.`n• Ưu điểm vượt trội:`n  - Tốc độ cực nhanh: Quét xong trong 1-2 giây cho 1 dầm, 1 cột hoặc 1 tầng sàn.`n  - Phù hợp nhất khi bạn đang triển khai và sửa đổi shop rebar cho từng cấu kiện cụ thể.`n• Mẹo thông minh: Khi chọn cấu kiện bê tông cha (Host Part), toàn bộ cốt thép con bên trong sẽ tự động được thu thập để kiểm tra!"
+Add-FeatureCard -slide $s3 -x 50 -y 150 -w 420 -h 180 -cmdTag "🎯 SELECTED REBARS" -tagColor $COLOR_CYAN -title "Chế độ: Selected Rebars (Khuyên dùng)" -bodyText $s3Text1
 
-$s3Card2 = "• Ho tro tich chon dong thoi 1, 2 hoac nhieu file IFC cung luc (vi du: vua quet file MEP, vua quet file Ket cau thep).`n• Tich hop thanh tim kiem go nhanh ten file de loc danh sach.`n• Nut Chon tat ca va Bo chon het giup thao tac cuc ky nhanh chong."
-Add-FeatureCard -slide $s3 -x 345 -y 250 -w 565 -h 115 `
-    -cmdTag "MULTI IFC" -tagColor $COLOR_EMERALD `
-    -title "Tich Chon Dong Thoi Nhieu File IFC" `
-    -bodyText $s3Card2
+$s3Text2 = "• Định nghĩa: Công cụ sẽ tự động thu thập và kiểm tra toàn bộ cốt thép có trong toàn bộ mô hình Tekla.`n• Ưu điểm:`n  - Kiểm tra tổng thể toàn bộ dự án trước khi phát hành bản vẽ thi công.`n  - Phát hiện các vị trí va chạm ngoài tầm kiểm soát.`n• Tối ưu vượt bậc: Áp dụng thuật toán Bounding Box Spatial Index, thời gian quét toàn bộ mô hình được rút ngắn tối đa."
+Add-FeatureCard -slide $s3 -x 490 -y 150 -w 420 -h 180 -cmdTag "🌐 ALL REBARS" -tagColor $COLOR_EMERALD -title "Chế độ: All Rebars (Toàn bộ mô hình)" -bodyText $s3Text2
 
-$s3Card3 = "• Tat ca file IFC (Navisworks Auto): Tu dong tim tat ca cac file IFC cat qua vung hop bao AABB cua thep.`n• Chi cau kien IFC dang chon: Chi quet cac Part hoac Reference Object dang duoc pick chon tren Tekla 3D."
-Add-FeatureCard -slide $s3 -x 345 -y 380 -w 565 -h 105 `
-    -cmdTag "SPECIAL MODES" -tagColor $COLOR_AMBER `
-    -title "Cac Che Do Quet IFC Nang Cao" `
-    -bodyText $s3Card3
+$s3Text3 = "1. Bật công tắc chọn thanh thép (Select single rebar) hoặc chọn cấu kiện (Select components) trên thanh công cụ Selection của Tekla.`n2. Quét chuột chọn vùng dầm, cột hoặc vách cần kiểm tra va chạm trên không gian 3D.`n3. Trên giao diện Tool, đảm bảo nút [🎯 Selected Rebars] đang sáng màu xanh dương nổi bật."
+Add-FeatureCard -slide $s3 -x 50 -y 345 -w 860 -h 130 -cmdTag "THAO TÁC NHANH" -tagColor $COLOR_AMBER -title "Cách thao tác chuẩn trên màn hình Tekla" -bodyText $s3Text3
 
 # =============================================================================
-# SLIDE 4: DUNG SAI & KHOANG HO AN TOAN
+# SLIDE 4: BƯỚC 2 - CHỌN FILE IFC THAM CHIẾU (IFC MODEL)
 # =============================================================================
-Write-Host ">>> Slide 4: Dung sai & Khoang ho..." -ForegroundColor Yellow
+Write-Host ">>> Slide 4: Buoc 2 - Chon file IFC (IFC Model)..." -ForegroundColor Yellow
 $s4 = $pres.Slides.Add(4, $ppLayoutBlank)
-Init-SlideBackground -slide $s4 `
-    -categoryTag "BUOC 3: THIET LAP THUAT TOAN" `
-    -slideTitle "Dung sai va cham (Tolerance) & Khoang ho an toan (Clearance)" `
-    -slideSub "Cau hinh chuan xac de loai bo va cham gia va phat hien xam pham khoang cach an toan"
+Init-SlideBackground -slide $s4 -categoryTag "BƯỚC 2 TRÊN GIAO DIỆN" -slideTitle "Bước 2: Lựa Chọn File IFC Tham Chiếu (IFC Model Dropdown)" -slideSub "Hỗ trợ tích chọn đồng thời nhiều file IFC hoặc tự động phát hiện theo phong cách Autodesk Navisworks"
 
-Add-FramedImage -slide $s4 `
-    -imagePath (Join-Path $ImagesDir "media_1790150641284.png") `
-    -x 50 -y 125 -w 860 -h 100 `
-    -caption "Cum tham so Dung sai (mm) va Khoang ho (mm) tren thanh dieu khien"
+Add-StepBadge -slide $s4 -x 50 -y 110 -number 2 -color $COLOR_EMERALD -label "IFC Model"
 
-$s4Card1 = "• Dinh nghia: Do xuyen thau chap nhan duoc giua thanh thep va cau kien IFC.`n• Co che: Neu do lan (overlap) nho hon hoac bang Dung sai, cong cu se KHONG bao va cham.`n• Khuyen dung: Dat 1 mm de loai bo sai so tinh toan lam tron so hoc be mat 3D."
-Add-FeatureCard -slide $s4 -x 50 -y 255 -w 420 -h 130 `
-    -cmdTag "TOLERANCE" -tagColor $COLOR_CYAN `
-    -title "Dung sai (mm) - Bo qua cham nhe mep" `
-    -bodyText $s4Card1
+Add-FramedImage -slide $s4 -imagePath (Join-Path $ImagesDir "media_1790152101503.png") -x 50 -y 145 -w 270 -h 340 -caption "Menu thả xuống tích chọn nhiều file IFC"
 
-$s4Card2 = "• Dinh nghia: Khoang cach toi thieu bat buoc giua mep ngoai cot thep va cau kien IFC.`n• Co che: Neu 2 doi tuong khong cham nhau nhung khoang cach < Khoang ho, van bao va cham.`n• Khuyen dung: Dat khi can dam bao chieu day lop be tong bao ve hoac chong chap ong MEP."
-Add-FeatureCard -slide $s4 -x 490 -y 255 -w 420 -h 130 `
-    -cmdTag "CLEARANCE" -tagColor $COLOR_AMBER `
-    -title "Khoang ho (mm) - Vung dem an toan" `
-    -bodyText $s4Card2
+$s4Text1 = "• Tự động quét Reference Models: Tool tự động nạp toàn bộ danh sách các file IFC đang được đính kèm trong mô hình Tekla.`n• Tích chọn đa file linh hoạt: Người dùng có thể tích chọn đồng thời 1, 2 hoặc nhiều file IFC cùng lúc (ví dụ vừa quét file Kết cấu thép, vừa quét file Cơ điện MEP).`n• Tìm kiếm nhanh: Gõ từ khóa vào ô tìm kiếm để lọc nhanh danh sách hàng chục file IFC."
+Add-FeatureCard -slide $s4 -x 345 -y 145 -w 565 -h 120 -cmdTag "TÍCH CHỌN ĐA FILE" -tagColor $COLOR_CYAN -title "Menu Tích Chọn Nhiều File IFC Cùng Lúc" -bodyText $s4Text1
 
-$s4Card3 = "• Severe (Mau do): Va cham nghiem trong - do lan sau vao than cau kien (> 20mm).`n• Medium (Mau cam): Va cham muc trung binh (tu 5mm den 20mm).`n• Minor (Mau vang): Va cham nhe mep hoac xam pham khoang ho an toan (< 5mm)."
-Add-FeatureCard -slide $s4 -x 50 -y 400 -w 860 -h 90 `
-    -cmdTag "SEVERITY" -tagColor $COLOR_ROSE `
-    -title "Phan Cap Muc Do Va Cham Truc Quan Theo Mau Sac" `
-    -bodyText $s4Card3
+$s4Text2 = "• ⭐ Auto scan all IFC files: Tự động khoanh vùng và quét tất cả các file IFC có đối tượng giao cắt với vùng cốt thép.`n• 🎯 Selected IFC objects / Parts in Tekla only: Chỉ quét va chạm với các Part hoặc Reference Object mà bạn đang pick chọn trên 3D.`n• Phím tắt chọn nhanh: Bấm [☑ Check All] hoặc [☐ Clear All] để thao tác chỉ với 1 cú nhấp chuột."
+Add-FeatureCard -slide $s4 -x 345 -y 280 -w 565 -h 120 -cmdTag "CHẾ ĐỘ NÂNG CAO" -tagColor $COLOR_AMBER -title "Các Tùy Chọn Quét IFC Đặc Biệt (Dropdown)" -bodyText $s4Text2
+
+$s4Text3 = "• Lưu ý kỹ thuật: File IFC phải được chèn vào Tekla qua bảng Reference Models và biểu tượng con mắt hiển thị phải ở trạng thái BẬT (Visible)."
+Add-FeatureCard -slide $s4 -x 345 -y 415 -w 565 -h 70 -cmdTag "LƯU Ý" -tagColor $COLOR_ROSE -title "Trạng Thái Hiển Thị File IFC" -bodyText $s4Text3
 
 # =============================================================================
-# SLIDE 5: BO LOC SKIPNAMES & ONLYNAMES
+# SLIDE 5: BƯỚC 3 - THIẾT LẬP DUNG SAI & KHOẢNG HỞ (TOLERANCE & CLEARANCE)
 # =============================================================================
-Write-Host ">>> Slide 5: Bo loc thong minh..." -ForegroundColor Yellow
+Write-Host ">>> Slide 5: Buoc 3 - Dung sai & Khoang ho..." -ForegroundColor Yellow
 $s5 = $pres.Slides.Add(5, $ppLayoutBlank)
-Init-SlideBackground -slide $s5 `
-    -categoryTag "BUOC 4: BO LOC CAU KIEN" `
-    -slideTitle "Bo loc thong minh 3 lop: SkipNames & OnlyNames" `
-    -slideSub "Loai tru triet de cau kien phu va tap trung kiem tra chinh xac cac doi tuong ket cau quan trong"
+Init-SlideBackground -slide $s5 -categoryTag "BƯỚC 3 TRÊN GIAO DIỆN" -slideTitle "Bước 3: Thiết Lập Tolerance (mm) và Clearance (mm)" -slideSub "Cấu hình chuẩn xác để loại bỏ va chạm giả và đồng bộ 100% với tham số trong Autodesk Navisworks Manage"
 
-Add-FramedImage -slide $s5 `
-    -imagePath (Join-Path $ImagesDir "media_1790151482316.png") `
-    -x 50 -y 125 -w 340 -h 140 `
-    -caption "Danh sach tu khoa bo qua (SkipNames) tu dong luu"
+Add-StepBadge -slide $s5 -x 50 -y 110 -number 3 -color $COLOR_AMBER -label "Tolerance & Clearance"
 
-$s5Card1 = "• Bo qua cac chi tiet khong can kiem va cham voi thep: bu long, lan can tam, tai cau, thang leo, moi han...`n• Danh sach mac dinh: Bolt assembly, SAFETY_BAR, LUG, LADDER, SAFETY_HOOK, VBRACE, WELD_COUPLER, CHECK_COUPLER.`n• Ho tro tu khoa cach nhau boi dau cach, xuong dong hoac dau phay."
-Add-FeatureCard -slide $s5 -x 415 -y 125 -w 495 -h 140 `
-    -cmdTag "SKIPNAMES" -tagColor $COLOR_EMERALD `
-    -title "Luoc bo cau kien phu (SkipNames)" `
-    -bodyText $s5Card1
+Add-FramedImage -slide $s5 -imagePath (Join-Path $ImagesDir "media_1790150641284.png") -x 50 -y 145 -w 440 -h 80 -caption "Cụm tham số trên Tool: Tolerance (mm) và Clearance (mm)"
+Add-FramedImage -slide $s5 -imagePath (Join-Path $ImagesDir "navisworks_tolerance.png") -x 510 -y 145 -w 400 -h 80 -caption "Tham số trong Navisworks Manage: Tolerance 0.008 m (8 mm)"
 
-$s5Card2 = "1. Tang 1: Loc ngay khi trich xuat file IFC trong IfcConvert C++ Engine (tiet kiem 60% bo nho RAM).`n2. Tang 2: Loc o Broad-phase khi phan tich hop bao AABB.`n3. Tang 3: Loc o Narrow-phase dam bao 100% khong sot cau kien nao nam trong SkipNames.`n• Nut Mac dinh: Khoi phuc danh sach tu khoa chuan ban dau."
-Add-FeatureCard -slide $s5 -x 50 -y 290 -w 420 -h 190 `
-    -cmdTag "3-LAYER FILTER" -tagColor $COLOR_CYAN `
-    -title "Co Che Loc 3 Tang Triet De" `
-    -bodyText $s5Card2
+$s5Text1 = "• Tương đương trong Navisworks: Tolerance ở chế độ Type: Hard.`n• Ý nghĩa: Bỏ qua độ lấn bề mặt nhỏ hơn hoặc bằng giá trị này.`n• Quy đổi: 0.008 m (Navisworks) = 8 mm (Tool Clash-check).`n• Xử lý thông minh: Tiếp xúc bề mặt (< 0.01mm) hoặc tiếp xúc đầu mút thanh thép (axial end contact) được bỏ qua an toàn để không báo lỗi giả!"
+Add-FeatureCard -slide $s5 -x 50 -y 245 -w 420 -h 130 -cmdTag "TOLERANCE (MM)" -tagColor $COLOR_CYAN -title "Dung sai va chạm (Tolerance)" -bodyText $s5Text1
 
-$s5Card3 = "• Khi tich chon, cong cu CHI kiem tra va cham voi cac cau kien IFC co ten chua tu khoa chi dinh.`n• Vi du dien hinh: Nhap BEAM, COLUMN, SLAB, WALL, PIPE khi chi muon quet voi Dam, Cot, San hoac Duong ong chinh.`n• Nut Xoa trang: De dang lam trong de chuyen ve che do quet tat ca."
-Add-FeatureCard -slide $s5 -x 490 -y 290 -w 420 -h 190 `
-    -cmdTag "ONLYNAMES" -tagColor $COLOR_PURPLE `
-    -title "Chi Quet Cau Kien Chi Dinh (OnlyNames)" `
-    -bodyText $s5Card3
+$s5Text2 = "• Tương đương trong Navisworks: Tolerance ở chế độ Type: Clearance.`n• Ý nghĩa: Vùng đệm khoảng cách an toàn tối thiểu giữa mép ngoài cốt thép và cấu kiện IFC.`n• Khuyên dùng: Đặt 0 mm khi chỉ kiểm tra đâm xuyên vật lý; đặt 20-50 mm khi cần đảm bảo lớp bê tông bảo vệ."
+Add-FeatureCard -slide $s5 -x 490 -y 245 -w 420 -h 130 -cmdTag "CLEARANCE (MM)" -tagColor $COLOR_AMBER -title "Khoảng hở bảo vệ (Clearance)" -bodyText $s5Text2
+
+$s5Text3 = "• 🔴 Severe (Đỏ): Va chạm nghiêm trọng - cốt thép đâm xuyên sâu vào thân cấu kiện IFC (> 20mm).`n• 🔵/🟠 Medium (Xanh/Cam): Va chạm mức trung bình - độ lấn từ 5mm đến 20mm.`n• 🟡 Minor (Vàng): Va chạm nhẹ mép hoặc xâm phạm khoảng hở an toàn (< 5mm)."
+Add-FeatureCard -slide $s5 -x 50 -y 390 -w 860 -h 95 -cmdTag "PHÂN CẤP SEVERITY" -tagColor $COLOR_ROSE -title "Phân Cấp Mức Độ Va Chạm Tự Động (Severity)" -bodyText $s5Text3
 
 # =============================================================================
-# SLIDE 6: BANG KET QUA & TUONG TAC 3D TEKLA
+# SLIDE 6: BƯỚC 4 - THIẾT LẬP BỘ LỌC SKIP FILTER & ONLY FILTER
 # =============================================================================
-Write-Host ">>> Slide 6: Bang ket qua & 3D..." -ForegroundColor Yellow
+Write-Host ">>> Slide 6: Buoc 4 - Bo loc Skip Filter..." -ForegroundColor Yellow
 $s6 = $pres.Slides.Add(6, $ppLayoutBlank)
-Init-SlideBackground -slide $s6 `
-    -categoryTag "BUOC 5: TRUC QUAN HOA & BAO CAO" `
-    -slideTitle "Bang ket qua thong minh & Tuong tac 3D hai chieu voi Tekla" `
-    -slideSub "Truc quan hoa tuc thi moi thong so va cham va lien ket camera 3D chuan xac"
+Init-SlideBackground -slide $s6 -categoryTag "BƯỚC 4 TRÊN GIAO DIỆN" -slideTitle "Bước 4: Thiết Lập Bộ Lọc Skip Filter và Only Filter" -slideSub "Loại bỏ hoàn toàn các chi tiết phụ và tập trung kiểm tra đúng các đối tượng kết cấu chính"
 
-Add-FramedImage -slide $s6 `
-    -imagePath (Join-Path $ImagesDir "media_1790152662775.png") `
-    -x 50 -y 125 -w 860 -h 200 `
-    -caption "Bang ket qua va cham chi tiet voi phan cap mau sac muc do (Severe / Medium / Minor)"
+Add-StepBadge -slide $s6 -x 50 -y 110 -number 4 -color $COLOR_PURPLE -label "Skip & Only Filter"
 
-$s6Card1 = "• Nhap dup chuot vao bat ky dong nao trong bang (hoac bam nut Zoom & Chon).`n• Camera 3D Tekla tu dong lia sat vao diem va cham.`n• Thanh thep bi va cham duoc tu dong Select noi bat tren mo hinh."
-Add-FeatureCard -slide $s6 -x 50 -y 350 -w 270 -h 135 `
-    -cmdTag "DOUBLE CLICK" -tagColor $COLOR_CYAN `
-    -title "Zoom & Chon Cau Kien" `
-    -bodyText $s6Card1
+Add-FramedImage -slide $s6 -imagePath (Join-Path $ImagesDir "media_1790151482316.png") -x 50 -y 145 -w 340 -h 140 -caption "Danh sách từ khóa Skip Filter được tự động lưu"
 
-$s6Card2 = "• Bam nut Danh dau 3D: Ve khoi hop lap phuong 3D mau do noi bat tai tat ca diem va cham.`n• Dau cheo tren nap hop de quan sat tu tren cao.`n• Bam Xoa 3D: Don sach tuc thi ma khong giat lag man hinh."
-Add-FeatureCard -slide $s6 -x 345 -y 350 -w 270 -h 135 `
-    -cmdTag "GRAPHICS 3D" -tagColor $COLOR_AMBER `
-    -title "Danh Dau Hop Lap Phuong" `
-    -bodyText $s6Card2
+$s6Text1 = "• Mục đích: Tự động bỏ qua các đối tượng phụ không cần kiểm tra va chạm với cốt thép.`n• Danh sách mặc định: Bolt assembly, SAFETY_BAR, LUG, LADDER, SAFETY_HOOK, VBRACE, WELD_COUPLER, CHECK_COUPLER.`n• Cú pháp linh hoạt: Hỗ trợ phân tách từ khóa bằng dấu cách, xuống dòng hoặc dấu phẩy.`n• Nút [↺ Default]: Khôi phục lại danh sách từ khóa chuẩn ban đầu chỉ với 1 cú click."
+Add-FeatureCard -slide $s6 -x 415 -y 145 -w 495 -h 140 -cmdTag "SKIP FILTER (SKIPNAMES)" -tagColor $COLOR_EMERALD -title "Bỏ Qua Cấu Kiện Phụ (Skip Filter)" -bodyText $s6Text1
 
-$s6Card3 = "• Bam nut Xuat bao cao Excel/CSV.`n• Xuat bang ma UTF-8 chuan tieng Viet.`n• Day du 14 cot du lieu: ID thep, Mac thep, Chieu dai, Do lan (mm), Cau kien Part, Cau kien IFC, Toa do X, Y, Z."
-Add-FeatureCard -slide $s6 -x 640 -y 350 -w 270 -h 135 `
-    -cmdTag "REPORT" -tagColor $COLOR_EMERALD `
-    -title "Xuat Bao Cao Excel/CSV" `
-    -bodyText $s6Card3
+$s6Text2 = "1. Tầng 1: Lọc ngay khi nạp file IFC trong C++ IfcConvert Engine (tiết kiệm 60% RAM).`n2. Tầng 2: Native Bounding Box Spatial Index trong Tekla lọc nhanh trong 1-2 giây (thay vì quét cây 3 phút).`n3. Tầng 3: Narrow-phase đa luồng loại trừ chính xác tuyệt đối các chi tiết phụ."
+Add-FeatureCard -slide $s6 -x 50 -y 300 -w 420 -h 180 -cmdTag "3 TẦNG LỌC TỐC ĐỘ" -tagColor $COLOR_CYAN -title "Cơ Chế Lọc 3 Tầng Siêu Tốc" -bodyText $s6Text2
+
+$s6Text3 = "• Mục đích: Chỉ quét duy nhất các cấu kiện IFC có tên chứa từ khóa chỉ định.`n• Ví dụ thực tế: Nhập BEAM, COLUMN, GIRDER, SLAB, WALL khi bạn chỉ muốn kiểm tra va chạm với Dầm, Cột hoặc Tường chính.`n• Nút [✖ Clear]: Xóa nhanh ô lọc để quay lại chế độ quét tất cả đối tượng."
+Add-FeatureCard -slide $s6 -x 490 -y 300 -w 420 -h 180 -cmdTag "ONLY FILTER (ONLYNAMES)" -tagColor $COLOR_PURPLE -title "Chỉ Quét Cấu Kiện Chỉ Định (Only Filter)" -bodyText $s6Text3
 
 # =============================================================================
-# SLIDE 7: CHUOT PHAI AN DONG & PHIM TAT KIEM DUYET
+# SLIDE 7: BƯỚC 5 - BẤM CHẠY RUN CLASH CHECK & STOP
 # =============================================================================
-Write-Host ">>> Slide 7: Chuot phai an dong..." -ForegroundColor Yellow
+Write-Host ">>> Slide 7: Buoc 5 - Run Clash Check & Stop..." -ForegroundColor Yellow
 $s7 = $pres.Slides.Add(7, $ppLayoutBlank)
-Init-SlideBackground -slide $s7 `
-    -categoryTag "TINH NANG MOI: KIEM DUYET HANG LOAT" `
-    -slideTitle "Chuot phai An dong & Phim tat H / Delete kiem tra mot luot" `
-    -slideSub "Quy trinh kiem duyet muot ma, loai bo tuc thi cac diem da kiem tra va tu dong chuyen dong"
+Init-SlideBackground -slide $s7 -categoryTag "BƯỚC 5 TRÊN GIAO DIỆN" -slideTitle "Bước 5: Khởi Chạy [Run Clash Check] và Giám Sát Tiến Trình" -slideSub "Kích hoạt cỗ máy tính toán song song đa luồng và giám sát tiến độ thời gian thực"
 
-$s7Card1 = "• Nhap chuot phai vao bat ky o hoac dong nao trong bang de hien thi menu:`n  - An dong nay (Da kiem tra xong) [Phim H / Delete]`n  - Zoom & Chon cau kien tren Tekla`n  - Hien lai tat ca cac dong da an (x dong)`n  - Sao chep thong tin dong va cham (Copy)`n• Chuot phai lap tuc chon ngay dong do, thao tac truc quan."
-Add-FeatureCard -slide $s7 -x 50 -y 125 -w 420 -h 170 `
-    -cmdTag "RIGHT CLICK" -tagColor $COLOR_AMBER `
-    -title "Menu Ngu Canh Chuot Phai" `
-    -bodyText $s7Card1
+Add-StepBadge -slide $s7 -x 50 -y 110 -number 5 -color $COLOR_BLUE -label "Run Clash Check"
 
-$s7Card2 = "• Thay vi phai click chuot, ban chi can nhan phim H (Hide) hoac phim Delete tren ban phim.`n• Dong va cham vua xem xet se lap tuc duoc an di.`n• Con tro tu dong nhay xuong dong hien thi ke tiep, giup ban duyet 1 luot 100+ diem va cham chi trong vai phut ma khong can click chon lai!"
-Add-FeatureCard -slide $s7 -x 490 -y 125 -w 420 -h 170 `
-    -cmdTag "HOTKEYS" -tagColor $COLOR_CYAN `
-    -title "Phim Tat H & Delete - Duyet Sieu Toc" `
-    -bodyText $s7Card2
+$s7Text1 = "• Cách thực hiện: Sau khi cấu hình xong Rebar Scope, IFC Model và Dung sai, nhấp vào nút [⚡ Run Clash Check].`n• Quy trình tự động diễn ra:`n  1. Khởi tạo tác vụ nền bất đồng bộ (Async Task), form hoàn toàn mượt mà không đơ treo.`n  2. Khoanh vùng IFC thông minh: Tận dụng Bounding Box Spatial Index lọc tức thì các cấu kiện IFC trong phạm vi thép.`n  3. Narrow-phase: Phân tích đa luồng song song trên 100% các nhân CPU (Parallel.ForEach)."
+Add-FeatureCard -slide $s7 -x 50 -y 150 -w 550 -h 160 -cmdTag "⚡ RUN CLASH CHECK" -tagColor $COLOR_BLUE -title "Khởi Chạy Quét Va Chạm Song Song" -bodyText $s7Text1
 
-$s7Card3 = "• Thanh trang thai goc duoi tu dong cap nhat so luong dong con lai:`n  Vi du: '5 con lai / 6 tong (Da an 1)'`n• Giup ky su nam bat chinh xac tien do xu ly va so luong va cham con ton dong.`n• Da xu ly an toan CurrencyManager WinForms, khong bao gio loi khi an dong hien hanh."
-Add-FeatureCard -slide $s7 -x 50 -y 310 -w 420 -h 175 `
-    -cmdTag "COUNTER" -tagColor $COLOR_EMERALD `
-    -title "Bo Dem Tien Do Thoi Gian Thuc" `
-    -bodyText $s7Card3
+$s7Text2 = "• Trong khi quét, nút [⏹ Stop] màu xám sẽ sáng lên để sẵn sàng hủy tác vụ.`n• Bạn có thể nhấp [⏹ Stop] bất kỳ lúc nào để dừng quét an toàn qua CancellationToken.`n• Kết quả tính toán đến thời điểm dừng vẫn được giữ lại nguyên vẹn để phân tích."
+Add-FeatureCard -slide $s7 -x 620 -y 150 -w 290 -h 160 -cmdTag "⏹ STOP AN TOÀN" -tagColor $COLOR_ROSE -title "Nút [⏹ Stop] Tác Vụ" -bodyText $s7Text2
 
-$s7Card4 = "• Khi muon xem lai toan bo ket qua ban dau, nhap chuot phai va chon:`n  Hien lai tat ca cac dong da an (x dong)`n• Bang lap tuc hoan tra day du tat ca cac dong va cham nguyen ven.`n• Menu chuot phai tu dong hien thi so luong dong dang bi an de ban tien theo doi."
-Add-FeatureCard -slide $s7 -x 490 -y 310 -w 420 -h 175 `
-    -cmdTag "RESTORE" -tagColor $COLOR_PURPLE `
-    -title "Khoi Phuc Danh Sach Da An De Dang" `
-    -bodyText $s7Card4
+$s7Text3 = "• Thanh trạng thái (Status Strip) ở góc dưới hiển thị thông báo thời gian thực: 'Searching IFC objects...', 'Checking collisions...', 'Done! X clash(es) found'.`n• Bộ đếm ở góc phải hiển thị tổng số va chạm (ví dụ: '2 clashes').`n• Khi hoàn tất, bảng DataGridView tự động hiển thị đầy đủ danh sách các điểm va chạm."
+Add-FeatureCard -slide $s7 -x 50 -y 325 -w 860 -h 145 -cmdTag "GIÁM SÁT TIẾN ĐỘ" -tagColor $COLOR_EMERALD -title "Thanh Trạng Thái và Bộ Đếm Tiến Độ Thời Gian Thực" -bodyText $s7Text3
 
 # =============================================================================
-# SLIDE 8: LUU CAU HINH TU DONG & LUU Y KY THUAT
+# SLIDE 8: BƯỚC 6 - TƯƠNG TÁC 3D VÀ XUẤT BÁO CÁO EXCEL/CSV
 # =============================================================================
-Write-Host ">>> Slide 8: Luu cau hinh & Luu y..." -ForegroundColor Yellow
+Write-Host ">>> Slide 8: Buoc 6 - Tuong tac 3D & Export Report..." -ForegroundColor Yellow
 $s8 = $pres.Slides.Add(8, $ppLayoutBlank)
-Init-SlideBackground -slide $s8 `
-    -categoryTag "CAU HINH & LUU Y VAN HANH" `
-    -slideTitle "Luu cai dat tu dong (Properties.Settings) & Khac phuc tinh huong" `
-    -slideSub "Tu dong ghi nho cau hinh khi tat/mo va cac luu y quan trong de quet dat hieu qua cao nhat"
+Init-SlideBackground -slide $s8 -categoryTag "BƯỚC 6 TRÊN GIAO DIỆN" -slideTitle "Bước 6: Tương Tác 3D Tekla và Xuất Báo Cáo [Export Report]" -slideSub "Xem thông tin chi tiết từng điểm va chạm, lia camera 3D, đánh dấu khối hộp và xuất file Excel nghiệm thu"
 
-Add-FramedImage -slide $s8 `
-    -imagePath (Join-Path $ImagesDir "media_1790134776056.png") `
-    -x 50 -y 125 -w 340 -h 240 `
-    -caption "Luu y bat hien thi Reference Model IFC tren Tekla"
+Add-StepBadge -slide $s8 -x 50 -y 110 -number 6 -color $COLOR_ROSE -label "Zoom, Highlight 3D & Report"
 
-$s8Card1 = "• Moi thong so dieu khien deu duoc tu dong luu vinh vien vao Properties.Settings:`n  - Pham vi thep (Dang chon / Toan bo).`n  - Dung sai (mm) & Khoang ho (mm).`n  - Bat/tat va noi dung tu khoa SkipNames & OnlyNames.`n  - Danh sach cac file IFC da tich chon.`n  - Kich thuoc cua so Form va trang thai phong to (Maximized).`n• Khi mo lai Form, moi thiet lap duoc khoi phuc nguyen ven 100%."
-Add-FeatureCard -slide $s8 -x 415 -y 125 -w 495 -h 170 `
-    -cmdTag "AUTO SAVE" -tagColor $COLOR_CYAN `
-    -title "Tu Dong Luu & Nap Cau Hinh (Properties.Settings)" `
-    -bodyText $s8Card1
+Add-FramedImage -slide $s8 -imagePath (Join-Path $ImagesDir "media_1790152662775.png") -x 50 -y 145 -w 860 -h 170 -caption "Bảng kết quả va chạm chi tiết và các nút điều khiển tương tác 3D"
 
-$s8Card2 = "• Trang thai Reference Model: File IFC phai duoc chen vao Tekla Structures va bieu tuong con mat hien thi phai o trang thai BAT (Visible).`n• Dong goi gui nguoi khac: Chi can gui tron bo thu muc dist/ClashCheck_Tekla2020 hoac file nen ClashCheck_Tekla2020.zip (chua day du Clash-check.exe va cac file DLL phu thuoc, khong can cai dat them).`n• Tuong thich muot ma tren Tekla Structures 2020, 2025, 2026."
-Add-FeatureCard -slide $s8 -x 415 -y 310 -w 495 -h 175 `
-    -cmdTag "BEST PRACTICES" -tagColor $COLOR_EMERALD `
-    -title "Nhung Luu Y Ky Thuat Quan Trong Khi Su Dung" `
-    -bodyText $s8Card2
+$s8Text1 = "• Nhấp đúp chuột vào bất kỳ dòng nào trong bảng (hoặc chọn dòng rồi bấm [🔍 Zoom Selected]).`n• Camera 3D Tekla lập tức lia sát cận cảnh vào vị trí va chạm.`n• Thanh thép bị va chạm được tự động Select chọn nổi bật trên mô hình."
+Add-FeatureCard -slide $s8 -x 50 -y 330 -w 270 -h 145 -cmdTag "🔍 ZOOM SELECTED" -tagColor $COLOR_CYAN -title "Zoom và Chọn Cấu Kiện" -bodyText $s8Text1
 
-$s8Card3 = "• File nen chia se: dist\ClashCheck_Tekla2020.zip`n• Slide huong dan: docs\Huong_Dan_Su_Dung_Clash_Check.pptx"
-Add-FeatureCard -slide $s8 -x 50 -y 390 -w 340 -h 95 `
-    -cmdTag "PACKAGE" -tagColor $COLOR_AMBER `
-    -title "Vi Tri File Dong Goi" `
-    -bodyText $s8Card3
+$s8Text2 = "• Bấm [💡 Highlight 3D]: Tự động vẽ các khối hộp lập phương 3D màu đỏ bao quanh điểm va chạm kèm dấu chéo.`n• Bấm [🧹 Clear 3D]: Tự động xóa sạch toàn bộ khối hộp vẽ tạm và vẽ lại khung nhìn Tekla (RedrawView) tức thì!"
+Add-FeatureCard -slide $s8 -x 345 -y 330 -w 270 -h 145 -cmdTag "💡 HIGHLIGHT & CLEAR 3D" -tagColor $COLOR_AMBER -title "Đánh Dấu & Xóa Khối Hộp 3D" -bodyText $s8Text2
+
+$s8Text3 = "• Bấm nút [📊 Export Report (Excel/CSV)].`n• Xuất file bảng mã UTF-8 chuẩn tiếng Việt có dấu.`n• Đầy đủ 12 cột: #, Rebar ID, Rebar Name, Size, Grade, Pos (Mark), Host Part, IFC Entity, Length (mm), Overlap (mm), Severity, Clash Point (X, Y, Z)."
+Add-FeatureCard -slide $s8 -x 640 -y 330 -w 270 -h 145 -cmdTag "📊 EXPORT REPORT" -tagColor $COLOR_EMERALD -title "Báo Cáo Excel/CSV Đầy Đủ" -bodyText $s8Text3
 
 # =============================================================================
-# LUU VÀ XUAT FILE POWERPOINT (.PPTX) VÀ PDF
+# SLIDE 9: BƯỚC 7 - CHUỘT PHẢI ẨN DÒNG & PHÍM TẮT DUYỆT SIÊU TỐC
 # =============================================================================
-Write-Host ">>> Dang luu file PowerPoint..." -ForegroundColor Cyan
+Write-Host ">>> Slide 9: Buoc 7 - Chuot phai an dong & Phim tat..." -ForegroundColor Yellow
+$s9 = $pres.Slides.Add(9, $ppLayoutBlank)
+Init-SlideBackground -slide $s9 -categoryTag "BƯỚC 7 TRÊN GIAO DIỆN (TÍNH NĂNG MỚI)" -slideTitle "Bước 7: Chuột Phải Ẩn Dòng và Phím Tắt H / Delete Duyệt Một Lượt" -slideSub "Quy trình kiểm duyệt mượt mà, loại bỏ điểm đã xử lý và tự động chuyển dòng kế tiếp"
+
+Add-StepBadge -slide $s9 -x 50 -y 110 -number 7 -color $COLOR_CYAN -label "Hide Row & Context Menu"
+
+$s9Text1 = "• Nhấp chuột phải vào bất kỳ ô hoặc dòng va chạm nào trong bảng:`n  - 👁️ Hide selected row(s) [H / Delete]`n  - 🔍 Zoom & Select in Tekla`n  - 🔄 Show all hidden rows ({0} hidden)`n  - 📋 Copy row info`n• Chuột phải lập tức chọn ngay dòng đó, thao tác tự nhiên và chuẩn xác."
+Add-FeatureCard -slide $s9 -x 50 -y 150 -w 420 -h 165 -cmdTag "CONTEXT MENU" -tagColor $COLOR_AMBER -title "Menu Ngữ Cảnh Chuột Phải" -bodyText $s9Text1
+
+$s9Text2 = "• Thay vì phải bấm chuột, bạn chỉ cần nhấn phím H (Hide) hoặc phím Delete trên bàn phím.`n• Dòng va chạm vừa kiểm tra xong sẽ lập tức biến mất khỏi bảng.`n• Con trỏ tự động nhảy xuống dòng hiển thị kế tiếp, giúp bạn duyệt 1 lượt 100+ điểm va chạm chỉ trong vài phút mà không cần nhấp chuột lại!"
+Add-FeatureCard -slide $s9 -x 490 -y 150 -w 420 -h 165 -cmdTag "PHÍM TẮT H / DEL" -tagColor $COLOR_CYAN -title "Duyệt Siêu Tốc Bằng Phím Tắt" -bodyText $s9Text2
+
+$s9Text3 = "• Thanh trạng thái tự động cập nhật số lượng dòng: 'X clashes (Y hidden)'.`n• Giúp kỹ sư nắm chắc tiến độ xử lý và số lượng va chạm còn tồn đọng.`n• Đã xử lý an toàn CurrencyManager của WinForms, không bao giờ xảy ra lỗi khi ẩn dòng đang chọn."
+Add-FeatureCard -slide $s9 -x 50 -y 330 -w 420 -h 150 -cmdTag "TIẾN ĐỘ THỰC" -tagColor $COLOR_EMERALD -title "Bộ Đếm Tiến Độ Thời Gian Thực" -bodyText $s9Text3
+
+$s9Text4 = "• Khi muốn xem lại toàn bộ danh sách va chạm ban đầu, nhấp chuột phải và chọn: [Show all hidden rows].`n• Bảng lập tức khôi phục đầy đủ tất cả các dòng va chạm nguyên vẹn.`n• Menu tự động hiển thị số lượng dòng đang bị ẩn để bạn dễ dàng theo dõi."
+Add-FeatureCard -slide $s9 -x 490 -y 330 -w 420 -h 150 -cmdTag "KHÔI PHỤC" -tagColor $COLOR_PURPLE -title "Hiện Lại Toàn Bộ Dòng Đã Ẩn" -bodyText $s9Text4
+
+# =============================================================================
+# SLIDE 10: TỰ ĐỘNG GHI NHỚ CẤU HÌNH & ĐÓNG GÓI CHIA SẺ
+# =============================================================================
+Write-Host ">>> Slide 10: Luu cau hinh & Dong goi..." -ForegroundColor Yellow
+$s10 = $pres.Slides.Add(10, $ppLayoutBlank)
+Init-SlideBackground -slide $s10 -categoryTag "CẤU HÌNH VÀ CHIA SẺ BỘ CÔNG CỤ" -slideTitle "Tự Động Lưu Cấu Hình (Properties.Settings) và Đóng Gói Sử Dụng" -slideSub "Ghi nhớ vĩnh viễn mọi thiết lập khi tắt mở và dễ dàng chia sẻ trọn gói cho đồng nghiệp"
+
+$s10Text1 = "• Mọi thông số điều khiển đều được tự động lưu vĩnh viễn vào Properties.Settings của Windows:`n  - Rebar Scope: [Selected Rebars] hay [All Rebars].`n  - Tolerance (mm) và Clearance (mm).`n  - Trạng thái Checkbox và danh sách từ khóa Skip Filter & Only Filter.`n  - Danh sách các file IFC cụ thể đã tích chọn.`n  - Kích thước cửa sổ Form (Width/Height) và trạng thái phóng to (Maximized).`n• Khi mở lại Tool, toàn bộ thiết lập được nạp lại nguyên vẹn 100%!"
+Add-FeatureCard -slide $s10 -x 50 -y 125 -w 420 -h 210 -cmdTag "AUTO SAVE" -tagColor $COLOR_CYAN -title "Tự Động Ghi Nhớ Cài Đặt (Properties.Settings)" -bodyText $s10Text1
+
+$s10Text2 = "• Bộ cài chạy độc lập (Standalone): Nằm gọn trong thư mục dist\ClashCheck_Tekla2020\.`n• File nén chia sẻ: dist\ClashCheck_Tekla2020.zip (chỉ ~19MB).`n• Chỉ cần giải nén và chạy file Clash-check.exe trên bất kỳ máy tính nào có cài Tekla Structures (không cần cài đặt thêm thư viện ngoài).`n• Tương thích mượt mà: Tekla Structures 2020, 2025, 2026."
+Add-FeatureCard -slide $s10 -x 490 -y 125 -w 420 -h 210 -cmdTag "ĐÓNG GÓI CHIA SẺ" -tagColor $COLOR_EMERALD -title "Chia Sẻ Bộ Tool Cho Đồng Nghiệp" -bodyText $s10Text2
+
+$s10Text3 = "• File PowerPoint hướng dẫn ở thư mục gốc: Huong_Dan_Su_Dung_Clash_Check.pptx`n• File PowerPoint đã sao chép ra Desktop: C:\Users\BIM\Desktop\Huong_Dan_Su_Dung_Clash_Check.pptx`n• File PDF xem nhanh trên điện thoại/máy tính: Huong_Dan_Su_Dung_Clash_Check.pdf`n• Bộ công cụ nén chia sẻ gửi đi: dist\ClashCheck_Tekla2020.zip"
+Add-FeatureCard -slide $s10 -x 50 -y 350 -w 860 -h 130 -cmdTag "VỊ TRÍ FILE TÀI LIỆU" -tagColor $COLOR_AMBER -title "Vị Trí Các File Tài Liệu và Gói Phân Phối" -bodyText $s10Text3
+
+# =============================================================================
+# LƯU VÀ XUẤT FILE RA CÁC VỊ TRÍ (GỐC, DESKTOP, DOCS, DIST)
+# =============================================================================
+Write-Host ">>> Dang luu file PowerPoint ra ngoai thu muc goc va Desktop..." -ForegroundColor Cyan
+
+# 1. Luu ra ngoai thu muc goc
+if (Test-Path $OutputPptxRoot) { Remove-Item $OutputPptxRoot -Force }
+$pres.SaveAs($OutputPptxRoot)
+Write-Host "[OK] Da luu PPTX ra ngoai thu muc goc: $OutputPptxRoot" -ForegroundColor Green
+
+# 2. Luu ra Desktop
+if (Test-Path $DesktopDir) {
+    if (Test-Path $OutputPptxDesktop) { Remove-Item $OutputPptxDesktop -Force }
+    $pres.SaveCopyAs($OutputPptxDesktop)
+    Write-Host "[OK] Da luu PPTX ra ngoai Desktop: $OutputPptxDesktop" -ForegroundColor Green
+}
+
+# 3. Luu vao docs va dist
 if (Test-Path $OutputPptxDocs) { Remove-Item $OutputPptxDocs -Force }
-$pres.SaveAs($OutputPptxDocs)
+$pres.SaveCopyAs($OutputPptxDocs)
 
-# Luu them 1 ban vao thu muc dist de di kem bo cong cu gui cho nguoi dung
 if (Test-Path $OutputPptxDist) { Remove-Item $OutputPptxDist -Force }
 $pres.SaveCopyAs($OutputPptxDist)
 
-# Dong thoi xuat them 1 ban dinh dang PDF tien xem nhanh tren dien thoai/may tinh
-$OutputPdf = [System.IO.Path]::ChangeExtension($OutputPptxDocs, ".pdf")
+# 4. Xuat file PDF
 $ppSaveAsPDF = 32
-$pres.SaveAs($OutputPdf, $ppSaveAsPDF)
+if (Test-Path $OutputPdfRoot) { Remove-Item $OutputPdfRoot -Force }
+$pres.SaveAs($OutputPdfRoot, $ppSaveAsPDF)
+Write-Host "[OK] Da luu PDF ra ngoai thu muc goc: $OutputPdfRoot" -ForegroundColor Green
 
-Write-Host ">>> Xuat file hoan tat!" -ForegroundColor Green
-Write-Host "PPTX Docs: $OutputPptxDocs" -ForegroundColor Green
-Write-Host "PPTX Dist: $OutputPptxDist" -ForegroundColor Green
-Write-Host "PDF Docs : $OutputPdf" -ForegroundColor Green
+if (Test-Path $DesktopDir) {
+    Copy-Item $OutputPdfRoot $OutputPdfDesktop -Force
+    Write-Host "[OK] Da luu PDF ra ngoai Desktop: $OutputPdfDesktop" -ForegroundColor Green
+}
+
+Copy-Item $OutputPdfRoot $OutputPdfDocs -Force
+
+$OutputPdfDist = Join-Path $RepoRoot "dist\ClashCheck_Tekla2020\Huong_Dan_Su_Dung_Clash_Check.pdf"
+Copy-Item $OutputPdfRoot $OutputPdfDist -Force
+
+
+Write-Host ">>> Hoan tat xuat toan bo file PowerPoint va PDF thanh cong!" -ForegroundColor Green
 
 $pres.Close()
 $pptApp.Quit()
@@ -516,3 +524,4 @@ $pptApp.Quit()
 [System.Runtime.Interopservices.Marshal]::ReleaseComObject($pptApp) | Out-Null
 [System.GC]::Collect()
 [System.GC]::WaitForPendingFinalizers()
+

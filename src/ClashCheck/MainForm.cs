@@ -256,7 +256,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             lblTitle = new Label
             {
-                Text = "CLASH CHECK: THÉP VÀ CẤU KIỆN IFC",
+                Text = "CLASH CHECK: REBAR VS IFC",
                 Font = new DrawFont("Segoe UI", 13F, FontStyle.Bold),
                 ForeColor = DrawColor.FromArgb(56, 189, 248),
                 AutoSize = true,
@@ -265,7 +265,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             lblSubtitle = new Label
             {
-                Text = "Kiểm tra va chạm & hở an toàn giữa Cốt thép (Tekla Model) và Cấu kiện tham chiếu IFC (Navisworks Style)",
+                Text = "Clash & clearance check between Rebars (Tekla Model) and Reference IFC Objects (Navisworks Style)",
                 Font = new DrawFont("Segoe UI", 8.5F),
                 ForeColor = DrawColor.FromArgb(156, 163, 175),
                 AutoSize = true,
@@ -274,7 +274,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             lblTeklaStatus = new Label
             {
-                Text = "● Đang kết nối Tekla...",
+                Text = "● Connecting to Tekla...",
                 Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold),
                 ForeColor = DrawColor.FromArgb(234, 179, 8),
                 AutoSize = true,
@@ -295,17 +295,17 @@ namespace BimCommands.Tekla.ClashCheck
                 Padding = new Padding(15, 10, 15, 10)
             };
 
-            // Group 1: Phạm vi Thép
+            // Group 1: Rebar Scope
             Label lblScope = new Label
             {
-                Text = "Phạm vi Thép:",
+                Text = "Rebar Scope:",
                 ForeColor = DrawColor.FromArgb(203, 213, 225),
                 Location = new DrawPoint(15, 14),
                 AutoSize = true
             };
             rbRebarSelected = new RadioButton
             {
-                Text = "🎯 Thép đang chọn",
+                Text = "🎯 Selected Rebars",
                 Checked = true,
                 Appearance = Appearance.Button,
                 FlatStyle = FlatStyle.Flat,
@@ -316,7 +316,7 @@ namespace BimCommands.Tekla.ClashCheck
             };
             rbRebarAll = new RadioButton
             {
-                Text = "🌐 Toàn bộ thép",
+                Text = "🌐 All Rebars",
                 Checked = false,
                 Appearance = Appearance.Button,
                 FlatStyle = FlatStyle.Flat,
@@ -362,10 +362,10 @@ namespace BimCommands.Tekla.ClashCheck
             rbRebarAll.CheckedChanged += (s, e) => updateScopeStyles();
             updateScopeStyles();
 
-            // Group 2: File IFC
+            // Group 2: IFC Model
             Label lblIfc = new Label
             {
-                Text = "File IFC:",
+                Text = "IFC Model:",
                 ForeColor = DrawColor.FromArgb(203, 213, 225),
                 Location = new DrawPoint(365, 14),
                 AutoSize = true
@@ -373,25 +373,25 @@ namespace BimCommands.Tekla.ClashCheck
             _ifcTooltip = new ToolTip();
             btnIfcSelect = new Button
             {
-                Location = new DrawPoint(425, 10),
-                Width = 295,
+                Location = new DrawPoint(435, 10),
+                Width = 285,
                 Height = 28,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = DrawColor.FromArgb(18, 22, 29),
                 ForeColor = DrawColor.White,
                 TextAlign = ContentAlignment.MiddleLeft,
                 Font = new DrawFont("Segoe UI", 8.5F),
-                Text = "⭐ Tất cả file IFC (Navisworks Auto)  ▼",
+                Text = "⭐ All IFC Models (Navisworks Auto)  ▼",
                 Cursor = Cursors.Hand
             };
             btnIfcSelect.FlatAppearance.BorderColor = DrawColor.FromArgb(51, 65, 85);
             btnIfcSelect.Click += (s, e) => ShowIfcSelectionDropdown();
-            _ifcTooltip.SetToolTip(btnIfcSelect, "Nhấp để mở bảng chọn và tích chọn nhiều file IFC");
+            _ifcTooltip.SetToolTip(btnIfcSelect, "Click to open selector and select multiple IFC files");
 
             // Group 3: Tolerance & Clearance
             Label lblTol = new Label
             {
-                Text = "Dung sai (mm):",
+                Text = "Tolerance (mm):",
                 ForeColor = DrawColor.FromArgb(203, 213, 225),
                 Location = new DrawPoint(730, 14),
                 AutoSize = true
@@ -409,14 +409,14 @@ namespace BimCommands.Tekla.ClashCheck
 
             Label lblClearance = new Label
             {
-                Text = "Khoảng hở (mm):",
+                Text = "Clearance (mm):",
                 ForeColor = DrawColor.FromArgb(203, 213, 225),
-                Location = new DrawPoint(900, 14),
+                Location = new DrawPoint(895, 14),
                 AutoSize = true
             };
             numClearance = new NumericUpDown
             {
-                Location = new DrawPoint(1010, 11),
+                Location = new DrawPoint(995, 11),
                 Width = 60,
                 Minimum = 0,
                 Maximum = 500,
@@ -426,31 +426,31 @@ namespace BimCommands.Tekla.ClashCheck
             };
 
             // Row 2: Action Buttons
-            btnScan = CreateFlatButton("⚡ Quét va chạm", new DrawPoint(15, 60), new DrawSize(140, 78), DrawColor.FromArgb(37, 99, 235), DrawColor.White);
+            btnScan = CreateFlatButton("⚡ Run Clash Check", new DrawPoint(15, 60), new DrawSize(140, 78), DrawColor.FromArgb(37, 99, 235), DrawColor.White);
             btnScan.Font = new DrawFont("Segoe UI", 10F, FontStyle.Bold);
             btnScan.Click += async (s, e) => await StartClashCheckAsync();
 
-            btnStop = CreateFlatButton("⏹ Dừng", new DrawPoint(160, 60), new DrawSize(68, 78), DrawColor.FromArgb(75, 85, 99), DrawColor.White);
+            btnStop = CreateFlatButton("⏹ Stop", new DrawPoint(160, 60), new DrawSize(68, 78), DrawColor.FromArgb(75, 85, 99), DrawColor.White);
             btnStop.Enabled = false;
             btnStop.Click += (s, e) => _cts?.Cancel();
 
-            btnZoomSelect = CreateFlatButton("🔍 Zoom & Chọn", new DrawPoint(234, 60), new DrawSize(145, 36), DrawColor.FromArgb(13, 148, 136), DrawColor.White);
+            btnZoomSelect = CreateFlatButton("🔍 Zoom Selected", new DrawPoint(234, 60), new DrawSize(145, 36), DrawColor.FromArgb(13, 148, 136), DrawColor.White);
             btnZoomSelect.Click += (s, e) => ZoomToSelectedClash();
 
-            btnHighlight = CreateFlatButton("📍 Đánh dấu 3D", new DrawPoint(385, 60), new DrawSize(115, 36), DrawColor.FromArgb(147, 51, 234), DrawColor.White);
+            btnHighlight = CreateFlatButton("📍 Highlight 3D", new DrawPoint(385, 60), new DrawSize(115, 36), DrawColor.FromArgb(147, 51, 234), DrawColor.White);
             btnHighlight.Click += (s, e) => HighlightClashesInTekla();
 
-            btnClearHighlight = CreateFlatButton("🧹 Xóa 3D", new DrawPoint(506, 60), new DrawSize(80, 36), DrawColor.FromArgb(51, 65, 85), DrawColor.FromArgb(203, 213, 225));
-            btnClearHighlight.Click += (s, e) => ClearHighlights();
+            btnClearHighlight = CreateFlatButton("🧹 Clear 3D", new DrawPoint(506, 60), new DrawSize(80, 36), DrawColor.FromArgb(51, 65, 85), DrawColor.FromArgb(203, 213, 225));
+            btnClearHighlight.Click += (s, e) => ClearHighlights(clearSelection: true);
 
-            btnExportCsv = CreateFlatButton("📊 Xuất báo cáo Excel/CSV", new DrawPoint(234, 102), new DrawSize(352, 36), DrawColor.FromArgb(16, 185, 129), DrawColor.White);
+            btnExportCsv = CreateFlatButton("📊 Export Report (Excel/CSV)", new DrawPoint(234, 102), new DrawSize(352, 36), DrawColor.FromArgb(16, 185, 129), DrawColor.White);
             btnExportCsv.Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold);
             btnExportCsv.Click += (s, e) => ExportToCsv();
 
-            // Row 2 - Cột bộ lọc 1: Lược bỏ cấu kiện IFC (SkipNames)
+            // Row 2 - Filter Column 1: Skip IFC components (SkipNames)
             chkIgnoreFilter = new CheckBox
             {
-                Text = "Lược bỏ (SkipNames):",
+                Text = "Skip Filter (SkipNames):",
                 Checked = true,
                 ForeColor = DrawColor.FromArgb(147, 197, 253),
                 Font = new DrawFont("Segoe UI", 8.5F, FontStyle.Bold),
@@ -458,7 +458,7 @@ namespace BimCommands.Tekla.ClashCheck
                 AutoSize = true
             };
 
-            btnResetIgnore = CreateFlatButton("↺ Mặc định", new DrawPoint(830, 45), new DrawSize(70, 22), DrawColor.FromArgb(51, 65, 85), DrawColor.FromArgb(203, 213, 225));
+            btnResetIgnore = CreateFlatButton("↺ Default", new DrawPoint(830, 45), new DrawSize(70, 22), DrawColor.FromArgb(51, 65, 85), DrawColor.FromArgb(203, 213, 225));
             btnResetIgnore.Font = new DrawFont("Segoe UI", 7.5F);
             btnResetIgnore.Click += (s, e) => { txtIgnoreKeywords.Text = DefaultIgnoredList; };
 
@@ -479,10 +479,10 @@ namespace BimCommands.Tekla.ClashCheck
             };
             chkIgnoreFilter.CheckedChanged += (s, e) => txtIgnoreKeywords.Enabled = chkIgnoreFilter.Checked;
 
-            // Row 2 - Cột bộ lọc 2: Chỉ quét cấu kiện IFC chỉ định (OnlyNames)
+            // Row 2 - Filter Column 2: Only scan designated IFC components (OnlyNames)
             chkOnlyFilter = new CheckBox
             {
-                Text = "Chỉ quét (OnlyNames):",
+                Text = "Only Filter (OnlyNames):",
                 Checked = false,
                 ForeColor = DrawColor.FromArgb(134, 239, 172),
                 Font = new DrawFont("Segoe UI", 8.5F, FontStyle.Bold),
@@ -490,7 +490,7 @@ namespace BimCommands.Tekla.ClashCheck
                 AutoSize = true
             };
 
-            btnClearOnly = CreateFlatButton("✖ Xóa trắng", new DrawPoint(1150, 45), new DrawSize(70, 22), DrawColor.FromArgb(51, 65, 85), DrawColor.FromArgb(203, 213, 225));
+            btnClearOnly = CreateFlatButton("✖ Clear", new DrawPoint(1150, 45), new DrawSize(70, 22), DrawColor.FromArgb(51, 65, 85), DrawColor.FromArgb(203, 213, 225));
             btnClearOnly.Font = new DrawFont("Segoe UI", 7.5F);
             btnClearOnly.Click += (s, e) => { txtOnlyKeywords.Text = string.Empty; };
 
@@ -513,13 +513,13 @@ namespace BimCommands.Tekla.ClashCheck
             chkOnlyFilter.CheckedChanged += (s, e) => txtOnlyKeywords.Enabled = chkOnlyFilter.Checked;
 
             ToolTip filterTooltip = new ToolTip();
-            filterTooltip.SetToolTip(chkIgnoreFilter, "Bật/tắt bỏ qua các cấu kiện phụ IFC khi quét va chạm với thép (IfcConvertOptions.AddSkipNames)");
-            filterTooltip.SetToolTip(txtIgnoreKeywords, "Nhập danh sách tên/từ khóa cấu kiện IFC cần lược bỏ (mỗi dòng 1 từ khóa hoặc phân tách bằng dấu phẩy).\nVí dụ:\nBolt assembly\nSAFETY_BAR\nLUG\nLADDER\nSAFETY_HOOK\nVBRACE\nWELD_COUPLER(10)\nCHECK_COUPLER(10)");
-            filterTooltip.SetToolTip(btnResetIgnore, "Khôi phục danh sách từ khóa bỏ qua mặc định");
+            filterTooltip.SetToolTip(chkIgnoreFilter, "Enable/disable skipping auxiliary IFC objects when clash checking with rebar (IfcConvertOptions.AddSkipNames)");
+            filterTooltip.SetToolTip(txtIgnoreKeywords, "Enter list of IFC object names/keywords to skip (one keyword per line or comma separated).\nExample:\nBolt assembly\nSAFETY_BAR\nLUG\nLADDER\nSAFETY_HOOK\nVBRACE\nWELD_COUPLER(10)\nCHECK_COUPLER(10)");
+            filterTooltip.SetToolTip(btnResetIgnore, "Reset to default skip keywords");
 
-            filterTooltip.SetToolTip(chkOnlyFilter, "Bật/tắt bộ lọc CHỈ quét các cấu kiện IFC chỉ định (IfcConvertOptions.AddOnlyNames)");
-            filterTooltip.SetToolTip(txtOnlyKeywords, "Nhập danh sách tên/từ khóa cấu kiện IFC chỉ định bắt buộc quét (mỗi dòng 1 từ khóa hoặc phân tách bằng dấu phẩy).\nNếu kích hoạt, chỉ những cấu kiện khớp với từ khóa mới được trích xuất và quét va chạm.\nVí dụ:\nBEAM\nCOLUMN\nSLAB\nWALL\nPIPE");
-            filterTooltip.SetToolTip(btnClearOnly, "Xóa trắng danh sách cấu kiện chỉ định để quét tất cả");
+            filterTooltip.SetToolTip(chkOnlyFilter, "Enable/disable ONLY checking designated IFC objects (IfcConvertOptions.AddOnlyNames)");
+            filterTooltip.SetToolTip(txtOnlyKeywords, "Enter list of designated IFC object names/keywords to scan (one keyword per line or comma separated).\nWhen enabled, only objects matching these keywords will be extracted and clash checked.\nExample:\nBEAM\nCOLUMN\nSLAB\nWALL\nPIPE");
+            filterTooltip.SetToolTip(btnClearOnly, "Clear designated objects list to check all");
 
             controlPanel.Controls.Add(lblScope);
             controlPanel.Controls.Add(rbRebarSelected);
@@ -572,17 +572,17 @@ namespace BimCommands.Tekla.ClashCheck
             dgvClashes.DefaultCellStyle.SelectionForeColor = DrawColor.White;
 
             dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColIndex", HeaderText = "#", Width = 45 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarId", HeaderText = "ID Thép", Width = 95 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarName", HeaderText = "Tên Thép", Width = 110 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarSize", HeaderText = "Kích thước", Width = 85 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarGrade", HeaderText = "Mác thép", Width = 85 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarPos", HeaderText = "Số hiệu (Pos)", Width = 100 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColHostPart", HeaderText = "Cấu kiện (Part)", Width = 120 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColIfcName", HeaderText = "Cấu kiện IFC", Width = 140 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColLength", HeaderText = "Chiều dài (mm)", Width = 100 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColOverlap", HeaderText = "Độ lấn (mm)", Width = 95 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColSeverity", HeaderText = "Mức độ", Width = 90 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColCoord", HeaderText = "Tọa độ va chạm (X, Y, Z)", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarId", HeaderText = "Rebar ID", Width = 95 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarName", HeaderText = "Rebar Name", Width = 110 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarSize", HeaderText = "Size", Width = 85 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarGrade", HeaderText = "Grade", Width = 85 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarPos", HeaderText = "Pos (Mark)", Width = 100 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColHostPart", HeaderText = "Host Part", Width = 120 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColIfcName", HeaderText = "IFC Entity", Width = 140 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColLength", HeaderText = "Length (mm)", Width = 100 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColOverlap", HeaderText = "Overlap (mm)", Width = 95 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColSeverity", HeaderText = "Severity", Width = 90 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColCoord", HeaderText = "Clash Point (X, Y, Z)", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
 
             dgvClashes.CellFormatting += DgvClashes_CellFormatting;
             dgvClashes.CellDoubleClick += (s, e) => ZoomToSelectedClash();
@@ -597,7 +597,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             lblStatusText = new ToolStripStatusLabel
             {
-                Text = "Sẵn sàng kiểm tra.",
+                Text = "Ready.",
                 Spring = true,
                 TextAlign = ContentAlignment.MiddleLeft
             };
@@ -611,7 +611,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             lblCountText = new ToolStripStatusLabel
             {
-                Text = "0 va chạm",
+                Text = "0 clashes",
                 BorderSides = ToolStripStatusLabelBorderSides.Left,
                 BorderStyle = Border3DStyle.Etched
             };
@@ -628,7 +628,7 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Phương thức trợ giúp tạo nút bấm phẳng với phong cách giao diện Dark Theme hiện đại.
+        /// Helper method to create a flat button with modern dark theme styling.
         /// </summary>
         private Button CreateFlatButton(string text, DrawPoint loc, DrawSize size, DrawColor bg, DrawColor fg)
         {
@@ -648,7 +648,7 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Kết nối với mô hình Tekla Structures hiện hành thông qua Tekla Open API.
+        /// Connect to current Tekla Structures model via Tekla Open API.
         /// </summary>
         private void ConnectTekla()
         {
@@ -659,23 +659,23 @@ namespace BimCommands.Tekla.ClashCheck
                 {
                     _detector = new ClashDetector(_model);
                     var info = _model.GetInfo();
-                    lblTeklaStatus.Text = string.Format("● Đã kết nối: {0}", info.ModelName);
-                    lblTeklaStatus.ForeColor = DrawColor.FromArgb(34, 197, 94); // Màu xanh lá biểu thị đã kết nối thành công
+                    lblTeklaStatus.Text = string.Format("● Connected: {0}", info.ModelName);
+                    lblTeklaStatus.ForeColor = DrawColor.FromArgb(34, 197, 94); // Green indicates connected
 
-                    // Nạp danh sách các file IFC tham chiếu vào ComboBox
+                    // Populate referenced IFC models into selection list
                     PopulateIfcComboBox();
                 }
                 else
                 {
-                    lblTeklaStatus.Text = "● Chưa kết nối Tekla";
-                    lblTeklaStatus.ForeColor = DrawColor.FromArgb(239, 68, 68); // Màu đỏ cảnh báo
+                    lblTeklaStatus.Text = "● Not connected to Tekla";
+                    lblTeklaStatus.ForeColor = DrawColor.FromArgb(239, 68, 68); // Red warning
                 }
             }
             catch (Exception ex)
             {
-                lblTeklaStatus.Text = "● Lỗi kết nối Tekla";
+                lblTeklaStatus.Text = "● Tekla connection error";
                 lblTeklaStatus.ForeColor = DrawColor.FromArgb(239, 68, 68);
-                lblStatusText.Text = "Lỗi khởi tạo Tekla API: " + ex.Message;
+                lblStatusText.Text = "Tekla API initialization error: " + ex.Message;
             }
         }
 
@@ -686,33 +686,33 @@ namespace BimCommands.Tekla.ClashCheck
         {
             if (_ifcSelectedPartsOnly)
             {
-                btnIfcSelect.Text = "🎯 Chỉ cấu kiện IFC đang chọn  ▼";
+                btnIfcSelect.Text = "🎯 Selected IFC Objects Only  ▼";
                 btnIfcSelect.ForeColor = DrawColor.FromArgb(96, 165, 250);
-                _ifcTooltip.SetToolTip(btnIfcSelect, "Chế độ: Chỉ quét các cấu kiện IFC hoặc Part được chọn trực tiếp trong mô hình Tekla");
+                _ifcTooltip.SetToolTip(btnIfcSelect, "Mode: Check selected IFC objects or Parts directly in Tekla model");
             }
             else if (_selectedIfcFiles.Count == 0)
             {
-                btnIfcSelect.Text = "⭐ Tất cả file IFC (Navisworks Auto)  ▼";
+                btnIfcSelect.Text = "⭐ All IFC Models (Navisworks Auto)  ▼";
                 btnIfcSelect.ForeColor = DrawColor.White;
-                _ifcTooltip.SetToolTip(btnIfcSelect, "Chế độ: Tự động quét tất cả các file IFC giao cắt trong vùng không gian cốt thép");
+                _ifcTooltip.SetToolTip(btnIfcSelect, "Mode: Automatically scan all intersecting IFC files in rebar bounding area");
             }
             else if (_selectedIfcFiles.Count == 1)
             {
                 string singleFile = _selectedIfcFiles.First();
                 btnIfcSelect.Text = singleFile + "  ▼";
                 btnIfcSelect.ForeColor = DrawColor.FromArgb(134, 239, 172);
-                _ifcTooltip.SetToolTip(btnIfcSelect, "Đã chọn 1 file IFC:\n• " + singleFile);
+                _ifcTooltip.SetToolTip(btnIfcSelect, "Selected 1 IFC file:\n• " + singleFile);
             }
             else
             {
-                btnIfcSelect.Text = string.Format("☑ Đã chọn: {0} file IFC  ▼", _selectedIfcFiles.Count);
+                btnIfcSelect.Text = string.Format("☑ Selected: {0} IFC files  ▼", _selectedIfcFiles.Count);
                 btnIfcSelect.ForeColor = DrawColor.FromArgb(134, 239, 172);
-                _ifcTooltip.SetToolTip(btnIfcSelect, string.Format("Đã chọn {0} file IFC:\n• {1}", _selectedIfcFiles.Count, string.Join("\n• ", _selectedIfcFiles)));
+                _ifcTooltip.SetToolTip(btnIfcSelect, string.Format("Selected {0} IFC files:\n• {1}", _selectedIfcFiles.Count, string.Join("\n• ", _selectedIfcFiles)));
             }
         }
 
         /// <summary>
-        /// Hiển thị menu thả xuống (Dropdown) hiện đại có thanh tìm kiếm và Checkbox để người dùng tích chọn 1 hoặc nhiều file IFC.
+        /// Show modern dropdown with search and checkboxes for selecting one or multiple IFC files.
         /// </summary>
         private void ShowIfcSelectionDropdown()
         {
@@ -742,10 +742,10 @@ namespace BimCommands.Tekla.ClashCheck
                 Padding = new Padding(10)
             };
 
-            // 1. Chế độ quét toàn cục (Auto vs Selected)
+            // 1. Scan Mode (Auto vs Selected)
             var rbAuto = new RadioButton
             {
-                Text = "⭐ Tự động quét tất cả file IFC (Navisworks Auto)",
+                Text = "⭐ Auto scan all IFC files (Navisworks Auto)",
                 Checked = !_ifcSelectedPartsOnly && _selectedIfcFiles.Count == 0,
                 Location = new DrawPoint(10, 10),
                 AutoSize = true,
@@ -756,7 +756,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             var rbSelectedParts = new RadioButton
             {
-                Text = "🎯 Chỉ cấu kiện IFC / Part đang chọn trong Tekla",
+                Text = "🎯 Selected IFC objects / Parts in Tekla only",
                 Checked = _ifcSelectedPartsOnly,
                 Location = new DrawPoint(10, 32),
                 AutoSize = true,
@@ -767,7 +767,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             var rbCustom = new RadioButton
             {
-                Text = "📁 Tùy chọn tích chọn các file IFC cụ thể bên dưới:",
+                Text = "📁 Custom select specific IFC files below:",
                 Checked = !_ifcSelectedPartsOnly && _selectedIfcFiles.Count > 0,
                 Location = new DrawPoint(10, 54),
                 AutoSize = true,
@@ -776,7 +776,7 @@ namespace BimCommands.Tekla.ClashCheck
                 Cursor = Cursors.Hand
             };
 
-            // 2. Ô tìm kiếm nhanh file IFC
+            // 2. Search box
             var txtSearch = new TextBox
             {
                 Location = new DrawPoint(10, 80),
@@ -788,10 +788,10 @@ namespace BimCommands.Tekla.ClashCheck
                 Font = new DrawFont("Segoe UI", 8.5F)
             };
 
-            // 3. Thanh nút thao tác nhanh
+            // 3. Action buttons
             var btnSelectAll = new Button
             {
-                Text = "☑ Chọn tất cả",
+                Text = "☑ Select All",
                 Location = new DrawPoint(10, 108),
                 Size = new DrawSize(90, 24),
                 FlatStyle = FlatStyle.Flat,
@@ -804,7 +804,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             var btnClearAll = new Button
             {
-                Text = "☐ Bỏ chọn hết",
+                Text = "☐ Deselect All",
                 Location = new DrawPoint(105, 108),
                 Size = new DrawSize(90, 24),
                 FlatStyle = FlatStyle.Flat,
@@ -817,14 +817,14 @@ namespace BimCommands.Tekla.ClashCheck
 
             var lblSelectedCount = new Label
             {
-                Text = string.Format("Đã chọn: {0} file", _selectedIfcFiles.Count),
+                Text = string.Format("Selected: {0} files", _selectedIfcFiles.Count),
                 Location = new DrawPoint(205, 112),
                 AutoSize = true,
                 ForeColor = DrawColor.FromArgb(148, 163, 184),
                 Font = new DrawFont("Segoe UI", 8F)
             };
 
-            // 4. Danh sách CheckedListBox
+            // 4. CheckedListBox
             var clbFiles = new CheckedListBox
             {
                 Location = new DrawPoint(10, 136),
@@ -851,7 +851,7 @@ namespace BimCommands.Tekla.ClashCheck
                     }
                 }
                 clbFiles.EndUpdate();
-                lblSelectedCount.Text = string.Format("Đã chọn: {0} / {1} file", _selectedIfcFiles.Count, _availableIfcFiles.Count);
+                lblSelectedCount.Text = string.Format("Selected: {0} / {1} files", _selectedIfcFiles.Count, _availableIfcFiles.Count);
             };
 
             refreshList();
@@ -871,7 +871,7 @@ namespace BimCommands.Tekla.ClashCheck
                 {
                     _selectedIfcFiles.Remove(fn);
                 }
-                lblSelectedCount.Text = string.Format("Đã chọn: {0} / {1} file", _selectedIfcFiles.Count, _availableIfcFiles.Count);
+                lblSelectedCount.Text = string.Format("Selected: {0} / {1} files", _selectedIfcFiles.Count, _availableIfcFiles.Count);
                 UpdateIfcButtonDisplay();
             };
 
@@ -913,10 +913,10 @@ namespace BimCommands.Tekla.ClashCheck
                 }
             };
 
-            // 5. Nút Hoàn tất
+            // 5. Apply Button
             var btnApply = new Button
             {
-                Text = "✓ Áp Dụng",
+                Text = "✓ Apply",
                 Location = new DrawPoint(10, 380),
                 Width = 358,
                 Height = 30,
@@ -985,7 +985,7 @@ namespace BimCommands.Tekla.ClashCheck
         {
             if (_model == null || !_model.GetConnectionStatus())
             {
-                MessageBox.Show(this, "Chưa kết nối được với Tekla Structures!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Cannot connect to Tekla Structures!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -994,7 +994,7 @@ namespace BimCommands.Tekla.ClashCheck
             btnStop.Enabled = true;
             progressBar.Visible = true;
             progressBar.Value = 0;
-            lblStatusText.Text = "Đang chuẩn bị dữ liệu...";
+            lblStatusText.Text = "Preparing data...";
             dgvClashes.Rows.Clear();
             _currentClashes.Clear();
             ClearHighlights();
@@ -1009,7 +1009,7 @@ namespace BimCommands.Tekla.ClashCheck
                 ifcMode = IfcScopeMode.SpecificFile;
             }
 
-            // Lưu cài đặt hiện hành vào Properties.Settings
+            // Save current settings to Properties.Settings
             SaveSettings();
 
             var settings = new ClashSettings
@@ -1026,7 +1026,7 @@ namespace BimCommands.Tekla.ClashCheck
                 OnlyKeywords = ParseKeywords(txtOnlyKeywords.Text)
             };
 
-            // 1. Thu thập danh sách đối tượng người dùng đang chọn trên Tekla UI (thực hiện siêu nhanh trên UI thread)
+            // 1. Collect user selected objects on Tekla UI
             var selectedObjectsList = new List<ModelObject>();
             if (settings.OnlySelectedRebars)
             {
@@ -1040,13 +1040,13 @@ namespace BimCommands.Tekla.ClashCheck
 
                 if (selectedObjectsList.Count == 0)
                 {
-                    MessageBox.Show(this, "Bạn chưa chọn thanh thép hoặc cấu kiện bê tông nào trong mô hình Tekla!\n\nMẹo: Bạn có thể chọn trực tiếp Thanh thép hoặc Dầm/Cột bê tông trên màn hình 3D để kiểm tra va chạm.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "No rebars or host parts selected in Tekla model!\n\nTip: You can select Rebars or Concrete Beams/Columns directly in the 3D view to check clashes.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetUiState();
                     return;
                 }
             }
 
-            lblStatusText.Text = "Đang khởi tạo tác vụ quét va chạm nền...";
+            lblStatusText.Text = "Initializing background clash detection task...";
             var sw = System.Diagnostics.Stopwatch.StartNew();
             List<ClashResultItem> results = null;
 
@@ -1068,8 +1068,8 @@ namespace BimCommands.Tekla.ClashCheck
                 {
                     _cts.Token.ThrowIfCancellationRequested();
 
-                    // 1. Phân tích cốt thép trong luồng nền (Tránh tuyệt đối đơ/treo giao diện Tekla & Add-in)
-                    safeUpdateStatus("Đang phân tích cấu trúc thép và tính toán phạm vi không gian 3D...");
+                    // 1. Analyze rebars in background thread
+                    safeUpdateStatus("Analyzing rebar geometry and computing 3D bounding range...");
 
                     var targetRebars = new List<Reinforcement>();
                     var selectedObstacles = new List<ModelObject>();
@@ -1131,9 +1131,20 @@ namespace BimCommands.Tekla.ClashCheck
                                 try
                                 {
                                     var partRebars = part.GetReinforcements();
+                                    bool hasPartRebar = false;
                                     while (partRebars.MoveNext())
                                     {
-                                        if (partRebars.Current is Reinforcement pr) addRebar(pr);
+                                        if (partRebars.Current is Reinforcement pr)
+                                        {
+                                            addRebar(pr);
+                                            hasPartRebar = true;
+                                        }
+                                    }
+
+                                    // Chỉ coi Part không có thép là vật cản KHI VÀ CHỈ KHI người dùng đang bật chế độ "Selected IFC objects / Parts in Tekla only"
+                                    if (!hasPartRebar && settings.IfcMode == IfcScopeMode.SelectedIfcOnly)
+                                    {
+                                        selectedObstacles.Add(part);
                                     }
                                 }
                                 catch { }
@@ -1177,7 +1188,10 @@ namespace BimCommands.Tekla.ClashCheck
                             }
                             else if (obj is ReferenceModelObject || obj is ReferenceModel)
                             {
-                                selectedObstacles.Add(obj);
+                                if (settings.IfcMode == IfcScopeMode.SelectedIfcOnly)
+                                {
+                                    selectedObstacles.Add(obj);
+                                }
                             }
                         }
                     }
@@ -1207,24 +1221,24 @@ namespace BimCommands.Tekla.ClashCheck
 
                     if (targetRebars.Count == 0)
                     {
-                        safeUpdateStatus("Không tìm thấy thanh thép nào để quét.");
+                        safeUpdateStatus("No rebars found to check.");
                         return new List<ClashResultItem>();
                     }
 
-                    safeUpdateStatus(string.Format("Đã phân tích {0} thép. Đang quét cấu kiện IFC lân cận...", targetRebars.Count));
+                    safeUpdateStatus(string.Format("Analyzed {0} rebars. Collecting nearby IFC objects...", targetRebars.Count));
 
-                    // 2. Quét thu thập vật thể cản trở IFC trong không gian (Broad-phase)
+                    // 2. Collect IFC obstacle objects in spatial range (Broad-phase)
                     var obstacles = _detector.CollectObstacles(zoneMin, zoneMax, settings, selectedObstacles, safeUpdateStatus);
 
                     if (obstacles.Count == 0)
                     {
-                        safeUpdateStatus("Không tìm thấy cấu kiện IFC nào trong vùng quét (hoặc đã bị lược bỏ bởi bộ lọc).");
+                        safeUpdateStatus("No IFC objects found in the scan range (or filtered out by skip rules).");
                         return new List<ClashResultItem>();
                     }
 
-                    safeUpdateStatus(string.Format("Tìm thấy {0} cấu kiện IFC trong vùng thép. Đang tính toán va chạm hình học đa luồng...", obstacles.Count));
+                    safeUpdateStatus(string.Format("Found {0} IFC objects in rebar area. Computing multithreaded clash geometry...", obstacles.Count));
 
-                    // 3. Tính toán va chạm song song đa luồng với bộ điều tiết cập nhật UI (Throttling 80ms)
+                    // 3. Compute clashes in parallel with UI throttling (80ms)
                     var progressSw = System.Diagnostics.Stopwatch.StartNew();
                     return _detector.DetectClashes(targetRebars, obstacles, settings, (curr, max) =>
                     {
@@ -1240,7 +1254,7 @@ namespace BimCommands.Tekla.ClashCheck
                                     this.BeginInvoke(new Action(() =>
                                     {
                                         if (progressBar.Visible) progressBar.Value = pct;
-                                        lblStatusText.Text = string.Format("Đang kiểm tra: {0}/{1} thép ({2}%)", curr, max, pct);
+                                        lblStatusText.Text = string.Format("Checking: {0}/{1} rebars ({2}%)", curr, max, pct);
                                     }));
                                 }
                             }
@@ -1251,13 +1265,13 @@ namespace BimCommands.Tekla.ClashCheck
             }
             catch (OperationCanceledException)
             {
-                lblStatusText.Text = "Đã dừng quét va chạm bởi người dùng.";
+                lblStatusText.Text = "Clash check was cancelled by user.";
                 ResetUiState();
                 return;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, "Lỗi trong quá trình quét: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Error during clash check: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetUiState();
                 return;
             }
@@ -1265,7 +1279,7 @@ namespace BimCommands.Tekla.ClashCheck
             sw.Stop();
             _currentClashes = results ?? new List<ClashResultItem>();
 
-            // Lớp lọc an toàn cuối cùng: Loại bỏ cấu kiện theo IgnoredKeywords
+            // Filter pass: Remove components matching IgnoredKeywords
             if (settings.EnableIgnoredComponents && settings.IgnoredKeywords != null && settings.IgnoredKeywords.Count > 0)
             {
                 var filtered = new List<ClashResultItem>();
@@ -1291,7 +1305,7 @@ namespace BimCommands.Tekla.ClashCheck
                 _currentClashes = filtered;
             }
 
-            // Lớp lọc an toàn cuối cùng: Chỉ giữ cấu kiện theo OnlyKeywords
+            // Filter pass: Only keep components matching OnlyKeywords
             if (settings.EnableOnlyComponents && settings.OnlyKeywords != null && settings.OnlyKeywords.Count > 0)
             {
                 var filtered = new List<ClashResultItem>();
@@ -1310,7 +1324,7 @@ namespace BimCommands.Tekla.ClashCheck
                 _currentClashes[i].Index = i + 1;
             }
 
-            // Đổ dữ liệu vào bảng DataGridView
+            // Populate DataGridView
             dgvClashes.SuspendLayout();
             foreach (var c in _currentClashes)
             {
@@ -1333,12 +1347,12 @@ namespace BimCommands.Tekla.ClashCheck
             dgvClashes.ResumeLayout();
 
             UpdateClashCountStatus();
-            lblStatusText.Text = string.Format("Hoàn tất quét! Phát hiện {0} va chạm trong {1:F1} giây.", _currentClashes.Count, sw.Elapsed.TotalSeconds);
+            lblStatusText.Text = string.Format("Scan completed! Detected {0} clashes in {1:F1} seconds.", _currentClashes.Count, sw.Elapsed.TotalSeconds);
             ResetUiState();
         }
 
         /// <summary>
-        /// Khôi phục trạng thái sẵn sàng của các nút điều khiển trên giao diện.
+        /// Restore UI button states after scan completes or stops.
         /// </summary>
         private void ResetUiState()
         {
@@ -1348,8 +1362,8 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Khởi tạo Menu chuột phải (ContextMenuStrip) và phím tắt cho bảng danh sách va chạm.
-        /// Cho phép người dùng ẩn các dòng đã kiểm tra, hiện lại tất cả, zoom nhanh hoặc sao chép thông tin.
+        /// Initialize Context Menu (ContextMenuStrip) and keyboard shortcuts for the clash grid.
+        /// Allows users to hide reviewed rows, unhide all, zoom to clash, or copy clash details.
         /// </summary>
         private void SetupClashesContextMenu()
         {
@@ -1360,26 +1374,26 @@ namespace BimCommands.Tekla.ClashCheck
                 ShowImageMargin = false
             };
 
-            _menuItemHideRow = new ToolStripMenuItem("👁️ Ẩn dòng này (Đã kiểm tra xong)       [Phím H / Delete]")
+            _menuItemHideRow = new ToolStripMenuItem("👁️ Hide this row (Reviewed)       [Key H / Delete]")
             {
-                ForeColor = DrawColor.FromArgb(253, 224, 71), // Màu vàng nổi bật
+                ForeColor = DrawColor.FromArgb(253, 224, 71), // Highlight Yellow
                 Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold)
             };
             _menuItemHideRow.Click += (s, e) => HideSelectedClashRows();
 
-            _menuItemZoom = new ToolStripMenuItem("🔍 Zoom & Chọn cấu kiện trên Tekla")
+            _menuItemZoom = new ToolStripMenuItem("🔍 Zoom & Select in Tekla")
             {
                 ForeColor = DrawColor.FromArgb(147, 197, 253)
             };
             _menuItemZoom.Click += (s, e) => ZoomToSelectedClash();
 
-            _menuItemCopy = new ToolStripMenuItem("📋 Sao chép thông tin dòng va chạm (Copy)")
+            _menuItemCopy = new ToolStripMenuItem("📋 Copy Clash Details (Clipboard)")
             {
                 ForeColor = DrawColor.FromArgb(203, 213, 225)
             };
             _menuItemCopy.Click += (s, e) => CopySelectedClashInfo();
 
-            _menuItemUnhideAll = new ToolStripMenuItem("🔄 Hiện lại tất cả các dòng đã ẩn")
+            _menuItemUnhideAll = new ToolStripMenuItem("🔄 Unhide All Rows")
             {
                 ForeColor = DrawColor.FromArgb(134, 239, 172)
             };
@@ -1394,7 +1408,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             dgvClashes.ContextMenuStrip = _clashContextMenu;
 
-            // Xử lý CellMouseDown: Chuột phải vào bất kỳ ô nào thì dòng đó được chọn ngay lập tức
+            // Handle CellMouseDown: Right-clicking any cell selects that row immediately
             dgvClashes.CellMouseDown += (s, e) =>
             {
                 if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
@@ -1410,16 +1424,16 @@ namespace BimCommands.Tekla.ClashCheck
                     }
                     catch { }
 
-                    // Cập nhật số lượng dòng đã ẩn trên nhãn của menu
+                    // Update hidden rows count on the menu item
                     int hiddenCount = GetHiddenRowCount();
                     _menuItemUnhideAll.Enabled = hiddenCount > 0;
                     _menuItemUnhideAll.Text = hiddenCount > 0
-                        ? string.Format("🔄 Hiện lại tất cả các dòng đã ẩn ({0} dòng)", hiddenCount)
-                        : "🔄 Hiện lại tất cả các dòng đã ẩn";
+                        ? string.Format("🔄 Unhide All Rows ({0} rows)", hiddenCount)
+                        : "🔄 Unhide All Rows";
                 }
             };
 
-            // Hỗ trợ phím tắt H hoặc Delete để ẩn dòng nhanh khi đang duyệt danh sách
+            // Support keyboard shortcuts H or Delete to quickly hide rows while reviewing
             dgvClashes.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.H)
@@ -1431,7 +1445,7 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Đếm số lượng dòng va chạm hiện đang bị ẩn trong bảng.
+        /// Count number of clash rows currently hidden in the grid.
         /// </summary>
         private int GetHiddenRowCount()
         {
@@ -1444,7 +1458,7 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Cập nhật nhãn hiển thị số lượng va chạm trên thanh trạng thái (số dòng còn lại và số dòng đã ẩn).
+        /// Update clash count status on the status strip (visible vs total and hidden).
         /// </summary>
         private void UpdateClashCountStatus()
         {
@@ -1454,17 +1468,17 @@ namespace BimCommands.Tekla.ClashCheck
 
             if (hidden > 0)
             {
-                lblCountText.Text = string.Format("{0} còn lại / {1} tổng (Đã ẩn {2})", visible, total, hidden);
+                lblCountText.Text = string.Format("{0} remaining / {1} total ({2} hidden)", visible, total, hidden);
             }
             else
             {
-                lblCountText.Text = string.Format("{0} va chạm", total);
+                lblCountText.Text = string.Format("{0} clashes", total);
             }
         }
 
         /// <summary>
-        /// Ẩn các dòng va chạm đang được chọn (đánh dấu đã kiểm tra xong).
-        /// Tự động chuyển con trỏ chọn sang dòng tiếp theo để người dùng tiếp tục kiểm tra mượt mà.
+        /// Hide currently selected clash rows (marked as reviewed).
+        /// Automatically moves selection to the next visible row for smooth review workflow.
         /// </summary>
         private void HideSelectedClashRows()
         {
@@ -1478,14 +1492,14 @@ namespace BimCommands.Tekla.ClashCheck
                 if (r.Index > lastSelectedIndex) lastSelectedIndex = r.Index;
             }
 
-            dgvClashes.CurrentCell = null; // Tránh ngoại lệ InvalidOperationException khi ẩn dòng hiện hành
+            dgvClashes.CurrentCell = null; // Avoid InvalidOperationException when hiding current cell
 
             foreach (var r in rowsToHide)
             {
                 r.Visible = false;
             }
 
-            // Tự động tìm và chọn dòng hiển thị tiếp theo
+            // Find and select next visible row
             if (lastSelectedIndex >= 0)
             {
                 for (int i = lastSelectedIndex + 1; i < dgvClashes.Rows.Count; i++)
@@ -1503,7 +1517,7 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Hiện lại toàn bộ các dòng va chạm đã bị ẩn trước đó.
+        /// Unhide all clash rows that were previously hidden.
         /// </summary>
         private void UnhideAllClashRows()
         {
@@ -1514,11 +1528,11 @@ namespace BimCommands.Tekla.ClashCheck
             }
             dgvClashes.ResumeLayout();
             UpdateClashCountStatus();
-            lblStatusText.Text = "Đã hiển thị lại toàn bộ các dòng va chạm.";
+            lblStatusText.Text = "All clash rows unhidden.";
         }
 
         /// <summary>
-        /// Sao chép nội dung chi tiết của dòng va chạm đang chọn vào Clipboard.
+        /// Copy detailed information of selected clash rows to Clipboard.
         /// </summary>
         private void CopySelectedClashInfo()
         {
@@ -1529,19 +1543,19 @@ namespace BimCommands.Tekla.ClashCheck
                 var item = r.Tag as ClashResultItem;
                 if (item != null)
                 {
-                    sb.AppendLine(string.Format("#{0}\tThép: {1} (ID:{2}, {3})\tCấu kiện: {4}\tĐộ lấn: {5} mm\tMức độ: {6}\tTọa độ: {7}",
+                    sb.AppendLine(string.Format("#{0}\tRebar: {1} (ID:{2}, {3})\tEntity: {4}\tOverlap: {5} mm\tSeverity: {6}\tCoord: {7}",
                         item.Index, item.RebarName, item.RebarId, item.RebarSize, item.IfcEntityName, item.OverlapMm, item.Severity, item.ClashPointDisplay));
                 }
             }
             if (sb.Length > 0)
             {
                 Clipboard.SetText(sb.ToString());
-                lblStatusText.Text = "Đã sao chép thông tin va chạm vào Clipboard!";
+                lblStatusText.Text = "Clash details copied to Clipboard!";
             }
         }
 
         /// <summary>
-        /// Định dạng màu sắc các ô trong bảng DataGridView dựa trên mức độ nghiêm trọng của va chạm.
+        /// Format cell colors in DataGridView based on clash severity.
         /// </summary>
         private void DgvClashes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -1555,13 +1569,13 @@ namespace BimCommands.Tekla.ClashCheck
                 switch (item.Severity)
                 {
                     case ClashSeverity.Severe:
-                        fg = DrawColor.FromArgb(239, 68, 68); // Màu đỏ: va chạm nghiêm trọng
+                        fg = DrawColor.FromArgb(239, 68, 68); // Red: severe clash
                         break;
                     case ClashSeverity.Medium:
-                        fg = DrawColor.FromArgb(249, 115, 22); // Màu cam: va chạm trung bình
+                        fg = DrawColor.FromArgb(249, 115, 22); // Orange: medium clash
                         break;
                     default:
-                        fg = DrawColor.FromArgb(234, 179, 8); // Màu vàng: va chạm nhẹ / khoảng hở
+                        fg = DrawColor.FromArgb(234, 179, 8); // Yellow: minor clash / clearance
                         break;
                 }
                 e.CellStyle.ForeColor = fg;
@@ -1570,22 +1584,36 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Tự động thu phóng (Zoom &amp; Focus) màn hình 3D Tekla Structures đến vị trí va chạm đang chọn
-        /// và chọn (select) đối tượng thanh thép bị va chạm.
+        /// Automatically zoom and focus Tekla Structures 3D view to the selected clash position
+        /// and select the clashing rebar object.
+        /// Temporarily switches WorkPlane to Global for accurate AABB calculation, then restores original WorkPlane.
         /// </summary>
         private void ZoomToSelectedClash()
         {
             if (dgvClashes.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Vui lòng chọn một dòng va chạm trong bảng!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Please select a clash row from the table!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            // Xóa hình vẽ đánh dấu DrawClashBox cũ trước khi Zoom & vẽ hộp mới
+            // Clear previous highlight boxes before zooming and drawing new box
             ClearHighlights();
+
+            TransformationPlane originalPlane = null;
+            WorkPlaneHandler wph = null;
 
             try
             {
+                var model = _model ?? new Model();
+                wph = model.GetWorkPlaneHandler();
+                if (wph != null)
+                {
+                    // 1. Save current WorkPlane (Local)
+                    originalPlane = wph.GetCurrentTransformationPlane();
+                    // 2. Temporarily switch to Global WorkPlane for accurate AABB
+                    wph.SetCurrentTransformationPlane(new TransformationPlane());
+                }
+
                 var objsToSelect = new ArrayList();
                 TeklaPoint minPt = new TeklaPoint(double.MaxValue, double.MaxValue, double.MaxValue);
                 TeklaPoint maxPt = new TeklaPoint(double.MinValue, double.MinValue, double.MinValue);
@@ -1595,19 +1623,39 @@ namespace BimCommands.Tekla.ClashCheck
                     var c = row.Tag as ClashResultItem;
                     if (c == null) continue;
 
-                    // Chỉ chọn duy nhất đối tượng thanh thép va chạm
-                    if (c.RebarObject != null) objsToSelect.Add(c.RebarObject);
+                    // Select only the clashing rebar
+                    if (c.RebarObject != null)
+                    {
+                        objsToSelect.Add(c.RebarObject);
+
+                        // Obtain exact AABB of rebar in Global WorkPlane
+                        try
+                        {
+                            var solid = c.RebarObject.GetSolid();
+                            if (solid != null && solid.MinimumPoint != null && solid.MaximumPoint != null)
+                            {
+                                minPt.X = Math.Min(minPt.X, solid.MinimumPoint.X);
+                                minPt.Y = Math.Min(minPt.Y, solid.MinimumPoint.Y);
+                                minPt.Z = Math.Min(minPt.Z, solid.MinimumPoint.Z);
+
+                                maxPt.X = Math.Max(maxPt.X, solid.MaximumPoint.X);
+                                maxPt.Y = Math.Max(maxPt.Y, solid.MaximumPoint.Y);
+                                maxPt.Z = Math.Max(maxPt.Z, solid.MaximumPoint.Z);
+                            }
+                        }
+                        catch { }
+                    }
 
                     if (c.ClashPoint != null)
                     {
-                        // Zoom cận cảnh vào phạm vi khối hộp va chạm ClashPoint (bán kính 100mm)
-                        minPt.X = Math.Min(minPt.X, c.ClashPoint.X - 100.0);
-                        minPt.Y = Math.Min(minPt.Y, c.ClashPoint.Y - 100.0);
-                        minPt.Z = Math.Min(minPt.Z, c.ClashPoint.Z - 100.0);
+                        // Zoom close to ClashPoint bounding range (radius 150mm)
+                        minPt.X = Math.Min(minPt.X, c.ClashPoint.X - 150.0);
+                        minPt.Y = Math.Min(minPt.Y, c.ClashPoint.Y - 150.0);
+                        minPt.Z = Math.Min(minPt.Z, c.ClashPoint.Z - 150.0);
 
-                        maxPt.X = Math.Max(maxPt.X, c.ClashPoint.X + 100.0);
-                        maxPt.Y = Math.Max(maxPt.Y, c.ClashPoint.Y + 100.0);
-                        maxPt.Z = Math.Max(maxPt.Z, c.ClashPoint.Z + 100.0);
+                        maxPt.X = Math.Max(maxPt.X, c.ClashPoint.X + 150.0);
+                        maxPt.Y = Math.Max(maxPt.Y, c.ClashPoint.Y + 150.0);
+                        maxPt.Z = Math.Max(maxPt.Z, c.ClashPoint.Z + 150.0);
                     }
                     else if (c.MinPoint != null && c.MaxPoint != null)
                     {
@@ -1632,7 +1680,7 @@ namespace BimCommands.Tekla.ClashCheck
                         ViewHandler.ZoomToBoundingBox(aabb);
                     }
 
-                    // Vẽ khối hộp lập phương nổi bật màu vàng cam tại vị trí va chạm đang chọn
+                    // Draw yellow highlighted cube box at selected clash position (while in Global)
                     var selectedItem = dgvClashes.SelectedRows[0].Tag as ClashResultItem;
                     if (selectedItem != null && selectedItem.ClashPoint != null)
                     {
@@ -1643,18 +1691,30 @@ namespace BimCommands.Tekla.ClashCheck
                         DrawClashBox(drawer, selectedItem, 30.0, yellowWire, yellowFill, yellowLabel, true);
                     }
 
-                    lblStatusText.Text = string.Format("Đã Zoom & Chọn va chạm #{0} trên mô hình Tekla!", ((ClashResultItem)dgvClashes.SelectedRows[0].Tag).Index);
+                    lblStatusText.Text = string.Format("Zoomed & selected clash #{0} in Tekla model!", ((ClashResultItem)dgvClashes.SelectedRows[0].Tag).Index);
                 }
             }
             catch (Exception ex)
             {
-                lblStatusText.Text = "Lỗi khi Zoom trong Tekla: " + ex.Message;
+                lblStatusText.Text = "Error zooming in Tekla: " + ex.Message;
+            }
+            finally
+            {
+                // 3. Restore original Local WorkPlane
+                if (wph != null && originalPlane != null)
+                {
+                    try
+                    {
+                        wph.SetCurrentTransformationPlane(originalPlane);
+                    }
+                    catch { }
+                }
             }
         }
 
         /// <summary>
-        /// Vẽ một khối hộp lập phương 3D hoàn chỉnh (khung viền 12 cạnh + bề mặt bán trong suốt + nhãn chỉ dẫn)
-        /// tại tọa độ ClashPoint của một kết quả va chạm.
+        /// Draw complete 3D cube box (12 wireframe edges + translucent faces + label)
+        /// at ClashPoint coordinate of a clash result.
         /// </summary>
         private void DrawClashBox(
             GraphicsDrawer drawer,
@@ -1668,7 +1728,7 @@ namespace BimCommands.Tekla.ClashCheck
             if (drawer == null || c == null || c.ClashPoint == null) return;
             TeklaPoint p = c.ClashPoint;
 
-            // 1. Xác định tọa độ 8 đỉnh của hình hộp lập phương (Cube Box) bao quanh điểm va chạm
+            // 1. Determine 8 vertices of cube box around clash point
             var p0 = new TeklaPoint(p.X - h, p.Y - h, p.Z - h);
             var p1 = new TeklaPoint(p.X + h, p.Y - h, p.Z - h);
             var p2 = new TeklaPoint(p.X + h, p.Y + h, p.Z - h);
@@ -1679,14 +1739,14 @@ namespace BimCommands.Tekla.ClashCheck
             var p6 = new TeklaPoint(p.X + h, p.Y + h, p.Z + h);
             var p7 = new TeklaPoint(p.X - h, p.Y + h, p.Z + h);
 
-            // 2. Vẽ 12 cạnh viền của hình hộp lập phương bằng GraphicPolyLine nét đậm (Width = 3)
+            // 2. Draw 12 cube edges with GraphicPolyLine (Width = 3)
             var bottomLoop = new ArrayList { p0, p1, p2, p3, p0 };
             var topLoop = new ArrayList { p4, p5, p6, p7, p4 };
             var side0 = new ArrayList { p0, p4 };
             var side1 = new ArrayList { p1, p5 };
             var side2 = new ArrayList { p2, p6 };
             var side3 = new ArrayList { p3, p7 };
-            var diag1 = new ArrayList { p4, p6 }; // Dấu chéo mặt trên để dễ nhận diện từ góc nhìn trên cao
+            var diag1 = new ArrayList { p4, p6 }; // Top face diagonal for visibility from top view
             var diag2 = new ArrayList { p5, p7 };
 
             var wireSegments = new[] { bottomLoop, topLoop, side0, side1, side2, side3, diag1, diag2 };
@@ -1710,25 +1770,38 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
-        /// Vẽ hình hộp lập phương 3D màu đỏ nổi bật tại tất cả các điểm va chạm trong không gian mô hình Tekla bằng GraphicsDrawer.
-        /// Bao gồm khung viền 12 cạnh nét đậm, bề mặt lập phương 3D bán trong suốt và nhãn văn bản định danh.
+        /// Highlight all clash points in Tekla 3D model space with red 3D cube boxes using GraphicsDrawer.
+        /// Temporarily switches WorkPlane to Global for accurate 3D drawing, then restores original WorkPlane.
         /// </summary>
         private void HighlightClashesInTekla()
         {
             if (_currentClashes.Count == 0)
             {
-                MessageBox.Show(this, "Không có va chạm nào để đánh dấu!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "No clashes to highlight!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             ClearHighlights();
 
+            TransformationPlane originalPlane = null;
+            WorkPlaneHandler wph = null;
+
             try
             {
-                var redWireColor = new TeklaColor(1.0, 0.0, 0.0);       // Màu đỏ rực cho các cạnh viền khung
-                var redFillColor = new TeklaColor(1.0, 0.1, 0.1, 0.35); // Màu đỏ bán trong suốt (35%) cho bề mặt khối
-                var labelColor = new TeklaColor(1.0, 0.9, 0.2);         // Màu vàng nổi bật cho nhãn văn bản chỉ dẫn
-                double h = 30.0; // Nửa chiều dài cạnh (tạo khối hộp lập phương kích thước 60x60x60 mm nhỏ gọn, vừa vặn)
+                var model = _model ?? new Model();
+                wph = model.GetWorkPlaneHandler();
+                if (wph != null)
+                {
+                    // 1. Save current WorkPlane (Local)
+                    originalPlane = wph.GetCurrentTransformationPlane();
+                    // 2. Temporarily switch to Global WorkPlane for accurate drawing
+                    wph.SetCurrentTransformationPlane(new TransformationPlane());
+                }
+
+                var redWireColor = new TeklaColor(1.0, 0.0, 0.0);       // Red wireframe
+                var redFillColor = new TeklaColor(1.0, 0.1, 0.1, 0.35); // Translucent red
+                var labelColor = new TeklaColor(1.0, 0.9, 0.2);         // Highlight yellow
+                double h = 30.0; // Half edge length (creates 60x60x60 mm cube box)
                 var drawer = new GraphicsDrawer();
 
                 foreach (var c in _currentClashes)
@@ -1736,43 +1809,134 @@ namespace BimCommands.Tekla.ClashCheck
                     DrawClashBox(drawer, c, h, redWireColor, redFillColor, labelColor, true);
                 }
 
-                lblStatusText.Text = string.Format("Đã đánh dấu {0} điểm va chạm bằng hình hộp lập phương 3D màu đỏ!", _currentClashes.Count);
+                lblStatusText.Text = string.Format("Highlighted {0} clash points with 3D red boxes!", _currentClashes.Count);
             }
             catch (Exception ex)
             {
-                lblStatusText.Text = "Lỗi khi vẽ đánh dấu 3D: " + ex.Message;
+                lblStatusText.Text = "Error drawing 3D highlights: " + ex.Message;
+            }
+            finally
+            {
+                // 3. Restore original Local WorkPlane
+                if (wph != null && originalPlane != null)
+                {
+                    try
+                    {
+                        wph.SetCurrentTransformationPlane(originalPlane);
+                    }
+                    catch { }
+                }
             }
         }
 
         /// <summary>
-        /// Xóa bỏ toàn bộ các đường vẽ đánh dấu 3D trên màn hình Tekla Structures bằng GraphicsDrawer.
-        /// Sử dụng RemoveTemporaryGraphicsObjects để xóa tức thì mà không cần RedrawView, loại bỏ hiện tượng giật lag.
+        /// Clear all temporary 3D graphics markings in Tekla Structures using GraphicsDrawer.
+        /// If clearSelection is true (user explicitly clicked "Clear 3D"), also deselects objects and redraws views.
         /// </summary>
-        private void ClearHighlights()
+        private void ClearHighlights(bool clearSelection = false)
         {
             try
             {
+                // 1. Snapshot and remove all tracked temporary 3D graphic IDs
+                ArrayList idsToRemove = null;
                 lock (_highlightLock)
                 {
                     if (_activeHighlights.Count > 0)
                     {
-                        var drawer = new GraphicsDrawer();
-                        drawer.RemoveTemporaryGraphicsObjects(_activeHighlights);
+                        idsToRemove = new ArrayList(_activeHighlights);
                         _activeHighlights.Clear();
                     }
                 }
+
+                if (idsToRemove != null && idsToRemove.Count > 0)
+                {
+                    try
+                    {
+                        var drawer = new GraphicsDrawer();
+                        // Batch removal with ArrayList (compatible with Tekla OpenAPI COM/C++ layer)
+                        try
+                        {
+                            drawer.RemoveTemporaryGraphicsObjects(idsToRemove);
+                        }
+                        catch { }
+
+                        // Fallback individual removal for safety
+                        foreach (var idObj in idsToRemove)
+                        {
+                            try
+                            {
+                                if (idObj is int id)
+                                {
+                                    drawer.RemoveTemporaryGraphicsObject(id);
+                                }
+                            }
+                            catch { }
+                        }
+                    }
+                    catch { }
+                }
+
+                // 2. Clear selected objects in Tekla UI ONLY if user clicked Clear 3D button!
+                // NEVER deselect during StartClashCheckAsync because user explicitly selected rebars to check!
+                if (clearSelection)
+                {
+                    try
+                    {
+                        var selector = new TeklaUiSelector();
+                        selector.Select(new ArrayList());
+                    }
+                    catch { }
+                }
+
+                // 3. Force Tekla Structures to redraw all visible model views
+                // This is MANDATORY when removing temporary graphics or clearing selection to update display buffer
+                if (clearSelection || (idsToRemove != null && idsToRemove.Count > 0))
+                {
+                    try
+                    {
+                        var viewEnum = ViewHandler.GetVisibleViews();
+                        if (viewEnum != null)
+                        {
+                            while (viewEnum.MoveNext())
+                            {
+                                if (viewEnum.Current != null)
+                                {
+                                    ViewHandler.RedrawView(viewEnum.Current);
+                                }
+                            }
+                        }
+                    }
+                    catch { }
+
+                    try
+                    {
+                        ViewHandler.RedrawWorkplane();
+                    }
+                    catch { }
+                }
+
+                if (clearSelection && lblStatusText != null)
+                {
+                    lblStatusText.Text = "Cleared 3D highlights and model selections.";
+                }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                if (lblStatusText != null)
+                {
+                    lblStatusText.Text = "Clear 3D: " + ex.Message;
+                }
+            }
         }
 
         /// <summary>
-        /// Xuất toàn bộ danh sách kết quả va chạm ra file định dạng Excel/CSV với bảng mã UTF-8.
+        /// Export clash detection results to Excel/CSV file with UTF-8 encoding.
         /// </summary>
         private void ExportToCsv()
         {
             if (_currentClashes.Count == 0)
             {
-                MessageBox.Show(this, "Không có dữ liệu để xuất!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "No data to export!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -1785,7 +1949,7 @@ namespace BimCommands.Tekla.ClashCheck
                     try
                     {
                         var sb = new StringBuilder();
-                        sb.AppendLine("STT,ID_Thep,Ten_Thep,Kich_Thuoc,Mac_Thep,So_Hieu_Pos,Cau_Kien_Part,Cau_Kien_IFC,Chieu_Dai_mm,Do_Lan_mm,Muc_Do,Toa_Do_X,Toa_Do_Y,Toa_Do_Z");
+                        sb.AppendLine("No,Rebar_ID,Rebar_Name,Size,Grade,Pos_Mark,Host_Part,IFC_Entity,Length_mm,Overlap_mm,Severity,Coord_X,Coord_Y,Coord_Z");
 
                         foreach (var c in _currentClashes)
                         {
@@ -1810,11 +1974,11 @@ namespace BimCommands.Tekla.ClashCheck
                         }
 
                         File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
-                        MessageBox.Show(this, "Đã xuất báo cáo thành công ra file:\n" + sfd.FileName, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, "Report successfully exported to:\n" + sfd.FileName, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(this, "Lỗi khi lưu file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, "Error saving file: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
