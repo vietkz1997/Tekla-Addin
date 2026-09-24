@@ -53,7 +53,7 @@ public class SplitSlabDialog : Form
 
 	private void InitializeComponent()
 	{
-		this.Text = "My-tool  ➤  Split-Slab (Tách sàn bê tông)";
+		this.Text = "My-tool  ➤  Split-Slab (Concrete Slab Splitter)";
 		base.Size = new System.Drawing.Size(460, 670);
 		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 		base.MaximizeBox = false;
@@ -62,7 +62,7 @@ public class SplitSlabDialog : Form
 		this.Font = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Regular);
 		this.grpParams = new System.Windows.Forms.GroupBox
 		{
-			Text = " ⚙️ THIẾT LẬP CẮT SÀN ",
+			Text = " ⚙️ SLAB SPLIT SETTINGS ",
 			Location = new System.Drawing.Point(14, 12),
 			Size = new System.Drawing.Size(416, 150),
 			Font = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Bold),
@@ -70,7 +70,7 @@ public class SplitSlabDialog : Form
 		};
 		this.lblGap = new System.Windows.Forms.Label
 		{
-			Text = "Khe co giãn (Joint Gap mm):",
+			Text = "Joint Gap (mm):",
 			Location = new System.Drawing.Point(16, 26),
 			AutoSize = true,
 			Font = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Regular),
@@ -89,7 +89,7 @@ public class SplitSlabDialog : Form
 		};
 		this.lblNewClass = new System.Windows.Forms.Label
 		{
-			Text = "Class cho sàn mới:",
+			Text = "New Slab Class:",
 			Location = new System.Drawing.Point(16, 60),
 			AutoSize = true,
 			Font = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Regular),
@@ -102,15 +102,15 @@ public class SplitSlabDialog : Form
 			DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList,
 			Font = new System.Drawing.Font("Segoe UI", 8.5f, System.Drawing.FontStyle.Regular)
 		};
-		this.cboNewClass.Items.Add("Giữ nguyên Class gốc");
-		this.cboNewClass.Items.Add("Tự động tăng (+1)");
-		this.cboNewClass.Items.Add("Class 6 (Màu cam)");
-		this.cboNewClass.Items.Add("Class 3 (Màu xanh)");
-		this.cboNewClass.Items.Add("Class 1 (Màu đỏ)");
+		this.cboNewClass.Items.Add("Keep original Class");
+		this.cboNewClass.Items.Add("Auto increment (+1)");
+		this.cboNewClass.Items.Add("Class 6 (Orange)");
+		this.cboNewClass.Items.Add("Class 3 (Blue)");
+		this.cboNewClass.Items.Add("Class 1 (Red)");
 		this.cboNewClass.SelectedIndex = 0;
 		this.chkSelectNew = new System.Windows.Forms.CheckBox
 		{
-			Text = "Tự động chọn sàn sau khi tách (Highlight)",
+			Text = "Auto-select / Highlight slabs after split",
 			Location = new System.Drawing.Point(19, 91),
 			AutoSize = true,
 			Checked = true,
@@ -119,7 +119,7 @@ public class SplitSlabDialog : Form
 		};
 		this.chkAutoOrtho = new System.Windows.Forms.CheckBox
 		{
-			Text = "🎯 Tự động nắn thẳng (Auto-Ortho / Cạnh sàn / Trục X-Y)",
+			Text = "🎯 Auto-Ortho (Snap to Slab Edges / X-Y Axes)",
 			Location = new System.Drawing.Point(19, 116),
 			AutoSize = true,
 			Checked = true,
@@ -134,7 +134,7 @@ public class SplitSlabDialog : Form
 		this.grpParams.Controls.Add(this.chkAutoOrtho);
 		this.grpActions = new System.Windows.Forms.GroupBox
 		{
-			Text = " 🎯 THAO TÁC ",
+			Text = " 🎯 ACTIONS ",
 			Location = new System.Drawing.Point(14, 168),
 			Size = new System.Drawing.Size(416, 230),
 			Font = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Bold),
@@ -142,7 +142,7 @@ public class SplitSlabDialog : Form
 		};
 		this.btnSplitMulti = new System.Windows.Forms.Button
 		{
-			Text = "🎯  TÁCH ĐA ĐIỂM  (Pick các điểm ➔ Chuột giữa / Enter)",
+			Text = "🎯  MULTI-POINT SPLIT  (Pick points ➔ Middle Click / Enter)",
 			Location = new System.Drawing.Point(16, 23),
 			Size = new System.Drawing.Size(378, 40),
 			BackColor = System.Drawing.Color.FromArgb(16, 185, 129),
@@ -158,7 +158,7 @@ public class SplitSlabDialog : Form
 		};
 		this.btnSplit1Point = new System.Windows.Forms.Button
 		{
-			Text = "📐  TÁCH 1 ĐIỂM  (Cắt vuông góc cạnh mép sàn)",
+			Text = "📐  1-POINT SPLIT  (Perpendicular to slab edge)",
 			Location = new System.Drawing.Point(16, 68),
 			Size = new System.Drawing.Size(378, 36),
 			BackColor = System.Drawing.Color.FromArgb(124, 58, 237),
@@ -174,7 +174,7 @@ public class SplitSlabDialog : Form
 		};
 		this.btnSplitSingle = new System.Windows.Forms.Button
 		{
-			Text = "✂️  TÁCH 2 ĐIỂM  (Pick 2 điểm cắt ngay)",
+			Text = "✂️  2-POINT SPLIT  (Pick 2 points directly)",
 			Location = new System.Drawing.Point(16, 110),
 			Size = new System.Drawing.Size(378, 36),
 			BackColor = System.Drawing.Color.FromArgb(37, 99, 235),
@@ -190,7 +190,7 @@ public class SplitSlabDialog : Form
 		};
 		this.btnSplitContinuous = new System.Windows.Forms.Button
 		{
-			Text = "⚡  TÁCH LIÊN TỤC  (Multi-Slabs Split)",
+			Text = "⚡  CONTINUOUS SPLIT  (Multi-Slab Mode)",
 			Location = new System.Drawing.Point(16, 152),
 			Size = new System.Drawing.Size(378, 34),
 			BackColor = System.Drawing.Color.FromArgb(79, 70, 229),
@@ -206,7 +206,7 @@ public class SplitSlabDialog : Form
 		};
 		this.lblTip = new System.Windows.Forms.Label
 		{
-			Text = "💡 Pick các điểm cắt rồi click Chuột giữa (hoặc Enter) để tách sàn.",
+			Text = "💡 Pick cut points, then Middle Click (or Enter) to execute slab split.",
 			Location = new System.Drawing.Point(16, 196),
 			AutoSize = true,
 			Font = new System.Drawing.Font("Segoe UI", 7.8f, System.Drawing.FontStyle.Italic),
@@ -219,7 +219,7 @@ public class SplitSlabDialog : Form
 		this.grpActions.Controls.Add(this.lblTip);
 		this.grpLog = new System.Windows.Forms.GroupBox
 		{
-			Text = " 📋 NHẬT KÝ XỬ LÝ ",
+			Text = " 📋 PROCESS LOG ",
 			Location = new System.Drawing.Point(14, 404),
 			Size = new System.Drawing.Size(416, 215),
 			Font = new System.Drawing.Font("Segoe UI", 9f, System.Drawing.FontStyle.Bold),
@@ -236,7 +236,7 @@ public class SplitSlabDialog : Form
 		};
 		this.btnClearLog = new System.Windows.Forms.Button
 		{
-			Text = "Xóa Log",
+			Text = "Clear Log",
 			Location = new System.Drawing.Point(320, 178),
 			Size = new System.Drawing.Size(82, 26),
 			Font = new System.Drawing.Font("Segoe UI", 8f, System.Drawing.FontStyle.Regular),
@@ -254,7 +254,7 @@ public class SplitSlabDialog : Form
 		base.Controls.Add(this.grpParams);
 		base.Controls.Add(this.grpActions);
 		base.Controls.Add(this.grpLog);
-		this.Log("Split-Slab sẵn sàng. Chọn chế độ cắt phía trên.");
+		this.Log("Split-Slab ready. Select a split mode above.");
 	}
 
 	private void Log(string msg)
@@ -271,7 +271,7 @@ public class SplitSlabDialog : Form
 		}
 		if (!_model.GetConnectionStatus())
 		{
-			MessageBox.Show("Chưa kết nối mô hình Tekla. Vui lòng mở model dự án trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			MessageBox.Show("Tekla model is not connected. Please open a Tekla model first!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			return;
 		}
 		double gap = (double)numGap.Value;
@@ -282,45 +282,45 @@ public class SplitSlabDialog : Form
 		{
 			try
 			{
-				Log("👉 Vui lòng pick chọn tấm sàn (ContourPlate)...");
-				ModelObject modelObject = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Pick sàn (ContourPlate) cần tách:");
+				Log("👉 Please pick a slab (ContourPlate)...");
+				ModelObject modelObject = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Pick slab (ContourPlate) to split:");
 				if (!(modelObject is ContourPlate contourPlate))
 				{
-					Log("❌ Đối tượng chọn không phải ContourPlate!");
+					Log("❌ Selected object is not a ContourPlate!");
 					if (!continuous)
 					{
 						break;
 					}
 					continue;
 				}
-				Log($"Đã chọn sàn ID: {contourPlate.Identifier.ID} ({contourPlate.Profile.ProfileString})");
+				Log($"Selected slab ID: {contourPlate.Identifier.ID} ({contourPlate.Profile.ProfileString})");
 
 				global::Tekla.Structures.Geometry3d.Point point = null;
 				global::Tekla.Structures.Geometry3d.Point point2 = null;
 
 				if (onePointMode)
 				{
-					Log("👉 Pick 1 điểm trên mép sàn để cắt vuông góc...");
-					global::Tekla.Structures.Geometry3d.Point pickPt = picker.PickPoint("Pick điểm cắt trên mép sàn:");
+					Log("👉 Pick 1 point on slab edge for perpendicular cut...");
+					global::Tekla.Structures.Geometry3d.Point pickPt = picker.PickPoint("Pick cut point on slab edge:");
 					string edgeInfo;
 					if (!GetPerpendicularCutPointsFrom1Point(contourPlate, pickPt, out point, out point2, out edgeInfo))
 					{
-						Log("⚠ Không xác định được mép sàn gần điểm pick. Vui lòng thử lại.");
+						Log("⚠ Cannot detect slab edge near picked point. Please try again.");
 						if (!continuous) break;
 						continue;
 					}
-					Log("📐 [1-Point Cut] Tự động cắt vuông góc: " + edgeInfo);
+					Log("📐 [1-Point Cut] Auto perpendicular cut: " + edgeInfo);
 				}
 				else
 				{
-					Log("👉 Pick điểm thứ 1 của đường cắt...");
-					point = picker.PickPoint("Pick điểm thứ 1:");
-					Log("👉 Pick điểm thứ 2 của đường cắt...");
-					point2 = picker.PickPoint("Pick điểm thứ 2:");
+					Log("👉 Pick 1st cut point...");
+					point = picker.PickPoint("Pick 1st point:");
+					Log("👉 Pick 2nd cut point...");
+					point2 = picker.PickPoint("Pick 2nd point:");
 
 					if (Distance(point, point2) < 1.0)
 					{
-						Log("⚠️ Hai điểm cắt quá gần nhau (< 1mm). Đã hủy.");
+						Log("⚠️ Cut points are too close (< 1mm). Operation cancelled.");
 						if (!continuous)
 						{
 							break;
@@ -335,7 +335,7 @@ public class SplitSlabDialog : Form
 						point2 = StraightenCutLine(contourPlate, point, point2, out alignReason);
 						if (!string.IsNullOrEmpty(alignReason))
 						{
-							Log("🎯 [Auto-Snap] Đã nắn thẳng theo: " + alignReason);
+							Log("🎯 [Auto-Snap] Straightened along: " + alignReason);
 						}
 					}
 				}
@@ -345,7 +345,7 @@ public class SplitSlabDialog : Form
 				{
 					_model.CommitChanges();
 					num++;
-					Log(string.Format("✅ TÁCH SÀN THÀNH CÔNG! (Sàn gốc ID: {0}, Sàn mới ID: {1})", contourPlate.Identifier.ID, (newSlab != null) ? newSlab.Identifier.ID.ToString() : "N/A"));
+					Log(string.Format("✅ SLAB SPLIT SUCCESSFUL! (Original ID: {0}, New ID: {1})", contourPlate.Identifier.ID, (newSlab != null) ? newSlab.Identifier.ID.ToString() : "N/A"));
 					if (chkSelectNew.Checked && newSlab != null)
 					{
 						try
@@ -363,7 +363,7 @@ public class SplitSlabDialog : Form
 				}
 				else
 				{
-					Log("⚠️ Đường cắt không đi xuyên qua chu vi tấm sàn.");
+					Log("⚠️ Cut line does not intersect slab boundary.");
 				}
 				if (!continuous)
 				{
@@ -372,14 +372,14 @@ public class SplitSlabDialog : Form
 			}
 			catch
 			{
-				Log("Thao tác kết thúc hoặc đã nhấn phím Esc.");
+				Log("Operation finished or cancelled by Esc.");
 				break;
 			}
 		}
 		while (continuous);
 		if (num > 0)
 		{
-			Log($"Hoàn tất. Số lần tách thành công: {num}");
+			Log($"Completed. Successful splits: {num}");
 		}
 	}
 
@@ -391,7 +391,7 @@ public class SplitSlabDialog : Form
 		}
 		if (!_model.GetConnectionStatus())
 		{
-			MessageBox.Show("Chưa kết nối mô hình Tekla. Vui lòng mở model dự án trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			MessageBox.Show("Tekla model is not connected. Please open a Tekla model first!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 			return;
 		}
 		double gap = (double)numGap.Value;
@@ -402,22 +402,22 @@ public class SplitSlabDialog : Form
 		{
 			try
 			{
-				Log("👉 Vui lòng pick chọn tấm sàn (ContourPlate)...");
-				ModelObject modelObject = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Pick sàn (ContourPlate) cần tách:");
+				Log("👉 Please pick a slab (ContourPlate)...");
+				ModelObject modelObject = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Pick slab (ContourPlate) to split:");
 				if (!(modelObject is ContourPlate contourPlate))
 				{
-					Log("❌ Đối tượng chọn không phải ContourPlate!");
+					Log("❌ Selected object is not a ContourPlate!");
 					if (!continuous) break;
 					continue;
 				}
-				Log($"Đã chọn sàn ID: {contourPlate.Identifier.ID} ({contourPlate.Profile.ProfileString})");
+				Log($"Selected slab ID: {contourPlate.Identifier.ID} ({contourPlate.Profile.ProfileString})");
 
-				Log("👉 Pick các điểm của đường cắt, sau đó nhấn CHUỘT GIỮA (hoặc Enter) để hoàn tất:");
-				ArrayList rawPoints = picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "Pick các điểm cắt, click chuột giữa (hoặc Enter) khi xong:");
+				Log("👉 Pick cut points, then press MIDDLE CLICK (or Enter) to finish:");
+				ArrayList rawPoints = picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "Pick cut points, middle click (or Enter) when done:");
 
 				if (rawPoints == null || rawPoints.Count < 2)
 				{
-					Log("⚠️ Cần pick ít nhất 2 điểm để xác định đường cắt. Đã hủy.");
+					Log("⚠️ At least 2 points are required to define cut line. Cancelled.");
 					if (!continuous) break;
 					continue;
 				}
@@ -430,7 +430,7 @@ public class SplitSlabDialog : Form
 
 				if (cutPoints.Count < 2)
 				{
-					Log("⚠️ Số điểm hợp lệ < 2. Đã hủy.");
+					Log("⚠️ Valid point count < 2. Cancelled.");
 					if (!continuous) break;
 					continue;
 				}
@@ -452,12 +452,12 @@ public class SplitSlabDialog : Form
 
 				if (cutPoints.Count < 2)
 				{
-					Log("⚠️ Số điểm hợp lệ < 2. Đã hủy.");
+					Log("⚠️ Valid point count < 2. Cancelled.");
 					if (!continuous) break;
 					continue;
 				}
 
-				Log($"-> Nhận diện {cutPoints.Count} điểm = {cutPoints.Count - 1} đường cắt độc lập.");
+				Log($"-> Detected {cutPoints.Count} points = {cutPoints.Count - 1} independent cut line(s).");
 
 				List<ContourPlate> allResultSlabs = new List<ContourPlate>();
 
@@ -473,7 +473,7 @@ public class SplitSlabDialog : Form
 						p2 = StraightenCutLine(contourPlate, p1, p2, out alignReason);
 						if (!string.IsNullOrEmpty(alignReason))
 						{
-							Log("🎯 [Auto-Snap] Đã nắn thẳng theo: " + alignReason);
+							Log("🎯 [Auto-Snap] Straightened along: " + alignReason);
 						}
 					}
 
@@ -484,11 +484,11 @@ public class SplitSlabDialog : Form
 						num++;
 						allResultSlabs.Add(contourPlate);
 						if (newSlab != null) allResultSlabs.Add(newSlab);
-						Log(string.Format("✅ TÁCH SÀN THÀNH CÔNG! (Sàn gốc ID: {0}, Sàn mới ID: {1})", contourPlate.Identifier.ID, (newSlab != null) ? newSlab.Identifier.ID.ToString() : "N/A"));
+						Log(string.Format("✅ SLAB SPLIT SUCCESSFUL! (Original ID: {0}, New ID: {1})", contourPlate.Identifier.ID, (newSlab != null) ? newSlab.Identifier.ID.ToString() : "N/A"));
 					}
 					else
 					{
-						Log("⚠️ Đường cắt không đi xuyên qua chu vi tấm sàn.");
+						Log("⚠️ Cut line does not intersect slab boundary.");
 					}
 				}
 				else
@@ -503,11 +503,11 @@ public class SplitSlabDialog : Form
 							num++;
 							allResultSlabs.Add(contourPlate);
 							if (newSlab != null) allResultSlabs.Add(newSlab);
-							Log(string.Format("✅ TÁCH SÀN ZICZAC THÀNH CÔNG! (Sàn gốc ID: {0}, Sàn mới ID: {1})", contourPlate.Identifier.ID, (newSlab != null) ? newSlab.Identifier.ID.ToString() : "N/A"));
+							Log(string.Format("✅ POLYLINE SPLIT SUCCESSFUL! (Original ID: {0}, New ID: {1})", contourPlate.Identifier.ID, (newSlab != null) ? newSlab.Identifier.ID.ToString() : "N/A"));
 						}
 						else
 						{
-							Log("⚠️ Tách sàn ziczac không thành công. Hãy đảm bảo điểm đầu và cuối nằm trên mép sàn.");
+							Log("⚠️ Polyline split failed. Ensure start and end points lie on slab edges.");
 						}
 					}
 					else
@@ -519,15 +519,15 @@ public class SplitSlabDialog : Form
 							_model.CommitChanges();
 							num++;
 							allResultSlabs.AddRange(multiSlabs);
-							Log($"✅ TÁCH ĐA ĐIỂM THÀNH CÔNG! Đã chia thành {multiSlabs.Count} tấm sàn:");
+							Log($"✅ MULTI-POINT SPLIT SUCCESSFUL! Split into {multiSlabs.Count} slabs:");
 							for (int k = 0; k < multiSlabs.Count; k++)
 							{
-								Log($"   ➔ Sàn #{k + 1}: ID {multiSlabs[k].Identifier.ID} (Class {multiSlabs[k].Class})");
+								Log($"   ➔ Slab #{k + 1}: ID {multiSlabs[k].Identifier.ID} (Class {multiSlabs[k].Class})");
 							}
 						}
 						else
 						{
-							Log("⚠️ Tách đa điểm không thành công. Hãy kiểm tra các đoạn cắt nối xuyên qua mép sàn.");
+							Log("⚠️ Multi-point split failed. Please check cut segments across slab boundaries.");
 						}
 					}
 				}
@@ -548,7 +548,7 @@ public class SplitSlabDialog : Form
 			}
 			catch
 			{
-				Log("Thao tác kết thúc hoặc đã nhấn phím Esc.");
+				Log("Operation finished or cancelled by Esc.");
 				break;
 			}
 		}
@@ -556,7 +556,7 @@ public class SplitSlabDialog : Form
 
 		if (num > 0)
 		{
-			Log($"Hoàn tất. Số lần tách thành công: {num}");
+			Log($"Completed. Successful splits: {num}");
 		}
 	}
 
@@ -617,11 +617,11 @@ public class SplitSlabDialog : Form
 				resultSlabs.Add(newSlab);
 				_model.CommitChanges();
 				successCuts++;
-				Log($"-> Đoạn cắt #{segIdx + 1} ({pA.X:F0},{pA.Y:F0} ➔ {pB.X:F0},{pB.Y:F0}): Tách thành công! (Sàn mới ID: {newSlab.Identifier.ID})");
+				Log($"-> Cut segment #{segIdx + 1} ({pA.X:F0},{pA.Y:F0} ➔ {pB.X:F0},{pB.Y:F0}): Split successful! (New ID: {newSlab.Identifier.ID})");
 			}
 			else
 			{
-				Log($"⚠️ Đoạn cắt #{segIdx + 1} ({pA.X:F0},{pA.Y:F0} ➔ {pB.X:F0},{pB.Y:F0}) không thể cắt qua sàn nào.");
+				Log($"⚠️ Cut segment #{segIdx + 1} ({pA.X:F0},{pA.Y:F0} ➔ {pB.X:F0},{pB.Y:F0}) did not intersect any slab.");
 			}
 		}
 
@@ -717,7 +717,7 @@ public class SplitSlabDialog : Form
 				ApplyClassToSlab(newSlab, slab.Class, selectedIndex, 0);
 				newSlab.Modify();
 				_model.CommitChanges();
-				Log(string.Format("✅ TÁCH SÀN ZICZAC THÀNH CÔNG! (Sàn gốc ID: {0}, Sàn mới ID: {1})", slab.Identifier.ID, newSlab.Identifier.ID));
+				Log(string.Format("✅ POLYLINE SPLIT SUCCESSFUL! (Original ID: {0}, New ID: {1})", slab.Identifier.ID, newSlab.Identifier.ID));
 				return true;
 			}
 		}
@@ -824,7 +824,7 @@ public class SplitSlabDialog : Form
 		newSlab.Insert();
 
 		_model.CommitChanges();
-		Log($"✅ TÁCH SÀN ZICZAC (HÌNH HỌC) THÀNH CÔNG! Sàn 1: {loop1.Count} đỉnh | Sàn 2: {loop2.Count} đỉnh");
+		Log($"✅ POLYLINE (GEOMETRIC) SPLIT SUCCESSFUL! Slab 1: {loop1.Count} vertices | Slab 2: {loop2.Count} vertices");
 		return true;
 	}
 
@@ -1040,8 +1040,8 @@ public class SplitSlabDialog : Form
 		nSlab.Normalize();
 
 		var candidates = new List<Tuple<Vector, string>>();
-		candidates.Add(Tuple.Create(new Vector(1, 0, 0), "Trục X"));
-		candidates.Add(Tuple.Create(new Vector(0, 1, 0), "Trục Y"));
+		candidates.Add(Tuple.Create(new Vector(1, 0, 0), "X Axis"));
+		candidates.Add(Tuple.Create(new Vector(0, 1, 0), "Y Axis"));
 
 		for (int i = 0; i < poly.Count; i++)
 		{
@@ -1050,11 +1050,11 @@ public class SplitSlabDialog : Form
 			Vector edgeVec = new Vector(pt2.X - pt1.X, pt2.Y - pt1.Y, pt2.Z - pt1.Z);
 			if (edgeVec.Normalize() > 0.001)
 			{
-				candidates.Add(Tuple.Create(new Vector(edgeVec), $"Song song Cạnh #{i + 1}"));
+				candidates.Add(Tuple.Create(new Vector(edgeVec), $"Parallel to Edge #{i + 1}"));
 				Vector perpVec = edgeVec.Cross(nSlab);
 				if (perpVec.Normalize() > 0.001)
 				{
-					candidates.Add(Tuple.Create(new Vector(perpVec), $"Vuông góc Cạnh #{i + 1}"));
+					candidates.Add(Tuple.Create(new Vector(perpVec), $"Perpendicular to Edge #{i + 1}"));
 				}
 			}
 		}
@@ -1079,7 +1079,7 @@ public class SplitSlabDialog : Form
 		if (bestDir != null && maxDot > 0.7071)
 		{
 			double angleDeg = Math.Acos(Math.Min(1.0, maxDot)) * (180.0 / Math.PI);
-			alignReason = $"{bestName} (Lệch nắn: {angleDeg:F1}°)";
+			alignReason = $"{bestName} (Snap angle: {angleDeg:F1}°)";
 			return new global::Tekla.Structures.Geometry3d.Point(p1.X + bestDir.X * len, p1.Y + bestDir.Y * len, p1.Z + bestDir.Z * len);
 		}
 
@@ -1140,7 +1140,7 @@ public class SplitSlabDialog : Form
 		double ext = 15000.0;
 		p1 = new global::Tekla.Structures.Geometry3d.Point(center.X - cutDir.X * ext, center.Y - cutDir.Y * ext, center.Z - cutDir.Z * ext);
 		p2 = new global::Tekla.Structures.Geometry3d.Point(center.X + cutDir.X * ext, center.Y + cutDir.Y * ext, center.Z + cutDir.Z * ext);
-		edgeInfo = $"Vuông góc Cạnh #{bestEdgeIdx}";
+		edgeInfo = $"Perpendicular to Edge #{bestEdgeIdx}";
 		return true;
 	}
 
@@ -1227,7 +1227,7 @@ public class SplitSlabDialog : Form
 		}
 		newSlab.Contour = contour2;
 		newSlab.Insert();
-		Log($"-> Sàn 1: {list2.Count} đỉnh | Sàn 2: {list3.Count} đỉnh");
+		Log($"-> Slab 1: {list2.Count} vertices | Slab 2: {list3.Count} vertices");
 		return true;
 	}
 
