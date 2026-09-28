@@ -13,15 +13,28 @@ public class MainForm : Form
 
 	private SplitSlabDialog _splitSlabDlg;
 
-	private string _appDir = "D:\\Tekla_\\v20\\application";
-
 	[STAThread]
 	public static void Main(string[] args)
 	{
 		AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
+		// 1. Direct launching if exe name indicates Split-Slab / AppSplitSlab
+		string friendlyName = Path.GetFileNameWithoutExtension(AppDomain.CurrentDomain.FriendlyName ?? "").ToLowerInvariant();
+		if (friendlyName.Contains("split") || friendlyName.Contains("slab"))
+		{
+			RunSplitSlabApp();
+			return;
+		}
+
+		// 2. Command-line argument routing
 		if (args != null && args.Length > 0)
 		{
 			string arg = args[0].ToLowerInvariant();
+			if (arg.Contains("split") || arg.Contains("slab"))
+			{
+				RunSplitSlabApp();
+				return;
+			}
 			if (arg.Contains("clash"))
 			{
 				LaunchClashCheckApp();
@@ -37,8 +50,22 @@ public class MainForm : Form
 				LaunchRebarErrorApp();
 				return;
 			}
+			if (arg.Contains("overlap"))
+			{
+				LaunchOverlapChecker();
+				return;
+			}
 		}
 		RunApp();
+	}
+
+	[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+	public static void RunSplitSlabApp()
+	{
+		Application.EnableVisualStyles();
+		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
+		Model model = new Model();
+		Application.Run(new SplitSlabDialog(model));
 	}
 
 	[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
@@ -201,145 +228,176 @@ public class MainForm : Form
 		return button;
 	}
 
+	private static string FindExecutable(string exeName, string subFolder = null)
+	{
+		var candidates = new System.Collections.Generic.List<string>();
+		string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+		// 1. Current application directory
+		candidates.Add(Path.Combine(baseDir, exeName));
+		if (!string.IsNullOrEmpty(subFolder))
+		{
+			candidates.Add(Path.Combine(baseDir, subFolder, exeName));
+			candidates.Add(Path.Combine(baseDir, "..", subFolder, exeName));
+		}
+
+		// 2. Active Tekla Structures installation directory
+		try
+		{
+			var procs = Process.GetProcessesByName("TeklaStructures");
+			if (procs.Length > 0)
+			{
+				string teklaBin = Path.GetDirectoryName(procs[0].MainModule.FileName);
+				if (!string.IsNullOrEmpty(teklaBin))
+				{
+					string teklaRoot = Path.GetFullPath(Path.Combine(teklaBin, "..", ".."));
+					candidates.Add(Path.Combine(teklaRoot, "applications", exeName));
+					if (!string.IsNullOrEmpty(subFolder))
+					{
+						candidates.Add(Path.Combine(teklaRoot, "applications", subFolder, exeName));
+					}
+				}
+			}
+		}
+		catch { }
+
+		// 3. Standard C: drive directories
+		string[] commonCDirs = new string[]
+		{
+			@"C:\TeklaStructures\2020.0\applications",
+			@"C:\TeklaStructures\2021.0\applications",
+			@"C:\TeklaStructures\2022.0\applications",
+			@"C:\TeklaStructures\2025.0\applications",
+			@"C:\tekla\My-tool",
+			@"C:\Tekla_\v20\application",
+			@"C:\Tekla_Addin"
+		};
+		foreach (string dir in commonCDirs)
+		{
+			candidates.Add(Path.Combine(dir, exeName));
+			if (!string.IsNullOrEmpty(subFolder))
+			{
+				candidates.Add(Path.Combine(dir, subFolder, exeName));
+			}
+		}
+
+		// 4. Fallback D: drive directories
+		string[] fallbackDDirs = new string[]
+		{
+			@"D:\tekla\My-tool",
+			@"D:\Tekla_\v20\application",
+			@"D:\Tekla_\My-tool"
+		};
+		foreach (string dir in fallbackDDirs)
+		{
+			candidates.Add(Path.Combine(dir, exeName));
+			if (!string.IsNullOrEmpty(subFolder))
+			{
+				candidates.Add(Path.Combine(dir, subFolder, exeName));
+			}
+		}
+
+		foreach (string path in candidates)
+		{
+			if (File.Exists(path)) return path;
+		}
+
+		return null;
+	}
+
 	private void LaunchExternalApp(string exeName)
 	{
-		string text = Path.Combine(_appDir, exeName);
-		if (File.Exists(text))
+		string targetPath = FindExecutable(exeName);
+		if (!string.IsNullOrEmpty(targetPath))
 		{
 			try
 			{
-				Process.Start(text);
+				Process.Start(targetPath);
 				return;
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi khởi chạy: " + ex.Message);
+				MessageBox.Show("Lỗi khởi chạy " + exeName + ": " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 		}
-		MessageBox.Show("Không tìm thấy công cụ: " + text, "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy công cụ: " + exeName + "\nVui lòng copy ứng dụng vào thư mục công cụ hoặc C:\\tekla\\My-tool\\ hoặc C:\\TeklaStructures\\...\\applications", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Information);
 	}
 
-	private void LaunchOverlapChecker()
+	private static void LaunchOverlapChecker()
 	{
-		string[] searchPaths = new string[]
+		string targetPath = FindExecutable("Overlap.exe", "Overlap");
+		if (!string.IsNullOrEmpty(targetPath))
 		{
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Overlap.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Overlap", "Overlap.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "Overlap", "Overlap.exe"),
-			"D:\\tekla\\My-tool\\Overlap.exe",
-			"D:\\tekla\\My-tool\\Overlap\\Overlap.exe"
-		};
-
-		foreach (string path in searchPaths)
-		{
-			if (File.Exists(path))
+			try
 			{
-				try
-				{
-					Process.Start(path);
-					return;
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show("Lỗi khởi chạy Overlap: " + ex.Message);
-					return;
-				}
+				Process.Start(targetPath);
+				return;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khởi chạy Overlap: " + ex.Message);
+				return;
 			}
 		}
-		MessageBox.Show("Không tìm thấy: " + searchPaths[0], "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy Overlap.exe!\nVui lòng đặt Overlap.exe trong cùng thư mục hoặc C:\\tekla\\My-tool\\", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 	}
 
 	private static void LaunchClashCheckApp()
 	{
-		string[] searchPaths = new string[]
+		string targetPath = FindExecutable("Clash-check.exe", "ClashCheck") ?? FindExecutable("AppClashCheck.exe");
+		if (!string.IsNullOrEmpty(targetPath))
 		{
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Clash-check.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ClashCheck", "Clash-check.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "ClashCheck", "Clash-check.exe"),
-			"D:\\tekla\\My-tool\\Clash-check.exe",
-			"D:\\Tekla_\\My-tool\\Clash-check.exe",
-			"D:\\Tekla_\\v20\\application\\AppClashCheck.exe"
-		};
-
-		foreach (string path in searchPaths)
-		{
-			if (File.Exists(path))
+			try
 			{
-				try
-				{
-					Process.Start(path);
-					return;
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show("Lỗi khởi chạy Clash-check: " + ex.Message);
-					return;
-				}
+				Process.Start(targetPath);
+				return;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khởi chạy Clash-check: " + ex.Message);
+				return;
 			}
 		}
-		MessageBox.Show("Không tìm thấy công cụ: " + searchPaths[0], "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy công cụ: Clash-check.exe\nVui lòng đặt vào C:\\tekla\\My-tool\\ hoặc thư mục công cụ.", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 	}
 
 	private static void LaunchRebarErrorApp()
 	{
-		string[] searchPaths = new string[]
+		string targetPath = FindExecutable("Rebar-error.exe", "RebarError");
+		if (!string.IsNullOrEmpty(targetPath))
 		{
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Rebar-error.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RebarError", "Rebar-error.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "RebarError", "Rebar-error.exe"),
-			"D:\\tekla\\My-tool\\Rebar-error.exe",
-			"D:\\Tekla_\\My-tool\\Rebar-error.exe"
-		};
-
-		foreach (string path in searchPaths)
-		{
-			if (File.Exists(path))
+			try
 			{
-				try
-				{
-					Process.Start(path);
-					return;
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show("Lỗi khởi chạy Rebar-error: " + ex.Message);
-					return;
-				}
+				Process.Start(targetPath);
+				return;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khởi chạy Rebar-error: " + ex.Message);
+				return;
 			}
 		}
-		MessageBox.Show("Không tìm thấy công cụ: " + searchPaths[0], "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy công cụ: Rebar-error.exe\nVui lòng đặt vào C:\\tekla\\My-tool\\ hoặc thư mục công cụ.", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 	}
 
 	private static void LaunchConvertRebarApp()
 	{
-		string[] searchPaths = new string[]
+		string targetPath = FindExecutable("Convert-rebar.exe", "ConvertRebar");
+		if (!string.IsNullOrEmpty(targetPath))
 		{
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Convert-rebar.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ConvertRebar", "Convert-rebar.exe"),
-			Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "ConvertRebar", "Convert-rebar.exe"),
-			"D:\\tekla\\My-tool\\Convert-rebar.exe",
-			"D:\\tekla\\My-tool\\ConvertRebar\\Convert-rebar.exe",
-			"D:\\Tekla_\\My-tool\\Convert-rebar.exe"
-		};
-
-		foreach (string path in searchPaths)
-		{
-			if (File.Exists(path))
+			try
 			{
-				try
-				{
-					Process.Start(path);
-					return;
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show("Lỗi khởi chạy Convert-rebar: " + ex.Message);
-					return;
-				}
+				Process.Start(targetPath);
+				return;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khởi chạy Convert-rebar: " + ex.Message);
+				return;
 			}
 		}
-		MessageBox.Show("Không tìm thấy công cụ: " + searchPaths[0], "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		MessageBox.Show("Không tìm thấy công cụ: Convert-rebar.exe\nVui lòng đặt vào C:\\tekla\\My-tool\\ hoặc thư mục công cụ.", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 	}
 
 	private void ConnectTekla()

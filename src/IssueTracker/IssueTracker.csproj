@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <AssemblyName>My-tool</AssemblyName>
+    <AssemblyName>AppIssueTracker</AssemblyName>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net48</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
@@ -12,10 +12,13 @@
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)MyTool.exe" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)Split-Slab.exe" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)AppSplitSlab.exe" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)IssueTracker.exe" SkipUnchangedFiles="true" />
   </Target>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="7.5.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Tekla.Structures">

@@ -129,7 +129,16 @@ namespace BimCommands.Tekla.ClashCheck
         private StatusStrip statusStrip;
         private ToolStripStatusLabel lblStatusText;
         private ToolStripProgressBar progressBar;
+        private ToolStripStatusLabel lblFilterStatus;
         private ToolStripStatusLabel lblCountText;
+        private CheckBox chkAutoZoom;
+        private System.Windows.Forms.Timer _zoomDebounceTimer;
+        private bool _isBulkUpdatingGrid = false;
+
+        // Quản lý trạng thái lọc theo từng cột và ẩn dòng hàng loạt
+        private readonly Dictionary<int, HashSet<string>> _columnFilters = new Dictionary<int, HashSet<string>>();
+        private readonly HashSet<DataGridViewRow> _manuallyHiddenRows = new HashSet<DataGridViewRow>();
+        private readonly Dictionary<int, string> _originalHeaderTexts = new Dictionary<int, string>();
 
         // Context Menu chuột phải cho DataGridView kết quả va chạm
         private ContextMenuStrip _clashContextMenu;
@@ -230,6 +239,17 @@ namespace BimCommands.Tekla.ClashCheck
         public MainForm()
         {
             InitializeComponent();
+
+            _zoomDebounceTimer = new System.Windows.Forms.Timer { Interval = 130 };
+            _zoomDebounceTimer.Tick += (s, e) =>
+            {
+                _zoomDebounceTimer.Stop();
+                if (chkAutoZoom != null && chkAutoZoom.Checked && dgvClashes != null && dgvClashes.SelectedRows.Count > 0)
+                {
+                    ZoomToSelectedClash(true);
+                }
+            };
+
             LoadSettings();
             ConnectTekla();
         }
@@ -425,6 +445,20 @@ namespace BimCommands.Tekla.ClashCheck
                 ForeColor = DrawColor.White
             };
 
+            ToolTip filterTooltip = new ToolTip();
+
+            chkAutoZoom = new CheckBox
+            {
+                Text = "⚡ Auto Zoom 3D",
+                Checked = true,
+                ForeColor = DrawColor.FromArgb(56, 189, 248), // Sky blue
+                Font = new DrawFont(this.Font.FontFamily, 8.5F, FontStyle.Bold),
+                Location = new DrawPoint(1075, 12),
+                AutoSize = true,
+                Cursor = Cursors.Hand
+            };
+            filterTooltip.SetToolTip(chkAutoZoom, "Khi bật: Tự động Zoom và chọn cốt thép trong Tekla 3D khi bấm phím mũi tên Lên/Xuống hoặc kích 1 lần vào dòng.");
+
             // Row 2: Action Buttons
             btnScan = CreateFlatButton("⚡ Run Clash Check", new DrawPoint(15, 60), new DrawSize(140, 78), DrawColor.FromArgb(37, 99, 235), DrawColor.White);
             btnScan.Font = new DrawFont("Segoe UI", 10F, FontStyle.Bold);
@@ -512,7 +546,6 @@ namespace BimCommands.Tekla.ClashCheck
             };
             chkOnlyFilter.CheckedChanged += (s, e) => txtOnlyKeywords.Enabled = chkOnlyFilter.Checked;
 
-            ToolTip filterTooltip = new ToolTip();
             filterTooltip.SetToolTip(chkIgnoreFilter, "Enable/disable skipping auxiliary IFC objects when clash checking with rebar (IfcConvertOptions.AddSkipNames)");
             filterTooltip.SetToolTip(txtIgnoreKeywords, "Enter list of IFC object names/keywords to skip (one keyword per line or comma separated).\nExample:\nBolt assembly\nSAFETY_BAR\nLUG\nLADDER\nSAFETY_HOOK\nVBRACE\nWELD_COUPLER(10)\nCHECK_COUPLER(10)");
             filterTooltip.SetToolTip(btnResetIgnore, "Reset to default skip keywords");
@@ -542,6 +575,7 @@ namespace BimCommands.Tekla.ClashCheck
             controlPanel.Controls.Add(chkOnlyFilter);
             controlPanel.Controls.Add(btnClearOnly);
             controlPanel.Controls.Add(txtOnlyKeywords);
+            controlPanel.Controls.Add(chkAutoZoom);
 
             // 3. DataGridView
             dgvClashes = new DataGridView
@@ -553,7 +587,7 @@ namespace BimCommands.Tekla.ClashCheck
                 BorderStyle = BorderStyle.None,
                 CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
                 SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                MultiSelect = false,
+                MultiSelect = true,
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
                 ReadOnly = true,
@@ -584,8 +618,18 @@ namespace BimCommands.Tekla.ClashCheck
             dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColSeverity", HeaderText = "Severity", Width = 90 });
             dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColCoord", HeaderText = "Clash Point (X, Y, Z)", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
 
+            foreach (DataGridViewColumn col in dgvClashes.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.Programmatic;
+                _originalHeaderTexts[col.Index] = col.HeaderText;
+                col.HeaderText = col.HeaderText + " ▾";
+            }
+
             dgvClashes.CellFormatting += DgvClashes_CellFormatting;
-            dgvClashes.CellDoubleClick += (s, e) => ZoomToSelectedClash();
+            dgvClashes.CellDoubleClick += (s, e) => ZoomToSelectedClash(false);
+            dgvClashes.CellClick += DgvClashes_CellClick;
+            dgvClashes.SelectionChanged += DgvClashes_SelectionChanged;
+            dgvClashes.ColumnHeaderMouseClick += (s, e) => ShowColumnFilterPopup(e.ColumnIndex);
             SetupClashesContextMenu();
 
             // 4. Status Strip
@@ -609,6 +653,16 @@ namespace BimCommands.Tekla.ClashCheck
                 Style = ProgressBarStyle.Continuous
             };
 
+            lblFilterStatus = new ToolStripStatusLabel
+            {
+                Text = "🧹 Xóa lọc",
+                ForeColor = DrawColor.FromArgb(253, 224, 71), // Yellow
+                IsLink = true,
+                Visible = false,
+                LinkBehavior = LinkBehavior.HoverUnderline
+            };
+            lblFilterStatus.Click += (s, e) => ClearAllColumnFilters();
+
             lblCountText = new ToolStripStatusLabel
             {
                 Text = "0 clashes",
@@ -618,6 +672,7 @@ namespace BimCommands.Tekla.ClashCheck
 
             statusStrip.Items.Add(lblStatusText);
             statusStrip.Items.Add(progressBar);
+            statusStrip.Items.Add(lblFilterStatus);
             statusStrip.Items.Add(lblCountText);
 
             // Assemble Form
@@ -997,6 +1052,9 @@ namespace BimCommands.Tekla.ClashCheck
             lblStatusText.Text = "Preparing data...";
             dgvClashes.Rows.Clear();
             _currentClashes.Clear();
+            _manuallyHiddenRows.Clear();
+            _columnFilters.Clear();
+            UpdateFilterHeaderStyles();
             ClearHighlights();
 
             IfcScopeMode ifcMode = IfcScopeMode.AutoSpatialAllIfc;
@@ -1346,6 +1404,22 @@ namespace BimCommands.Tekla.ClashCheck
             }
             dgvClashes.ResumeLayout();
 
+            // Tự động chọn dòng hiển thị đầu tiên và focus vào bảng để phím mũi tên hoạt động ngay
+            if (dgvClashes.Rows.Count > 0)
+            {
+                for (int i = 0; i < dgvClashes.Rows.Count; i++)
+                {
+                    if (dgvClashes.Rows[i].Visible)
+                    {
+                        dgvClashes.ClearSelection();
+                        dgvClashes.Rows[i].Selected = true;
+                        try { dgvClashes.CurrentCell = dgvClashes.Rows[i].Cells[0]; } catch { }
+                        dgvClashes.Focus();
+                        break;
+                    }
+                }
+            }
+
             UpdateClashCountStatus();
             lblStatusText.Text = string.Format("Scan completed! Detected {0} clashes in {1:F1} seconds.", _currentClashes.Count, sw.Elapsed.TotalSeconds);
             ResetUiState();
@@ -1363,7 +1437,7 @@ namespace BimCommands.Tekla.ClashCheck
 
         /// <summary>
         /// Initialize Context Menu (ContextMenuStrip) and keyboard shortcuts for the clash grid.
-        /// Allows users to hide reviewed rows, unhide all, zoom to clash, or copy clash details.
+        /// Allows users to hide reviewed rows (multi-row selection supported), unhide all, zoom to clash, or copy clash details.
         /// </summary>
         private void SetupClashesContextMenu()
         {
@@ -1374,66 +1448,119 @@ namespace BimCommands.Tekla.ClashCheck
                 ShowImageMargin = false
             };
 
-            _menuItemHideRow = new ToolStripMenuItem("👁️ Hide this row (Reviewed)       [Key H / Delete]")
+            _menuItemHideRow = new ToolStripMenuItem("👁️ Ẩn dòng đã chọn       [Phím H / Delete]")
             {
                 ForeColor = DrawColor.FromArgb(253, 224, 71), // Highlight Yellow
                 Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold)
             };
             _menuItemHideRow.Click += (s, e) => HideSelectedClashRows();
 
-            _menuItemZoom = new ToolStripMenuItem("🔍 Zoom & Select in Tekla")
+            _menuItemZoom = new ToolStripMenuItem("🔍 Zoom & Chọn trong Tekla")
             {
                 ForeColor = DrawColor.FromArgb(147, 197, 253)
             };
             _menuItemZoom.Click += (s, e) => ZoomToSelectedClash();
 
-            _menuItemCopy = new ToolStripMenuItem("📋 Copy Clash Details (Clipboard)")
+            var menuItemHighlightSelected = new ToolStripMenuItem("📍 Highlight 3D các dòng đã chọn")
             {
-                ForeColor = DrawColor.FromArgb(203, 213, 225)
+                ForeColor = DrawColor.FromArgb(216, 180, 254)
             };
-            _menuItemCopy.Click += (s, e) => CopySelectedClashInfo();
+            menuItemHighlightSelected.Click += (s, e) => HighlightSelectedClashesInTekla();
 
-            _menuItemUnhideAll = new ToolStripMenuItem("🔄 Unhide All Rows")
+            _menuItemUnhideAll = new ToolStripMenuItem("🔄 Hiện lại tất cả dòng bị ẩn")
             {
                 ForeColor = DrawColor.FromArgb(134, 239, 172)
             };
             _menuItemUnhideAll.Click += (s, e) => UnhideAllClashRows();
 
+            var menuItemClearFilters = new ToolStripMenuItem("🧹 Xóa tất cả bộ lọc cột (Clear All Column Filters)")
+            {
+                ForeColor = DrawColor.FromArgb(251, 146, 60)
+            };
+            menuItemClearFilters.Click += (s, e) => ClearAllColumnFilters();
+
+            _menuItemCopy = new ToolStripMenuItem("📋 Copy thông tin Clash (Clipboard)")
+            {
+                ForeColor = DrawColor.FromArgb(203, 213, 225)
+            };
+            _menuItemCopy.Click += (s, e) => CopySelectedClashInfo();
+
             _clashContextMenu.Items.Add(_menuItemHideRow);
             _clashContextMenu.Items.Add(_menuItemZoom);
+            _clashContextMenu.Items.Add(menuItemHighlightSelected);
             _clashContextMenu.Items.Add(new ToolStripSeparator());
             _clashContextMenu.Items.Add(_menuItemUnhideAll);
+            _clashContextMenu.Items.Add(menuItemClearFilters);
             _clashContextMenu.Items.Add(new ToolStripSeparator());
             _clashContextMenu.Items.Add(_menuItemCopy);
 
+            _clashContextMenu.Opening += (s, e) =>
+            {
+                int selCount = dgvClashes.SelectedRows.Count;
+                _menuItemHideRow.Text = selCount > 1
+                    ? string.Format("👁️ Ẩn {0} dòng đã chọn (Hide {0} Rows)       [Phím H / Delete]", selCount)
+                    : "👁️ Ẩn dòng này (Hide Row)       [Phím H / Delete]";
+                _menuItemHideRow.Enabled = selCount > 0;
+
+                int hiddenCount = _manuallyHiddenRows.Count;
+                _menuItemUnhideAll.Enabled = hiddenCount > 0;
+                _menuItemUnhideAll.Text = hiddenCount > 0
+                    ? string.Format("🔄 Hiện lại tất cả dòng bị ẩn ({0} dòng)", hiddenCount)
+                    : "🔄 Hiện lại tất cả dòng bị ẩn";
+
+                menuItemClearFilters.Enabled = _columnFilters.Count > 0;
+                menuItemHighlightSelected.Enabled = selCount > 0;
+            };
+
             dgvClashes.ContextMenuStrip = _clashContextMenu;
 
-            // Handle CellMouseDown: Right-clicking any cell selects that row immediately
+            // Handle CellMouseDown: Right-click preserves multi-selection, Left-click selects single row and focuses grid
             dgvClashes.CellMouseDown += (s, e) =>
             {
-                if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+                if (e.RowIndex < 0) return;
+
+                if (e.Button == MouseButtons.Right)
                 {
+                    // If the right-clicked row is NOT selected, select only this row
                     if (!dgvClashes.Rows[e.RowIndex].Selected)
                     {
                         dgvClashes.ClearSelection();
                         dgvClashes.Rows[e.RowIndex].Selected = true;
+                        try
+                        {
+                            dgvClashes.CurrentCell = dgvClashes.Rows[e.RowIndex].Cells[Math.Max(0, e.ColumnIndex)];
+                        }
+                        catch { }
                     }
-                    try
+                    // If row is ALREADY selected (part of multi-selection), DO NOT clear selection
+                    // and DO NOT touch CurrentCell, keeping all selected rows intact!
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    // Kích chuột trái 1 lần: Nếu không giữ Shift/Ctrl thì chọn duy nhất dòng này
+                    if ((ModifierKeys & (Keys.Shift | Keys.Control)) == 0)
                     {
-                        dgvClashes.CurrentCell = dgvClashes.Rows[e.RowIndex].Cells[Math.Max(0, e.ColumnIndex)];
-                    }
-                    catch { }
+                        if (!dgvClashes.Rows[e.RowIndex].Selected || dgvClashes.SelectedRows.Count > 1)
+                        {
+                            dgvClashes.ClearSelection();
+                            dgvClashes.Rows[e.RowIndex].Selected = true;
+                        }
 
-                    // Update hidden rows count on the menu item
-                    int hiddenCount = GetHiddenRowCount();
-                    _menuItemUnhideAll.Enabled = hiddenCount > 0;
-                    _menuItemUnhideAll.Text = hiddenCount > 0
-                        ? string.Format("🔄 Unhide All Rows ({0} rows)", hiddenCount)
-                        : "🔄 Unhide All Rows";
+                        try
+                        {
+                            dgvClashes.CurrentCell = dgvClashes.Rows[e.RowIndex].Cells[Math.Max(0, e.ColumnIndex)];
+                        }
+                        catch { }
+                    }
+
+                    if (!dgvClashes.Focused)
+                    {
+                        dgvClashes.Focus();
+                    }
                 }
             };
 
-            // Support keyboard shortcuts H or Delete to quickly hide rows while reviewing
+            // Support keyboard shortcuts H or Delete to quickly hide selected rows while reviewing
             dgvClashes.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.H)
@@ -1465,20 +1592,29 @@ namespace BimCommands.Tekla.ClashCheck
             int total = dgvClashes.Rows.Count;
             int hidden = GetHiddenRowCount();
             int visible = total - hidden;
+            int filterColCount = _columnFilters.Count(kv => kv.Value != null && kv.Value.Count > 0);
+
+            string filterInfo = filterColCount > 0 ? string.Format(" [{0} cột đang lọc]", filterColCount) : "";
 
             if (hidden > 0)
             {
-                lblCountText.Text = string.Format("{0} remaining / {1} total ({2} hidden)", visible, total, hidden);
+                lblCountText.Text = string.Format("{0} remaining / {1} total ({2} hidden){3}", visible, total, hidden, filterInfo);
             }
             else
             {
-                lblCountText.Text = string.Format("{0} clashes", total);
+                lblCountText.Text = string.Format("{0} clashes{1}", total, filterInfo);
+            }
+
+            if (lblFilterStatus != null)
+            {
+                lblFilterStatus.Visible = filterColCount > 0;
+                lblFilterStatus.Text = string.Format("🧹 Xóa lọc ({0} cột)", filterColCount);
             }
         }
 
         /// <summary>
         /// Hide currently selected clash rows (marked as reviewed).
-        /// Automatically moves selection to the next visible row for smooth review workflow.
+        /// Supports multi-row selection and automatically advances selection to the next visible row.
         /// </summary>
         private void HideSelectedClashRows()
         {
@@ -1489,6 +1625,7 @@ namespace BimCommands.Tekla.ClashCheck
             foreach (DataGridViewRow r in dgvClashes.SelectedRows)
             {
                 rowsToHide.Add(r);
+                _manuallyHiddenRows.Add(r);
                 if (r.Index > lastSelectedIndex) lastSelectedIndex = r.Index;
             }
 
@@ -1514,21 +1651,235 @@ namespace BimCommands.Tekla.ClashCheck
             }
 
             UpdateClashCountStatus();
+            lblStatusText.Text = string.Format("Đã ẩn {0} dòng clash được chọn.", rowsToHide.Count);
         }
 
         /// <summary>
-        /// Unhide all clash rows that were previously hidden.
+        /// Unhide all clash rows that were previously hidden manually.
         /// </summary>
         private void UnhideAllClashRows()
         {
-            dgvClashes.SuspendLayout();
+            _manuallyHiddenRows.Clear();
+            ApplyAllFilters();
+            lblStatusText.Text = "Đã hiện lại tất cả các dòng bị ẩn.";
+        }
+
+        /// <summary>
+        /// Highlight all currently selected clash items with 3D red boxes in Tekla Structures.
+        /// </summary>
+        private void HighlightSelectedClashesInTekla()
+        {
+            if (dgvClashes.SelectedRows.Count == 0) return;
+            var selectedItems = new List<ClashResultItem>();
+            foreach (DataGridViewRow r in dgvClashes.SelectedRows)
+            {
+                if (r.Tag is ClashResultItem item) selectedItems.Add(item);
+            }
+            if (selectedItems.Count == 0) return;
+
+            ClearHighlights();
+
+            TransformationPlane originalPlane = null;
+            WorkPlaneHandler wph = null;
+
+            try
+            {
+                var model = _model ?? new Model();
+                wph = model.GetWorkPlaneHandler();
+                if (wph != null)
+                {
+                    originalPlane = wph.GetCurrentTransformationPlane();
+                    wph.SetCurrentTransformationPlane(new TransformationPlane());
+                }
+
+                var redWireColor = new TeklaColor(1.0, 0.0, 0.0);
+                var redFillColor = new TeklaColor(1.0, 0.1, 0.1, 0.35);
+                var labelColor = new TeklaColor(1.0, 0.9, 0.2);
+                double h = 30.0;
+                var drawer = new GraphicsDrawer();
+
+                foreach (var c in selectedItems)
+                {
+                    DrawClashBox(drawer, c, h, redWireColor, redFillColor, labelColor, true);
+                }
+
+                lblStatusText.Text = string.Format("Đã highlight {0} điểm va chạm được chọn trên mô hình 3D!", selectedItems.Count);
+            }
+            catch (Exception ex)
+            {
+                lblStatusText.Text = "Lỗi highlight 3D: " + ex.Message;
+            }
+            finally
+            {
+                if (wph != null && originalPlane != null)
+                {
+                    try { wph.SetCurrentTransformationPlane(originalPlane); } catch { }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Display the modern Excel-style column filter dropdown popup when clicking a column header.
+        /// </summary>
+        private void ShowColumnFilterPopup(int columnIndex)
+        {
+            if (dgvClashes.Rows.Count == 0) return;
+
+            string colName = _originalHeaderTexts.ContainsKey(columnIndex)
+                ? _originalHeaderTexts[columnIndex]
+                : dgvClashes.Columns[columnIndex].HeaderText;
+
+            // Collect all values present in this column
+            var values = new List<string>();
             foreach (DataGridViewRow r in dgvClashes.Rows)
             {
-                r.Visible = true;
+                values.Add(r.Cells[columnIndex].Value?.ToString() ?? string.Empty);
             }
-            dgvClashes.ResumeLayout();
+
+            HashSet<string> currentFilter = null;
+            if (_columnFilters.ContainsKey(columnIndex))
+            {
+                currentFilter = _columnFilters[columnIndex];
+            }
+
+            var popup = new ColumnFilterPopup(columnIndex, colName, values, currentFilter);
+
+            popup.SortRequested += (colIdx, ascending) =>
+            {
+                dgvClashes.Sort(new RowComparer(colIdx, ascending));
+                UpdateClashCountStatus();
+            };
+
+            popup.FilterApplied += (colIdx, allowedSet) =>
+            {
+                _columnFilters[colIdx] = allowedSet;
+                ApplyAllFilters();
+            };
+
+            popup.FilterCleared += (colIdx) =>
+            {
+                _columnFilters.Remove(colIdx);
+                ApplyAllFilters();
+            };
+
+            popup.AllFiltersCleared += () =>
+            {
+                ClearAllColumnFilters();
+            };
+
+            // Calculate screen position right below the column header
+            Rectangle cellRect = dgvClashes.GetCellDisplayRectangle(columnIndex, -1, true);
+            DrawPoint screenPt = dgvClashes.PointToScreen(new DrawPoint(cellRect.Left, cellRect.Bottom));
+
+            // Prevent popup from displaying offscreen
+            Rectangle screenBounds = Screen.FromControl(this).WorkingArea;
+            if (screenPt.X + popup.Width > screenBounds.Right)
+            {
+                screenPt.X = Math.Max(screenBounds.Left, screenBounds.Right - popup.Width - 10);
+            }
+            if (screenPt.Y + popup.Height > screenBounds.Bottom)
+            {
+                screenPt.Y = Math.Max(screenBounds.Top, screenPt.Y - popup.Height - cellRect.Height);
+            }
+
+            popup.Location = screenPt;
+            popup.Show(this);
+        }
+
+        /// <summary>
+        /// Apply all active column filters and manual hidden rows to DataGridView rows.
+        /// </summary>
+        private void ApplyAllFilters()
+        {
+            dgvClashes.SuspendLayout();
+            try
+            {
+                dgvClashes.CurrentCell = null;
+
+                foreach (DataGridViewRow row in dgvClashes.Rows)
+                {
+                    if (_manuallyHiddenRows.Contains(row))
+                    {
+                        row.Visible = false;
+                        continue;
+                    }
+
+                    bool visible = true;
+                    foreach (var kvp in _columnFilters)
+                    {
+                        int colIdx = kvp.Key;
+                        var allowed = kvp.Value;
+                        if (allowed == null) continue;
+
+                        string val = row.Cells[colIdx].Value?.ToString() ?? string.Empty;
+                        if (!allowed.Contains(val))
+                        {
+                            visible = false;
+                            break;
+                        }
+                    }
+
+                    row.Visible = visible;
+                }
+
+                // Khôi phục chọn dòng hiển thị đầu tiên và gán CurrentCell để phím mũi tên hoạt động
+                DataGridViewRow firstVisibleRow = null;
+                foreach (DataGridViewRow row in dgvClashes.Rows)
+                {
+                    if (row.Visible)
+                    {
+                        firstVisibleRow = row;
+                        break;
+                    }
+                }
+
+                if (firstVisibleRow != null)
+                {
+                    dgvClashes.ClearSelection();
+                    firstVisibleRow.Selected = true;
+                    try { dgvClashes.CurrentCell = firstVisibleRow.Cells[0]; } catch { }
+                }
+            }
+            finally
+            {
+                dgvClashes.ResumeLayout();
+            }
+
+            UpdateFilterHeaderStyles();
             UpdateClashCountStatus();
-            lblStatusText.Text = "All clash rows unhidden.";
+        }
+
+        /// <summary>
+        /// Update visual indicators (arrow and color) on column headers to indicate which columns are filtered.
+        /// </summary>
+        private void UpdateFilterHeaderStyles()
+        {
+            for (int i = 0; i < dgvClashes.Columns.Count; i++)
+            {
+                var col = dgvClashes.Columns[i];
+                string original = _originalHeaderTexts.ContainsKey(i) ? _originalHeaderTexts[i] : col.HeaderText;
+
+                if (_columnFilters.ContainsKey(i) && _columnFilters[i] != null && _columnFilters[i].Count > 0)
+                {
+                    col.HeaderText = original + " 🔽";
+                    col.HeaderCell.Style.ForeColor = DrawColor.FromArgb(253, 224, 71); // Highlight Yellow
+                }
+                else
+                {
+                    col.HeaderText = original + " ▾";
+                    col.HeaderCell.Style.ForeColor = DrawColor.FromArgb(148, 163, 184); // Muted Slate
+                }
+            }
+        }
+
+        /// <summary>
+        /// Clear all active column filters.
+        /// </summary>
+        private void ClearAllColumnFilters()
+        {
+            _columnFilters.Clear();
+            ApplyAllFilters();
+            lblStatusText.Text = "Đã xóa tất cả bộ lọc cột.";
         }
 
         /// <summary>
@@ -1584,15 +1935,189 @@ namespace BimCommands.Tekla.ClashCheck
         }
 
         /// <summary>
+        /// Cho phép điều hướng nhanh trên bảng va chạm bằng phím mũi tên Lên/Xuống từ bất kỳ đâu trên form.
+        /// </summary>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Nếu đang nhập liệu trong TextBox hoặc ô số thì để mặc định
+            if (this.ActiveControl is TextBox || this.ActiveControl is NumericUpDown)
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+
+            if (keyData == Keys.Up)
+            {
+                NavigateClashGrid(-1);
+                return true;
+            }
+            if (keyData == Keys.Down)
+            {
+                NavigateClashGrid(1);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        /// <summary>
+        /// Chuyển dòng lên/xuống trên bảng dgvClashes (bỏ qua các dòng bị ẩn/bị lọc).
+        /// direction = -1: Lên dòng trước đó
+        /// direction = 1: Xuống dòng tiếp theo
+        /// </summary>
+        private void NavigateClashGrid(int direction)
+        {
+            if (dgvClashes == null || dgvClashes.Rows.Count == 0) return;
+
+            int currentIndex = -1;
+            if (dgvClashes.CurrentRow != null && dgvClashes.CurrentRow.Visible)
+            {
+                currentIndex = dgvClashes.CurrentRow.Index;
+            }
+            else if (dgvClashes.SelectedRows.Count > 0)
+            {
+                currentIndex = dgvClashes.SelectedRows[0].Index;
+            }
+
+            int targetIndex = -1;
+            if (direction > 0) // Đi xuống
+            {
+                for (int i = currentIndex + 1; i < dgvClashes.Rows.Count; i++)
+                {
+                    if (dgvClashes.Rows[i].Visible)
+                    {
+                        targetIndex = i;
+                        break;
+                    }
+                }
+            }
+            else if (direction < 0) // Đi lên
+            {
+                int start = currentIndex <= 0 ? dgvClashes.Rows.Count - 1 : currentIndex - 1;
+                for (int i = start; i >= 0; i--)
+                {
+                    if (dgvClashes.Rows[i].Visible)
+                    {
+                        targetIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (targetIndex >= 0 && targetIndex < dgvClashes.Rows.Count)
+            {
+                _isBulkUpdatingGrid = true;
+                try
+                {
+                    dgvClashes.ClearSelection();
+                    var targetRow = dgvClashes.Rows[targetIndex];
+                    targetRow.Selected = true;
+                    try
+                    {
+                        int colIdx = dgvClashes.CurrentCell != null ? dgvClashes.CurrentCell.ColumnIndex : 0;
+                        dgvClashes.CurrentCell = targetRow.Cells[Math.Max(0, colIdx)];
+                    }
+                    catch { }
+
+                    if (!targetRow.Displayed)
+                    {
+                        dgvClashes.FirstDisplayedScrollingRowIndex = targetIndex;
+                    }
+                }
+                finally
+                {
+                    _isBulkUpdatingGrid = false;
+                }
+
+                if (!dgvClashes.Focused)
+                {
+                    dgvClashes.Focus();
+                }
+
+                UpdateStatusWithSelectedClash();
+                TriggerDebouncedZoom();
+            }
+        }
+
+        /// <summary>
+        /// Kích 1 lần chuột vào ô hoặc dòng trên dgvClashes.
+        /// </summary>
+        private void DgvClashes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvClashes.Rows.Count) return;
+
+            UpdateStatusWithSelectedClash();
+            TriggerDebouncedZoom();
+        }
+
+        /// <summary>
+        /// Sự kiện khi người dùng thay đổi lựa chọn dòng (bằng phím mũi tên hoặc click chuột).
+        /// </summary>
+        private void DgvClashes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (_isBulkUpdatingGrid) return;
+            UpdateStatusWithSelectedClash();
+            TriggerDebouncedZoom();
+        }
+
+        /// <summary>
+        /// Kích hoạt bộ đếm thời gian debounce zoom (130ms) để không bị giật lag khi cuộn nhanh bằng phím mũi tên.
+        /// </summary>
+        private void TriggerDebouncedZoom()
+        {
+            if (chkAutoZoom == null || !chkAutoZoom.Checked) return;
+
+            if (_zoomDebounceTimer == null)
+            {
+                _zoomDebounceTimer = new System.Windows.Forms.Timer { Interval = 130 };
+                _zoomDebounceTimer.Tick += (s, e) =>
+                {
+                    _zoomDebounceTimer.Stop();
+                    if (chkAutoZoom != null && chkAutoZoom.Checked && dgvClashes != null && dgvClashes.SelectedRows.Count > 0)
+                    {
+                        ZoomToSelectedClash(true);
+                    }
+                };
+            }
+
+            _zoomDebounceTimer.Stop();
+            _zoomDebounceTimer.Start();
+        }
+
+        /// <summary>
+        /// Hiển thị thông tin va chạm của dòng đang được chọn lên thanh trạng thái.
+        /// </summary>
+        private void UpdateStatusWithSelectedClash()
+        {
+            if (dgvClashes.SelectedRows.Count == 1)
+            {
+                var item = dgvClashes.SelectedRows[0].Tag as ClashResultItem;
+                if (item != null)
+                {
+                    lblStatusText.Text = string.Format("▶ Clash #{0} | Thép: {1} (ID:{2}, {3}) ⚡ IFC: {4} | Overlap: {5:F1}mm ({6})",
+                        item.Index, item.RebarName, item.RebarId, item.RebarSize,
+                        !string.IsNullOrEmpty(item.IfcEntityName) ? item.IfcEntityName : item.IfcFileName,
+                        item.OverlapMm, item.Severity);
+                }
+            }
+            else if (dgvClashes.SelectedRows.Count > 1)
+            {
+                lblStatusText.Text = string.Format("Đang chọn {0} dòng va chạm. (Nhấn H để ẩn hàng loạt, hoặc chuột phải để thao tác)", dgvClashes.SelectedRows.Count);
+            }
+        }
+
+        /// <summary>
         /// Automatically zoom and focus Tekla Structures 3D view to the selected clash position
         /// and select the clashing rebar object.
         /// Temporarily switches WorkPlane to Global for accurate AABB calculation, then restores original WorkPlane.
         /// </summary>
-        private void ZoomToSelectedClash()
+        private void ZoomToSelectedClash(bool suppressErrors = false)
         {
             if (dgvClashes.SelectedRows.Count == 0)
             {
-                MessageBox.Show(this, "Please select a clash row from the table!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!suppressErrors)
+                {
+                    MessageBox.Show(this, "Please select a clash row from the table!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 return;
             }
 
@@ -1696,7 +2221,10 @@ namespace BimCommands.Tekla.ClashCheck
             }
             catch (Exception ex)
             {
-                lblStatusText.Text = "Error zooming in Tekla: " + ex.Message;
+                if (!suppressErrors)
+                {
+                    lblStatusText.Text = "Error zooming in Tekla: " + ex.Message;
+                }
             }
             finally
             {
@@ -1804,12 +2332,19 @@ namespace BimCommands.Tekla.ClashCheck
                 double h = 30.0; // Half edge length (creates 60x60x60 mm cube box)
                 var drawer = new GraphicsDrawer();
 
-                foreach (var c in _currentClashes)
+                var targetClashes = new List<ClashResultItem>();
+                foreach (DataGridViewRow r in dgvClashes.Rows)
+                {
+                    if (r.Visible && r.Tag is ClashResultItem item) targetClashes.Add(item);
+                }
+                if (targetClashes.Count == 0) targetClashes = _currentClashes;
+
+                foreach (var c in targetClashes)
                 {
                     DrawClashBox(drawer, c, h, redWireColor, redFillColor, labelColor, true);
                 }
 
-                lblStatusText.Text = string.Format("Highlighted {0} clash points with 3D red boxes!", _currentClashes.Count);
+                lblStatusText.Text = string.Format("Highlighted {0} visible clash points with 3D red boxes!", targetClashes.Count);
             }
             catch (Exception ex)
             {
@@ -1940,6 +2475,16 @@ namespace BimCommands.Tekla.ClashCheck
                 return;
             }
 
+            var exportList = new List<ClashResultItem>();
+            foreach (DataGridViewRow r in dgvClashes.Rows)
+            {
+                if (r.Visible && r.Tag is ClashResultItem item)
+                {
+                    exportList.Add(item);
+                }
+            }
+            if (exportList.Count == 0) exportList = _currentClashes;
+
             using (var sfd = new SaveFileDialog())
             {
                 sfd.Filter = "CSV File (*.csv)|*.csv|All Files (*.*)|*.*";
@@ -1951,14 +2496,15 @@ namespace BimCommands.Tekla.ClashCheck
                         var sb = new StringBuilder();
                         sb.AppendLine("No,Rebar_ID,Rebar_Name,Size,Grade,Pos_Mark,Host_Part,IFC_Entity,Length_mm,Overlap_mm,Severity,Coord_X,Coord_Y,Coord_Z");
 
-                        foreach (var c in _currentClashes)
+                        for (int i = 0; i < exportList.Count; i++)
                         {
+                            var c = exportList[i];
                             string cx = c.ClashPoint != null ? c.ClashPoint.X.ToString("F1") : "";
                             string cy = c.ClashPoint != null ? c.ClashPoint.Y.ToString("F1") : "";
                             string cz = c.ClashPoint != null ? c.ClashPoint.Z.ToString("F1") : "";
 
                             sb.AppendLine(string.Format("{0},{1},\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",{8},{9},{10},{11},{12},{13}",
-                                c.Index,
+                                i + 1,
                                 c.RebarId,
                                 c.RebarName,
                                 c.RebarSize,
@@ -1974,7 +2520,7 @@ namespace BimCommands.Tekla.ClashCheck
                         }
 
                         File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
-                        MessageBox.Show(this, "Report successfully exported to:\n" + sfd.FileName, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, string.Format("Báo cáo ({0} clashes) đã được xuất thành công ra:\n{1}", exportList.Count, sfd.FileName), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {

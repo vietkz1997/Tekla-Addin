@@ -4,5 +4,7 @@
   <Project Path="src/MyTool/MyTool.csproj" />
   <Project Path="src/ConvertRebar/ConvertRebar.csproj" />
   <Project Path="src/Overlap/Overlap.csproj" />
+  <Project Path="src/IssueTracker/IssueTracker.csproj" />
+  <Project Path="src/EnvironmentConverter/EnvironmentConverter.csproj" />
 </Solution>
 
