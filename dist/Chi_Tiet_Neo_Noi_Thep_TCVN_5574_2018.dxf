@@ -1,15 +1,11 @@
-﻿0
+0
 SECTION
 2
 HEADER
 9
 $ACADVER
 1
-AC1021
-9
-$DWGCODEPAGE
-3
-UTF-8
+AC1009
 0
 ENDSEC
 0
@@ -21,7 +17,7 @@ TABLE
 2
 LAYER
 70
-10
+12
 0
 LAYER
 2
@@ -45,17 +41,17 @@ CONTINUOUS
 0
 LAYER
 2
-BE_TONG
+BEAM_CONCRETE
 70
 0
 62
-4
+8
 6
 CONTINUOUS
 0
 LAYER
 2
-THEP_CHU
+REBAR_TOP
 70
 0
 62
@@ -65,11 +61,21 @@ CONTINUOUS
 0
 LAYER
 2
-THEP_DAI
+REBAR_BOT
 70
 0
 62
-3
+5
+6
+CONTINUOUS
+0
+LAYER
+2
+REBAR_STIRRUP
+70
+0
+62
+4
 6
 CONTINUOUS
 0
@@ -89,7 +95,7 @@ TEXT
 70
 0
 62
-7
+3
 6
 CONTINUOUS
 0
@@ -105,11 +111,21 @@ CONTINUOUS
 0
 LAYER
 2
-VUNG_CAM_NOI
+TABLE_GRID
 70
 0
 62
+7
 6
+CONTINUOUS
+0
+LAYER
+2
+TABLE_HEADER
+70
+0
+62
+2
 6
 CONTINUOUS
 0
@@ -122,6 +138,34 @@ HATCH_ZONE
 8
 6
 CONTINUOUS
+0
+ENDTAB
+0
+TABLE
+2
+STYLE
+70
+1
+0
+STYLE
+2
+STANDARD
+70
+0
+40
+0.0
+41
+1.0
+50
+0.0
+71
+0
+42
+2.5
+3
+Arial
+4
+
 0
 ENDTAB
 0
@@ -271,7 +315,7 @@ TEXT_TITLE
 40
 10.0000
 1
-QUY ĐỊNH CẤU TẠO NEO, NỐI VÀ UỐN MÓC CỐT THÉP (TCVN 5574:2018 & TCVN 1651:2018)
+QUY \U+0110\U+1ECANH C\U+1EA4U T\U+1EA0O NEO, N\U+1ED0I V\U+00C0 U\U+1ED0N M\U+00D3C C\U+1ED0T TH\U+00C9P (TCVN 5574:2018 & TCVN 1651:2018)
 72
 1
 11
@@ -293,7 +337,7 @@ TEXT
 40
 5.0000
 1
-TIÊU CHUẨN THIẾT KẾ BÊ TÔNG CỐT THÉP HIỆN HÀNH VIỆT NAM - BẢN VẼ GHI CHÚ CHUNG (GENERAL NOTES)
+TI\U+00CAU CHU\U+1EA8N THI\U+1EBET K\U+1EBE B\U+00CA T\U+00D4NG C\U+1ED0T TH\U+00C9P HI\U+1EC6N H\U+00C0NH VI\U+1EC6T NAM - B\U+1EA2N V\U+1EBC GHI CH\U+00DA CHUNG (GENERAL NOTES)
 72
 1
 11
@@ -331,7 +375,7 @@ TEXT_TITLE
 40
 6.0000
 1
-CHI TIẾT 1: NỐI SO LE CỐT THÉP CỘT (TCVN 5574:2018)
+CHI TI\U+1EBET 1: N\U+1ED0I SO LE C\U+1ED0T TH\U+00C9P C\U+1ED8T (TCVN 5574:2018)
 72
 1
 11
@@ -417,7 +461,7 @@ TEXT
 40
 4.0000
 1
-SÀN DƯỚI
+S\U+00C0N D\U+01AF\U+1EDAI
 72
 2
 11
@@ -503,7 +547,7 @@ TEXT
 40
 4.0000
 1
-SÀN TRÊN
+S\U+00C0N TR\U+00CAN
 72
 2
 11
@@ -941,7 +985,7 @@ VUNG_CAM_NOI
 40
 3.5000
 1
-VÙNG CẤM NỐI (H/4)
+V\U+00D9NG C\U+1EA4M N\U+1ED0I (H/4)
 0
 TEXT
 8
@@ -955,7 +999,7 @@ TEXT_TITLE
 40
 3.5000
 1
-VÙNG NỐI CHO PHÉP (H/2 GIỮA TẦNG)
+V\U+00D9NG N\U+1ED0I CHO PH\U+00C9P (H/2 GI\U+1EEEA T\U+1EA6NG)
 0
 TEXT
 8
@@ -969,7 +1013,7 @@ VUNG_CAM_NOI
 40
 3.5000
 1
-VÙNG CẤM NỐI (H/4)
+V\U+00D9NG C\U+1EA4M N\U+1ED0I (H/4)
 0
 LINE
 8
@@ -1411,7 +1455,7 @@ DIMENSION
 40
 3.2000
 1
-Khoảng cách so le >= 1.3*L_lap
+Kho\U+1EA3ng c\U+00E1ch so le >= 1.3*L_lap
 0
 LINE
 8
@@ -1761,7 +1805,7 @@ THEP_DAI
 40
 3.5000
 1
-Đai dày: s <= 100mm
+\U+0110ai d\U+00E0y: s <= 100mm
 72
 2
 11
@@ -1783,7 +1827,7 @@ TEXT
 40
 3.5000
 1
-- Tỷ lệ nối cốt thép trên cùng 1 mặt cắt: <= 50%.
+- T\U+1EF7 l\U+1EC7 n\U+1ED1i c\U+1ED1t th\U+00E9p tr\U+00EAn c\U+00F9ng 1 m\U+1EB7t c\U+1EAFt: <= 50%.
 0
 TEXT
 8
@@ -1797,7 +1841,7 @@ TEXT
 40
 3.5000
 1
-- Đoạn so le giữa hai vị trí nối: >= 1.3 * L_lap (hoặc >= 500mm).
+- \U+0110o\U+1EA1n so le gi\U+1EEFa hai v\U+1ECB tr\U+00ED n\U+1ED1i: >= 1.3 * L_lap (ho\U+1EB7c >= 500mm).
 0
 TEXT
 8
@@ -1811,7 +1855,7 @@ TEXT
 40
 3.5000
 1
-- Trong đoạn nối chồng cốt thép cột, đai phải bố trí dày hơn: s <= 100mm.
+- Trong \U+0111o\U+1EA1n n\U+1ED1i ch\U+1ED3ng c\U+1ED1t th\U+00E9p c\U+1ED9t, \U+0111ai ph\U+1EA3i b\U+1ED1 tr\U+00ED d\U+00E0y h\U+01A1n: s <= 100mm.
 0
 TEXT
 8
@@ -1825,7 +1869,7 @@ TEXT_TITLE
 40
 6.0000
 1
-CHI TIẾT 2: QUY ĐỊNH VÙNG NỐI CỐT THÉP DẦM (BEAM SPLICE ZONES)
+CHI TI\U+1EBET 2: QUY \U+0110\U+1ECANH V\U+00D9NG N\U+1ED0I C\U+1ED0T TH\U+00C9P D\U+1EA6M (BEAM SPLICE ZONES)
 72
 1
 11
@@ -2135,7 +2179,7 @@ TEXT_TITLE
 40
 4.0000
 1
-NỐI THÉP TRÊN: 1/3 GIỮA NHỊP (VÙNG NÉN)
+N\U+1ED0I TH\U+00C9P TR\U+00CAN: 1/3 GI\U+1EEEA NH\U+1ECAP (V\U+00D9NG N\U+00C9N)
 72
 1
 11
@@ -2269,7 +2313,7 @@ DIMENSION
 40
 3.2000
 1
-Vùng nối thép TRÊN cho phép
+V\U+00F9ng n\U+1ED1i th\U+00E9p TR\U+00CAN cho ph\U+00E9p
 72
 1
 11
@@ -2323,7 +2367,7 @@ TEXT_TITLE
 40
 4.0000
 1
-NỐI THÉP DƯỚI: GẦN GỐI (<= L/4)
+N\U+1ED0I TH\U+00C9P D\U+01AF\U+1EDAI: G\U+1EA6N G\U+1ED0I (<= L/4)
 72
 1
 11
@@ -2457,7 +2501,7 @@ DIMENSION
 40
 3.2000
 1
-Vùng nối thép DƯỚI
+V\U+00F9ng n\U+1ED1i th\U+00E9p D\U+01AF\U+1EDAI
 72
 1
 11
@@ -2479,7 +2523,7 @@ VUNG_CAM_NOI
 40
 3.2000
 1
-[CẤM NỐI THÉP TRÊN]
+[C\U+1EA4M N\U+1ED0I TH\U+00C9P TR\U+00CAN]
 72
 1
 11
@@ -2501,7 +2545,7 @@ VUNG_CAM_NOI
 40
 3.2000
 1
-[CẤM NỐI THÉP DƯỚI]
+[C\U+1EA4M N\U+1ED0I TH\U+00C9P D\U+01AF\U+1EDAI]
 72
 1
 11
@@ -2523,7 +2567,7 @@ VUNG_CAM_NOI
 40
 3.2000
 1
-[CẤM NỐI THÉP TRÊN]
+[C\U+1EA4M N\U+1ED0I TH\U+00C9P TR\U+00CAN]
 72
 1
 11
@@ -2657,7 +2701,7 @@ DIMENSION
 40
 3.2000
 1
-Nhịp thông thủy L_o
+Nh\U+1ECBp th\U+00F4ng th\U+1EE7y L_o
 72
 1
 11
@@ -2679,7 +2723,7 @@ TEXT
 40
 3.5000
 1
-- Thép lớp TRÊN: Chịu mô-men âm lớn tại gối -> CẤM NỐI trong phạm vi L/3 tính từ mép gối.
+- Th\U+00E9p l\U+1EDBp TR\U+00CAN: Ch\U+1ECBu m\U+00F4-men \U+00E2m l\U+1EDBn t\U+1EA1i g\U+1ED1i -> C\U+1EA4M N\U+1ED0I trong ph\U+1EA1m vi L/3 t\U+00EDnh t\U+1EEB m\U+00E9p g\U+1ED1i.
 0
 TEXT
 8
@@ -2693,7 +2737,7 @@ TEXT
 40
 3.5000
 1
-  Vị trí nối cho phép: Trong khoảng 1/3 giữa nhịp dầm.
+  V\U+1ECB tr\U+00ED n\U+1ED1i cho ph\U+00E9p: Trong kho\U+1EA3ng 1/3 gi\U+1EEFa nh\U+1ECBp d\U+1EA7m.
 0
 TEXT
 8
@@ -2707,7 +2751,7 @@ TEXT
 40
 3.5000
 1
-- Thép lớp DƯỚI: Chịu mô-men dương lớn ở giữa nhịp -> CẤM NỐI trong phạm vi 1/3 giữa nhịp.
+- Th\U+00E9p l\U+1EDBp D\U+01AF\U+1EDAI: Ch\U+1ECBu m\U+00F4-men d\U+01B0\U+01A1ng l\U+1EDBn \U+1EDF gi\U+1EEFa nh\U+1ECBp -> C\U+1EA4M N\U+1ED0I trong ph\U+1EA1m vi 1/3 gi\U+1EEFa nh\U+1ECBp.
 0
 TEXT
 8
@@ -2721,7 +2765,7 @@ TEXT
 40
 3.5000
 1
-  Vị trí nối cho phép: Vùng gần gối tựa (cách mép gối tựa <= L/4).
+  V\U+1ECB tr\U+00ED n\U+1ED1i cho ph\U+00E9p: V\U+00F9ng g\U+1EA7n g\U+1ED1i t\U+1EF1a (c\U+00E1ch m\U+00E9p g\U+1ED1i t\U+1EF1a <= L/4).
 0
 TEXT
 8
@@ -2735,7 +2779,7 @@ TEXT
 40
 3.5000
 1
-- Chiều dài đoạn nối chồng: Tra bảng theo cấp độ bền bê tông và nhóm cốt thép.
+- Chi\U+1EC1u d\U+00E0i \U+0111o\U+1EA1n n\U+1ED1i ch\U+1ED3ng: Tra b\U+1EA3ng theo c\U+1EA5p \U+0111\U+1ED9 b\U+1EC1n b\U+00EA t\U+00F4ng v\U+00E0 nh\U+00F3m c\U+1ED1t th\U+00E9p.
 0
 TEXT
 8
@@ -2749,7 +2793,7 @@ TEXT
 40
 3.5000
 1
-- Tại vị trí nối chồng dầm, đai dầm phải bố trí tăng cường: bước đai s <= 100mm.
+- T\U+1EA1i v\U+1ECB tr\U+00ED n\U+1ED1i ch\U+1ED3ng d\U+1EA7m, \U+0111ai d\U+1EA7m ph\U+1EA3i b\U+1ED1 tr\U+00ED t\U+0103ng c\U+01B0\U+1EDDng: b\U+01B0\U+1EDBc \U+0111ai s <= 100mm.
 0
 TEXT
 8
@@ -2763,7 +2807,7 @@ TEXT_TITLE
 40
 6.0000
 1
-CHI TIẾT 3: NEO CỐT THÉP DẦM VÀO CỘT BIÊN (BEAM-COLUMN ANCHORAGE)
+CHI TI\U+1EBET 3: NEO C\U+1ED0T TH\U+00C9P D\U+1EA6M V\U+00C0O C\U+1ED8T BI\U+00CAN (BEAM-COLUMN ANCHORAGE)
 72
 1
 11
@@ -2849,7 +2893,7 @@ TEXT
 40
 4.0000
 1
-CỘT BIÊN
+C\U+1ED8T BI\U+00CAN
 72
 1
 11
@@ -2935,7 +2979,7 @@ TEXT
 40
 4.0000
 1
-DẦM
+D\U+1EA6M
 72
 1
 11
@@ -3101,7 +3145,7 @@ DIMENSION
 40
 3.2000
 1
-Đoạn thẳng >= 0.4*L_an
+\U+0110o\U+1EA1n th\U+1EB3ng >= 0.4*L_an
 72
 1
 11
@@ -3235,7 +3279,7 @@ DIMENSION
 40
 3.2000
 1
-Móc uốn >= 12d
+M\U+00F3c u\U+1ED1n >= 12d
 0
 TEXT
 8
@@ -3249,7 +3293,7 @@ THEP_CHU
 40
 3.5000
 1
-Tổng chiều dài neo >= L_an (TCVN 5574)
+T\U+1ED5ng chi\U+1EC1u d\U+00E0i neo >= L_an (TCVN 5574)
 0
 LINE
 8
@@ -3407,7 +3451,7 @@ DIMENSION
 40
 3.2000
 1
-Bẻ lên >= 12d
+B\U+1EBB l\U+00EAn >= 12d
 0
 LINE
 8
@@ -3517,7 +3561,7 @@ THEP_DAI
 40
 3.5000
 1
-Đai trong nút khung: Bố trí đầy đủ theo tính toán.
+\U+0110ai trong n\U+00FAt khung: B\U+1ED1 tr\U+00ED \U+0111\U+1EA7y \U+0111\U+1EE7 theo t\U+00EDnh to\U+00E1n.
 0
 TEXT
 8
@@ -3531,7 +3575,7 @@ TEXT_TITLE
 40
 5.5000
 1
-CHI TIẾT 4: QUY CÁCH UỐN MÓC VÀ ĐAI KHÁNG CHẤN
+CHI TI\U+1EBET 4: QUY C\U+00C1CH U\U+1ED0N M\U+00D3C V\U+00C0 \U+0110AI KH\U+00C1NG CH\U+1EA4N
 72
 1
 11
@@ -3601,7 +3645,7 @@ TEXT
 40
 3.5000
 1
-Móc chữ U 180° (CB240-T):
+M\U+00F3c ch\U+1EEF U 180\U+00B0 (CB240-T):
 72
 1
 11
@@ -3623,7 +3667,7 @@ TEXT
 40
 3.0000
 1
-Đoạn thẳng kéo dài >= 2.5d (>= 50mm)
+\U+0110o\U+1EA1n th\U+1EB3ng k\U+00E9o d\U+00E0i >= 2.5d (>= 50mm)
 72
 1
 11
@@ -3677,7 +3721,7 @@ TEXT
 40
 3.5000
 1
-Móc vuông 90° (CB300-V, CB400-V):
+M\U+00F3c vu\U+00F4ng 90\U+00B0 (CB300-V, CB400-V):
 72
 1
 11
@@ -3699,7 +3743,7 @@ TEXT
 40
 3.0000
 1
-Đoạn thẳng sau khúc uốn >= 12d
+\U+0110o\U+1EA1n th\U+1EB3ng sau kh\U+00FAc u\U+1ED1n >= 12d
 72
 1
 11
@@ -3817,7 +3861,7 @@ TEXT
 40
 3.5000
 1
-Móc đai kháng chấn 135° (TCVN 9386):
+M\U+00F3c \U+0111ai kh\U+00E1ng ch\U+1EA5n 135\U+00B0 (TCVN 9386):
 72
 1
 11
@@ -3839,7 +3883,7 @@ TEXT
 40
 3.0000
 1
-Đoạn thẳng sau móc >= 10d hoặc >= 75mm
+\U+0110o\U+1EA1n th\U+1EB3ng sau m\U+00F3c >= 10d ho\U+1EB7c >= 75mm
 72
 1
 11
@@ -3861,7 +3905,7 @@ TEXT_TITLE
 40
 5.5000
 1
-BẢNG TRA CHIỀU DÀI NEO VÀ NỐI CỐT THÉP (TCVN 5574:2018) - ĐƠN VỊ: MM
+B\U+1EA2NG TRA CHI\U+1EC0U D\U+00C0I NEO V\U+00C0 N\U+1ED0I C\U+1ED0T TH\U+00C9P (TCVN 5574:2018) - \U+0110\U+01A0N V\U+1ECA: MM
 72
 1
 11
@@ -3947,7 +3991,7 @@ TEXT_TITLE
 40
 3.5000
 1
-Cấp BT
+C\U+1EA5p BT
 72
 1
 11
@@ -3969,7 +4013,7 @@ TEXT_TITLE
 40
 3.5000
 1
-Mác Thép
+M\U+00E1c Th\U+00E9p
 72
 1
 11
@@ -3991,7 +4035,7 @@ TEXT_TITLE
 40
 3.5000
 1
-Trạng Thái Ứng Suất
+Tr\U+1EA1ng Th\U+00E1i \U+1EE8ng Su\U+1EA5t
 72
 1
 11
@@ -4319,7 +4363,7 @@ TEXT
 40
 3.2000
 1
-Neo kéo (có móc)
+Neo k\U+00E9o (c\U+00F3 m\U+00F3c)
 0
 TEXT
 8
@@ -4639,7 +4683,7 @@ TEXT
 40
 3.2000
 1
-Nối kéo (<=50%)
+N\U+1ED1i k\U+00E9o (<=50%)
 0
 TEXT
 8
@@ -4959,7 +5003,7 @@ TEXT
 40
 3.2000
 1
-Neo kéo (thẳng)
+Neo k\U+00E9o (th\U+1EB3ng)
 0
 TEXT
 8
@@ -5279,7 +5323,7 @@ TEXT
 40
 3.2000
 1
-Neo kéo (móc 90°)
+Neo k\U+00E9o (m\U+00F3c 90\U+00B0)
 0
 TEXT
 8
@@ -5599,7 +5643,7 @@ TEXT
 40
 3.2000
 1
-Nối kéo (<=50%)
+N\U+1ED1i k\U+00E9o (<=50%)
 0
 TEXT
 8
@@ -5919,7 +5963,7 @@ TEXT
 40
 3.2000
 1
-Neo kéo (thẳng)
+Neo k\U+00E9o (th\U+1EB3ng)
 0
 TEXT
 8
@@ -6239,7 +6283,7 @@ TEXT
 40
 3.2000
 1
-Neo kéo (móc 90°)
+Neo k\U+00E9o (m\U+00F3c 90\U+00B0)
 0
 TEXT
 8
@@ -6559,7 +6603,7 @@ TEXT
 40
 3.2000
 1
-Nối kéo (<=50%)
+N\U+1ED1i k\U+00E9o (<=50%)
 0
 TEXT
 8
@@ -6879,7 +6923,7 @@ TEXT
 40
 3.2000
 1
-Nối nén
+N\U+1ED1i n\U+00E9n
 0
 TEXT
 8
@@ -7199,7 +7243,7 @@ TEXT
 40
 3.2000
 1
-Neo kéo (móc 90°)
+Neo k\U+00E9o (m\U+00F3c 90\U+00B0)
 0
 TEXT
 8
@@ -7519,7 +7563,7 @@ TEXT
 40
 3.2000
 1
-Nối kéo (<=50%)
+N\U+1ED1i k\U+00E9o (<=50%)
 0
 TEXT
 8
@@ -7839,7 +7883,7 @@ TEXT
 40
 3.2000
 1
-Nối kéo (<=50%)
+N\U+1ED1i k\U+00E9o (<=50%)
 0
 TEXT
 8
