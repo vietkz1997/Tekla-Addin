@@ -1,0 +1,20 @@
+encoding 949
+in_file "standard"
+out_file "standard"
+GridLineDims 1
+GridLineOverallDims 1
+GridLineHPositioning 1
+GridLineVPositioning 1
+OutsideDimMaxLeaderLen 25.000000
+InsideDimMaxLeaderLen 25.000000
+DimPartialParts 0
+MaxOutsideDimNr 3
+ObjectGroupDimensioningRules "<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE TSGadim><DimensioningRules><Rule><ObjectGroup>STL_AUTO(GIRDER-BEAM)</ObjectGroup><DimensionCreation>2</DimensionCreation><PositionX>2</PositionX><PositionY>2</PositionY><DimensionTag></DimensionTag></Rule><Rule><ObjectGroup>STL_JOIST</ObjectGroup><DimensionCreation>2</DimensionCreation><PositionX>2</PositionX><PositionY>2</PositionY><DimensionTag></DimensionTag></Rule></DimensioningRules>"
+GridLineDims_en 1
+GridLineOverallDims_en 1
+GridLineHPositioning_en 1
+GridLineVPositioning_en 1
+OutsideDimMaxLeaderLen_en 1
+InsideDimMaxLeaderLen_en 1
+DimPartialParts_en 1
+MaxOutsideDimNr_en 1

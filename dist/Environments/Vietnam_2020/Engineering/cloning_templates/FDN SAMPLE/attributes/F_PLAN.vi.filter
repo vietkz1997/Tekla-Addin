@@ -1,0 +1,31 @@
+TITLE_OBJECT_GROUP 
+{
+    Version= 1.05 
+    Count= 2 
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        co_part 
+        proFinish 
+        albl_Finish 
+        != 
+        albl_DoesNotEqual 
+        Lean 
+        0 
+        && 
+        }
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        CoRebar.Group 
+        proNAME 
+        albl_Name 
+        == 
+        albl_Equals 
+        BOT_YBOT_X 
+        0 
+        && 
+        }
+    }

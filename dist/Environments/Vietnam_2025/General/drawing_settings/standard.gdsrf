@@ -1,0 +1,21 @@
+encoding 949
+in_file " "
+out_file "standard"
+visibility 1
+draw_as 1
+show_pattern 0
+draw_hidden 0
+draw_own 0
+visible_colour 158
+visible_linetype 1
+hidden_colour 154
+hidden_linetype 3
+visibility_en 1
+draw_as_en 1
+show_pattern_en 1
+draw_hidden_en 1
+draw_own_en 1
+visible_colour_en 1
+visible_linetype_en 1
+hidden_colour_en 1
+hidden_linetype_en 1

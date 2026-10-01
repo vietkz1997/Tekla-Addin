@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Shows a Slab Change Symbol lower towards the right.">
+  <Polygon Color="Black" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="hardware_LINES" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="0.5" HatchScaleY="0.25" HatchAngle="0">
+    <Point X="-9.37232089525986" Y="4.57754654576797" />
+    <Point X="0" Y="4.57754654576797" />
+    <Point X="0" Y="0" />
+    <Point X="8.70426018585372" Y="0" />
+    <Point X="7.59537214293907" Y="-1.87604366629836" />
+    <Point X="5.0363997362129" Y="-3.58153790838782" />
+    <Point X="2.73332457015935" Y="-4.17846089311911" />
+    <Point X="1.70973560746889" Y="-3.41098848417886" />
+    <Point X="0" Y="-3.41098848417886" />
+    <Point X="-3.23761104553502" Y="-1.5349448178805" />
+    <Point X="-3.57880736643184" Y="1.44967010577602" />
+    <Point X="-5.54068621158855" Y="1.87604366629836" />
+    <Point X="-7.07606965562426" Y="2.89934021155199" />
+  </Polygon>
+  <Text InsertionPointX="13.6725186415588" InsertionPointY="3.93090319950926" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="Rectangular" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">T/SLAB = -0'-8"</Text>
+</DrawingDetail>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rule name="DIM_Primary_part_0_PLAN" xsi:noNamespaceSchemaLocation="DimRule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <selection type="Filter">
+    <filterName>Primary part_0</filterName>
+  </selection>
+  <position>
+    <selectionArea>Whole</selectionArea>
+    <placing>Left</placing>
+    <placing>Above</placing>
+    <linkingTopLeft>false</linkingTopLeft>
+    <linkingTopRight>false</linkingTopRight>
+    <linkingBottomLeft>false</linkingBottomLeft>
+    <linkingBottomRight>false</linkingBottomRight>
+    <orientation>Global</orientation>
+  </position>
+  <settings>
+    <startPointHorizontal>Left</startPointHorizontal>
+    <startPointVertical>Bottom</startPointVertical>
+    <verticalEqualsHorizontal>true</verticalEqualsHorizontal>
+    <closeLinesHorizontal>true</closeLinesHorizontal>
+    <dimensionToHorizontal>Both</dimensionToHorizontal>
+    <dimPropertiesHorizontal>DIM_TEST</dimPropertiesHorizontal>
+    <dimensionType>Straight</dimensionType>
+    <measureFrom>MainPart</measureFrom>
+    <combine>ObjectsAll</combine>
+    <combineXY>false</combineXY>
+    <minDistanceToCreate>0.00</minDistanceToCreate>
+    <componentObjects>ByReferencePoint</componentObjects>
+  </settings>
+</rule>

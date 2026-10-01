@@ -1,0 +1,89 @@
+﻿string_utf8 albl_Date
+{
+    entry = ("enu", "Date");
+    entry = ("kor", "날짜");
+};
+
+string_utf8 albl_Fabrication_Management
+{
+    entry = ("enu", "<Fabrication Management>");
+    entry = ("kor", "<제작 관리>");
+};
+
+string_utf8 albl_Fit_Up
+{
+    entry = ("enu", "Fit-Up");
+    entry = ("kor", "Fit-Up");
+};
+
+string_utf8 albl_Weld_Inspection
+{
+    entry = ("enu", "Weld Inspection");
+    entry = ("kor", "용접검사");
+};
+
+string_utf8 albl_Painting
+{
+    entry = ("enu", "Painting");
+    entry = ("kor", "도장");
+};
+
+string_utf8 albl_Inspection_Report
+{
+    entry = ("enu", "Inspection Report");
+    entry = ("kor", "검수 보고서");
+};
+
+string_utf8 albl_Packing_Management
+{
+    entry = ("enu", "<Packing Management>");
+    entry = ("kor", "<패킹 관리>");
+};
+
+string_utf8 albl_Packing
+{
+    entry = ("enu", "Packing");
+    entry = ("kor", "패킹");
+};
+
+string_utf8 albl_Delivery_Management
+{
+    entry = ("enu", "<Delivery Management>");
+    entry = ("kor", "<운송 관리>");
+};
+
+string_utf8 albl_Out_Of_Factory
+{
+    entry = ("enu", "Out of Factory");
+    entry = ("kor", "공장출고");
+};
+
+string_utf8 albl_Site_Arrival
+{
+    entry = ("enu", "Site Arrival");
+    entry = ("kor", "현장도착");
+};
+
+string_utf8 albl_Site_Management
+{
+    entry = ("enu", "<Site Management>");
+    entry = ("kor", "<현장 관리>");
+};
+
+string_utf8 albl_Arrival_Inspection
+{
+    entry = ("enu", "Arrival Inspection");
+    entry = ("kor", "도착검사");
+};
+
+string_utf8 albl_Erection
+{
+    entry = ("enu", "Erection");
+    entry = ("kor", "설치");
+};
+
+string_utf8 albl_Raw_Material
+{
+    entry = ("enu", "Raw Material");
+    entry = ("kor", "원자재");
+};

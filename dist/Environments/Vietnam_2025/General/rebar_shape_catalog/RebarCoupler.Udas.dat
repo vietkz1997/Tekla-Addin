@@ -1,0 +1,24 @@
+//
+// Customized rebar end UDA atributes for rebar couplers and end anchors.
+// 
+// each row shall contain 5 or 6 fields separated by tab(s) or semicolon. 
+// If the label is not given the labels set for the start uda will be used. 
+// Please note that all names shall be unique
+//
+// Field 1: The data type of the attribute. Valid values are 'distance', 'float', 'option', 'integer' and 'string'
+//          compatible with the actual user defined attributes
+// Field 2: Left_attribute_name. This name is used as the property name for the primary (1) rebar in the auto attributes table
+// Field 3: Right_attribute_name. This name is used as the property name for the secondary (1) rebar in the auto attributes table
+// Field 4: Start_uda_name. This name is the UDA name when the value is stored to first or short leg end of the rebar (secodary or primary)	
+// Field 5: End_uda_name. This name is the UDA name when the value is stored to last end or long leg end of the rebar (secodary or primary)
+// Field 6: Label. This text is shown in coupler or anchor component dialog. It can be translatable label (albl_) or any text.
+//
+distance	TreadLeft			TreadRight 			THREAD_LENGTH_START		THREAD_LENGTH_END		albl_Threaded_Length
+distance	ToleranceLeft		ToleranceRight 		EXTRA_LENGTH_START		EXTRA_LENGTH_END		albl_Extra_Fab_Length
+option		MethodLeft			MethodRight			METHOD_START			METHOD_END				albl_Method
+option		TypeLeft			TypeRight			TYPE_START				TYPE_END				albl_Type
+string		ProductLeft			ProductRight		PRODUCT_START			PRODUCT_END 			albl_Product
+string		CodeLeft			CodeRight 			CODE_START				CODE_END				albl_Code
+string		ThreadTypeLeft		ThreadTypeRight		THREAD_TYPE_START		THREAD_TYPE_END 		albl_Thread_type
+distance	Left1				Right1 				FREE_1_START			FREE_1_END				j_d_j_Free_distance_1
+string		Left2 				Right2 				FREE_2_START			FREE_2_END				j_d_j_Free_text_2

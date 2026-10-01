@@ -1,0 +1,21 @@
+dia_grid_plane_dialog.InFile "standard"
+dia_grid_plane_dialog.OutFile "standard"
+dia_grid_plane_dialog.LabelEnabled 1
+dia_grid_plane_dialog.Label ""
+dia_grid_plane_dialog.DepthInViewPlaneEnabled 1
+dia_grid_plane_dialog.DepthInViewPlane 9000.000000
+dia_grid_plane_dialog.ColorEnabled 1
+dia_grid_plane_dialog.Color 1
+dia_grid_plane_dialog.LineExtLeftBelowEnabled 1
+dia_grid_plane_dialog.LineExtLeftBelow "2000.0 2000.0"
+dia_grid_plane_dialog.LineExtRightAboveEnabled 1
+dia_grid_plane_dialog.LineExtRightAbove "2000.0 2000.0"
+dia_grid_plane_dialog.MagneticGridPlaneEnable 1
+dia_grid_plane_dialog.MagneticGridPlane 0
+dia_grid_plane_dialog.ExtForMagneticAreaEnabled 1
+dia_grid_plane_dialog.ExtForMagneticArea 0.000000
+dia_grid_plane_dialog.LockedEnabled 1
+dia_grid_plane_dialog.Locked 0
+dia_grid_plane_dialog.DrwVisibilityEnabled 1
+dia_grid_plane_dialog.DrwVisibility 1
+dia_grid_plane_dialog.UserDefinedAttrEnabled 1

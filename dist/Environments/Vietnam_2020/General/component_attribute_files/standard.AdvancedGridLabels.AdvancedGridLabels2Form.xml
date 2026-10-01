@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <NumberTextFont>romsim</NumberTextFont>
+  <NumberTextHeight>
+    <Millimeters>6</Millimeters>
+  </NumberTextHeight>
+  <NumberTextColor>11</NumberTextColor>
+  <TextTextFont>romsim</TextTextFont>
+  <TextTextHeight>
+    <Millimeters>6</Millimeters>
+  </TextTextHeight>
+  <TextTextColor>11</TextTextColor>
+  <Top>1</Top>
+  <Bottom>0</Bottom>
+  <Right>0</Right>
+  <Left>1</Left>
+  <UseSettings>1</UseSettings>
+  <SymbolRadius>
+    <Millimeters>12</Millimeters>
+  </SymbolRadius>
+  <TextTextPrefix></TextTextPrefix>
+  <NumberTextPrefix></NumberTextPrefix>
+  <FrameType>1</FrameType>
+  <SymbolNumber>2</SymbolNumber>
+  <SymbolFile>xsteel</SymbolFile>
+  <LineColor>8</LineColor>
+  <PrefixAxisZ></PrefixAxisZ>
+  <PrefixAxisY></PrefixAxisY>
+  <PrefixAxisX></PrefixAxisX>
+  <GridAxisTextFont>romsim</GridAxisTextFont>
+  <GridAxisTextHeight>
+    <Millimeters>6</Millimeters>
+  </GridAxisTextHeight>
+  <GridAxisTextColor>11</GridAxisTextColor>
+  <CreateAxisText>0</CreateAxisText>
+  <HeightType>1</HeightType>
+</config>

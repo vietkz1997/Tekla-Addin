@@ -1,0 +1,89 @@
+﻿// List the drawing sizes you have configured in the drawing layout
+// definitions and the paper size name the drawing is designed for.
+// Dimensions are in mm with a ‘.’ for the decimal place regardless of
+// the operating system’s regional settings and a ‘,’ to separate each
+// field.
+//
+// Format is <PaperSizeName>, <DrawingLandscapeWidth>, <DrawingLandscapeHeight>, <DrawingLeftMargin>, <DrawingBottomMargin>, <DrawingRightMargin>, <DrawingTopMargin>
+//
+// <PaperSizeName> = Name of the paper size in the paper sizes
+//  file. Multiple entries are allowed in this file for the same paper
+//  size name.
+//
+//    +-----------------------------+
+//    |Paper                        |
+//    |  +-----------------------+  |
+//    |  |Drawing                |  |
+//    |  |  +-----------------+  |  |
+//    |  |  | Area            |  |  |
+//    |  |  | of interest     |  |  |
+//    |  |  | (Drawing frame) |  |  |
+//    |  |  |                 |  |  |
+//    |  |  |                 |  |  |
+//    |  |  |                 |  |  |
+//    |  |  |                 |  |  |
+//    |  |  |                 |  |  |
+//    |  |  |                 |  |  |
+//    |  |  |                 |  |  |
+//    |  |  +-----------------+  |  |
+//    |  |                       |  |
+//    |  +-----------------------+  |
+//    |                             |
+//    +-----------------------------+
+//
+// <DrawingLandscapeWidth>, <DrawingLandscapeHeight> = These should
+//  match a specific drawing layout width and height (either a fix size
+//  width and height or a calculated size width and height).
+//
+// <DrawingLeftMargin>, <DrawingBottomMargin>, <DrawingRightMargin>,
+//  <DrawingTopMargin> = These are optional. If not specified the
+//  default values are used.
+//
+//   - The area of the drawing that is of interest and that needs to
+//     be included in a print is the area specified by
+//     <DrawingLandscapeWidth>, <DrawingLandscapeHeight> less any
+//     margins specified.
+//
+//   - The area of interest is usually the outer boundary of the
+//     drawing frame (so that the frame itself is printed).
+//
+//   - If <DrawingBottomMargin> is not specified then it is set to
+//     <DrawingLeftMargin>
+//
+//   - If <DrawingRightMargin> is not specified then it is set to
+//     <DrawingLeftMargin>
+//
+//   - If <DrawingTopMargin> is not specified then it is set to
+//     <DrawingBottomMargin>
+//
+//   - Default margins are specified using the paper size name
+//     <DEFAULT> and setting <DrawingLandscapeWidth> and
+//     <DrawingLandscapeHeight> to 0.
+//
+//
+// e.g.:
+//      A4, 287, 210, 5
+//     11X17, 406, 254, 15.8, 12.7, 10, 12.7
+//
+// In addition to the internal margins explicitly specified in each
+// entry, an external margin is implied by the difference between the
+// size of the drawing and the size of the paper. External margins
+// will automatically be determined to place the drawing centrally on
+// the paper where an entry is matched.
+//
+// When no entry matches a drawing size, there is no paper size to
+// infer the external margin from, so the values from the
+// <PAPERDEFAULT> entry are used.
+//
+// e.g.:
+//      <DEFAULT>           0,  0,  5
+//      <PAPERDEFAULT>      0,  0,  5
+//
+// Defines default overall margins of 10mm around each side of the
+// area of interest.
+//
+// File must be saved as a Unicode text format file
+//
+<DEFAULT>,          0,      0,      5
+<PAPERDEFAULT>,     0,      0,      5
+4*A3, 841, 594, 0, 0, 0, 0

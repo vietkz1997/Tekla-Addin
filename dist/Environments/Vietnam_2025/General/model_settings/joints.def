@@ -1,0 +1,107 @@
+// JOINT DEFAULTS
+// units millimeters
+// is default file available (1) or not (0)
+JOINTDEFAULT  0
+//
+//-----------------------------------------------------------------------------------------
+// GENERAL JOINT DEFAULTS
+//           boltdia   pitch   clipweld  lprofgapinc  lsize          copedepth   copelength  boltedge    webplatelen    webplatewid     beamedge    knifeclr   clipedge   gap   shearplatethk endplatethk shearweld cliplsize    flangecutclear  slotsize  clipslots  clip_attac  copedepth_inc  copelength_inc
+GENERAL      20.0      40.0    5.0       6.0          L100*100*10    10.0        10.0        50.0        150.0          50.0            20.0        30.0       40.0       2.0   10.0          10.0         5.0      L150*100*10  10.0            20.0      1          3           3.0            3.0
+//
+//-----------------------------------------------------------------------------------------
+// CLIP ANGLE JOINTS
+// clip angle default boltdiameters depending on secondary beam height
+// name            part         sec.beam.height   diameter  number_of_bolts
+BOLTHEIGHT         ANGLECLIP    100               16.0      2
+BOLTHEIGHT         ANGLECLIP    200               16.0      3
+BOLTHEIGHT         ANGLECLIP    300               16.0      4
+//
+// clip angle default bolts and parts
+//                bolt                     |     vertical bolts              |     horizontal bolts              |   vert.bolt
+// name           diameter     Lprofile       number      pitch     edge_dist  number       pitch    edge_dist       firsthole
+ANGLECLBOLTPART   16.0         L150*100*10    2           50.0      30.0       -2147483648  50.0     -2147483648     60.0
+ANGLECLBOLTPART   20.0         L150*100*10    2           60.0      40.0       -2147483648  60.0     -2147483648     70.0
+ANGLECLBOLTPART   24.0         L200*150*10    2           70.0      50.0       -2147483648  70.0     -2147483648     80.0
+//
+//-----------------------------------------------------------------------------------------
+// SHEARPLATE JOINTS
+// shearplate  default boltdiameters depending on secondary beam height
+// name            part         sec.beam.height   diameter  number_of_bolts
+BOLTHEIGHT         SHEARPLATE   100               16.0      2
+BOLTHEIGHT         SHEARPLATE   200               16.0      3
+BOLTHEIGHT         SHEARPLATE   300               16.0      4
+//
+// shear plate default bolts and parts
+//
+//                bolt         shearplate     |    vertical bolts                 |   horizontal bolts              |  vert.bolt
+// name           diameter     thickness       number         pitch     edge_dist  number      pitch   edge_dist       firsthole
+SHEARPLBOLTPART   16.0         8.0             2              50.0      30.0       2           50.0     -2147483648    60.0
+SHEARPLBOLTPART   20.0         10.0            2              60.0      40.0       2           60.0     -2147483648    70.0
+SHEARPLBOLTPART   24.0         12.0            2              70.0      50.0       2           70.0     -2147483648    80.0
+//
+//-----------------------------------------------------------------------------------------
+// ENDPLATE JOINTS
+// endplate  default boltdiameters depending on secondary beam height
+// name            part         sec.beam.height   diameter  number_of_bolts
+BOLTHEIGHT         ENDPLATE     100               16.0      2
+BOLTHEIGHT         ENDPLATE     200               16.0      3
+BOLTHEIGHT         ENDPLATE     300               16.0      4
+//
+// end plate default bolts and parts
+//
+//                bolt         endplate      |    vertical bolts              |   horizontal bolts               |  vert.bolt
+// name           diameter     thickness      number      pitch     edge_dist   number      pitch   edge_dist       firsthole
+ENDPLBOLTPART     16.0         8.0             2          50.0      30.0        2           80.0     -2147483648    60.0
+ENDPLBOLTPART     20.0         10.0            2          60.0      40.0        2           80.0     -2147483648    70.0
+ENDPLBOLTPART     24.0         12.0            2          70.0      50.0        2           80.0     -2147483648    80.0
+//
+//-----------------------------------------------------------------------------------------
+// GUSSET JOINTS
+// gusset default boltdiameters depending on lprofile length
+// values valid if bolt_dia_def in gusset defaults dimensions is -2147483648
+// name            part     lproflength    diameter  number_of_bolts
+BOLTHEIGHT         GUSSET   100            20.0      2
+BOLTHEIGHT         GUSSET   200            20.0      3
+BOLTHEIGHT         GUSSET   300            20.0      4
+BOLTHEIGHT         GUSSET   400            20.0      5
+BOLTHEIGHT         GUSSET   500            20.0      6
+BOLTHEIGHT         GUSSET   600            20.0      7
+BOLTHEIGHT         GUSSET   700            20.0      8
+//
+// gusset default bolts and parts
+// if want to use filling change number of horizontal bolts to -2147483648, works if number_of_bolts in BOLTHEIGHT/GUSSET is also -2147483648 
+//
+//               bolt                       gusset      |    horizontal bolts               |  vertical bolts                   | vert.bolt
+// name          diameter     Lprofile      thickness     number         pitch     edge_dist   number          pitch   edge_dist  firsthole     
+GUSSETBOLTPART   16.0         L100*100*10   16.0          -2147483648    50.0      40.0        -2147483648     50.0    40.0       55.0
+GUSSETBOLTPART   20.0         L100*100*10   20.0          -2147483648    60.0      40.0        -2147483648     60.0    40.0       55.0 
+GUSSETBOLTPART   24.0         L125*125*10   24.0          -2147483648    70.0      50.0        -2147483648     70.0    50.0       65.0 
+//
+// gusset default dimensions 
+// name       boltdia_def      tol_prim  tol_sec  dist_diag_prim  dist_diag_sec  angle_first_corner  angle_sec_corner  dist_between_diag  first_bolt_from_line  corner_dx  corner_dy  movey  movez    dist1  dist2  dist3  tol_lprof  tol_stiffener  chamfer_dx  chamfer_dy  chamfer_corner_dx   chamfer_corner_dy    side_length    diafit_length  
+GUSSETDEFDIM  20.0             0.0       0.0      0.0             0.0            -2147483648        -2147483648        0.0                -2147483648           150.0      150.0      0.0    0.0       0.0    0.0    0.0    0.0        0.0            10.0        10.0       -2147483648        -2147483648          -2147483648     200.0     
+//
+//-----------------------------------------------------------------------------------------
+// DIAGONAL JOINTS
+// diagonal default boltdiameters depending on conn plate height
+// name            part         conn.pl.height    diameter  number_of_bolts
+BOLTHEIGHT         DIAGONAL     100               20.0      2
+BOLTHEIGHT         DIAGONAL     200               20.0      3
+BOLTHEIGHT         DIAGONAL     300               20.0      4
+//
+// diagonal  default bolts and parts 
+// if want to use filling change number of vertical bolts to -2147483648, works if number_of_bolts in BOLTHEIGHT/DIAGONAL is also -2147483648 
+//
+//               bolt                       conn.plate  |      horizontal bolts         |   vertical bolts                |
+// name          diameter     Lprofile      thickness     number    pitch     edge_dist   number        pitch   edge_dist      
+DIAGBOLTPART     16.0         L100*100*10    16.0          2         50.0     30.0        -2147483648   50.0    30.0   
+DIAGBOLTPART     20.0         L100*100*10    20.0          2         60.0     40.0        -2147483648   60.0    40.0   
+DIAGBOLTPART     24.0         L125*125*10    24.0          2         70.0     50.0        -2147483648   70.0    50.0   
+//
+// diag default dimensions
+// name     boltdia_def        dist_gus_diag  dist_in  dist_dv   sec_cut_tol  slot_length_tol  tube_cut_tol  conn_cut_dx  conn_cut_dy  round_plate_tol  flanges_cut_angle dist_flanges_cut dist_skew_cut  end_plate_thk
+DIAGDEFDIM  20.0               20.0           150.0    20.0      0.0          0.0              0.0           10.0         10.0         0.0              30.0              40.0             0.0            5.0    
+
+
+
+

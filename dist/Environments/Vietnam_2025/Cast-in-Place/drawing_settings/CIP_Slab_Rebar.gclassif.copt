@@ -1,0 +1,29 @@
+TITLE_CLASSIFIER 
+{
+    Version= 1.00 
+    Count= 4 
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Rebar 
+        TOP_BAR 
+        TOP_BAR 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Reinforcement_mark 
+        TOP_BAR 
+        TOP_BAR 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Rebar 
+        BOT_BAR 
+        BOT_BAR 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Reinforcement_mark 
+        BOT_BAR 
+        BOT_BAR 
+        }
+    }

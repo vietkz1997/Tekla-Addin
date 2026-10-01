@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TeklaStructuresModels>
+<TeklaStructuresModels>
+    <Model>
+        <Name>FDN SAMPLE</Name>
+        <Designer> </Designer>
+        <Description></Description>
+        <Version>Test Package 2.0</Version>
+        <Language>enu</Language>
+        <Template></Template>
+        <Environment>korea</Environment>
+        <IsTemplate>FALSE</IsTemplate>
+        <XS_PROJECT></XS_PROJECT>
+        <XS_FIRM></XS_FIRM>
+        <XS_SYSTEM>C:\TeklaStructures\Test-2015-2\environments\korea\system\cip\;C:\TeklaStructures\Test-2015-2\\environments\korea\system\;C:\TeklaStructures\Test-2015-2\environments\common\system\ConstructionManagement\;C:\TeklaStructures\Test-2015-2\environments\common\s</XS_SYSTEM>
+    </Model>
+</TeklaStructuresModels>

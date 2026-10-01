@@ -1,0 +1,22 @@
+joint_attributes.saveas_file "standard"
+joint_attributes.get_menu " "
+joint_attributes.name_enable 1
+joint_attributes.joint_code ""
+joint_attributes.group_no 99
+joint_attributes.zang2 0.000000
+joint_attributes.zang1 0.000000
+joint_attributes.zsuunta 2
+joint_attributes.adist1 -2147483648.000000
+joint_attributes.dtab5 0
+joint_attributes.t_cope_length -2147483648.000000
+joint_attributes.t_cope_depth -2147483648.000000
+joint_attributes.cope_fitting_type 0
+joint_attributes.cope_measure_type 0
+joint_attributes.t_cut_length -2147483648.000000
+joint_attributes.t_cut_width -2147483648.000000
+joint_attributes.b_cut_length -2147483648.000000
+joint_attributes.b_cut_width -2147483648.000000
+joint_attributes.t_cut_type 2
+joint_attributes.t_cut_side 0
+joint_attributes.b_cut_type 2
+joint_attributes.b_cut_side 0

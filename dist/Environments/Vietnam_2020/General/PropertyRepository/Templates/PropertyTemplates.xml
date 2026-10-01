@@ -1,0 +1,1755 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<PropertyTemplates Format="2017">
+  <PropertyTemplate Type="SteelColumn" Title="translation:ObjectBrowser.ProxyObjectTypeSteelColumn">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Steel.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Steel.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Numbering" Label="translation:albl_Numbering_series" Tooltip="translation:albl_Numbering_series" IsVisible="true">
+      <Property Name="Property.Part.Numbering" Tooltip="translation:albl_Part_numbering" />
+      <Property Name="Property.Assembly.Numbering" Tooltip="translation:albl_Assembly_numbering" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.Vertical" Tooltip="translation:albl_Vertical" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.Horizontal" Tooltip="translation:albl_Horizontal" />
+      <Property Name="Property.Position.TopAndBottom" Tooltip="translation:albl_Position" />
+    </PropertyGroup>
+    <PropertyGroup Name="Deforming" Label="translation:albl_Deforming" Tooltip="translation:albl_Deforming" IsVisible="true">
+      <Property Name="Property.Warping" Tooltip="translation:j_d_jd_Warping" />
+      <Property Name="Property.Cambering" Tooltip="translation:albl_Cambering" />
+      <Property Name="Property.Shortening" Tooltip="translation:albl_Shortening" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined" Label="translation:j_d_j_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.PRELIM_ASSEM_MARK" Label="translation:j_Preliminary_assembly_mark" Tooltip="예비 어셈블리 마크 (PRELIM_ASSEM_MARK), UDA" />
+      <Property Name="Property.UDA.xs_shorten" Label="translation:j_xs_shorten" Tooltip="단축 (xs_shorten), UDA" />
+      <Property Name="Property.UDA.cambering" Label="translation:j_cambering" Tooltip="캠버 (cambering), UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_FixedDrawingMainView" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.f4c6f851b00d5518bf888815de279aba" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEIGHT" Label="translation:j_Product_weight" Tooltip="제품 중량 (PRODUCT_WEIGHT), UDA" />
+      <Property Name="Property.UDA.PRODUCT_UNIT" Label="translation:j_Product_unit" Tooltip="제품 단위 (PRODUCT_UNIT), UDA" />
+      <Property Name="Property.UDA.EN1090_EXC_PART" Label="translation:j_Execution_class" Tooltip="실행 클래스 (EN1090_EXC_PART), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="SteelBeam" Title="translation:ObjectBrowser.ProxyObjectTypeSteelBeam">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Label="translation:albl_Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Steel.Beam.Profile" Label="translation:albl_Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Steel.Material" Label="translation:albl_Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Label="translation:albl_Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Label="translation:albl_Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Numbering" Label="translation:albl_Numbering_series" Tooltip="translation:albl_Numbering_series" IsVisible="true">
+      <Property Name="Property.Part.Numbering" Label="translation:albl_Part_numbering" Tooltip="translation:albl_Part_numbering" />
+      <Property Name="Property.Assembly.Numbering" Label="translation:albl_Assembly_numbering" Tooltip="translation:albl_Assembly_numbering" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Label="translation:albl_On_Plane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.Rotation" Label="translation:albl_Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Label="translation:albl_At_Depth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" IsVisible="true">
+      <Property Name="Property.EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" />
+    </PropertyGroup>
+    <PropertyGroup Name="Deforming" Label="translation:albl_Deforming" Tooltip="translation:albl_Deforming" IsVisible="true">
+      <Property Name="Property.Warping" Label="translation:j_d_jd_Warping" Tooltip="translation:j_d_jd_Warping" />
+      <Property Name="Property.Cambering" Label="translation:albl_Cambering" Tooltip="translation:albl_Cambering" />
+      <Property Name="Property.Shortening" Label="translation:albl_Shortening" Tooltip="translation:albl_Shortening" />
+    </PropertyGroup>
+    <PropertyGroup Name="CurvedBeam" Label="translation:albl_Curved_beam" Tooltip="translation:albl_Curved_beam" IsVisible="true">
+      <Property Name="Property.Curvature.Plane" Label="translation:albl_Plane" Tooltip="translation:albl_Plane" />
+      <Property Name="Property.Curvature.Radius" Label="translation:albl_Radius" Tooltip="translation:albl_Radius" />
+      <Property Name="Property.Curvature.Segments" Label="translation:albl_Number_of_segments" Tooltip="translation:albl_Number_of_segments" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9ad6c60b44d9ea5c5076e923432bcd2f" Label="translation:j_d_j_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.PRELIM_ASSEM_MARK" Label="translation:j_Preliminary_assembly_mark" Tooltip="예비 어셈블리 마크 (PRELIM_ASSEM_MARK), UDA" />
+      <Property Name="Property.UDA.xs_shorten" Label="translation:j_xs_shorten" Tooltip="단축 (xs_shorten), UDA" />
+      <Property Name="Property.UDA.cambering" Label="translation:j_cambering" Tooltip="캠버 (cambering), UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_FixedDrawingMainView" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEIGHT" Label="translation:j_Product_weight" Tooltip="제품 중량 (PRODUCT_WEIGHT), UDA" />
+      <Property Name="Property.UDA.PRODUCT_UNIT" Label="translation:j_Product_unit" Tooltip="제품 단위 (PRODUCT_UNIT), UDA" />
+      <Property Name="Property.UDA.EN1090_EXC_PART" Label="translation:j_Execution_class" Tooltip="실행 클래스 (EN1090_EXC_PART), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="OrthogonalBeam" Title="translation:lbl_BeamsOrthogonal">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Steel.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Steel.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Numbering" Label="translation:albl_Numbering_series" Tooltip="translation:albl_Numbering_series" IsVisible="true">
+      <Property Name="Property.Part.Numbering" Tooltip="translation:albl_Part_numbering" />
+      <Property Name="Property.Assembly.Numbering" Tooltip="translation:albl_Assembly_numbering" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.Vertical" Tooltip="translation:albl_Vertical" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.Horizontal" Tooltip="translation:albl_Horizontal" />
+      <Property Name="Property.Position.TopAndBottom" Tooltip="translation:albl_Position" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.caf38babd1ea5715003dd96a463740a5" Label="translation:albl_Deforming" IsVisible="true">
+      <Property Name="Property.Warping" Tooltip="translation:j_d_jd_Warping" />
+      <Property Name="Property.Cambering" Tooltip="translation:albl_Cambering" />
+      <Property Name="Property.Shortening" Tooltip="translation:albl_Shortening" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9ad6c60b44d9ea5c5076e923432bcd2f" Label="translation:j_d_j_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.PRELIM_ASSEM_MARK" Label="translation:j_Preliminary_assembly_mark" Tooltip="예비 어셈블리 마크 (PRELIM_ASSEM_MARK), UDA" />
+      <Property Name="Property.UDA.xs_shorten" Label="translation:j_xs_shorten" Tooltip="단축 (xs_shorten), UDA" />
+      <Property Name="Property.UDA.cambering" Label="translation:j_cambering" Tooltip="캠버 (cambering), UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_FixedDrawingMainView" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEIGHT" Label="translation:j_Product_weight" Tooltip="제품 중량 (PRODUCT_WEIGHT), UDA" />
+      <Property Name="Property.UDA.PRODUCT_UNIT" Label="translation:j_Product_unit" Tooltip="제품 단위 (PRODUCT_UNIT), UDA" />
+      <Property Name="Property.UDA.EN1090_EXC_PART" Label="translation:j_Execution_class" Tooltip="실행 클래스 (EN1090_EXC_PART), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="TwinProfile" Title="translation:j_d_j_Twin_profile">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Steel.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Steel.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+      <Property Name="Property.Steel.Beam.TwinProfile" Tooltip="translation:albl_Twin_profile_type" />
+    </PropertyGroup>
+    <PropertyGroup Name="Numbering" Label="translation:albl_Numbering_series" Tooltip="translation:albl_Numbering_series" IsVisible="true">
+      <Property Name="Property.Part.Numbering" Tooltip="translation:albl_Part_numbering" />
+      <Property Name="Property.Assembly.Numbering" Tooltip="translation:albl_Assembly_numbering" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" IsVisible="true">
+      <Property Name="Property.EndOffset.X" Tooltip="translation:albl_Dx" />
+    </PropertyGroup>
+    <PropertyGroup Name="TwinProfileClearance" Label="translation:albl_Clearancebetwmem" Tooltip="translation:albl_Clearancebetwmem" IsVisible="true">
+      <Property Name="Property.Steel.Beam.Clearance.Horizontal" Tooltip="translation:albl_Horizontal" />
+      <Property Name="Property.Steel.Beam.Clearance.Vertical" Tooltip="translation:albl_Vertical" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.caf38babd1ea5715003dd96a463740a5" Label="translation:albl_Deforming" IsVisible="true">
+      <Property Name="Property.Warping" Tooltip="translation:j_d_jd_Warping" />
+      <Property Name="Property.Cambering" Tooltip="translation:albl_Cambering" />
+      <Property Name="Property.Shortening" Tooltip="translation:albl_Shortening" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9ad6c60b44d9ea5c5076e923432bcd2f" Label="translation:j_d_j_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.PRELIM_ASSEM_MARK" Label="translation:j_Preliminary_assembly_mark" Tooltip="예비 어셈블리 마크 (PRELIM_ASSEM_MARK), UDA" />
+      <Property Name="Property.UDA.xs_shorten" Label="translation:j_xs_shorten" Tooltip="단축 (xs_shorten), UDA" />
+      <Property Name="Property.UDA.cambering" Label="translation:j_cambering" Tooltip="캠버 (cambering), UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_FixedDrawingMainView" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEIGHT" Label="translation:j_Product_weight" Tooltip="제품 중량 (PRODUCT_WEIGHT), UDA" />
+      <Property Name="Property.UDA.PRODUCT_UNIT" Label="translation:j_Product_unit" Tooltip="제품 단위 (PRODUCT_UNIT), UDA" />
+      <Property Name="Property.UDA.EN1090_EXC_PART" Label="translation:j_Execution_class" Tooltip="실행 클래스 (EN1090_EXC_PART), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="SteelHelix" Title="translation:ObjectBrowser.ProxyObjectTypeSteelSpiralBeam">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Steel.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Steel.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Numbering" Label="translation:albl_Numbering_series" Tooltip="translation:albl_Numbering_series" IsVisible="true">
+      <Property Name="Property.Part.Numbering" Tooltip="translation:albl_Part_numbering" />
+      <Property Name="Property.Assembly.Numbering" Tooltip="translation:albl_Assembly_numbering" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.RotationNoOffset" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="Geometry" Label="translation:albl_Geometry" Tooltip="translation:albl_Geometry" IsVisible="true">
+      <Property Name="Property.RotationAngle" Tooltip="translation:ContextualSidePane.RotationAngle" />
+      <Property Name="Property.TotalRise" Tooltip="translation:ContextualSidePane.TotalRise" />
+      <Property Name="Property.TwistAngleStart" Tooltip="translation:ContextualSidePane.TwistAngleAtStart" />
+      <Property Name="Property.TwistAngleEnd" Tooltip="translation:ContextualSidePane.TwistAngleAtEnd" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9ad6c60b44d9ea5c5076e923432bcd2f" Label="translation:j_d_j_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.PRELIM_ASSEM_MARK" Label="translation:j_Preliminary_assembly_mark" Tooltip="예비 어셈블리 마크 (PRELIM_ASSEM_MARK), UDA" />
+      <Property Name="Property.UDA.xs_shorten" Label="translation:j_xs_shorten" Tooltip="단축 (xs_shorten), UDA" />
+      <Property Name="Property.UDA.cambering" Label="translation:j_cambering" Tooltip="캠버 (cambering), UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_FixedDrawingMainView" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEIGHT" Label="translation:j_Product_weight" Tooltip="제품 중량 (PRODUCT_WEIGHT), UDA" />
+      <Property Name="Property.UDA.PRODUCT_UNIT" Label="translation:j_Product_unit" Tooltip="제품 단위 (PRODUCT_UNIT), UDA" />
+      <Property Name="Property.UDA.EN1090_EXC_PART" Label="translation:j_Execution_class" Tooltip="실행 클래스 (EN1090_EXC_PART), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="SteelItem" Title="translation:j_d_j_Item">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Steel.Item.Shape" Tooltip="translation:albl_Shape" />
+      <Property Name="Property.Steel.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Numbering" Label="translation:albl_Numbering_series" Tooltip="translation:albl_Numbering_series" IsVisible="true">
+      <Property Name="Property.Part.Numbering" Tooltip="translation:albl_Part_numbering" />
+      <Property Name="Property.Assembly.Numbering" Tooltip="translation:albl_Assembly_numbering" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" IsVisible="true">
+      <Property Name="Property.EndOffset" Tooltip="translation:albl_End_offset" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9ad6c60b44d9ea5c5076e923432bcd2f" Label="translation:j_d_j_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.PRELIM_ASSEM_MARK" Label="translation:j_Preliminary_assembly_mark" Tooltip="예비 어셈블리 마크 (PRELIM_ASSEM_MARK), UDA" />
+      <Property Name="Property.UDA.xs_shorten" Label="translation:j_xs_shorten" Tooltip="단축 (xs_shorten), UDA" />
+      <Property Name="Property.UDA.cambering" Label="translation:j_cambering" Tooltip="캠버 (cambering), UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_FixedDrawingMainView" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEIGHT" Label="translation:j_Product_weight" Tooltip="제품 중량 (PRODUCT_WEIGHT), UDA" />
+      <Property Name="Property.UDA.PRODUCT_UNIT" Label="translation:j_Product_unit" Tooltip="제품 단위 (PRODUCT_UNIT), UDA" />
+      <Property Name="Property.UDA.EN1090_EXC_PART" Label="translation:j_Execution_class" Tooltip="실행 클래스 (EN1090_EXC_PART), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="ConcreteColumn" Title="translation:ObjectBrowser.ProxyObjectTypeConcreteColumn">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.Vertical" Tooltip="translation:albl_Vertical" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.Horizontal" Tooltip="translation:albl_Horizontal" />
+      <Property Name="Property.Position.TopAndBottom" Tooltip="translation:albl_Position" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Deforming" Label="translation:albl_Deforming" Tooltip="translation:albl_Deforming" IsVisible="true">
+      <Property Name="Property.Warping" Tooltip="translation:j_d_jd_Warping" />
+      <Property Name="Property.Cambering" Tooltip="translation:albl_Cambering" />
+      <Property Name="Property.Shortening" Tooltip="translation:albl_Shortening" />
+    </PropertyGroup>
+    <PropertyGroup Name="ConcreteCoversForRebarSets" Label="translation:albl_Concrete_covers_for_rebar_sets" Tooltip="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.368fad1624c95c359805613b4a87ae59" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4fb1fd9110df9c30537364b57dba98" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.21e827a160e75e5ed2bc83cacc057750" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.c75907249e388f3766fd3b5f4dab8866" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.b014b829be6915f2d74e4127478b38ac" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7b16363540ce39082198d8be0707f0c3" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.4dd0bd5692dfb3d03f42a323cfab89a8" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="ConcreteBeam" Title="translation:ObjectBrowser.ProxyObjectTypeConcreteBeam">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" IsVisible="true">
+      <Property Name="Property.EndOffset" Tooltip="translation:albl_End_offset" />
+    </PropertyGroup>
+    <PropertyGroup Name="CurvedBeam" Label="translation:albl_Curved_beam" Tooltip="translation:albl_Curved_beam" IsVisible="true">
+      <Property Name="Property.Curvature.Plane" Tooltip="translation:albl_Plane" />
+      <Property Name="Property.Curvature.Radius" Tooltip="translation:albl_Radius" />
+      <Property Name="Property.Curvature.Segments" Tooltip="translation:albl_Number_of_segments" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Deforming" Label="translation:albl_Deforming" Tooltip="translation:albl_Deforming" IsVisible="true">
+      <Property Name="Property.Warping" Tooltip="translation:j_d_jd_Warping" />
+      <Property Name="Property.Cambering" Tooltip="translation:albl_Cambering" />
+      <Property Name="Property.Shortening" Tooltip="translation:albl_Shortening" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.a1f1fb102f58807b3eea6e8cf906095c" Label="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.368fad1624c95c359805613b4a87ae59" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7b16363540ce39082198d8be0707f0c3" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.4dd0bd5692dfb3d03f42a323cfab89a8" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="ConcreteHelix" Title="translation:ObjectBrowser.ProxyObjectTypeConcreteSpiralBeam">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.RotationNoOffset" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="Geometry" Label="translation:albl_Geometry" Tooltip="translation:albl_Geometry" IsVisible="true">
+      <Property Name="Property.RotationAngle" Tooltip="translation:ContextualSidePane.RotationAngle" />
+      <Property Name="Property.TotalRise" Tooltip="translation:ContextualSidePane.TotalRise" />
+      <Property Name="Property.TwistAngleStart" Tooltip="translation:ContextualSidePane.TwistAngleAtStart" />
+      <Property Name="Property.TwistAngleEnd" Tooltip="translation:ContextualSidePane.TwistAngleAtEnd" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.a1f1fb102f58807b3eea6e8cf906095c" Label="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="ConcretePanel" Title="translation:ObjectBrowser.ProxyObjectTypeConcretePanel">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" IsVisible="true">
+      <Property Name="Property.EndOffset" Tooltip="translation:albl_End_offset" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Bending" Label="translation:albl_Bending" Tooltip="translation:albl_Bending" IsVisible="true">
+      <Property Name="Property.Curvature.Plane" Tooltip="translation:albl_Plane" />
+      <Property Name="Property.Curvature.Radius" Tooltip="translation:albl_Radius" />
+      <Property Name="Property.Curvature.Segments" Tooltip="translation:albl_Number_of_segments" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.a1f1fb102f58807b3eea6e8cf906095c" Label="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="ConcreteSlab" Title="translation:ObjectBrowser.ProxyObjectTypeConcreteSlab">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Thickness" Tooltip="translation:albl_Thickness" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.a1f1fb102f58807b3eea6e8cf906095c" Label="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="PadFooting" Title="translation:albl_modelObjectType_PadFooting">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.Vertical" Tooltip="translation:albl_Vertical" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.Horizontal" Tooltip="translation:albl_Horizontal" />
+      <Property Name="Property.Position.TopAndBottom" Tooltip="translation:albl_Position" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.a1f1fb102f58807b3eea6e8cf906095c" Label="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="StripFooting" Title="translation:albl_modelObjectType_StripFooting">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Beam.Profile" Tooltip="translation:albl_Profile" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" IsVisible="true">
+      <Property Name="Property.EndOffset" Tooltip="translation:albl_End_offset" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Bending" Label="translation:albl_Bending" Tooltip="translation:albl_Bending" IsVisible="true">
+      <Property Name="Property.Curvature.Plane" Tooltip="translation:albl_Plane" />
+      <Property Name="Property.Curvature.Radius" Tooltip="translation:albl_Radius" />
+      <Property Name="Property.Curvature.Segments" Tooltip="translation:albl_Number_of_segments" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.a1f1fb102f58807b3eea6e8cf906095c" Label="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.REF_ID" Label="translation:j_user_ref_id" Tooltip="참조 ID (REF_ID), UDA" />
+      <Property Name="Property.UDA.RENOVATION_STATUS" Label="translation:j_Renovation_status" Tooltip="보수 상태 (RENOVATION_STATUS), UDA" />
+      <Property Name="Property.UDA.IS_EXTERNAL" Label="translation:j_Is_external" Tooltip="외부임 (IS_EXTERNAL), UDA" />
+      <Property Name="Property.UDA.FIRE_RATING" Label="translation:j_Fire_rating" Tooltip="화재 등급 (FIRE_RATING), UDA" />
+      <Property Name="Property.UDA.SPAN" Label="translation:j_Span" Tooltip="경간 (SPAN), UDA" />
+      <Property Name="Property.UDA.THERMAL_TRANSMITTAN" Label="translation:j_Thermal_transmittance" Tooltip="열 투과율 (THERMAL_TRANSMITTAN), UDA" />
+      <Property Name="Property.UDA.ACOUSTIC_RATING" Label="translation:j_Acoustic_rating" Tooltip="음향 등급 (ACOUSTIC_RATING), UDA" />
+      <Property Name="Property.UDA.PITCH_ANGLE" Label="translation:j_Pitch_angle" Tooltip="피치 각도 (PITCH_ANGLE), UDA" />
+      <Property Name="Property.UDA.COMBUSTIBLE" Label="translation:j_Combustible" Tooltip="가연성 (COMBUSTIBLE), UDA" />
+      <Property Name="Property.UDA.SPREAD_OF_FLAME" Label="translation:j_Surface_spread_of_flame" Tooltip="화염의 표면 범위 (SPREAD_OF_FLAME), UDA" />
+      <Property Name="Property.UDA.COMPARTMENT" Label="translation:j_Compartment" Tooltip="구획 (COMPARTMENT), UDA" />
+      <Property Name="Property.UDA.EXTEND_TO_STRUCTURE" Label="translation:j_Extend_to_structure" Tooltip="구조 확장 (EXTEND_TO_STRUCTURE), UDA" />
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.73bb4b00b559e7ee5a05b105c59251e5" Label="translation:j_d_j_Tekla_Structural_Designer" IsVisible="false">
+      <Property Name="Property.UDA.TSD_PART_MARK" Label="translation:j_Mark" Tooltip="마크 (TSD_PART_MARK), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TOTAL_STUDS" Label="translation:j_No_of_Studs" Tooltip="스터드 개수 (TSD_TOTAL_STUDS), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_TRANS_REINF" Label="translation:j_Transverse_Rebar" Tooltip="가로 철근 (TSD_TRANS_REINF), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_EW" Label="translation:j_Effective_Width" Tooltip="유효 너비 (TSD_EW), 고유 UDA" />
+      <Property Name="Property.UDA.TSD_STATUS" Label="translation:j_Integration_Status" Tooltip="통합 상태 (TSD_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.MBR_TYPE" Label="TSD Member Type" Tooltip="MBR_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.SLAB_TYPE" Label="TSD Slab Type" Tooltip="SLAB_TYPE, 고유 UDA" />
+      <Property Name="Property.UDA.WALL_TYPE" Label="TSD Wall Type" Tooltip="WALL_TYPE, 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="ConcreteItem" Title="translation:j_d_j_Concrete_Item">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.Concrete.Item.Shape" Tooltip="translation:albl_Shape" />
+      <Property Name="Property.Concrete.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.Finish" Tooltip="translation:albl_Finish" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.OnPlane" Tooltip="translation:albl_On_Plane" />
+      <Property Name="Property.Rotation" Tooltip="translation:albl_Rotation" />
+      <Property Name="Property.AtDepth" Tooltip="translation:albl_At_Depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="EndOffset" Label="translation:albl_End_offset" Tooltip="translation:albl_End_offset" IsVisible="true">
+      <Property Name="Property.EndOffset" Tooltip="translation:albl_End_offset" />
+    </PropertyGroup>
+    <PropertyGroup Name="CastUnit" Label="translation:albl_Cast_unit" Tooltip="translation:albl_Cast_unit" IsVisible="true">
+      <Property Name="Property.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.CastUnit" Tooltip="translation:albl_Cast_unit" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.a1f1fb102f58807b3eea6e8cf906095c" Label="translation:albl_Concrete_covers_for_rebar_sets" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickTop" Label="translation:j_d_j_Top" Tooltip="__CovThickTop, UDA" />
+      <Property Name="Property.UDA.__CovThickSides" Label="translation:j_d_j_Sides" Tooltip="__CovThickSides, UDA" />
+      <Property Name="Property.UDA.__CovThickBottom" Label="translation:j_d_j_Bottom" Tooltip="__CovThickBottom, UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.USER_PHASE" Label="translation:j_UserPhase_effects_numbering" Tooltip="사용자 페이즈(번호에 영향을 미침) (USER_PHASE), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_MARK" Label="translation:j_PRELIM_MARK" Tooltip="예비 마크 (PRELIM_MARK), UDA" />
+      <Property Name="Property.UDA.NUMBERING_ORDER" Label="translation:j_Numbering_Order" Tooltip="넘버링 순서 (NUMBERING_ORDER), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+      <Property Name="Property.UDA.ACN_STATUS" Label="translation:j_ACN_control_number_status" Tooltip="제어 번호 상태 (ACN_STATUS), 고유 UDA" />
+      <Property Name="Property.UDA.FixedMainView" Label="translation:j_d_j_TopInFormFace" Tooltip="고정된 도면 메인 뷰 (FixedMainView), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.87e9eb1c1a013b2e84944d6c1cef86fd" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.fabricator" Label="translation:j_fabricator_name" Tooltip="철골 제조업자 이름 (fabricator), UDA" />
+      <Property Name="Property.UDA.PRODUCT_CODE" Label="translation:j_Product_code" Tooltip="제품 코드 (PRODUCT_CODE), UDA" />
+      <Property Name="Property.UDA.PRODUCT_DESCR" Label="translation:j_Product_description" Tooltip="제품 설명 (PRODUCT_DESCR), UDA" />
+      <Property Name="Property.UDA.PRODUCT_WEBSITE" Label="translation:j_Product_website" Tooltip="제품 웹 사이트 (PRODUCT_WEBSITE), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.64c118546c580c785c8b18f9d78198b1" Label="translation:j_d_jd_StructuralInformation" IsVisible="false">
+      <Property Name="Property.UDA.LOAD_BEARING" Label="translation:j_IFC_load_bearing" Tooltip="하중 지지 (LOAD_BEARING), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.9e4dd834eaade71ecd3b8fce33bb350c" Label="translation:j_d_jd_EndConditions" IsVisible="false">
+      <PropertyGroup Name="Undefined.265c89465bc67e4b6f4fe7c479ef8c3f" Label="translation:j_d_j_AD_start_node">
+        <Property Name="Property.UDA.shear1" Label="translation:j_d_j_Shear_Vy" Tooltip="shear1, 고유 UDA" />
+        <Property Name="Property.UDA.moment1" Label="translation:j_d_j_Moment_Mz" Tooltip="moment1, 고유 UDA" />
+        <Property Name="Property.UDA.axial1" Label="translation:j_d_j_Tension_Nt" Tooltip="axial1, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp1" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp1, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ1" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ1, 고유 UDA" />
+        <Property Name="Property.UDA.momentY1" Label="translation:j_d_j_Moment_My" Tooltip="momentY1, 고유 UDA" />
+        <Property Name="Property.UDA.torsion1" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion1, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE1" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE1, 고유 UDA" />
+        <Property Name="Property.UDA.START_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="START_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END1" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END1, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio1" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio1, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END1" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END1, UDA" />
+      </PropertyGroup>
+      <PropertyGroup Name="Undefined.70ad5368b590b868c12812c37af6199e" Label="translation:j_d_j_AD_end_node">
+        <Property Name="Property.UDA.shear2" Label="translation:j_d_j_Shear_Vy" Tooltip="shear2, 고유 UDA" />
+        <Property Name="Property.UDA.moment2" Label="translation:j_d_j_Moment_Mz" Tooltip="moment2, 고유 UDA" />
+        <Property Name="Property.UDA.axial2" Label="translation:j_d_j_Tension_Nt" Tooltip="axial2, 고유 UDA" />
+        <Property Name="Property.UDA.axialcomp2" Label="translation:j_d_j_Compression_Nc" Tooltip="axialcomp2, 고유 UDA" />
+        <Property Name="Property.UDA.shearZ2" Label="translation:j_d_j_Shear_Vz" Tooltip="shearZ2, 고유 UDA" />
+        <Property Name="Property.UDA.momentY2" Label="translation:j_d_j_Moment_My" Tooltip="momentY2, 고유 UDA" />
+        <Property Name="Property.UDA.torsion2" Label="translation:j_d_j_Torsion_Mx" Tooltip="torsion2, 고유 UDA" />
+        <Property Name="Property.UDA.UDL_CODE_VALUE2" Label="translation:j_d_j_UDL_code" Tooltip="UDL_CODE_VALUE2, 고유 UDA" />
+        <Property Name="Property.UDA.END_MOMENT_CONN" Label="translation:j_d_j_MomentConnection" Tooltip="END_MOMENT_CONN, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CAP_END2" Label="translation:j_d_j_ConnectionCapacity" Tooltip="CONN_CAP_END2, UDA" />
+        <Property Name="Property.UDA.ADUtilityRatio2" Label="translation:j_d_j_Utility_ratio1" Tooltip="ADUtilityRatio2, 고유 UDA" />
+        <Property Name="Property.UDA.CONN_CODE_END2" Label="translation:j_d_j_conn_code" Tooltip="CONN_CODE_END2, UDA" />
+      </PropertyGroup>
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.42fd12418e3156b9561caa9e97d4a660" Label="translation:j_d_jd_Analysis" IsVisible="false">
+      <Property Name="Property.UDA.AD_saved_prop" Label="translation:j_AD_saved_prop" Tooltip="저장된 해석 속성(파일) (AD_saved_prop), UDA" />
+      <Property Name="Property.UDA.ADUtilityRatio" Label="translation:j_Utility_ratio" Tooltip="유틸리티 비율 (ADUtilityRatio), 고유 UDA" />
+      <Property Name="Property.UDA.ADReinfArea" Label="translation:j_Reinforcement_area" Tooltip="철근 면적 (ADReinfArea), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.835945ac4be3616d9d83e0cebac46b30" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ENTITY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ENTITY), UDA" />
+      <Property Name="Property.UDA.IFC_EXPORT_TYPE" Label="translation:j_IFC_export_type" Tooltip="IFC 내보내기 유형 (IFC_EXPORT_TYPE), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING" Label="translation:j_IFC_building" Tooltip="IFC 빌딩 이름 (IFC_BUILDING), UDA" />
+      <Property Name="Property.UDA.IFC_BUILDING_STOREY" Label="translation:j_IFC_building_storey" Tooltip="IFC 빌딩 층 이름 (IFC_BUILDING_STOREY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="SteelAssembly" Title="translation:albl_modelObjectType_SteelAssembly">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Steel.Assembly.Numbering" Tooltip="translation:albl_Assembly_numbering" />
+      <Property Name="Property.Assembly.Name" Tooltip="translation:albl_Name" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.6beba3250da148d3e17daee7a0e5c5d3" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.PRELIM_ASSEM_MARK" Label="translation:j_Preliminary_assembly_mark" Tooltip="예비 어셈블리 마크 (PRELIM_ASSEM_MARK), UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.f4c6f851b00d5518bf888815de279aba" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.e1d0ea8b4df2016633e83418034c57ec" Label="translation:j_d_j_Product_information" IsVisible="false">
+      <Property Name="Property.UDA.EN1090_EXC_ASSEMBLY" Label="translation:j_Execution_class" Tooltip="실행 클래스 (EN1090_EXC_ASSEMBLY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.4dd0bd5692dfb3d03f42a323cfab89a8" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ASSEMBLY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ASSEMBLY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.8a028aff2f4d187e0d4ae69ec0947e2f" Label="translation:albl_More" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="PrecastAssembly" Title="translation:j_d_jd_PrecastCastUnit">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Concrete.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.Assembly.Name" Tooltip="translation:albl_Name" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.4dd0bd5692dfb3d03f42a323cfab89a8" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ASSEMBLY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ASSEMBLY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.8a028aff2f4d187e0d4ae69ec0947e2f" Label="translation:albl_More" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="InsituAssembly" Title="translation:j_d_jd_CastInPlaceCastUnit">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Concrete.CastUnit.Numbering" Tooltip="translation:lbl_CastUnitNumbering" />
+      <Property Name="Property.Assembly.Name" Tooltip="translation:albl_Name" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.dfaafe0c2416b80fe2bb952d293e32dd" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+      <Property Name="Property.UDA.OBJECT_LOCKED" Label="translation:j_Locked" Tooltip="잠김 (OBJECT_LOCKED), 고유 UDA" />
+      <Property Name="Property.UDA.ACN" Label="translation:j_ACN_control_number" Tooltip="제어 번호 (ACN), 고유 UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.4dd0bd5692dfb3d03f42a323cfab89a8" Label="translation:j_d_jd_IFC_export" IsVisible="false">
+      <Property Name="Property.UDA.IFC_ASSEMBLY" Label="translation:j_IFC_entity" Tooltip="IFC 엔터티 (IFC_ASSEMBLY), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.8a028aff2f4d187e0d4ae69ec0947e2f" Label="translation:albl_More" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="SurfaceTreatment" Title="translation:albl_Surface_treatment">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.SurfaceTreatment.Type" Tooltip="translation:albl_Type" />
+      <Property Name="Property.SurfaceTreatment.TreatmentName" Tooltip="translation:albl_Subtype" />
+      <Property Name="Property.Material" Tooltip="translation:albl_Material" />
+      <Property Name="Property.SurfaceTreatment.Thickness" Tooltip="translation:albl_Thickness" />
+      <Property Name="Property.SurfaceTreatment.Color" Tooltip="translation:albl_Color" />
+      <Property Name="Property.SurfaceTreatment.CutByFatherCuts" Tooltip="translation:albl_Cut_by_father_part_cuts" />
+    </PropertyGroup>
+    <PropertyGroup Name="Position" Label="translation:albl_Position" Tooltip="translation:albl_Position" IsVisible="true">
+      <Property Name="Property.InDepth" Tooltip="translation:albl_In_depth" />
+    </PropertyGroup>
+    <PropertyGroup Name="Pattern" Label="translation:albl_SurfacingPattern" Tooltip="translation:albl_SurfacingPattern" IsVisible="true">
+      <Property Name="Property.SurfaceTreatment.TilePattern" Tooltip="translation:albl_SurfacingPattern" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.6beba3250da148d3e17daee7a0e5c5d3" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.comment" Label="translation:j_comment" Tooltip="설명 (comment), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.7801f3537ebc3974fee792c2070bf861" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+  <PropertyTemplate Type="SurfaceObject" Title="translation:albl_Surface_object">
+    <PropertyGroup Name="General" Label="translation:albl_General" Tooltip="translation:albl_General" IsVisible="true">
+      <Property Name="Property.Name" Tooltip="translation:albl_Name" />
+      <Property Name="Property.SurfaceObject.Type" Tooltip="translation:albl_Type" />
+      <Property Name="Property.Class" Tooltip="translation:albl_Class" />
+      <Property Name="Property.SurfaceObject.CreateHoles" Tooltip="translation:albl_Create_holes" />
+    </PropertyGroup>
+    <PropertyGroup Name="RebarSet" Label="translation:albl_rebar_set" Tooltip="translation:albl_rebar_set" IsVisible="true">
+      <Property Name="Property.UDA.__CovThickFace" Label="translation:albl_Concrete_cover" Tooltip="콘크리트 피복 (__CovThickFace), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.6beba3250da148d3e17daee7a0e5c5d3" Label="translation:j_d_jd_Parameters" IsVisible="false">
+      <Property Name="Property.UDA.COMMENT" Label="translation:j_comment" Tooltip="설명 (COMMENT), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="Undefined.b47fbcd6c37a0e515d735e0f365d881c" Label="translation:j_d_j_User_fields" IsVisible="true">
+      <Property Name="Property.UDA.USER_FIELD_1" Label="translation:j_user_field_1" Tooltip="사용자 필드 1 (USER_FIELD_1), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_2" Label="translation:j_user_field_2" Tooltip="사용자 필드 2 (USER_FIELD_2), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_3" Label="translation:j_user_field_3" Tooltip="사용자 필드 3 (USER_FIELD_3), UDA" />
+      <Property Name="Property.UDA.USER_FIELD_4" Label="translation:j_user_field_4" Tooltip="사용자 필드 4 (USER_FIELD_4), UDA" />
+    </PropertyGroup>
+    <PropertyGroup Name="UserDefinedAttributes" Label="translation:albl_More" Tooltip="translation:albl_Custom_properties" IsVisible="true">
+      <Property Name="Property.UserDefinedAttributes" />
+    </PropertyGroup>
+  </PropertyTemplate>
+</PropertyTemplates>

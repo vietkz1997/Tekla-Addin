@@ -1,0 +1,129 @@
+template _tmp_839
+{
+    name = "template1";
+    type = TEXTUAL;
+    width = 46;
+    maxheight = 1e+017;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (1, 1, 1, 1);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "12.12.2007 16:36";
+    modified = "09.02.2012 16:43";
+    notes = "";
+
+    header _tmp_1024
+    {
+        name = "Header";
+        height = 3;
+
+        text _tmp_1025
+        {
+            name = "ASSEMBLIES WITHOUT AN ASSEMBLY D";
+            x1 = 1;
+            y1 = 1;
+            x2 = 1;
+            y2 = 1;
+            string = "ASSEMBLIES WITHOUT AN ASSEMBLY DRAWING";
+            fontname = "Arial";
+            fontcolor = 161;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_864
+    {
+        name = "ASSEMBLY";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if (IsSet(\"DRAWING.DATE_CREATE\")) then\n  StepOver()\nelse\n  Output()\nendif";
+        contenttype = "ASSEMBLY";
+        sorttype = COMBINE;
+
+        valuefield _tmp_865
+        {
+            name = "ASSEMBLY_POS_field";
+            location = (18, 0);
+            formula = "GetValue(\"ASSEMBLY_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            sortdirection = ASCENDING;
+            fontname = "Arial";
+            fontcolor = 165;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_890
+        {
+            name = "DRAWING.DATE_CREATE_field";
+            location = (31, 0);
+            formula = "GetValue(\"DRAWING.DATE_CREATE\")";
+            datatype = INTEGER;
+            class = "Date";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "dd.mm.yyyy";
+        };
+
+        valuefield _tmp_901
+        {
+            name = "ID_field";
+            location = (2, 0);
+            formula = "\"Id:\"+GetValue(\"ID\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial";
+            fontcolor = 165;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+    };
+};

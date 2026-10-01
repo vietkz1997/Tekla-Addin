@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Adds Moment Symbols for Erection Plans" Scale="0">
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="-3.32184375000005" Y="-4.34912058335938" />
+    <Point X="3.32184374999997" Y="-4.34912058335938" />
+    <Point X="1.8947806286936E-14" Y="-10.1857667291915" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="3.71367772135682" Y="3.32184375000012" />
+    <Point X="3.71367772135682" Y="-3.3218437499999" />
+    <Point X="9.55032386718896" Y="5.6843418860808E-14" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="-3.32184375000005" Y="4.4616195833593" />
+    <Point X="3.32184374999997" Y="4.4616195833593" />
+    <Point X="1.8947806286936E-14" Y="10.2982657291914" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="-3.58132774917037" Y="3.32184375000012" />
+    <Point X="-3.58132774917037" Y="-3.3218437499999" />
+    <Point X="-9.41797389500249" Y="5.6843418860808E-14" />
+  </Polygon>
+</DrawingDetail>

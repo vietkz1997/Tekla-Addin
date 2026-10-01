@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MasterDrawing xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CloneDimensions>Clone</CloneDimensions>
+  <CloneDrawingWelds>true</CloneDrawingWelds>
+  <CloneDwgAndDxf>true</CloneDwgAndDxf>
+  <CloneGraphics>true</CloneGraphics>
+  <CloneHyperlinks>true</CloneHyperlinks>
+  <CloneLevelMarks>true</CloneLevelMarks>
+  <CloneMarks>Clone</CloneMarks>
+  <CloneSymbols>true</CloneSymbols>
+  <CloneTextFiles>true</CloneTextFiles>
+  <CloneTexts>true</CloneTexts>
+  <CloneWeldMarks>Clone</CloneWeldMarks>
+  <Deleted>false</Deleted>
+  <Description />
+  <DetailedObjectLevelSettings />
+  <Keywords />
+  <Name>CAST_F4</Name>
+  <PictureFile />
+  <SourceType>TemplateDrawing</SourceType>
+  <TargetType>CastUnit</TargetType>
+  <UseDetailedObjectLevelSettings>false</UseDetailedObjectLevelSettings>
+</MasterDrawing>

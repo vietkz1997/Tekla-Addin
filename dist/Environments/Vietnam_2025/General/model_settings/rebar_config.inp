@@ -1,0 +1,85 @@
+//Modified by Tekla on May 18, 2009
+//Updated for Tekla Structures version 15.0
+//
+// Following values are used when multiple marks are merged into one mark
+MergeOneFormat="1 pc"
+MergeTwoOrMoreFormat="%d x"  
+MergeAndFormat=" & "
+LeaderLinetype=1
+//
+//Separators in rebar mark (in use only for dim style marks)
+DimensionMarkSpacingSeparator="/"
+ExactDimensionMarkSpacingSeparator=" + "
+ExactDimensionMarkPcsSeparator="*"
+
+// Mark templates for bar group (in use only for dim style marks)
+// GroupBarMark="%NUMBER% %SHAPE%%POS% ?%SIZE% c/c %CC%"
+GroupBarMark="(%NUMBER%)@%CC%
+//Available elements in GroupBarMark:
+//%NAME%
+//%GRADE%	material grade of the rebar or mesh
+//%CLASS%	class designation of the rebar or mesh
+//%LENGTH%	total length of the rebar
+//%NUMBER%	quantity of rebars
+//%CC%		center-to-center spacing 
+//%CC_MIN%	smallest spacing value of the rebar group
+//%CC_MAX%	largest spacing value of the rebar group
+//%CC_EXACT%	all spacing values of the rebar group
+//%SHAPE%	shape of the rebar based on environment/rebar catalog
+//%POS%	rebar position number
+
+MarkingDimAttributes="rebar_mark"
+//
+// Available FIN, SWE, UK, US
+ScheduleCountry="US"
+//
+// Unit is millimetre (for rounding each bar leg length, B, C, D, etc...)    
+ScheduleDimensionRoundingAccuracy=0.0001
+//
+// UP or DOWN or NEAREST
+ScheduleDimensionRoundingDirection="UP"
+//
+// Unit is millimetre (for rounding the overall length of the bar) 
+ScheduleTotalLengthRoundingAccuracy=0.0001
+//
+// UP or DOWN or NEAREST
+ScheduleTotalLengthRoundingDirection="UP"
+//
+// Symbol file for reinforcement mesh symbols in drawings
+MeshSymbolFile="mesh.sym"
+//
+// Symbol file for prestressed strand symbols in drawings
+StrandSymbolFile="strand.sym"
+//
+// Symbol file for unbonded prestressed strand symbols in drawings
+UnbondingSymbolFile="unbonding.sym"
+//
+// Template for rebar mesh size
+RebarMeshSize="%CC_DIAMETER_LONG%/%CC_DIAMETER_CROSS%-%CC_PITCHING_LONG%/%CC_PITCHING_CROSS%-%WIDTH%/%LENGTH%""
+//
+// Settings for pull-out picture in marks & templates:
+PullOutDimensionFormat=0
+//PullOutDimensionFormat options: 0=###, 1=###[.#], 2=###.#, 3=###[.##], 4=###.##, 5=###[.###], 6=###.###, 7=### #/#
+PullOutDimensionPrecision=4
+//PullOutDimensionPrecision options: fraction denominator for precsion, 1, 2, 4, 5, 8, 16, etc...  e.g. 4 =1/4" rounding, 8 =1/8" rounding
+PullOutDimensionUnits=1
+//PullOutDimensionUnits options: 0=auto, 1=mm, 2=cm, 3=m, 4=inch
+PullOutColor=2
+//PullOutColor options: 0 = black, 1 = white, 2 = red, 3 = green, 4 = blue, 5 = cyan, 6 = yellow, 7 = magenta
+PullOutVisibleLineType=1
+//PullOutVisibleLineTypes: 1 = continuous, 2 = dashed, 3 = dashed 2, 4 = dash dot, 5 = dot
+PullOutRepresentation=0
+//PullOutRepresentation options: 0 = stick style, 1 = double style, 2 = diameter style
+PullOutAngleColor=4
+//PullOutAngleColors: 0 = black, 1 = white, 2 = red, 3 = green, 4 = blue, 5 = cyan, 6 = yellow, 7 = magenta
+PullOutAngleLineType=1
+//PullOutAngleLineType options: 0 = stick style, 1 = double style, 2 = diameter style
+//PullOutShowDuplicateDims=0
+//0 = never show duplicate dimensions (default)
+//1 = show equal & parallel dimensions but not similar hook dimensions
+//2 = do not show equal & parallel dimensions but show both hook dimensions (even if they are equal)
+//3 = show all dimensions
+//4 = do not show any hook dimensions
+//5 = do not show any hook dimensions nor equal & parallel dimensions
+//PullOutShowUSHookDims: 0=show "european" hook dimension (=leg length), 1=show "US" hook dimension (=straight length)for hooks >90 degrees
+PullOutShowUSHookDims=0

@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeometryHelper" Version="5.1.0" />
-    <PackageReference Include="GeometryHelper.TeklaConvert.$(TeklaVersion)" Version="5.1.0" />
+    <PackageReference Include="GeometryHelper" Version="7.0.0" />
+    <PackageReference Include="GeometryHelper.TeklaConvert.$(TeklaVersion)" Version="7.0.0" />
   </ItemGroup>
 </Project>

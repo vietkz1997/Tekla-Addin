@@ -1,0 +1,18 @@
+TITLE_OBJECT_GROUP 
+{
+    Version= 1.05 
+    Count= 1 
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        co_assembly 
+        PLANNED_START_E 
+        PLANNED_START_E 
+        == 
+        albl_Equals 
+        14.06.2016 
+        0 
+        && 
+        }
+    }

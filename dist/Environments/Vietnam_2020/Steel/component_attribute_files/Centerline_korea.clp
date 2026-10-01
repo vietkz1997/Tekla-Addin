@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ComplexLine xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <BodyElements>
+    <RepeatingElement xsi:type="LineSegmentElement">
+      <Space>9.92</Space>
+      <SpacingType>
+        <SpacingTypeS>0</SpacingTypeS>
+      </SpacingType>
+      <Color>
+        <ColorDraw>Default</ColorDraw>
+      </Color>
+      <LineType>
+        <LineTypeS>7</LineTypeS>
+      </LineType>
+      <Offset>
+        <Horizontal>0</Horizontal>
+        <Vertical>0</Vertical>
+      </Offset>
+      <Size>9.92</Size>
+    </RepeatingElement>
+    <RepeatingElement xsi:type="LineSegmentElement">
+      <Space>9.92</Space>
+      <SpacingType>
+        <SpacingTypeS>0</SpacingTypeS>
+      </SpacingType>
+      <Color>
+        <ColorDraw>Default</ColorDraw>
+      </Color>
+      <LineType>
+        <LineTypeS>7</LineTypeS>
+      </LineType>
+      <Offset>
+        <Horizontal>0</Horizontal>
+        <Vertical>0</Vertical>
+      </Offset>
+      <Size>9.92</Size>
+    </RepeatingElement>
+    <RepeatingElement xsi:type="SymbolElement">
+      <Space>9.92</Space>
+      <SpacingType>
+        <SpacingTypeS>0</SpacingTypeS>
+      </SpacingType>
+      <SymbolFileName>Drawing_Symbols</SymbolFileName>
+      <SymbolIndex>71</SymbolIndex>
+      <Color>
+        <ColorDraw>Default</ColorDraw>
+      </Color>
+      <Offset>
+        <Horizontal>0</Horizontal>
+        <Vertical>0</Vertical>
+      </Offset>
+      <Rotation>0</Rotation>
+      <Size>9.92</Size>
+    </RepeatingElement>
+    <RepeatingElement xsi:type="LineSegmentElement">
+      <Space>9.92</Space>
+      <SpacingType>
+        <SpacingTypeS>0</SpacingTypeS>
+      </SpacingType>
+      <Color>
+        <ColorDraw>Default</ColorDraw>
+      </Color>
+      <LineType>
+        <LineTypeS>7</LineTypeS>
+      </LineType>
+      <Offset>
+        <Horizontal>0</Horizontal>
+        <Vertical>0</Vertical>
+      </Offset>
+      <Size>9.92</Size>
+    </RepeatingElement>
+    <RepeatingElement xsi:type="LineSegmentElement">
+      <Space>9.92</Space>
+      <SpacingType>
+        <SpacingTypeS>0</SpacingTypeS>
+      </SpacingType>
+      <Color>
+        <ColorDraw>Default</ColorDraw>
+      </Color>
+      <LineType>
+        <LineTypeS>7</LineTypeS>
+      </LineType>
+      <Offset>
+        <Horizontal>0</Horizontal>
+        <Vertical>0</Vertical>
+      </Offset>
+      <Size>9.92</Size>
+    </RepeatingElement>
+  </BodyElements>
+  <EndElements>
+    <RepeatingElement xsi:type="LineSegmentElement">
+      <Space>9.92</Space>
+      <SpacingType>
+        <SpacingTypeS>0</SpacingTypeS>
+      </SpacingType>
+      <Color>
+        <ColorDraw>Default</ColorDraw>
+      </Color>
+      <LineType>
+        <LineTypeS>7</LineTypeS>
+      </LineType>
+      <Offset>
+        <Horizontal>0</Horizontal>
+        <Vertical>0</Vertical>
+      </Offset>
+      <Size>9.92</Size>
+    </RepeatingElement>
+  </EndElements>
+  <Image source="iVBORw0KGgoAAAANSUhEUgAAAFAAAAAUCAYAAAAa2LrXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALRSURBVFhH7ZZfSFNRHMfPTGO1KIQeejEUrUQMWsNt5B/cg/SHGptGDB9CJhiE+bBJbxHZMEX7A0IQlVjUw2qMypwjcSsUNzSNgmhjYkjIBk6b9qCZ9u3e63FuOn3Zwz3BPvB7uN9zfpzDh3M5hyBFUqQEJklKYJIwJfDXpBfdzztQqy+FSqWipcQJ7WU8tLsRmP5DZ7IDGwJXInjTWocjmTJkFVag3vIANpuNlhVNdedwaL8M0pzTaHf68Ze2sYD4ApfDeNFYgbQ0KQw3ezFH440sBHqgzSMgJBd3PkzRVHxEFxgauIssQnD4YgciNNuK+ckv6Ot9i+GJWZqIj+gCB2+f4U5VJho6R2myztJ8EKPvXXB9nsTvFRoyhugC+5pKQSTZuP5qnCbrhD8+hoI7naSiCaEFGjKGINDtdkOhUGxZXq9XmMxjNpujucPhoCnQ3Nwc17NdVVdX0y7gm7UeUk6SzuLExkM2M/YExbs4gWdvQbiAF0IYGejH2PefqxMo/D4SrZOo1Go1gsEg7QSqqqqiY36/n6aA0WiM64ut2P1HBcrl8i3L4/EIk3lMJlM0jxVosVjierYrg8FAu7gLeO4rGuQZIAWV6P8Rf7/OfnqKkt0EaefvC9+DbTrudydQ3XAJ32vw+0i0TqJSKpVxAvV6fXTM5/PRFKipqYnri63Y/Yv+C/MEh7ugOUAgzTqJ1mcuTERWRS76rNDs5fISI1pMBuxJT0e2/ipGpxaFcRZgQiBPZNwLi/EUjubl4GBOgfCIVhTmYl8GwQ6JDPnHynCp5TWml2gDIzAjMMpiCEM9duER3dV2Bfk7OYGaawjTYdZgT2AMy4GXKJcRSHTtzJ28NZgWyN/CJdwtLKm8B0ZfMWwLDI88wnH+HVhwAZ1WO+z2zdXt9CAk4p3CtMD5wDuYdRpoyoq550cRioo2V7m2EUMztEEEmBb4P5ASmBTAP0vUUk5SC/B8AAAAAElFTkSuQmCC" />
+  <LineElements />
+  <Name>Centerline_korea</Name>
+  <StartElements>
+    <RepeatingElement xsi:type="LineSegmentElement">
+      <Space>9.92</Space>
+      <SpacingType>
+        <SpacingTypeS>0</SpacingTypeS>
+      </SpacingType>
+      <Color>
+        <ColorDraw>Default</ColorDraw>
+      </Color>
+      <LineType>
+        <LineTypeS>7</LineTypeS>
+      </LineType>
+      <Offset>
+        <Horizontal>0</Horizontal>
+        <Vertical>0</Vertical>
+      </Offset>
+      <Size>9.92</Size>
+    </RepeatingElement>
+  </StartElements>
+</ComplexLine>

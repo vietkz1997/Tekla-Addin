@@ -1,0 +1,18 @@
+template _tmp_839
+{
+    name = "template1";
+    type = TEXTUAL;
+    width = 46;
+    maxheight = 1e+017;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (1, 1, 1, 1);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "12.12.2007 16:36";
+    modified = "03.12.2015 16:35";
+    notes = "";
+};

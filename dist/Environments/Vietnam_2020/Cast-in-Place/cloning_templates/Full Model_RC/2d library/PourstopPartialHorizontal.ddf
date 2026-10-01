@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Adds a Horiztonal Bottom Side Pourstop symbol for erection Drawings.">
+  <Line StartPointX="-16.6134323413662" StartPointY="-6.55817246276096" EndPointX="-17.6717656746997" EndPointY="-5.49983912942782" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <Line StartPointX="-16.6134323413662" StartPointY="-0.595311458333451" EndPointX="-17.6717656746997" EndPointY="0.463021874999716" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <Line StartPointX="-17.142599008033" StartPointY="-7.12149080969304" EndPointX="-17.142599008033" EndPointY="0.741332869220348" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <Line StartPointX="-9.23409121915504" StartPointY="-6.02900579609438" EndPointX="-17.7656935610961" EndPointY="-6.02900579609438" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <Line StartPointX="3.50739355181488" StartPointY="-6.02900579609438" EndPointX="-8.42342922883658" EndPointY="-6.02900579609438" Color="Yellow" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <Line StartPointX="3.50739355181488" StartPointY="-4.99533214659821" EndPointX="-8.42342922883658" EndPointY="-4.99533214659821" Color="Yellow" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <PolyLine Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="Start" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="-3.93708810464494" Y="-6.02900579609438" />
+    <Point X="-0.393708810463844" Y="-11.1449410488508" />
+    <Point X="1.91229993654377" Y="-11.1449410488502" />
+  </PolyLine>
+  <PolyLine Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="3.50739355181488" Y="-7.8412907659903" />
+    <Point X="3.50739355181488" Y="-3.84595353077008" />
+    <Point X="2.24618626928158" Y="-3.48637317960026" />
+    <Point X="4.80247161518152" Y="-3.12679282843045" />
+    <Point X="3.50739355181488" Y="-2.64735236020402" />
+    <Point X="3.50739355181488" Y="0.508964055619946" />
+  </PolyLine>
+  <PolyLine Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="-8.42342922883658" Y="-7.84129076599025" />
+    <Point X="-8.42342922883658" Y="-3.84595353077003" />
+    <Point X="-9.68463651136987" Y="-3.48637317960021" />
+    <Point X="-7.12835116546993" Y="-3.12679282843039" />
+    <Point X="-8.42342922883658" Y="-2.64735236020396" />
+    <Point X="-8.42342922883658" Y="0.508964055620003" />
+  </PolyLine>
+  <Text InsertionPointX="15.5159878351912" InsertionPointY="-11.083025465479" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">SEE TYP. DETAIL</Text>
+  <Text InsertionPointX="-19.8133949892535" InsertionPointY="-3.69308657055374" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="90" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">1'-0</Text>
+</DrawingDetail>

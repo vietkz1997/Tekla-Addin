@@ -1,0 +1,141 @@
+joint_attributes.saveas_file "standard"
+joint_attributes.get_menu "standard"
+joint_attributes.StartNo_Landing_Mid ""
+joint_attributes.CastUnit_Landing_Mid "ST"
+joint_attributes.Class_Landing_Mid 4
+joint_attributes.Material_Landing_Mid "K35-1"
+joint_attributes.Name_Landing_Mid "LANDING_MIDLEVEL"
+joint_attributes.StartNo_Landing_Floor ""
+joint_attributes.CastUnit_Landing_Floor "ST"
+joint_attributes.Class_Landing_Floor 3
+joint_attributes.Material_Landing_Floor "K35-1"
+joint_attributes.Name_Landing_Floor "LANDING_FLOORLEVEL"
+joint_attributes.StartNo_Stairs ""
+joint_attributes.CastUnit_Stairs "ST"
+joint_attributes.Class_Stairs 2
+joint_attributes.Material_Stairs "K35-1"
+joint_attributes.Name_Stairs "STAIRS"
+joint_attributes.StartNo_WallPanels ""
+joint_attributes.CastUnit_WallPanels "ST"
+joint_attributes.Class_WallPanels 1
+joint_attributes.Material_WallPanels "K35-1"
+joint_attributes.Name_WallPanels "WALLPANELS"
+joint_attributes.Top_G2 200.000000
+joint_attributes.Top_G1 200.000000
+joint_attributes.Top_TH 150.000000
+joint_attributes.Top_EF 
+joint_attributes.Top_Step 0
+joint_attributes.Top_S3 80.000000
+joint_attributes.Top_S2 -2147483648.000000
+joint_attributes.Top_S1 80.000000
+joint_attributes.Top_H2 1200.000000
+joint_attributes.Top_H1 1200.000000
+joint_attributes.Top_B3 1800.000000
+joint_attributes.Top_B2 -2147483648.000000
+joint_attributes.Top_B1 1800.000000
+joint_attributes.Top_Type 0
+joint_attributes.Typical_G2 200.000000
+joint_attributes.Typical_G1 200.000000
+joint_attributes.Typical_TH 150.000000
+joint_attributes.Typical_EF 
+joint_attributes.Typical_Step 0
+joint_attributes.Typical_S3 80.000000
+joint_attributes.Typical_S2 -2147483648.000000
+joint_attributes.Typical_S1 80.000000
+joint_attributes.Typical_H2 1200.000000
+joint_attributes.Typical_H1 1200.000000
+joint_attributes.Typical_B3 1800.000000
+joint_attributes.Typical_B2 -2147483648.000000
+joint_attributes.Typical_B1 1800.000000
+joint_attributes.Typical_Type 0
+joint_attributes.First_G2 200.000000
+joint_attributes.First_G1 200.000000
+joint_attributes.First_TH 150.000000
+joint_attributes.First_EF 
+joint_attributes.First_Step 0
+joint_attributes.First_S3 80.000000
+joint_attributes.First_S2 -2147483648.000000
+joint_attributes.First_S1 80.000000
+joint_attributes.First_H2 1200.000000
+joint_attributes.First_H1 1200.000000
+joint_attributes.First_B3 1800.000000
+joint_attributes.First_B2 -2147483648.000000
+joint_attributes.First_B1 1800.000000
+joint_attributes.First_Type 0
+joint_attributes.Top_D_4 2100.000000
+joint_attributes.Typical_D_4 2100.000000
+joint_attributes.First_D_4 2100.000000
+joint_attributes.Top_C_4 0.000000
+joint_attributes.Typical_C_4 0.000000
+joint_attributes.First_C_4 0.000000
+joint_attributes.Top_B_4 1200.000000
+joint_attributes.Typical_B_4 1200.000000
+joint_attributes.First_B_4 1200.000000
+joint_attributes.Top_A_4 800.000000
+joint_attributes.Typical_A_4 800.000000
+joint_attributes.First_A_4 800.000000
+joint_attributes.Top_D_3 0.000000
+joint_attributes.Typical_D_3 0.000000
+joint_attributes.First_D_3 0.000000
+joint_attributes.Top_C_3 0.000000
+joint_attributes.Typical_C_3 0.000000
+joint_attributes.First_C_3 0.000000
+joint_attributes.Top_B_3 0.000000
+joint_attributes.Typical_B_3 0.000000
+joint_attributes.First_B_3 0.000000
+joint_attributes.Top_A_3 0.000000
+joint_attributes.Typical_A_3 0.000000
+joint_attributes.First_A_3 0.000000
+joint_attributes.Top_D_2 2100.000000
+joint_attributes.Typical_D_2 2100.000000
+joint_attributes.First_D_2 2100.000000
+joint_attributes.Top_C_2 0.000000
+joint_attributes.Typical_C_2 0.000000
+joint_attributes.First_C_2 0.000000
+joint_attributes.Top_B_2 1200.000000
+joint_attributes.Typical_B_2 1200.000000
+joint_attributes.First_B_2 1200.000000
+joint_attributes.Top_A_2 4200.000000
+joint_attributes.Typical_A_2 4200.000000
+joint_attributes.First_A_2 4200.000000
+joint_attributes.Top_D_1 2100.000000
+joint_attributes.Typical_D_1 2100.000000
+joint_attributes.First_D_1 2100.000000
+joint_attributes.Top_C_1 0.000000
+joint_attributes.Typical_C_1 0.000000
+joint_attributes.First_C_1 0.000000
+joint_attributes.Top_B_1 1200.000000
+joint_attributes.Typical_B_1 1200.000000
+joint_attributes.First_B_1 1200.000000
+joint_attributes.Top_A_1 4200.000000
+joint_attributes.Typical_A_1 4200.000000
+joint_attributes.First_A_1 4200.000000
+joint_attributes.Top_W_B1_B2_4 "1500.0 1500.0"
+joint_attributes.Typical_W_B1_B2_4 "1500.0 1500.0"
+joint_attributes.First_W_B1_B2_4 "1500.0 1500.0"
+joint_attributes.Top_T_4 160.000000
+joint_attributes.Typical_T_4 160.000000
+joint_attributes.First_T_4 160.000000
+joint_attributes.Top_W_B1_B2_3 "1500.0 1500.0"
+joint_attributes.Typical_W_B1_B2_3 "1500.0 1500.0"
+joint_attributes.First_W_B1_B2_3 "1500.0 1500.0"
+joint_attributes.Top_T_3 160.000000
+joint_attributes.Typical_T_3 160.000000
+joint_attributes.First_T_3 160.000000
+joint_attributes.Top_W_B1_B2_2 "1500.0 1500.0"
+joint_attributes.Typical_W_B1_B2_2 "1500.0 1500.0"
+joint_attributes.First_W_B1_B2_2 "1500.0 1500.0"
+joint_attributes.Top_T_2 160.000000
+joint_attributes.Typical_T_2 160.000000
+joint_attributes.First_T_2 160.000000
+joint_attributes.Top_W_B1_B2_1 "1500.0 1500.0"
+joint_attributes.Typical_W_B1_B2_1 "1500.0 1500.0"
+joint_attributes.First_W_B1_B2_1 "1500.0 1500.0"
+joint_attributes.Top_T_1 160.000000
+joint_attributes.Typical_T_1 160.000000
+joint_attributes.First_T_1 160.000000
+joint_attributes.Width_W 3000.000000
+joint_attributes.Length_L 6000.000000
+joint_attributes.Position_Distance 0.000000
+joint_attributes.Position 0
+joint_attributes.Levels "0.0 3300.0 6600.0 9900.0 13200.0"

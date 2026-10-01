@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net8.0-windows;net48</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <UseWindowsDesktopSdk>true</UseWindowsDesktopSdk>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>RevitQtoTool</AssemblyName>
+    <RootNamespace>RevitQtoTool</RootNamespace>
+    <StartupObject>RevitQtoTool.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.102.2" />
+  </ItemGroup>
+
+  <!-- Revit API cho net8.0-windows (Revit 2026 / 2025) -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2026.0.0" />
+  </ItemGroup>
+
+  <!-- Revit API cho net48 (Revit 2024 trở xuống) -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2024.0.0" />
+  </ItemGroup>
+
+  <!-- Fallback tham chiếu trực tiếp nếu có cài sẵn Revit trên máy -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows' and Exists('C:\Program Files\Autodesk\Revit 2026\RevitAPI.dll')">
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2026\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2026\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

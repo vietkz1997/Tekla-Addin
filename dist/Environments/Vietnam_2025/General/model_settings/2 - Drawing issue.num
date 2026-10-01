@@ -1,0 +1,32 @@
+encoding 949
+aInFile "2 - Drawing issue"
+aOutFile "2 - Drawing issue"
+m3_tolerance 1.000000
+m3_steel_tolerance 1.000000
+m3_concrete_tolerance 1.000000
+m3_rebar_tolerance 1.000000
+m3_renumber_all 0
+m3_modified_options 0
+m3_use_old_numbers 1
+m3_holes 1
+m3_profile_name 1
+m3_new_options 0
+m3_beam_orientation 0
+m3_column_orientation 0
+m3_use_std_parts 0
+m3_save_numbering_save 0
+m3_automatic_cloning 1
+m3_rebars 1
+m3_embeds 1
+m3_surfacings 1
+m3_Welds 0
+m3_number_families 1
+m3_SortBy1 0
+m3_SortBy2 0
+m3_SortBy3 0
+m3_aSortByUDA1 ""
+m3_aSortByUDA2 ""
+m3_aSortByUDA3 ""
+m3_SortBy1Order 1
+m3_SortBy2Order 1
+m3_SortBy3Order 1

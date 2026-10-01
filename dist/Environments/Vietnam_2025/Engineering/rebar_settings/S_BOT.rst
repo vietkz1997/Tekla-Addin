@@ -1,0 +1,17 @@
+encoding 949
+Prefix "S"
+StartNumber 1
+Name "BOT"
+Size "19"
+Grade "SD400"
+BendingRadius 60.000000
+Class 3
+RebarSetLayerOrderNumber 0
+GuidelineStartOffset 0.000000
+GuidelineEndOffset 0.000000
+GuidelineStartOffsetIsFixed 0
+GuidelineEndOffsetIsFixed 0
+GuidelineStartOffsetIsAutomatic 1
+GuidelineEndOffsetIsAutomatic 1
+InFile ""
+OutFile ""

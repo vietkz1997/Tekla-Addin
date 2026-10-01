@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Tekla.Structures.Geometry3d;
 using Tekla.Structures.Model;
+using GeometryHelper.Clash;
 using GeometryHelper.Geometry;
 using GeometryHelper.IfcConvert.Core;
 using GeometryHelper.TeklaConvert;
@@ -71,6 +72,9 @@ namespace BimCommands.Tekla.ClashCheck
 
         /// <summary>Khoảng hở an toàn xung quanh thép cần kiểm tra (Clearance mm, mặc định 0.0mm).</summary>
         public double ClearanceMm { get; set; } = 0.0;
+
+        /// <summary>Whether to include surface-touching contacts without penetration (Touch clash). Default is false to prevent false positives.</summary>
+        public bool IncludeTouching { get; set; } = false;
 
         /// <summary>Bật/tắt bộ lọc tự động loại trừ các cấu kiện phụ IFC (bu lông, thang, tai móc, giằng...).</summary>
         public bool EnableIgnoredComponents { get; set; } = true;
@@ -469,9 +473,8 @@ namespace BimCommands.Tekla.ClashCheck
 
             return allTargets;
         }
-
         /// <summary>
-        /// Cấu trúc nội bộ lưu trữ dữ liệu trích xuất của cốt thép để xử lý song song đa luồng an toàn.
+        /// Cấu trúc nội bộ lưu trữ dữ liệu trích xuất của cốt thép để xử lý va chạm và mapping kết quả.
         /// </summary>
         private class RebarExtractData
         {
@@ -485,15 +488,12 @@ namespace BimCommands.Tekla.ClashCheck
             public string HostPart;
             public double Length;
             public double Radius;
-            public Point Min;
-            public Point Max;
-            public GeoPolyline3[] Polylines;
-            public GeoAabb3[] PolylineAabbs;
         }
 
         /// <summary>
-        /// Thuật toán kiểm tra va chạm cứng (Hard Clash Detection) chuẩn phong cách Navisworks.
-        /// Sử dụng quy trình đường ống 2 pha đa luồng (Parallel Pipeline) kết hợp lọc AABB siêu tốc và cắt B-Rep chính xác 100%.
+        /// Thuật toán kiểm tra va chạm tối ưu hiệu năng cao sử dụng GeometryHelper.Clash.Clash3.Find
+        /// kết hợp ClashBar (tim thép dạng GeoPolylineArc3 + bán kính thực tế) và các khối GeoSolid3 từ IFC.
+        /// Tốc độ xử lý song song đa luồng tối đa, đo lường chính xác thể tích, độ sâu và chiều dài ngập.
         /// </summary>
         public List<ClashResultItem> DetectClashes(
             List<Reinforcement> rebars, 
@@ -502,16 +502,16 @@ namespace BimCommands.Tekla.ClashCheck
             Action<int, int> progressCallback = null,
             System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var rawClashes = new System.Collections.Concurrent.ConcurrentBag<ClashResultItem>();
             if (rebars == null || obstacles == null || rebars.Count == 0 || obstacles.Count == 0)
                 return new List<ClashResultItem>();
 
-            // Xây dựng cây chỉ mục không gian BVH cho các cấu kiện IFC mục tiêu
-            var bvhTree = new ObstacleBvhTree(obstacles);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            // Pha 1: Trích xuất các thanh thép thành ClashBar (giữ nguyên cung tròn GeoPolylineArc3 và bán kính)
+            var bars = new List<ClashBar>();
+            var barOwners = new List<RebarExtractData>();
             int totalRebars = rebars.Count;
 
-            // Pha 1: Trích xuất tim thép (Centerline polylines) và tính sẵn AABB
-            var rebarItems = new List<RebarExtractData>(totalRebars);
             for (int rIdx = 0; rIdx < totalRebars; rIdx++)
             {
                 cancellationToken.ThrowIfCancellationRequested();
@@ -521,7 +521,6 @@ namespace BimCommands.Tekla.ClashCheck
                 double dia = 16.0;
                 rebar.GetReportProperty("DIAMETER", ref dia);
                 if (dia <= 0) dia = 16.0;
-                double rebarRadius = dia / 2.0;
 
                 string rebarSize = string.Empty;
                 rebar.GetReportProperty("SIZE", ref rebarSize);
@@ -543,195 +542,183 @@ namespace BimCommands.Tekla.ClashCheck
                 double rebarLen = 0.0;
                 rebar.GetReportProperty("LENGTH", ref rebarLen);
 
-                // Lấy danh sách tim thép
-                var centerlinePolys = new List<ArrayList>();
-                try
-                {
-                    ArrayList geoms = rebar.GetRebarGeometries(true);
-                    if (geoms == null || geoms.Count == 0)
-                        geoms = rebar.GetRebarGeometries(false);
-
-                    if (geoms != null)
-                    {
-                        foreach (object obj in geoms)
-                        {
-                            if (obj is RebarGeometry rg && rg.Shape != null && rg.Shape.Points != null && rg.Shape.Points.Count >= 2)
-                            {
-                                centerlinePolys.Add(rg.Shape.Points);
-                            }
-                        }
-                    }
-                }
-                catch { }
-
-                if (centerlinePolys.Count == 0) continue;
-
-                var rebarPolylines = new List<GeoPolyline3>(centerlinePolys.Count);
-                foreach (var polyPts in centerlinePolys)
-                {
-                    if (polyPts == null || polyPts.Count < 2) continue;
-                    var gPts = new List<GeoPoint3>(polyPts.Count);
-                    for (int pIdx = 0; pIdx < polyPts.Count; pIdx++)
-                    {
-                        if (polyPts[pIdx] is Point pt)
-                        {
-                            var gp = new GeoPoint3(pt.X, pt.Y, pt.Z);
-                            if (gPts.Count == 0 || !gPts[gPts.Count - 1].IsEqualTo(gp))
-                            {
-                                gPts.Add(gp);
-                            }
-                        }
-                    }
-                    if (gPts.Count >= 2)
-                    {
-                        try { rebarPolylines.Add(new GeoPolyline3(gPts)); } catch { }
-                    }
-                }
-
-                if (rebarPolylines.Count == 0) continue;
-
-                var polyArr = rebarPolylines.ToArray();
-                var polyAabbs = new GeoAabb3[polyArr.Length];
-                for (int p = 0; p < polyArr.Length; p++)
-                {
-                    polyAabbs[p] = polyArr[p].GetAabb();
-                }
-
-                // Tính bounding box tổng của cốt thép
-                GeoAabb3 rAabb = polyAabbs[0];
-                for (int p = 1; p < polyAabbs.Length; p++)
-                {
-                    rAabb = rAabb.Union(polyAabbs[p]);
-                }
-
-                Point rMin = new Point(rAabb.Min.X, rAabb.Min.Y, rAabb.Min.Z);
-                Point rMax = new Point(rAabb.Max.X, rAabb.Max.Y, rAabb.Max.Z);
-
-                rebarItems.Add(new RebarExtractData
+                var rebarData = new RebarExtractData
                 {
                     Rebar = rebar,
                     Id = rebar.Identifier.ID,
                     Guid = rebar.Identifier.GUID.ToString(),
-                    Name = rebarName ?? "REBAR",
+                    Name = !string.IsNullOrEmpty(rebarName) ? rebarName : "REBAR",
                     Size = rebarSize,
                     Grade = rebarGrade,
                     Pos = rebarPos,
                     HostPart = hostPart,
                     Length = Math.Round(rebarLen, 0),
-                    Radius = rebarRadius,
-                    Min = rMin,
-                    Max = rMax,
-                    Polylines = polyArr,
-                    PolylineAabbs = polyAabbs
-                });
-            }
+                    Radius = dia / 2.0
+                };
 
-            int validRebars = rebarItems.Count;
-            if (validRebars == 0) return new List<ClashResultItem>();
-
-            // Pha 2: Tính toán va chạm song song đa luồng (Tận dụng 100% tất cả các lõi CPU)
-            int processedCount = 0;
-            var parallelOpts = new System.Threading.Tasks.ParallelOptions
-            {
-                CancellationToken = cancellationToken,
-                MaxDegreeOfParallelism = Environment.ProcessorCount
-            };
-
-            System.Threading.Tasks.Parallel.ForEach(rebarItems, parallelOpts, (rb) =>
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                double effRadius = rb.Radius + settings.ClearanceMm;
-                Point expRMin = new Point(rb.Min.X - effRadius, rb.Min.Y - effRadius, rb.Min.Z - effRadius);
-                Point expRMax = new Point(rb.Max.X + effRadius, rb.Max.Y + effRadius, rb.Max.Z + effRadius);
-
-                var candidateTargets = new List<IfcTargetObject>();
-                bvhTree.Query(expRMin, expRMax, candidateTargets);
-
-                if (candidateTargets.Count > 0)
+                ArrayList geometries = null;
+                try
                 {
-                    foreach (var target in candidateTargets)
+                    geometries = rebar.GetRebarGeometriesWithoutClashes(true);
+                    if (geometries == null || geometries.Count == 0)
                     {
-                        if (target == null || !target.HasSolids) continue;
+                        geometries = rebar.GetRebarGeometries(true);
+                    }
+                }
+                catch { }
 
-                        // Lọc sớm SkipNames: Bỏ qua tính toán hình học cho cấu kiện bị bỏ qua
-                        if (settings.EnableIgnoredComponents && settings.IgnoredKeywords != null && settings.IgnoredKeywords.Count > 0)
+                if (geometries != null)
+                {
+                    foreach (object geomObj in geometries)
+                    {
+                        if (geomObj is RebarGeometry rg)
                         {
-                            if (IsIgnoredComponent(target.EntityName, settings.IgnoredKeywords) ||
-                                (!string.IsNullOrEmpty(target.IfcType) && IsIgnoredComponent(target.IfcType, settings.IgnoredKeywords)))
+                            try
                             {
-                                continue;
+                                var polyArc = rg.ToGeoPolylineArc3();
+                                double barRad = rg.ToBarRadius();
+                                if (barRad <= 0) barRad = rebarData.Radius;
+
+                                bars.Add(new ClashBar(polyArc, barRad));
+                                barOwners.Add(rebarData);
                             }
-                        }
-
-                        // Lọc sớm OnlyNames: Bỏ qua nếu không khớp danh sách cấu kiện chỉ định
-                        if (settings.EnableOnlyComponents && settings.OnlyKeywords != null && settings.OnlyKeywords.Count > 0)
-                        {
-                            bool matchName = MatchesOnlyComponent(target.EntityName, settings.OnlyKeywords);
-                            bool matchType = !string.IsNullOrEmpty(target.IfcType) && MatchesOnlyComponent(target.IfcType, settings.OnlyKeywords);
-                            if (!matchName && !matchType)
+                            catch (Exception ex) when (ex is ArgumentException || ex is InvalidOperationException)
                             {
-                                continue;
+                                // Bỏ qua thanh đơn lẻ không xác định được hình học hoặc bán kính
                             }
-                        }
-
-                        double maxOverlap = 0.0;
-                        Point bestClashPt = null;
-
-                        for (int pIdx = 0; pIdx < rb.Polylines.Length; pIdx++)
-                        {
-                            var poly = rb.Polylines[pIdx];
-                            var polyAabb = rb.PolylineAabbs[pIdx];
-
-                            // Kiểm tra va chạm 2 bước qua IfcGeometryBridge (AABB filter -> B-Rep split)
-                            if (IfcGeometryBridge.TestPolylineVsIfcTarget(poly, rb.Radius, settings.ClearanceMm, settings.ToleranceMm, target, out double polyOverlap, out Point clashPt, polyAabb))
-                            {
-                                if (polyOverlap > maxOverlap)
-                                {
-                                    maxOverlap = polyOverlap;
-                                    bestClashPt = clashPt;
-                                }
-                            }
-                        }
-
-                        if (maxOverlap >= settings.ToleranceMm && bestClashPt != null)
-                        {
-                            rawClashes.Add(new ClashResultItem
-                            {
-                                RebarId = rb.Id,
-                                RebarGuid = rb.Guid,
-                                RebarName = rb.Name,
-                                RebarSize = rb.Size,
-                                RebarGrade = rb.Grade,
-                                RebarPos = rb.Pos,
-                                HostPartName = rb.HostPart,
-                                RebarLength = rb.Length,
-                                RebarObject = rb.Rebar,
-                                IfcObjectId = target.Id,
-                                IfcFileName = target.FileName,
-                                IfcEntityName = target.EntityName,
-                                IfcObject = target.ModelObject,
-                                OverlapMm = Math.Round(maxOverlap, 1),
-                                ClashPoint = bestClashPt,
-                                MinPoint = new Point(Math.Min(rb.Min.X, target.BoundingBox.Min.X), Math.Min(rb.Min.Y, target.BoundingBox.Min.Y), Math.Min(rb.Min.Z, target.BoundingBox.Min.Z)),
-                                MaxPoint = new Point(Math.Max(rb.Max.X, target.BoundingBox.Max.X), Math.Max(rb.Max.Y, target.BoundingBox.Max.Y), Math.Max(rb.Max.Z, target.BoundingBox.Max.Z))
-                            });
                         }
                     }
                 }
 
-                int finished = System.Threading.Interlocked.Increment(ref processedCount);
-                progressCallback?.Invoke(finished, validRebars);
-            });
+                progressCallback?.Invoke(rIdx + 1, totalRebars);
+            }
 
-            // Khử trùng lặp va chạm (Deduplication): Giữ lại độ lấn lớn nhất cho mỗi cặp (RebarId, IfcObjectId)
-            var uniqueMap = new Dictionary<Tuple<long, long>, ClashResultItem>();
-            foreach (var c in rawClashes)
+            if (bars.Count == 0) return new List<ClashResultItem>();
+
+            // Pha 2: Gom toàn bộ các khối GeoSolid3 từ cấu kiện cản trở mục tiêu
+            cancellationToken.ThrowIfCancellationRequested();
+            var bodies = new List<GeoSolid3>();
+            var bodyOwners = new List<IfcTargetObject>();
+
+            foreach (var target in obstacles)
             {
-                var pairKey = Tuple.Create(c.RebarId, c.IfcObjectId);
-                if (!uniqueMap.TryGetValue(pairKey, out var existing) || c.OverlapMm > existing.OverlapMm)
+                if (target == null || !target.HasSolids) continue;
+
+                // Lọc sớm theo từ khóa SkipNames
+                if (settings.EnableIgnoredComponents && settings.IgnoredKeywords != null && settings.IgnoredKeywords.Count > 0)
                 {
-                    uniqueMap[pairKey] = c;
+                    if (IsIgnoredComponent(target.EntityName, settings.IgnoredKeywords) ||
+                        (!string.IsNullOrEmpty(target.IfcType) && IsIgnoredComponent(target.IfcType, settings.IgnoredKeywords)))
+                    {
+                        continue;
+                    }
+                }
+
+                // Lọc sớm theo từ khóa OnlyNames
+                if (settings.EnableOnlyComponents && settings.OnlyKeywords != null && settings.OnlyKeywords.Count > 0)
+                {
+                    bool matchName = MatchesOnlyComponent(target.EntityName, settings.OnlyKeywords);
+                    bool matchType = !string.IsNullOrEmpty(target.IfcType) && MatchesOnlyComponent(target.IfcType, settings.OnlyKeywords);
+                    if (!matchName && !matchType) continue;
+                }
+
+                foreach (var solid in target.Solids)
+                {
+                    if (solid != null && solid.Faces != null && solid.Faces.Count > 0)
+                    {
+                        bodies.Add(solid);
+                        bodyOwners.Add(target);
+                    }
+                }
+            }
+
+            if (bodies.Count == 0) return new List<ClashResultItem>();
+
+            // Pha 3: Chạy bộ máy va chạm Clash3.Find cực nhanh từ GeometryHelper (tự động đa luồng & dựng BVH nội bộ)
+            cancellationToken.ThrowIfCancellationRequested();
+            var clashOptions = new ClashOptions(
+                clearance: settings.ClearanceMm,
+                includeTouching: settings.IncludeTouching,
+                maxDegreeOfParallelism: Environment.ProcessorCount,
+                minimumDepth: settings.ToleranceMm,
+                minimumVolume: 0.0
+            );
+
+            ClashResult[] clashes = Clash3.Find(bars, bodies, clashOptions);
+            if (clashes == null || clashes.Length == 0) return new List<ClashResultItem>();
+
+            // Pha 4: Chuyển đổi kết quả ClashResult[] sang ClashResultItem và khử trùng lặp theo (RebarId, IfcObjectId)
+            var uniqueMap = new Dictionary<Tuple<long, long>, ClashResultItem>();
+
+            foreach (var clash in clashes)
+            {
+                if (clash == null || clash.Kind == ClashKind.Unresolved || clash.Error != null) continue;
+                if (clash.First < 0 || clash.First >= barOwners.Count) continue;
+                if (clash.Second < 0 || clash.Second >= bodyOwners.Count) continue;
+
+                // If touching faces are not requested, ignore ClashKind.Touch
+                if (clash.Kind == ClashKind.Touch && !settings.IncludeTouching)
+                {
+                    continue;
+                }
+
+                var rb = barOwners[clash.First];
+                var target = bodyOwners[clash.Second];
+
+                double depth = clash.Depth;
+                double lengthInside = clash.LengthInside;
+                double overlap = depth > 0 ? depth : (lengthInside > 0 ? lengthInside : 0.0);
+
+                if (clash.Kind == ClashKind.Clearance && settings.ClearanceMm > 0)
+                {
+                    overlap = Math.Max(0.0, settings.ClearanceMm - clash.Distance);
+                }
+
+                // Nếu là va chạm Hard mà overlap bé hơn dung sai tối thiểu, bỏ qua
+                if (clash.Kind == ClashKind.Hard && overlap < settings.ToleranceMm)
+                {
+                    continue;
+                }
+
+                Point clashPt = clash.Location != null 
+                    ? new Point(clash.Location.X, clash.Location.Y, clash.Location.Z) 
+                    : new Point(0, 0, 0);
+
+                var item = new ClashResultItem
+                {
+                    RebarId = rb.Id,
+                    RebarGuid = rb.Guid,
+                    RebarName = rb.Name,
+                    RebarSize = rb.Size,
+                    RebarGrade = rb.Grade,
+                    RebarPos = rb.Pos,
+                    HostPartName = rb.HostPart,
+                    RebarLength = rb.Length,
+                    RebarObject = rb.Rebar,
+                    IfcObjectId = target.Id,
+                    IfcGuid = target.GlobalId,
+                    IfcFileName = target.FileName,
+                    IfcEntityName = target.EntityName,
+                    IfcObject = target.ModelObject,
+                    ClashType = clash.Kind.ToString(),
+                    OverlapMm = Math.Round(overlap, 1),
+                    VolumeMm3 = Math.Round(clash.Volume, 1),
+                    LengthInsideMm = Math.Round(clash.LengthInside, 1),
+                    ContactAreaMm2 = Math.Round(clash.ContactArea, 1),
+                    DistanceMm = Math.Round(clash.Distance, 1),
+                    ClashPoint = clashPt,
+                    MinPoint = !target.BoundingBox.IsEmpty
+                        ? new Point(target.BoundingBox.Min.X, target.BoundingBox.Min.Y, target.BoundingBox.Min.Z)
+                        : clashPt,
+                    MaxPoint = !target.BoundingBox.IsEmpty
+                        ? new Point(target.BoundingBox.Max.X, target.BoundingBox.Max.Y, target.BoundingBox.Max.Z)
+                        : clashPt
+                };
+
+                var pairKey = Tuple.Create(item.RebarId, item.IfcObjectId);
+                if (!uniqueMap.TryGetValue(pairKey, out var existing) || item.OverlapMm > existing.OverlapMm || (item.OverlapMm == existing.OverlapMm && item.VolumeMm3 > existing.VolumeMm3))
+                {
+                    uniqueMap[pairKey] = item;
                 }
             }
 
@@ -742,148 +729,6 @@ namespace BimCommands.Tekla.ClashCheck
             }
 
             return finalClashes;
-        }
-    }
-
-    /// <summary>
-    /// Cây chỉ mục không gian BVH (Bounding Volume Hierarchy) hiệu năng cao cho các cấu kiện IFC 3D.
-    /// Giảm độ phức tạp thuật toán tìm kiếm sơ bộ (Broad-phase) từ O(N * M) xuống O(N * log M).
-    /// </summary>
-    public class ObstacleBvhTree
-    {
-        private const int LeafThreshold = 4;
-
-        /// <summary>Nút trong cây BVH.</summary>
-        private class BvhNode
-        {
-            public Point MinPoint;
-            public Point MaxPoint;
-            public BvhNode Left;
-            public BvhNode Right;
-            public List<IfcTargetObject> Items;
-
-            public bool IsLeaf => Items != null;
-        }
-
-        private readonly BvhNode _root;
-
-        /// <summary>
-        /// Khởi tạo và xây dựng cây BVH từ danh sách cấu kiện cản trở IFC.
-        /// </summary>
-        public ObstacleBvhTree(List<IfcTargetObject> obstacles)
-        {
-            if (obstacles == null || obstacles.Count == 0) return;
-            var list = new List<IfcTargetObject>(obstacles);
-            _root = BuildNode(list, 0, list.Count);
-        }
-
-        /// <summary>
-        /// Xây dựng nút cây BVH đệ quy theo trục không gian có độ trải rộng lớn nhất.
-        /// </summary>
-        private static BvhNode BuildNode(List<IfcTargetObject> list, int start, int count)
-        {
-            if (count <= 0) return null;
-
-            double bMinX = double.MaxValue, bMinY = double.MaxValue, bMinZ = double.MaxValue;
-            double bMaxX = double.MinValue, bMaxY = double.MinValue, bMaxZ = double.MinValue;
-
-            for (int i = start; i < start + count; i++)
-            {
-                var item = list[i];
-                var box = item.BoundingBox;
-                if (!box.IsEmpty)
-                {
-                    if (box.Min.X < bMinX) bMinX = box.Min.X;
-                    if (box.Min.Y < bMinY) bMinY = box.Min.Y;
-                    if (box.Min.Z < bMinZ) bMinZ = box.Min.Z;
-
-                    if (box.Max.X > bMaxX) bMaxX = box.Max.X;
-                    if (box.Max.Y > bMaxY) bMaxY = box.Max.Y;
-                    if (box.Max.Z > bMaxZ) bMaxZ = box.Max.Z;
-                }
-            }
-
-            var node = new BvhNode
-            {
-                MinPoint = new Point(bMinX, bMinY, bMinZ),
-                MaxPoint = new Point(bMaxX, bMaxY, bMaxZ)
-            };
-
-            if (count <= LeafThreshold)
-            {
-                node.Items = list.GetRange(start, count);
-                return node;
-            }
-
-            // Chia đôi theo trục có kích thước lớn nhất
-            double dx = bMaxX - bMinX;
-            double dy = bMaxY - bMinY;
-            double dz = bMaxZ - bMinZ;
-
-            int axis = 0; // 0=X, 1=Y, 2=Z
-            if (dy > dx && dy >= dz) axis = 1;
-            else if (dz > dx && dz >= dy) axis = 2;
-
-            list.Sort(start, count, Comparer<IfcTargetObject>.Create((a, b) =>
-            {
-                double ca = axis == 0 ? (a.BoundingBox.Min.X + a.BoundingBox.Max.X) : (axis == 1 ? (a.BoundingBox.Min.Y + a.BoundingBox.Max.Y) : (a.BoundingBox.Min.Z + a.BoundingBox.Max.Z));
-                double cb = axis == 0 ? (b.BoundingBox.Min.X + b.BoundingBox.Max.X) : (axis == 1 ? (b.BoundingBox.Min.Y + b.BoundingBox.Max.Y) : (b.BoundingBox.Min.Z + b.BoundingBox.Max.Z));
-                return ca.CompareTo(cb);
-            }));
-
-            int mid = start + count / 2;
-            node.Left = BuildNode(list, start, mid - start);
-            node.Right = BuildNode(list, mid, count - (mid - start));
-
-            return node;
-        }
-
-        /// <summary>
-        /// Truy vấn tìm tất cả các cấu kiện IFC có hộp biên giao cắt với vùng hộp hỏi (qMin, qMax).
-        /// </summary>
-        public void Query(Point qMin, Point qMax, List<IfcTargetObject> results)
-        {
-            if (_root == null || results == null) return;
-            QueryNode(_root, qMin, qMax, results);
-        }
-
-        /// <summary>
-        /// Duyệt đệ quy cây BVH kiểm tra chồng lấn AABB.
-        /// </summary>
-        private static void QueryNode(BvhNode node, Point qMin, Point qMax, List<IfcTargetObject> results)
-        {
-            if (node == null) return;
-
-            // Kiểm tra chồng lấn với hộp bao của nút BVH
-            if (qMin.X > node.MaxPoint.X || qMax.X < node.MinPoint.X ||
-                qMin.Y > node.MaxPoint.Y || qMax.Y < node.MinPoint.Y ||
-                qMin.Z > node.MaxPoint.Z || qMax.Z < node.MinPoint.Z)
-            {
-                return;
-            }
-
-            if (node.IsLeaf)
-            {
-                for (int i = 0; i < node.Items.Count; i++)
-                {
-                    var item = node.Items[i];
-                    var box = item.BoundingBox;
-                    if (!box.IsEmpty)
-                    {
-                        if (qMin.X <= box.Max.X && qMax.X >= box.Min.X &&
-                            qMin.Y <= box.Max.Y && qMax.Y >= box.Min.Y &&
-                            qMin.Z <= box.Max.Z && qMax.Z >= box.Min.Z)
-                        {
-                            results.Add(item);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                QueryNode(node.Left, qMin, qMax, results);
-                QueryNode(node.Right, qMin, qMax, results);
-            }
         }
     }
 }

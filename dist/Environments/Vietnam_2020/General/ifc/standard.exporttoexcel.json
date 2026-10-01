@@ -1,0 +1,7 @@
+{
+  "DialogType": "exporttoexcel.common",
+  "TemplateFile": null,
+  "ExportWithoutColumnHeaders": false,
+  "ExportDetails": true,
+  "ExportOnlyChangedDetails": true
+}

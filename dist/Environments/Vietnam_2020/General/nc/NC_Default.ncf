@@ -1,0 +1,7 @@
+encoding 949
+CreatePartsOption 0
+SettingsName "<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE SettingsName><SettingsName>    <SettingsName>        <Element name="NC_Default" value="1" popmark="0" scribing="0" label="NC file settings 1"/>    </SettingsName></SettingsName>"
+aInFile "NC_Default"
+aOutFile "NC_Default"
+popmarks_used ""
+scribing_used ""

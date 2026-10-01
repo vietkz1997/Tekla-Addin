@@ -1,0 +1,4 @@
+encoding 949
+in_file "STL_VIEW"
+out_file "K_FRONT_DIMING"
+aDimensioningPlugins ",albl_General,STL_VIEW,"

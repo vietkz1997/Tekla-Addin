@@ -1,0 +1,20 @@
+// ---------------------------------------------------------------------------------------
+// Template Editor 3.20 - Attributes
+// =================================
+// 
+// This is a container file where all needed attribute files are included.
+// 
+// ---------------------------------------------------------------------------------------
+
+// Global attributes defined in source code
+[INCLUDE .\settings\contentattributes_global.lst]
+
+// User attributes defined in 'objects.inp'
+[INCLUDE .\settings\contentattributes_userdefined.lst]
+[INCLUDE .\settings\contentattributes_customattributes.lst]
+
+// Custom attributes included outside the installation
+[INCLUDE contentattributes_kr_consturction.lst]
+
+[BINDINGS] // Do NOT remove this line
+

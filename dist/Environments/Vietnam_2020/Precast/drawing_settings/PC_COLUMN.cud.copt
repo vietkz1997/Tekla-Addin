@@ -1,0 +1,23 @@
+TITLE_CLASSIFIER 
+{
+    Version= 1.00 
+    Count= 3 
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Rebar 
+        17s 
+        17s 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Rebar 
+        S3 
+        S3 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Rebar 
+        T1 
+        T1 
+        }
+    }

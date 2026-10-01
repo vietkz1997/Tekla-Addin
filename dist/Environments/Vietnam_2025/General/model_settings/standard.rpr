@@ -1,0 +1,9 @@
+encoding 949
+user_title1 ""
+user_title2 ""
+user_title3 ""
+xs_report_file "K_ASSEMBLY CHECK LIST.xsr"
+display_report 1
+display_type 0
+aInFile "standard"
+aOutFile "standard"

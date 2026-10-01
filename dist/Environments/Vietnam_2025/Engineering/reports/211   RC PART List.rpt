@@ -1,0 +1,2160 @@
+template 
+{
+    name = "template_319";
+    type = TEXTUAL;
+    width = 100;
+    maxheight = 150;
+    columns = (1, 1);
+    gap = 1;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "29.10.2004 12:04";
+    modified = "10.12.2015 16:27";
+    notes = "Converted template";
+
+    pageheader 
+    {
+        name = "pageheader_2590";
+        height = 4;
+        outputpolicy = NONE;
+
+        valuefield 
+        {
+            name = "field_NAME";
+            location = (39, 1);
+            formula = "GetValue(\"PROJECT.NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield 
+        {
+            name = "field_NUMBER";
+            location = (39, 2);
+            formula = "GetValue(\"PROJECT.NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield 
+        {
+            name = "field_DATE";
+            location = (76, 1);
+            formula = "GetValue(\"DATE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield 
+        {
+            name = "field_PAGE";
+            location = (76, 2);
+            formula = "GetValue(\"PAGE\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 2;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        text 
+        {
+            name = "text_2520";
+            x1 = 21;
+            y1 = 2;
+            x2 = 21;
+            y2 = 2;
+            string = "PROJECT NUMBER:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_356";
+            x1 = 0;
+            y1 = 2;
+            x2 = 0;
+            y2 = 2;
+            string = "CAST UNIT";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_355";
+            x1 = 70;
+            y1 = 1;
+            x2 = 70;
+            y2 = 1;
+            string = "Date:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_1575";
+            x1 = 23;
+            y1 = 1;
+            x2 = 23;
+            y2 = 1;
+            string = "PROJECT NAME:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_353";
+            x1 = 70;
+            y1 = 2;
+            x2 = 70;
+            y2 = 2;
+            string = "Page:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_2562";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "-------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_2513";
+            x1 = 0;
+            y1 = 3;
+            x2 = 0;
+            y2 = 3;
+            string = "-------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_2519";
+            x1 = 0;
+            y1 = 1;
+            x2 = 0;
+            y2 = 1;
+            string = "BILL OF MATERIAL";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    pageheader _tmp_1594
+    {
+        name = "PageHeader";
+        height = 1;
+        outputpolicy = NONE;
+
+        text _tmp_1596
+        {
+            name = "text_388";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "이름";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1598
+        {
+            name = "text_365";
+            x1 = 41;
+            y1 = 0;
+            x2 = 41;
+            y2 = 0;
+            string = "재질";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1600
+        {
+            name = "text_2522";
+            x1 = 64;
+            y1 = 0;
+            x2 = 64;
+            y2 = 0;
+            string = "부피 (m³)";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1657
+        {
+            name = "Text";
+            x1 = 19;
+            y1 = 0;
+            x2 = 19;
+            y2 = 0;
+            string = "사이즈";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_21823
+        {
+            name = "수량";
+            x1 = 54;
+            y1 = 0;
+            x2 = 54;
+            y2 = 0;
+            string = "수량";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_21825
+        {
+            name = "Text_1";
+            x1 = 80;
+            y1 = 0;
+            x2 = 80;
+            y2 = 0;
+            string = "합부피 (m³)";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_961
+        {
+            name = "\\t";
+            x1 = 9;
+            y1 = 0;
+            x2 = 9;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1027
+        {
+            name = "Text_4";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1031
+        {
+            name = "Text_7";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1034
+        {
+            name = "Text_10";
+            x1 = 60;
+            y1 = 0;
+            x2 = 60;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1037
+        {
+            name = "Text_13";
+            x1 = 75;
+            y1 = 0;
+            x2 = 75;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_3022
+    {
+        name = "Cast_Unit_FOOTING";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if match(GetValue(\"NAME\"),\"*FOOTING*\")then\r\n  Output()\r\nelse\r\n  StepOver()\r\nendif";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        valuefield _tmp_3023
+        {
+            name = "ValueField_28";
+            location = (53, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+        };
+
+        valuefield _tmp_3024
+        {
+            name = "ValueField_29";
+            location = (17, 0);
+            formula = "int(GetValue(\"PROFILE.WIDTH\"))+\"X\"+int(GetValue(\"PROFILE.HEIGHT\"))+\"X\"+int(GetValue(\"HEIGHT\"))";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3025
+        {
+            name = "ValueField_30";
+            location = (59, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "m3";
+        };
+
+        valuefield _tmp_3026
+        {
+            name = "ValueField_31";
+            location = (34, 0);
+            formula = "GetValue(\"MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3027
+        {
+            name = "ValueField_32";
+            location = (97, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+
+        valuefield _tmp_3028
+        {
+            name = "ValueField_33";
+            location = (0, 0);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3029
+        {
+            name = "ValueField_34";
+            location = (78, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "m3";
+        };
+
+        text _tmp_3031
+        {
+            name = "Text_26";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_3032
+        {
+            name = "Text_27";
+            x1 = 75;
+            y1 = 0;
+            x2 = 75;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1
+        {
+            name = "Text_25";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_2945
+    {
+        name = "Cast_Unit_SALB";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if match(GetValue(\"NAME\"),\"*SLAB*\")then\r\n  Output()\r\nelse\r\n  StepOver()\r\nendif";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        valuefield _tmp_2946
+        {
+            name = "ValueField";
+            location = (53, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+        };
+
+        valuefield _tmp_2947
+        {
+            name = "ValueField_1";
+            location = (17, 0);
+            formula = "\"Thk.\"+mid(GetValue(\"PROFILE.HEIGHT\"),0,find(GetValue(\"PROFILE.HEIGHT\"), \".\"))";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2948
+        {
+            name = "ValueField_2";
+            location = (59, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "m3";
+        };
+
+        valuefield _tmp_2949
+        {
+            name = "ValueField_3";
+            location = (34, 0);
+            formula = "GetValue(\"MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2950
+        {
+            name = "ValueField_4";
+            location = (97, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+
+        valuefield _tmp_2951
+        {
+            name = "ValueField_5";
+            location = (0, 0);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2952
+        {
+            name = "ValueField_6";
+            location = (78, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "m3";
+        };
+
+        text _tmp_2953
+        {
+            name = "Text_2";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_2954
+        {
+            name = "Text_11";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_2955
+        {
+            name = "Text_15";
+            x1 = 75;
+            y1 = 0;
+            x2 = 75;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_2978
+    {
+        name = "Cast_Unit_COLUMN";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if match(GetValue(\"NAME\"),\"*COLUMN*\")then\r\n  Output()\r\nelse\r\n  StepOver()\r\nendif";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        valuefield _tmp_2979
+        {
+            name = "ValueField_14";
+            location = (53, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+        };
+
+        valuefield _tmp_2980
+        {
+            name = "ValueField_15";
+            location = (17, 0);
+            formula = "mid(GetValue(\"PROFILE.WIDTH\"),0,find(GetValue(\"PROFILE.WIDTH\"), \".\"))\r\n+\"X\"+mid(GetValue(\"PROFILE.HEIGHT\"),0,find(GetValue(\"PROFILE.HEIGHT\"), \".\"))";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2981
+        {
+            name = "ValueField_16";
+            location = (59, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "m3";
+        };
+
+        valuefield _tmp_2982
+        {
+            name = "ValueField_17";
+            location = (34, 0);
+            formula = "GetValue(\"MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2983
+        {
+            name = "ValueField_18";
+            location = (97, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+
+        valuefield _tmp_2984
+        {
+            name = "ValueField_19";
+            location = (0, 0);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2985
+        {
+            name = "ValueField_20";
+            location = (78, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "m3";
+        };
+
+        text _tmp_2986
+        {
+            name = "Text_19";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_2987
+        {
+            name = "Text_20";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_2988
+        {
+            name = "Text_21";
+            x1 = 75;
+            y1 = 0;
+            x2 = 75;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_3000
+    {
+        name = "Cast_Unit_WALL";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if match(GetValue(\"NAME\"),\"*WALL*\")then\r\n  Output()\r\nelse\r\n  StepOver()\r\nendif";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        valuefield _tmp_3001
+        {
+            name = "ValueField_21";
+            location = (53, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+        };
+
+        valuefield _tmp_3002
+        {
+            name = "ValueField_22";
+            location = (17, 0);
+            formula = "\"Thk.\"+mid(GetValue(\"PROFILE.WIDTH\"),0,find(GetValue(\"PROFILE.WIDTH\"), \".\"))";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3003
+        {
+            name = "ValueField_23";
+            location = (59, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "m3";
+        };
+
+        valuefield _tmp_3004
+        {
+            name = "ValueField_24";
+            location = (34, 0);
+            formula = "GetValue(\"MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3005
+        {
+            name = "ValueField_25";
+            location = (97, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+
+        valuefield _tmp_3006
+        {
+            name = "ValueField_26";
+            location = (0, 0);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3007
+        {
+            name = "ValueField_27";
+            location = (78, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "m3";
+        };
+
+        text _tmp_3008
+        {
+            name = "Text_22";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_3009
+        {
+            name = "Text_23";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_3010
+        {
+            name = "Text_24";
+            x1 = 75;
+            y1 = 0;
+            x2 = 75;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row 
+    {
+        name = "Cast_Unit_GIRDER";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if match(GetValue(\"NAME\"),\"*GIRDER*\")then\r\n  Output()\r\nelse\r\n  StepOver()\r\nendif";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        valuefield _tmp_21737
+        {
+            name = "개수";
+            location = (53, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+        };
+
+        valuefield 
+        {
+            name = "profile";
+            location = (17, 0);
+            formula = "mid(GetValue(\"PROFILE.WIDTH\"),0,find(GetValue(\"PROFILE.WIDTH\"), \".\"))\r\n+\"X\"+mid(GetValue(\"PROFILE.HEIGHT\"),0,find(GetValue(\"PROFILE.HEIGHT\"), \".\"))";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield 
+        {
+            name = "부피";
+            location = (59, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "m3";
+        };
+
+        valuefield 
+        {
+            name = "field_MATERIAL";
+            location = (34, 0);
+            formula = "GetValue(\"MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_914
+        {
+            name = "field_WEIGHT";
+            location = (97, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+
+        valuefield _tmp_1659
+        {
+            name = "name";
+            location = (0, 0);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_24688
+        {
+            name = "합부피";
+            location = (78, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "m3";
+        };
+
+        text _tmp_1029
+        {
+            name = "Text_5";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1032
+        {
+            name = "Text_8";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1038
+        {
+            name = "Text_14";
+            x1 = 75;
+            y1 = 0;
+            x2 = 75;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_2967
+    {
+        name = "Cast_Unit_BEAM";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if match(GetValue(\"NAME\"),\"*BEAM*\")then\r\n  Output()\r\nelse\r\n  StepOver()\r\nendif";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        valuefield _tmp_2968
+        {
+            name = "ValueField_7";
+            location = (53, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+        };
+
+        valuefield _tmp_2969
+        {
+            name = "ValueField_8";
+            location = (17, 0);
+            formula = "mid(GetValue(\"PROFILE.WIDTH\"),0,find(GetValue(\"PROFILE.WIDTH\"), \".\"))\r\n+\"X\"+mid(GetValue(\"PROFILE.HEIGHT\"),0,find(GetValue(\"PROFILE.HEIGHT\"), \".\"))";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2970
+        {
+            name = "ValueField_9";
+            location = (59, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "m3";
+        };
+
+        valuefield _tmp_2971
+        {
+            name = "ValueField_10";
+            location = (34, 0);
+            formula = "GetValue(\"MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2972
+        {
+            name = "ValueField_11";
+            location = (97, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+
+        valuefield _tmp_2973
+        {
+            name = "ValueField_12";
+            location = (0, 0);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2974
+        {
+            name = "ValueField_13";
+            location = (78, 0);
+            formula = "GetValue(\"VOLUME\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "m3";
+        };
+
+        text _tmp_2975
+        {
+            name = "Text_16";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_2976
+        {
+            name = "Text_17";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_2977
+        {
+            name = "Text_18";
+            x1 = 75;
+            y1 = 0;
+            x2 = 75;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_21099
+    {
+        name = "CAST_UNIT";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        valuefield _tmp_21302
+        {
+            name = "VOLUME_field";
+            location = (78, 0);
+            formula = "Total(\"ValueField_6\")+Total(\"합부피\")+Total(\"ValueField_13\")+Total(\"ValueField_20\")+Total(\"ValueField_27\")+Total(\"ValueField_34\")";
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "m3";
+        };
+
+        text _tmp_23831
+        {
+            name = "총 부피  :";
+            x1 = 65;
+            y1 = 0;
+            x2 = 65;
+            y2 = 0;
+            string = "총 부피  :";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_965
+        {
+            name = "Text_3";
+            x1 = 9;
+            y1 = 0;
+            x2 = 9;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1030
+        {
+            name = "Text_6";
+            x1 = 32;
+            y1 = 0;
+            x2 = 32;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1033
+        {
+            name = "Text_9";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1036
+        {
+            name = "Text_12";
+            x1 = 60;
+            y1 = 0;
+            x2 = 60;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row 
+    {
+        name = "row_2650";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if (IsFirst()) then StepOver()\n  \nelse Output()\n  \nendif";
+        contenttype = "CAST_UNIT";
+        sorttype = COMBINE;
+
+        text 
+        {
+            name = "text_2620";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "=====================================================================================";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+};

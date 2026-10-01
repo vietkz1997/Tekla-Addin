@@ -1,0 +1,149 @@
+﻿string_utf8 albl_Steel_Connection_Detail
+{
+    entry = ("enu", "Steel Connection & Detail");
+    entry = ("kor", "철골 접합 및 디테일");
+};
+
+string_utf8 albl_Column_Beam_Connection
+{
+    entry = ("enu", "Column + Beam Connection");
+    entry = ("kor", "기둥 + 보 접합");
+};
+
+string_utf8 albl_Etc
+{
+    entry = ("enu", "Etc");
+    entry = ("kor", "기타");
+};
+
+string_utf8 albl_Steel_Etc
+{
+    entry = ("enu", "Etc");
+    entry = ("kor", "기타");
+};
+
+string_utf8 albl_Detail
+{
+    entry = ("enu", "Detail");
+    entry = ("kor", "디테일");
+};
+
+string_utf8 albl_Beam_Beam_Connection
+{
+    entry = ("enu", "Beam + Beam Connection");
+    entry = ("kor", "보 + 보 접합");
+};
+
+string_utf8 albl_Brace_Connection
+{
+    entry = ("enu", "Brace Connection");
+    entry = ("kor", "브레이스 접합");
+};
+
+string_utf8 albl_Base_Plate
+{
+    entry = ("enu", "Base Plate");
+    entry = ("kor", "베이스 플레이트");
+};
+
+string_utf8 albl_Stiffeners
+{
+    entry = ("enu", "Stiffeners");
+    entry = ("kor", "스티프너");
+};
+
+string_utf8 albl_Splice_Connection
+{
+    entry = ("enu", "Splice Connection");
+    entry = ("kor", "이음 접합");
+};
+
+string_utf8 albl_Miscellaneous
+{
+    entry = ("enu", "Miscellaneous");
+    entry = ("kor", "잡철");
+};
+
+string_utf8 albl_CIP_Reinforcement_and_Detail
+{
+    entry = ("enu", "CIP Reinforcement and Detail");
+    entry = ("kor", "CIP 철근배근 및 디테일");
+};
+
+string_utf8 albl_Joist_Conneciton
+{
+    entry = ("enu", "Joist Connection");
+    entry = ("kor", "조이스트 접합");
+};
+
+string_utf8 albl_Tower
+{
+    entry = ("enu", "Tower");
+    entry = ("kor", "타워");
+};
+
+string_utf8 albl_Purlin_Connection
+{
+    entry = ("enu", "Purlin_Connection");
+    entry = ("kor", "퍼린 접합");
+};
+
+string_utf8 albl_Korea
+{
+    entry = ("enu", "Korea");
+    entry = ("kor", "한국 추천");
+};
+
+string_utf8 albl_Haunch_Connection
+{
+    entry = ("enu", "Haunch Connection");
+    entry = ("kor", "헌치 접합");
+};
+
+string_utf8 albl_Custom_Component
+{
+    entry = ("enu", "Custom Component");
+    entry = ("kor", "커스텀 컴포넌트");
+};
+
+string_utf8 albl_Macro
+{
+    entry = ("enu", "Macro");
+    entry = ("kor", "매크로");
+};
+
+string_utf8 albl_Bridge
+{
+    entry = ("enu", "Bridge");
+    entry = ("kor", "교량");
+};
+
+string_utf8 albl_Formwork
+{
+    entry = ("enu", "Formwork");
+    entry = ("kor", "거푸집");
+};
+
+string_utf8 albl_Macro_Common
+{
+    entry = ("enu", "Common");
+    entry = ("kor", "공용");
+};
+
+string_utf8 albl_Macro_Steel
+{
+    entry = ("enu", "Steel");
+    entry = ("kor", "철골");
+};
+
+string_utf8 albl_Macro_Concrete
+{
+    entry = ("enu", "Concrete");
+    entry = ("kor", "콘크리트");
+};
+
+string_utf8 albl_KoreaExtension
+{
+    entry = ("enu", "Korea Extension");
+    entry = ("kor", "한국 컴포넌트");
+};

@@ -1,0 +1,64 @@
+﻿// List the paper size names you wish to use and their physical dimensions.
+// Dimensions are in mm with a ‘.’ for the decimal place regardless of the operating system’s regional settings and a ‘,’ to separate each field.
+// Format is <PaperSizeName>, <PaperLongSide>, <PaperShortSide>
+// eg:
+//     A4, 297.0, 210.0
+//     11X17, 431.8, 279.4
+// File must be saved as a Unicode text format file
+//
+// ISO A series
+A0,                     1189,   841 
+A1,                     841,    594 
+A2,                     594,    420 
+A3,                     420,    297 
+A4,                     297,    210 
+A5,                     210,    148
+// Multi Drawing
+4*A3,                 420,    297
+// ISO A series multiples (long sizes)
+3*1*A4,                 630,    297
+4*1*A4,                 841,    297
+5*1*A4,                 1051,   297
+6*1*A4,                 1261,   297
+3*2*A4,                 630,    594
+4*2*A4,              841,    594
+5*2*A4,                 1051,   594
+6*2*A4,                 1261,   594
+7*2*A4,                 1471,   594
+8*2*A4,                 1682,   594
+9*2*A4,                 1892,   594
+10*2*A4,                2102,   594
+3*3*A4,                 630,    891
+4*3*A4,                 841,    891
+5*3*A4,                 1051,   891
+6*3*A4,                 1261,   891
+7*3*A4,                 1471,   891
+8*3*A4,                 1682,   891
+9*3*A4,                 1892,   891
+10*3*A4,                2102,   891
+// JIS
+B4 (JIS),               364,    257
+B5 (JIS),               257,    182
+// ANSI
+Letter 8 1/2 x 11 in,   279,    216     // ANSI A
+Tabloid 11 x 17 in,     432,    279     // ANSI B  
+ANSI C (17x22),         559,    432    
+ANSI D (22x34),         864,    559    
+ANSI E (34x44),         1118,   864    
+// Architectural
+ArchA,                  305,    229    
+ArchB,                  457,    305    
+ArchC,                  610,    457    
+ArchD,                  914,    610    
+ArchE,                  1219,   914    
+ArchE1,                 1067,   762    
+ArchE2,                 965,    660    
+ArchE3,                 991,    686    
+// Misc
+Legal,                  356,    216
+Folio,                  330,    216
+10x14,                  355.6,  254
+Quarto,                 279,    229
+US Std Fanfold,         377,    279
+German Std Fandfold,    304,    216
+German Legal Fanfold,   330,    216

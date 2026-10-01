@@ -1,0 +1,4 @@
+encoding 949
+in_file "STL_SINGLE_DIMING"
+out_file "K_SINGLE_DIMING"
+aDimensioningPlugins ",albl_General,STL_SINGLE_DIMING,"

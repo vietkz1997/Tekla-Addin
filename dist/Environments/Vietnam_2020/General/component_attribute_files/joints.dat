@@ -1,0 +1,22 @@
+// stanchion joint definitions
+// the first lines are to create the default fit and weld connections
+// included fields are
+// index, name, joint number, attribute name, up direction, origin type, double bolts
+
+																  
+  0     NONE          0        none                +Z          MIDDLE       0
+  1     FIT           0        fit_attr            +Z          MIDDLE       0
+  2     WELD          0        weld_attr           +Z          MIDDLE       0
+  3     KLEVY        29        plate_attrZ         +Z          COLLISION    0
+  4  	MONO_S		 83		   MONO_S  		+Z		   MIDDLE       0
+  5	MONO_SC		 83		   MONO_SC 		+Z		   MIDDLE       0
+  6	MONO_SO		 84		   MONO_SO 		+Z		   MIDDLE       0
+  7	MONO_SO_DEEP	 84		   MONO_SO_DEEP 	+Z		   MIDDLE       0
+  8     MONO_P		 29		   MONO_P  		+Z		   COLLISION    0
+  9	MONO_W		 85		   MONO_W  		+Z		   MIDDLE       0
+ 10	MONO_AM		 29		   MONO_AM 		+Z		   COLLISION    0
+ 11	MONO_AMW	 85		   MONO_AMW		+Z		   MIDDLE       0
+ 12	MONO_C	         96		   MONO_C		+Z		   MIDDLE       0
+ 13	L_1	         68		   L_1            	-Z		   MIDDLE       1
+ 14	Tekla	         68		   Tekla            	-Z		   MIDDLE       1
+

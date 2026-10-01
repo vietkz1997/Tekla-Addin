@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <OutputFile>out.skp</OutputFile>
+  <Bolts>1</Bolts>
+  <ReinforcingBars>1</ReinforcingBars>
+  <PourObjects>0</PourObjects>
+  <Welds>0</Welds>
+  <SurfaceTreatments>0</SurfaceTreatments>
+  <Parts>1</Parts>
+</config>

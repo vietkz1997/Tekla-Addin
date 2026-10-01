@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatalogSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <DrawingView>Thumbnails</DrawingView>
+  <Folders>
+    <Folder Name="albl_Basic">
+      <Files />
+      <Folders />
+    </Folder>
+  </Folders>
+  <ForeignModels />
+  <IncludeRulesets>true</IncludeRulesets>
+  <IncludeStandards>true</IncludeStandards>
+  <IncludeTemplates>true</IncludeTemplates>
+  <LastSearchStrings>
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+    <string xsi:nil="true" />
+  </LastSearchStrings>
+  <SearchString />
+  <SelectedCategory>MasterDrawingCatalog.albl_Cast_unit_drawings</SelectedCategory>
+  <SelectedFolder />
+  <ShowDescription>false</ShowDescription>
+  <StoredSearches>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>MasterDrawingCatalog.albl_All</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>None</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>albl_Basic</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder>albl_Basic</TargetFolder>
+      <TargetType>None</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>MasterDrawingCatalog.albl_Deleted</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Deleted</Target>
+      <TargetFolder />
+      <TargetType>None</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>true</Hidden>
+      <Name>==========</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>None</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>albl_General_arrangement_drawings</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>GeneralArrangement</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>MasterDrawingCatalog.albl_Assembly_drawings</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>Assembly</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>MasterDrawingCatalog.albl_Single_part_drawings</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>SinglePart</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>MasterDrawingCatalog.albl_Cast_unit_drawings</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>CastUnit</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>true</Hidden>
+      <Name>==========</Name>
+      <Search />
+      <SourceType>None</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>None</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>albl_Cloning_templates</Name>
+      <Search />
+      <SourceType>TemplateDrawing</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>None</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>albl_Saved_settings</Name>
+      <Search />
+      <SourceType>StandardFile</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>None</TargetType>
+    </StoredSearch>
+    <StoredSearch>
+      <Hidden>false</Hidden>
+      <Name>albl_Rule_sets__wizards_</Name>
+      <Search />
+      <SourceType>RuleSet</SourceType>
+      <Target>Catalog</Target>
+      <TargetFolder />
+      <TargetType>None</TargetType>
+    </StoredSearch>
+  </StoredSearches>
+  <WorkingMode>Search</WorkingMode>
+</CatalogSettings>

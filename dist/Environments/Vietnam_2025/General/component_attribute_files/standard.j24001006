@@ -1,0 +1,23 @@
+joint_attributes.saveas_file "standard"
+joint_attributes.get_menu " "
+joint_attributes.name_enable 1
+joint_attributes.group_no 99
+joint_attributes.zang2 0.000000
+joint_attributes.zang1 0.000000
+joint_attributes.zsuunta 7
+joint_attributes.lcon ""
+joint_attributes.prof ""
+joint_attributes.bj4 -2147483648.000000
+joint_attributes.bj3 -2147483648.000000
+joint_attributes.bj2 -2147483648.000000
+joint_attributes.bj1 -2147483648.000000
+joint_attributes.btab1 -2147483648
+joint_attributes.cut1 0
+joint_attributes.adist1 -2147483648.000000
+joint_attributes.atab1 2
+joint_attributes.startno_pos4 -2147483648
+joint_attributes.prefix_pos4 ""
+joint_attributes.mat ""
+joint_attributes.startno_pos1 -2147483648
+joint_attributes.prefix_pos1 ""
+joint_attributes.cprof ""

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <cc_text>@</cc_text>
+  <annotation_type>1</annotation_type>
+  <pos_props>standard</pos_props>
+  <note_props>standard</note_props>
+  <dim_line_props>standard</dim_line_props>
+  <dim_spacing_type>1</dim_spacing_type>
+  <group_tolerance>
+    <Millimeters>0</Millimeters>
+  </group_tolerance>
+  <dim_spacing_val>
+    <Millimeters>0</Millimeters>
+  </dim_spacing_val>
+  <next_spacing>
+    <Millimeters>0</Millimeters>
+  </next_spacing>
+  <first_spacing>
+    <Millimeters>0</Millimeters>
+  </first_spacing>
+  <show_pos_text>1</show_pos_text>
+  <close_dim_line>1</close_dim_line>
+</config>

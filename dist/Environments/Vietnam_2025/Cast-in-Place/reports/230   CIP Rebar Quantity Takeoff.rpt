@@ -1,0 +1,879 @@
+
+template _tmp_834
+{
+    name = "template1";
+    type = TEXTUAL;
+    width = 79;
+    maxheight = 104;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (1, 1, 1, 1);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "02.05.2008 10:28";
+    modified = "07.12.2015 14:59";
+    notes = "";
+
+    header _tmp_835
+    {
+        name = "Header";
+        height = 3;
+
+        valuefield _tmp_884
+        {
+            name = "Project_Name";
+            location = (14, 2);
+            formula = "GetValue(\"PROJECT.NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 40;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_885
+        {
+            name = "Project_Number";
+            location = (14, 1);
+            formula = "GetValue(\"PROJECT.NUMBER\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        text _tmp_886
+        {
+            name = "Project Name:";
+            x1 = 0;
+            y1 = 2;
+            x2 = 0;
+            y2 = 2;
+            string = "Project Name:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_887
+        {
+            name = "Text_5";
+            x1 = 0;
+            y1 = 1;
+            x2 = 0;
+            y2 = 1;
+            string = "Project No:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_889
+        {
+            name = "Text_58";
+            x1 = 61;
+            y1 = 1;
+            x2 = 61;
+            y2 = 1;
+            string = "Time:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_890
+        {
+            name = "Date:";
+            x1 = 61;
+            y1 = 2;
+            x2 = 61;
+            y2 = 2;
+            string = "Date:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_891
+        {
+            name = "Sys_Date";
+            location = (66, 2);
+            formula = "GetValue(\"DATE\")";
+            datatype = INTEGER;
+            class = "Date";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "mm/dd/yyyy";
+        };
+
+        valuefield _tmp_892
+        {
+            name = "Sys_Time";
+            location = (66, 1);
+            formula = "GetValue(\"TIME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        text _tmp_1111
+        {
+            name = "line";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "----------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 1.25;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    pageheader _tmp_1012
+    {
+        name = "PageHeader";
+        height = 4;
+        outputpolicy = NONE;
+
+        text _tmp_1020
+        {
+            name = "Text_10";
+            x1 = 4;
+            y1 = 1;
+            x2 = 4;
+            y2 = 1;
+            string = "QTY";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1021
+        {
+            name = "Text_11";
+            x1 = 9;
+            y1 = 1;
+            x2 = 9;
+            y2 = 1;
+            string = "NAME";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1022
+        {
+            name = "REBAR #";
+            x1 = 25;
+            y1 = 1;
+            x2 = 25;
+            y2 = 1;
+            string = "Size";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1023
+        {
+            name = "Text";
+            x1 = 32;
+            y1 = 1;
+            x2 = 32;
+            y2 = 1;
+            string = "GRADE";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1024
+        {
+            name = "Text_13";
+            x1 = 40;
+            y1 = 1;
+            x2 = 40;
+            y2 = 1;
+            string = "SHAPE";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1025
+        {
+            name = "Text_9";
+            x1 = 49;
+            y1 = 1;
+            x2 = 49;
+            y2 = 1;
+            string = "LENGTH(mm)";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1026
+        {
+            name = "WEIGHT";
+            x1 = 62;
+            y1 = 1;
+            x2 = 62;
+            y2 = 1;
+            string = "WEIGHT(kg)";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1028
+        {
+            name = "Page:";
+            x1 = 68;
+            y1 = 3;
+            x2 = 68;
+            y2 = 3;
+            string = "Page:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_1099
+        {
+            name = "PageNo";
+            location = (73, 3);
+            formula = "GetValue(\"PAGE\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        text _tmp_1112
+        {
+            name = "Text_1";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "----------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 1.25;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_1881
+    {
+        name = "REBAR";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "REBAR";
+        sorttype = COMBINE;
+
+        valuefield _tmp_1883
+        {
+            name = "Size";
+            location = (23, 0);
+            formula = "GetValue(\"SIZE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1882
+        {
+            name = "Grade";
+            location = (32, 0);
+            formula = "GetValue(\"GRADE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_8584
+        {
+            name = "SHAPE_field";
+            location = (40, 0);
+            formula = "GetValue(\"SHAPE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2582
+        {
+            name = "Name";
+            location = (9, 0);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3342
+        {
+            name = "REBAR_POS_field";
+            location = (0, 0);
+            formula = "GetValue(\"REBAR_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 163;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1885
+        {
+            name = "Weight";
+            location = (62, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "kg";
+        };
+
+        valuefield _tmp_6558
+        {
+            name = "Length";
+            location = (49, 0);
+            formula = "GetValue(\"LENGTH\")";
+            datatype = INTEGER;
+            class = "Length";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_2522
+        {
+            name = "Qty";
+            location = (2, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+        };
+
+        valuefield _tmp_48775
+        {
+            name = "totalweight";
+            location = (73, 0);
+            formula = "GetFieldFormula(\"Qty\")*GetValue(\"WEIGHT\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = FALSE;
+            angle = 0;
+            length = 3;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+    };
+
+    pagefooter _tmp_46997
+    {
+        name = "PageFooter";
+        height = 3;
+        outputpolicy = NONE;
+
+        text _tmp_46999
+        {
+            name = "Text_6";
+            x1 = 26;
+            y1 = 1;
+            x2 = 26;
+            y2 = 1;
+            string = "Total Rebar Weight for this report:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_47001
+        {
+            name = "TotalAll";
+            location = (63, 1);
+            formula = "Sum(\"totalweight\")";
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            unit = "kg";
+        };
+    };
+
+    footer _tmp_895
+    {
+        name = "Footer";
+        height = 5;
+
+        valuefield _tmp_896
+        {
+            name = "MODEL_PATH_field";
+            location = (11, 0);
+            formula = "GetValue(\"MODEL_PATH\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 66;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        text _tmp_951
+        {
+            name = "Model Path:";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "Model Path:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_5323
+        {
+            name = "--------------------------------";
+            x1 = 0;
+            y1 = 4;
+            x2 = 0;
+            y2 = 4;
+            string = "-----------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_5325
+        {
+            name = "Text_3";
+            x1 = 0;
+            y1 = 3;
+            x2 = 0;
+            y2 = 3;
+            string = "Created By:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_5327
+        {
+            name = "CurrentUser";
+            location = (11, 3);
+            formula = "GetValue(\"CURRENT_USER\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        text _tmp_5329
+        {
+            name = "Text_2";
+            x1 = 0;
+            y1 = 2;
+            x2 = 0;
+            y2 = 2;
+            string = "-----------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_5335
+        {
+            name = "Text_8";
+            x1 = 36;
+            y1 = 3;
+            x2 = 36;
+            y2 = 3;
+            string = "END OF REPORT";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+};

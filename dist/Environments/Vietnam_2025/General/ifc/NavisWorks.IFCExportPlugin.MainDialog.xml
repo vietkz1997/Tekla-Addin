@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <Format>2</Format>
+  <ExportType>0</ExportType>
+  <OutputFile>.\IFC\TeklaNavisWorks</OutputFile>
+  <BaseQuantities>1</BaseQuantities>
+  <GridExport>1</GridExport>
+  <Assemblies>1</Assemblies>
+  <Bolts>1</Bolts>
+  <ReinforcingBars>1</ReinforcingBars>
+  <PourObjects>0</PourObjects>
+  <Welds>0</Welds>
+  <LayersNameAsPart>1</LayersNameAsPart>
+  <SurfaceTreatments>1</SurfaceTreatments>
+  <ExcludeSnglPrtAsmb>0</ExcludeSnglPrtAsmb>
+  <LocsFromOrganizer>1</LocsFromOrganizer>
+  <AdditionalPSets>DesignWorkflowInformation</AdditionalPSets>
+  <CreateAll>0</CreateAll>
+  <PLprofileToPlate>1</PLprofileToPlate>
+  <ViewColors>0</ViewColors>
+  <SectionedSpine>0</SectionedSpine>
+</config>

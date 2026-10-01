@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE TilePatternCatalog SYSTEM "TilePatternCatalog.dtd">
+<TilePatternCatalog>
+	<TilePattern Name="1_1" LinearUnit="INCH">
+		<Parameter Name="W" UnitType="Length" DefaultValue="11.75">
+			<Label> _Tile_Width </Label>
+		</Parameter>
+		<Parameter Name="H" UnitType="Length" DefaultValue="3.75">
+			<Label> _Tile_Height </Label>
+		</Parameter>
+		<Parameter Name="TH" UnitType="Length" DefaultValue="0.75">
+			<Label> _Tile_Thickness </Label>
+		</Parameter>
+		<Parameter Name="MH" UnitType="Length" DefaultValue="0.5">
+			<Label> _Mortar_Height </Label>
+		</Parameter>
+		<Parameter Name="MW" UnitType="Length" DefaultValue="0.5">
+			<Label> _Mortar_Width </Label>
+		</Parameter>
+		<Parameter Name="TC" UnitType="Color" DefaultValue="204 178 153">
+			<Label> _Tile_Color </Label>
+		</Parameter>
+		<Parameter Name="MC" UnitType="Color" DefaultValue="50 60 70">
+			<Label> _Mortar_Color </Label>
+		</Parameter>
+		<HOffset>
+			<Vector2D X="W+MW" Y="0" />
+		</HOffset>
+		<VOffset>
+			<Vector2D X="0" Y="H+MH" />
+		</VOffset>
+		<Color Color="MC" />
+		<Tile Angle="0" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="0" Y="0" />
+			</TileOrigin>
+			<Color Color="TC" />
+		</Tile>
+	</TilePattern>
+	<TilePattern Name="1_2">
+		<Parameter Name="W" UnitType="Length" DefaultValue="200">
+			<Label> _Tile_Width </Label>
+		</Parameter>
+		<Parameter Name="H" UnitType="Length" DefaultValue="100">
+			<Label> _Tile_Height </Label>
+		</Parameter>
+		<Parameter Name="MH" UnitType="Length" DefaultValue="20">
+			<Label> _Mortar_Height </Label>
+		</Parameter>
+		<Parameter Name="MW" UnitType="Length" DefaultValue="20">
+			<Label> _Mortar_Width </Label>
+		</Parameter>
+		<Parameter Name="TC" UnitType="Color" DefaultValue="204 178 153">
+			<Label> _Tile_Color </Label>
+		</Parameter>
+		<Parameter Name="MC" UnitType="Color" DefaultValue="50 60 70">
+			<Label> _Mortar_Color </Label>
+		</Parameter>
+		<HOffset>
+			<Vector2D X="W+MW" Y="0" />
+		</HOffset>
+		<VOffset>
+			<Vector2D X="0" Y="2*(H+MH)" />
+		</VOffset>
+		<Color Color="MC" />
+		<Tile Angle="0" Width="W" Height="H" Thickness="100">
+			<TileOrigin>
+				<Vector2D X="0" Y="0" />
+			</TileOrigin>
+			<Color Color="TC" />
+		</Tile>
+		<Tile Angle="0" Width="W" Height="H" Thickness="100">
+			<TileOrigin>
+				<Vector2D X="0.5*W" Y="H+MH" />
+			</TileOrigin>
+			<Color Color="TC" />
+		</Tile>
+	</TilePattern>
+	<TilePattern Name="1_3">
+		<Parameter Name="W" UnitType="Length" DefaultValue="200">
+			<Label> _Tile_Width </Label>
+		</Parameter>
+		<Parameter Name="H" UnitType="Length" DefaultValue="100">
+			<Label> _Tile_Height </Label>
+		</Parameter>
+		<Parameter Name="MH" UnitType="Length" DefaultValue="20">
+			<Label> _Mortar_Height </Label>
+		</Parameter>
+		<Parameter Name="MW" UnitType="Length" DefaultValue="20">
+			<Label> _Mortar_Width </Label>
+		</Parameter>
+		<Parameter Name="TC" UnitType="Color" DefaultValue="204 178 153">
+			<Label> _Tile_Color </Label>
+		</Parameter>
+		<Parameter Name="MC" UnitType="Color" DefaultValue="50 60 70">
+			<Label> _Mortar_Color </Label>
+		</Parameter>
+		<HOffset>
+			<Vector2D X="W+MW" Y="0" />
+		</HOffset>
+		<VOffset>
+			<Vector2D X="0" Y="2*(H+MH)" />
+		</VOffset>
+		<Color Color="MC" />
+		<Tile Angle="0" Width="W" Height="H" Thickness="100">
+			<TileOrigin>
+				<Vector2D X="0" Y="0" />
+			</TileOrigin>
+			<Color Color="TC" />
+		</Tile>
+		<Tile Angle="0" Width="W" Height="H" Thickness="100">
+			<TileOrigin>
+				<Vector2D X="0.33*W" Y="H+MH" />
+			</TileOrigin>
+			<Color Color="TC" />
+		</Tile>
+	</TilePattern>
+	<TilePattern Name="1_4">
+		<Parameter Name="W" UnitType="Length" DefaultValue="200">
+			<Label> _Tile_Width </Label>
+		</Parameter>
+		<Parameter Name="H" UnitType="Length" DefaultValue="100">
+			<Label> _Tile_Height </Label>
+		</Parameter>
+		<Parameter Name="MH" UnitType="Length" DefaultValue="20">
+			<Label> _Mortar_Height </Label>
+		</Parameter>
+		<Parameter Name="MW" UnitType="Length" DefaultValue="20">
+			<Label> _Mortar_Width </Label>
+		</Parameter>
+		<Parameter Name="TC" UnitType="Color" DefaultValue="204 178 153">
+			<Label> _Tile_Color </Label>
+		</Parameter>
+		<Parameter Name="MC" UnitType="Color" DefaultValue="50 60 70">
+			<Label> _Mortar_Color </Label>
+		</Parameter>
+		<HOffset>
+			<Vector2D X="W+MW" Y="0" />
+		</HOffset>
+		<VOffset>
+			<Vector2D X="0" Y="2*(H+MH)" />
+		</VOffset>
+		<Color Color="MC" />
+		<Tile Angle="0" Width="W" Height="H" Thickness="100">
+			<TileOrigin>
+				<Vector2D X="0" Y="0" />
+			</TileOrigin>
+			<Color Color="TC" />
+		</Tile>
+		<Tile Angle="0" Width="W" Height="H" Thickness="100">
+			<TileOrigin>
+				<Vector2D X="0.25*W" Y="H+MH" />
+			</TileOrigin>
+			<Color Color="TC" />
+		</Tile>
+	</TilePattern>
+	<TilePattern Name="Herringbone">
+		<Parameter Name="W" DefaultValue="180">
+			<Label> _Tile_Width </Label>
+		</Parameter>
+		<Parameter Name="H" DefaultValue="80">
+			<Label> _Tile_Height </Label>
+		</Parameter>
+		<Parameter Name="T" DefaultValue="100">
+			<Label> _Tile_Thickness </Label>
+		</Parameter>
+		<Parameter Name="MH" DefaultValue="20">
+			<Label> _Mortar_Height </Label>
+		</Parameter>
+		<Parameter Name="MW" DefaultValue="20">
+			<Label> _Mortar_Width </Label>
+		</Parameter>
+		<HOffset>
+			<Vector2D X="W+2*H+3*MW" />
+		</HOffset>
+		<VOffset>
+			<Vector2D Y="W+2*H+3*MW" />
+		</VOffset>
+		<Color Color="50 60 70" />
+		<!-- Tile 1 -->
+		<Tile Angle="0" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="0" Y="0" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<!-- Tile 2 -->
+		<Tile Angle="90" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="W" Y="H+MH" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<!-- Tile 3 -->
+		<Tile Angle="90" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="W+H+MW" Y="0" />
+			</TileOrigin>
+			<Color Color="179 153 128" />
+		</Tile>
+		<!-- Tile 4 -->
+		<Tile Angle="0" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="W+MW" Y="W+MH" />
+			</TileOrigin>
+			<Color Color="179 153 128" />
+		</Tile>
+		<!-- Tile 5 -->
+		<Tile Angle="0" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="W+H+2*MW" Y="H+MH" />
+			</TileOrigin>
+			<Color Color="153 128 102" />
+		</Tile>
+		<!-- Tile 6 -->
+		<Tile Angle="90" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="H" Y="2*(H+MH)" />
+			</TileOrigin>
+			<Color Color="153 128 102" />
+		</Tile>
+		<!-- Tile 7 -->
+		<Tile Angle="90" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="W+2*(H+MW)" Y="W+H+2*MH" />
+			</TileOrigin>
+			<Color Color="128 102 77" />
+		</Tile>
+		<!-- Tile 8 -->
+		<Tile Angle="0" Width="W" Height="H" Thickness="T">
+			<TileOrigin>
+				<Vector2D X="H+MW" Y="H+W+2*MH" />
+			</TileOrigin>
+			<Color Color="128 102 77" />
+		</Tile>
+	</TilePattern>
+	<TilePattern Name="Basketweave">
+		<Parameter Name="W" DefaultValue="220">
+			<Label> _Tile_Width </Label>
+		</Parameter>
+		<Parameter Name="H" DefaultValue="100">
+			<Label> _Tile_Height </Label>
+		</Parameter>
+		<Parameter Name="TH" DefaultValue="100">
+			<Label> _Tile_Thickness </Label>
+		</Parameter>
+		<Parameter Name="MH" DefaultValue="20">
+			<Label> _Mortar_Height </Label>
+		</Parameter>
+		<Parameter Name="MW" DefaultValue="20">
+			<Label> _Mortar_Width </Label>
+		</Parameter>
+		<HOffset>
+			<Vector2D X="W+2*H+3*MW" Y="0" />
+		</HOffset>
+		<VOffset>
+			<Vector2D X="0" Y="W+2*H+3*MH" />
+		</VOffset>
+		<Tile Angle="0" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="0" Y="0" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<Tile Angle="0" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="0" Y="H+MH" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<Tile Angle="90" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="W+MW+H" Y="0" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<Tile Angle="90" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="W+2*(MW+H)" Y="0" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<Tile Angle="90" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="H" Y="W+MH" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<Tile Angle="90" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="2*H+MW" Y="W+MH" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<Tile Angle="0" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="W+MW" Y="W+MH" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+		<Tile Angle="0" Width="W" Height="H" Thickness="TH">
+			<TileOrigin>
+				<Vector2D X="W+MW" Y="W+H+2*MH" />
+			</TileOrigin>
+			<Color Color="204 179 153" />
+		</Tile>
+	</TilePattern>
+</TilePatternCatalog>

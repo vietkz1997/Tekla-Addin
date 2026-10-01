@@ -89,6 +89,31 @@ namespace BimCommands.Tekla.ClashCheck
         /// </summary>
         public double OverlapMm { get; set; }
 
+        /// <summary>
+        /// Loại va chạm được phân loại bởi GeometryHelper (Hard, Touch, Clearance, Unresolved).
+        /// </summary>
+        public string ClashType { get; set; } = "Hard";
+
+        /// <summary>
+        /// Thể tích khối chồng lấn giữa thép và vật thể cản (đơn vị: mm³).
+        /// </summary>
+        public double VolumeMm3 { get; set; }
+
+        /// <summary>
+        /// Chiều dài đoạn tim thép cắm ngập bên trong ruột của vật thể cản (đơn vị: mm).
+        /// </summary>
+        public double LengthInsideMm { get; set; }
+
+        /// <summary>
+        /// Diện tích tiếp xúc mặt ngoài giữa thép và vật cản (đơn vị: mm²).
+        /// </summary>
+        public double ContactAreaMm2 { get; set; }
+
+        /// <summary>
+        /// Khoảng cách hở thực tế giữa mặt thép và mặt vật cản khi kiểm tra Clearance (đơn vị: mm).
+        /// </summary>
+        public double DistanceMm { get; set; }
+
         /// <summary>Tọa độ tâm điểm va chạm không gian 3D (World Coordinates).</summary>
         public Point ClashPoint { get; set; }
 

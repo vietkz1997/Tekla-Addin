@@ -1,0 +1,306 @@
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Prefix! Type ! SO ! Z ! MI ! MA ! G3-NAME          ! Z3-NAME          !
+/*-------+------+----+---+----+----+------------------+------------------+
+/*                -1 DECREASING ASSORTMENT                               !
+/*                +1 INCREASING ASSORTMENT                               !
+/*                 0 NO ASSORTMENT                                       !
+/*                 2 NAME INCREASING, VALUE DECREASING                   !
+/*                -2 NAME DECREASING,VALUE INCREASING                    !
+/*                     0  INPUT IN MM                                    !
+/*                     1  INPUT IN INCH                                  !
+/*                     2  INPUT IN FOOT                                  !
+/*                     3  INPUT IN CM                                    !
+/*                     4  INPUT IN M                                     !
+/*                         MINIMUM NUMBER A NUMERIC VALUE IN NAME        !
+/*                              MAXIMUM NUMBER A NUMERIC VALUE IN NAME   !
+/*                                   NAME OF THE GENERATION COMPONENT    !
+/*                                                      NAME OF THE MACRO!
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Basic steel shapes
+/*-------+------+----+---+----+----+------------------+------------------+
+HI       ! I    !    !   !  2 !  7 !                  !                  !
+PHI      ! I    !    !   !  5 !  7 !                  !h1-h2-s-t*b       !
+WI       ! I    !    !   !  4 !  7 !                  !                  !
+L        ! L    !    !   !  2 !  3 !                  !                  !
+BLL      ! L    !    !   !  2 !  3 !                  !                  !
+CLL      ! L    !    !   !  2 !  3 !                  !                  !
+Z        ! Z    !    !   !  3 !  3 !                  !                  !
+BLZ      ! Z    !    !   !  3 !  3 !                  !                  !
+U        ! U    !    !   !  2 !  3 !                  !                  !
+BLU      ! U    !    !   !  2 !  3 !                  !                  !
+C        ! C    !    !   !  2 !  3 !                  !                  !
+BLC      ! C    !    !   !  2 !  3 !                  !                  !
+T        ! T    !    !   !  3 !  4 !                  !                  !
+HK       ! HK   !    !   !  5 !  7 !                  !                  !
+WB       ! HK   !    !   !  5 !  7 !                  ! WELDED BOX       !
+HQ       ! HQ   !    !   !  6 !  7 !                  !                  !
+WQ       ! HQ   !    !   !  6 !  7 !                  ! WELDED Q         !
+WQS      ! USER ! 0  !   !  6 !  9 !1Gen.WQS          !h*s-t1*b-t2*b3-[c1*[c2*[c3]]]
+CWQ      ! HQ   !    !   !  6 !  7 !                  ! WELDED Q         !
+BL       ! PL   ! -1 !   !  1 !  2 !                  !                  !
+BPL      ! PL   ! -1 !   !  1 !  2 !                  !                  !
+BP       ! PL   ! -1 !   !  1 !  2 !                  !                  !
+FB       ! PL   ! -1 !   !  1 !  2 !                  !                  !
+FL       ! PL   ! -1 !   !  1 !  2 !                  !                  !
+FLT      ! PL   ! -1 !   !  1 !  2 !                  !                  !
+FPL      ! PL   ! -1 !   !  1 !  2 !                  !                  !
+PL       ! PL   ! -1 !   !  1 !  2 !                  !                  !
+PLT      ! PL   ! +2 !   !  1 !  2 !                  !                  !
+PLATE    ! PL   ! +2 !   !  1 !  2 !                  !                  !
+TANKO    ! PL   !    !   !  1 !  2 !                  !                  !
+CHKD     ! PL   ! +2 !   !  1 !  2 !                  !                  !
+CHKD_PL  ! PL   ! +2 !   !  1 !  2 !                  !                  !
+CHEKD    ! PL   ! +2 !   !  1 !  2 !                  !                  !
+D        ! D    !    !   !  1 !  4 !                  !                  !
+ELD      ! D    !    !   !  4 !  4 !                  ! ELLIPTICAL       !
+ROD      ! D    !    !   !  1 !  2 !                  !                  !
+P        ! P    !    !   !  2 !  5 !                  !                  !
+[]       ! P    !    !   !  2 !  5 !                  !                  !
+SHS      ! P    !    !   !  2 !  2 !                  !                  !
+RHS      ! P    !    !   !  2 !  3 !                  !                  !
+CFRHS    ! P    !    !   !  2 !  3 !                  !                  !
+PD       ! PD   !    !   !  2 !  5 !                  !                  !
+EPD      ! PD   !    !   !  2 !  5 !                  ! ELLIPTICAL       !
+CHS      ! PD   !    !   !  2 !  3 !                  !                  !
+CFCHS    ! PD   !    !   !  2 !  3 !                  !                  !
+O        ! PD   !    !   !  2 !  5 !                  !                  !
+Ø        ! PD   !    !   !  2 !  5 !                  !                  !
+TUBE     ! PD   !    !   !  2 !  5 !                  !                  !
+ZZ       ! ZZ   !    !   !  4 !  6 !                  !                  !
+CC       ! CC   !    !   !  4 !  6 !                  !                  !
+CW       ! CW   !    !   !  6 !  8 !                  !                  !
+CU       ! CU   !    !   !  5 !  7 !                  !                  !
+EB       ! EB   !    !   !  5 !  7 !                  !                  !
+BF       ! BF   !    !   !  4 !  4 !                  !                  !
+SPD      ! SPD  !    !   !  2 !  5 !                  !                  !
+ESPD     ! SPD  !    !   !  5 !  5 !                  ! ELLIPTICAL       !
+EC       ! EC   !    !   !  5 !  7 !                  !                  !
+ED       ! ED   !    !   !  9 !  9 !                  !                  !
+EE       ! EE   !    !   !  9 !  9 !                  !                  !
+EF       ! EF   !    !   !  9 !  9 !                  !                  !
+EZ       ! EZ   !    !   !  9 !  9 !                  !                  !
+EW       ! EW   !    !   ! 10 ! 10 !                  !                  !
+/*-------+------+----+---+----+----+------------------+------------------+
+/* I beams (steel)
+/*-------+------+----+---+----+----+------------------+------------------+
+I_BLT_A  ! USER ! 0  !   !  8 !  8 !1Gen.Westok       !h-b1-s1-t1*h2-b2-s2-t2
+I_BLT_B  ! USER ! 0  !   !  6 !  6 !1Gen.Slimflor     !h*b1*t1*s-b2*t2
+I_BLT_C  ! USER ! 0  !   !  4 !  4 !1Gen.BHBeam       !h*b*s*t
+I_HEM    ! USER ! 0  !   !  5 !  5 !JapanLib.LipH     !h*b*c*s*t 
+I_VAR_A  ! USER ! 0  !   !  6 !  6 !JapanLib.BHT      !h1-ht*b1-bt*s*t
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Box-profiles
+/*-------+------+----+---+----+----+------------------+------------------+
+B_BUILT  ! USER ! 0  !   !  4 !  4 !BoxLib.BBOX       !h*b*s*t
+B_VAR_A  ! USER ! 0  !   !  3 !  5 !BoxLib.BTPRA      !h1-h2*t[*bt1[-bt2]] 
+B_VAR_B  ! USER ! 0  !   !  3 !  5 !BoxLib.BTPRB      !h1-h2*t[*bt1[-bt2]] 
+B_VAR_C  ! USER ! 0  !   !  3 !  5 !BoxLib.BTPRC      !h1-h2*t[*bt1[-bt2]]
+/*-------+------+----+---+----+----+------------------+------------------+
+/* C-profiles
+/*-------+------+----+---+----+----+------------------+------------------+
+C_BUILT  ! USER ! 0  !   !  4 !  4 !JapanLib.BC       !h*b*s*t
+C_VAR_A  ! USER ! 0  !   !  5 !  5 !TfrLib.C_VAR_A    !h1*b1-s-h2*b2
+C_VAR_B  ! USER ! 0  !   !  5 !  5 !TfrLib.C_VAR_B    !h1*b1-s-h2*b2
+C_VAR_C  ! USER ! 0  !   !  5 !  5 !TfrLib.C_VAR      !h1*b1-s-h2*b2
+C_VAR_D  ! USER ! 0  !   !  5 !  5 !CS_pu.PU          !h-b-d-c-s
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Z-profiles
+/*-------+------+----+---+----+----+------------------+------------------+
+Z_VAR_A  ! USER ! 0  !   !  6 !  6 !TfrLib.Z_VAR_A    !h1*b1*b2-s-h2*b3
+Z_VAR_B  ! USER ! 0  !   !  6 !  6 !TfrLib.Z_VAR_B    !h1*b1*b2-s-h2*b3
+Z_VAR_C  ! USER ! 0  !   !  6 !  6 !TfrLib.Z_VAR      !h1*b1*b2-s-h2*b3
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Welded Beam profiles
+/*-------+------+----+---+----+----+------------------+------------------+
+B_WLD_A  ! USER ! 0  !   !  4 !  4 !A.HWS             !h*b*s*t
+B_WLD_B  ! USER ! 0  !   !  4 !  4 !A.ULWS            !h*b*s*t
+B_WLD_C  ! USER ! 0  !   !  2 !  2 !A.LWS             !h*s
+B_WLD_D  ! USER ! 0  !   !  4 !  4 !A.CWS             !h*b*s*t
+B_WLD_E  ! USER ! 0  !   !  4 !  4 !A.TWS             !h*b*s*t
+B_WLD_F  ! USER ! 0  !   !  3 !  4 !A.QWS             !h*b*s*[t]
+B_WLD_G  ! USER ! 0  !   !  5 !  5 !A.BWS             !h*b*s*t*a
+B_WLD_H  ! USER ! 0  !   !  6 !  6 !A.UHWS            !h*bo*bu*s*to*tu
+B_WLD_I  ! USER ! 0  !   !  7 !  7 !A.ZHWS            !h*bo*s*to*bu*tu*a
+B_WLD_J  ! USER ! 0  !   !  5 !  5 !A.QWSS            !h1*h2*b*s*t
+B_WLD_K  ! USER ! 0  !   !  5 !  5 !A.HWSS            !h1*h2*b*s*t
+B_WLD_L  ! USER ! 0  !   !  6 !  6 !A.UQWS            !h*wt*wb*s*tt*tb
+B_WLD_M  ! USER ! 0  !   !  5 !  5 !BuiltUps.BOXISMC  !h1*p1*p2*p3*p4
+B_WLD_N  ! USER ! 0  !   !  9 !  9 !BuiltUps.BOXCTPBP !p1*p2*p3*p4*p5*p6*p7*p8*p9
+B_WLD_O  ! USER ! 0  !   !  8 !  8 !BuiltUps.STARPROF !b1*h1*b4*h5*b7*h6*P1*P2
+B_WLD_P  ! USER ! 0  !   !  8 !  8 !BuiltUps.PLATED_I !W*H*FT*WT*TPT*TPW*BPT*BPW
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Folded plates
+/*-------+------+----+---+----+----+------------------+------------------+
+FLDPL    ! USER ! 0  !   !  4 !  4 !FLDPL.FoldPlate   !h*b-c-a
+FP_A     ! USER ! 0  !   !  5 !  7 !CS_FP.VM05        !h-b-c-d-g[-a[-f]]
+FP_B     ! USER ! 0  !   !  6 !  8 !CS_FP.VM06        !h-b-c-d-g-i[-a[-f]]
+FP_C     ! USER ! 0  !   !  3 !  4 !FLDPL.FP13        !b-h-c[-a]
+FP_D     ! USER ! 0  !   !  9 !  9 !FLDPL.VM09        !b-h-c-d-f-g-i-j-s
+FP_E     ! USER ! 0  !   !  7 !  7 !FLDPL.VM10        !b-h-c-d-f-g-s
+FP_F     ! USER ! 0  !   !  7 !  7 !FLDPL.VM11        !b-h-c-d-f-g-s
+FP_G     ! USER ! 0  !   !  7 !  7 !FLDPL.VM12        !b-h-c-d-f-g-s
+FP_H     ! USER ! 0  !   !  6 !  6 !FLDPL.VM13        !b-h-c-d-f-s
+FP_I     ! USER ! 0  !   !  6 !  6 !FLDPL.VM14        !b-h-c-d-f-s
+FP_J     ! USER ! 0  !   !  5 !  5 !FLDPL.VM15        !b-h-c-d-a
+FP_K     ! USER ! 0  !   !  4 !  5 !FLDPL.VM16        !b-h-c-d[-a]
+FP_L     ! USER ! 0  !   !  6 !  6 !FLDPL.VM18        !b-h-c-d-f-s
+FP_M     ! USER ! 0  !   !  5 !  5 !FLDPL.VM19        !b-h-c-d-s
+FP_N     ! USER ! 0  !   !  4 !  6 !FLDPL.FP83        !b-h-c-d[-a[-f]]
+FP_O     ! USER ! 0  !   !  5 !  7 !FLDPL.FP84        !b-h-c-d-s[-a[-f]]
+FP_P     ! USER ! 0  !   !  10!  10!FLDPL.WI          !a1*a2*h-b1*b2-Alpha1-Alpha2-Beta1-Beta2-s
+FP_Q     ! USER ! 0  !   !  5 !  5 !FLDPL.SB41        !b-h-c-d-s
+FP_R     ! USER ! 0  !   !  4 !  4 !FLDPL.SB42        !b-h-c-d
+FP_S     ! USER ! 0  !   !  4 !  4 !FLDPL.FP44        !b-h-c-s
+FP_T     ! USER ! 0  !   !  5 !  5 !FLDPL.FP24        !b-h-a-d-s
+FP_U     ! USER ! 0  !   !  5 !  5 !FLDPL.FP31        !b-h-a-d-s
+FP_V     ! USER ! 0  !   !  4 !  4 !FLDPL.FP25        !b-h-s-c
+FP_W     ! USER ! 0  !   !  5 !  5 !CS_FP.FP41        !b-h-a-d-s
+FP_WW    ! USER ! 0  !   !  5 !  6 !CS_FP.FP90        !h-b-a-c-s[-d]
+FP_Y     ! USER ! 0  !   !  4 !  6 !CS_FP.FP91        !h-b-c-d[-f[-a]]
+FP_Z     ! USER ! 0  !   !  6 !  6 !FLDPL.RINNE       !d-h-b-s-a-f
+FP_AA    ! USER ! 0  !   !  4 !  8 !1Gen.KSEavesB     !h*b2*t*a[-b1[-h2[-f1[-e1]]]]
+FP_BB    ! USER ! 0  !   !  3 !  4 !CS_FP.LT          !h-b-d[-c]
+FP_CC    ! USER ! 0  !   !  5 !  5 !CS_FP.FP33        !h-b-a-d-s
+FP_DD    ! USER ! 0  !   !  5 !  6 !CS_FP.FP92        !h-b-a-c-s-[d]
+FP_EE    ! USER ! 0  !   !  7 !  7 !CS_FP.VM07        !h-b-c-d-f-i-s
+FP_FF    ! USER ! 0  !   !  7 !  7 !CS_FP.VM08        !h-b-c-d-f-g-s
+FP_GG    ! USER ! 0  !   !  7 !  7 !CS_FP.VM20        !h-b-c-d-f-i-s
+FP_HH    ! USER ! 0  !   !  8 !  8 !CS_FP.VM21        !h-b-c-d-f-g-i-s
+FP_II    ! USER ! 0  !   !  6 !  8 !CS_FP.VM25        !h-b-c-d-g-j[-a[-f]]
+FP_JJ    ! USER ! 0  !   !  7 !  9 !CS_FP.VM26        !h-b-c-d-g-i-j[-a[-f]]
+FP_KK    ! USER ! 0  !   !  7 !  8 !CS_FP.VM27        !h-b-c-d-g-i-j-[a]
+FP_LL    ! USER ! 0  !   !  8 !  9 !CS_FP.VM28        !h-b-c-d-g-i-j-k-[a]
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Hat-profiles
+/*-------+------+----+---+----+----+------------------+------------------+
+HAT      ! USER ! 0  !   !  4 !  4 !JapanLib.HAT      !h*a*c*t
+HATC     ! USER ! 0  !   !  6 !  9 !FLDPL.HALTE       !a-b-c-b1-h-b3-b4-b5-s
+/*-------+------+----+---+----+----+------------------+------------------+
+
+/* Basic concrete shapes
+/*-------+------+----+---+----+----+------------------+------------------+
+         ! PL   ! 0  !   !  1 !  2 !                  !                  !
+RCRW     ! USER ! 0  !   !  9 !  9 !Conc.RWall        !h*b-b2*b3-b4-t1*t2-t3*t4
+SK       ! USER ! 0  !   !  6 !  6 !Conc.SK           !h*b-h2-t-b2-b3
+/*-------+------+----+---+----+----+------------------+------------------+
+/* I-Beams (concrete)
+/*-------+------+----+---+----+----+------------------+------------------+
+HII      ! USER ! 0  !   !  7 !  9 !Conc.HIBeam       !h1*b1*t1-h2-s-b2*t2[-sft[-sfb]]
+II       ! USER ! 0  !   !  6 !  8 !Conc.IBeam        !h*b1*t1-s-b2*t2[-sft[-sfb]]
+SII      ! USER ! 0  !   !  7 !  9 !Conc.IBeamSP      !h1*b1*t1-h2-s-b2*t2[-sft[-sfb]]
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Ledger beams (concrete)
+/*-------+------+----+---+----+----+------------------+------------------+
+RCL      ! 104  ! 0  !   !  4 !  4 !                  !                  !
+RCDL     ! 102  ! 0  !   !  4 !  5 !                  !                  !
+RCDX     ! 105  ! 0  !   !  5 !  8 !                  !                  !
+RCXX     ! 103  ! 0  !   !  7 !  7 !                  !                  !
+RCX      ! 106  ! 0  !   !  5 !  5 !                  !                  !
+/*-------+------+----+---+----+----+------------------+------------------+
+/* T-profiles (concrete)
+/*-------+------+----+---+----+----+------------------+------------------+
+T_VAR_B  ! USER ! 0  !   !  4 !  5 !CS_rect1.guthera  !h-b-c-d[-f]
+HTT      ! USER ! 0  !   !  6 !  9 !Conc.TTRidge      !h*b-s-t-b2-h2[-sfr[-b3[-sfp]]]
+TC       ! USER ! 0  !   !  4 !  6 !CS_rect1.tc       !h-b-t-s[-rv[-rh]]
+TRI      ! USER ! 0  !   !  6 !  7 !Conc.TRI          !h*b-b2*t1-h3-t2[-s]
+TT       ! USER ! 0  !   !  5 !  8 !Conc.TT           !h*b-s-t-b2[-sfr[-b3[-sfp]]]
+TTT      ! USER ! 0  !   !  7 !  7 !Conc.TTT          !h*b-bl-br-hw-bwmin-bwmax
+T_VAR_A  ! USER ! 0  !   !  6 !  6 !Beton.TVoute      !h1*h2*s*b1*t1-sft
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Irregular beams (concrete)
+/*-------+------+----+---+----+----+------------------+------------------+
+IRR_A    ! USER ! 0  !   !  5 !  5 !CS_rect1.btc      !b-h-g-c-d
+IRR_B    ! USER ! 0  !   !  6 !  8 !CS_rect1.cmdra    !h-b-c-d-f-g[-k[-l]]
+IRR_C    ! USER ! 0  !   !  4 !  6 !CS_rect1.cmdr     !h-b-c-d[-k[-l]]
+IRR_D    ! USER ! 0  !   !  4 !  4 !Beton.GSD_FugeD   !b1*b2-h1*h2
+IRR_E    ! USER ! 0  !   !  7 !  8 !CS_rect1.gal      !h-b-c-d-h2-h3-h4-[g]
+IRR_F    ! USER ! 0  !   !  2 !  2 !TEKLAINC.XCHAMFER !a*b
+IRR_G    ! USER ! 0  !   !  4 !  4 !TEKLAINC.TRPBL    !h*b*h2*b2
+IRR_H    ! USER ! 0  !   !  4 !  4 !TEKLAINC.TRPBR    !h*b*h2*b2
+IRR_I    ! USER ! 0  !   !  3 !  3 !TEKLAINC.TRPZL    !h*b*b2
+IRR_J    ! USER ! 0  !   !  3 !  3 !TEKLAINC.TRPZR    !h*b*b2
+OCT      ! USER ! 0  !   !  4 !  4 !Beton.OCT_A       !B*b1-H*h1
+PRMB     ! USER ! 0  !   !  3 !  3 !1Gen.Pyrab        !h*b-b2
+REC_A    ! USER ! 0  !   !  2 !  4 !CS_rect1.trpcd    !h-b[-c[-d]]
+REC_B    ! USER ! 0  !   !  3 !  4 !CS_concr1.TRPA    !h-b-b1[-s]
+REC_C    ! USER ! 0  !   !  3 !  4 !CS_concr1.TRPB    !h-b-b1[-s]
+REC_D    ! USER ! 0  !   !  3 !  3 !1Gen.Pyrab        !h*b-b2
+REC_E    ! USER ! 0  !   !  2 !  3 !CS_rect1.trp      !h-b[-c]
+REC_F    ! USER ! 0  !   !  2 !  3 !CS_rect1.trpa     !h-b[-a]
+REC_G    ! USER ! 0  !   !  2 !  3 !CS_rect1.trpb     !h-b[-a]
+REC_H    ! USER ! 0  !   !  2 !  3 !CS_rect1.crbl     !h-b[-c]
+REC_I    ! USER ! 0  !   !  3 !  3 !Beton.GSD_FugeC   !a-b*h
+TRI_A    ! USER ! 0  !   !  2 !  2 !CS_rect1.tria     !h-b
+TRI_B    ! USER ! 0  !   !  1 !  1 !Beton.GSD_FugeA   !a1
+TRI_C    ! USER ! 0  !   !  2 !  2 !Beton.GSD_FugeB   !b-h
+TRI_D    ! USER ! 0  !   !  2 !  2 !TEKLAINC.TRIANGLE !h*b
+TRI_E    ! USER ! 0  !   !  4 !  4 !TEKLAINC.PCTRI    !b*h*h2*b2
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Panels
+/*-------+------+----+---+----+----+------------------+------------------+
+PNL_A    ! USER ! 0  !   !  2 !  3 !1Gen.RectChamfer  !h*b[-c]
+PNL_B    ! USER ! 0  !   !  2 !  3 !CS_panel.asymm    !h*b[-a]
+PNL_C    ! USER ! 0  !   !  5 !  9 !CS_panel.asymm_t  !h*b-a-ht*bt[-aht[-sht[*svt[*et]]]]
+PNL_D    ! USER ! 0  !   !  5 !  9 !CS_panel.asymm_t_b!h*b-a-ht*bt[-aht[-sht[*svt[*et]]]]
+PNL_E    ! USER ! 0  !   !  5 !  8 !CS_panel.asymm_t_a!h*b-a-ht*bt[-aht[-sht[*et]]]
+PNL_F    ! USER ! 0  !   !  5 !  9 !CS_panel.asymm_t_g!h*b-a-ht*bt[-aht[-sht[*svt[*et]]]]
+PNL_G    ! USER ! 0  !   !  2 !  3 !1Gen.RectChamfer4 !h*b[-c]
+PNL_H    ! USER ! 0  !   !  5 !  9 !CS_panel.symm_t   !h*b-a-ht*bt[-aht[-sht[*svt[*et]]]]
+PNL_I    ! USER ! 0  !   !  5 !  8 !CS_panel.symm_t_a !h*b-a-ht*bt[-aht[-sht[*et]]]
+PNL_J    ! USER ! 0  !   !  5 !  9 !CS_panel.symm_t_g !h*b-a-ht*bt[-aht[-sht[*svt[*et]]]]
+PNL_K    ! USER ! 0  !   !  2 !  4 !CS_concr1.vault1  !h*b[-ah[*av]]
+PNL_L    ! USER ! 0  !   !  4 !  5 !CS_PANEL.PAN1     !h-b-c-f[-d]
+PNL_M    ! USER ! 0  !   !  5 !  5 !CS_PANEL.PAN2     !h-b-c-f-d
+PNL_N    ! USER ! 0  !   !  6 !  6 !CS_PANEL.PAN3     !h-b-d-f-g-j
+PNL_O    ! USER ! 0  !   !  7 !  7 !CS_PANEL.PAN4     !h-b-d-f-g-i-t
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Variable cross sections
+/*-------+------+----+---+----+----+------------------+------------------+
+HXGON    ! USER ! 0  !   !  1 !  2 !1Gen.Hexagon      !b[-tpr]
+OBLINCL  ! USER ! 0  !   !  5 !  6 !CS_rect1.afschot  !h1-h2-h3-h4-b[-[a]
+OBLRID   ! USER ! 0  !   !  6 !  6 !Beton.VSattel     !h1*b1*b2-h2-h3-l2
+OBLVAR_A ! USER ! 0  !   !  4 !  4 !Beton.VTraeger    !h1*b1*b2-h2
+OBLVAR_B ! USER ! 0  !   !  3 !  4 !CS_rect1.guther   !h1-h2-b[-a]
+OBLVAR_C ! USER ! 0  !   !  8 !  8 !CS_rect1.concb    !h-b-a-i-j-k-m-n
+OBLVAR_D ! USER ! 0  !   !  3 !  4 !CS_rect1.trpbt    !h-c-b[-a]
+OBLVAR_E ! USER ! 0  !   ! 12 ! 12 !CS_rect1.conca    !h-b-a-c-d-i-j-k-l-m-p-o
+OCTGON   ! USER ! 0  !   !  2 !  2 !1Gen.Octagon      !b-b2
+OCTRECT  ! USER ! 0  !   !  4 !  6 !CS_C2R.CIIX_RIII  !h-b-br-hr[-yr[-zr]]
+PL_V     ! USER ! 0  !   !  4 !  6 !1Gen.PyramidAsym  !h*b-he*be[-ye[*ze]]
+PRMD     ! USER ! 0  !   !  4 !  4 !1Gen.Pyramid      !h*b-h2*b2
+PRMDAS   ! USER ! 0  !   !  4 !  6 !1Gen.PyramidAsym  !h*b-he*be[-ye[*ze]]
+ROUNDRECT! USER ! 0  !   !  6 !  6 !TUBE.ROUNDRECT    !d-Rb*Rh-t*ye-ze
+SLEEVEF  ! USER ! 0  !   !  8 !  8 !Cons_f.SLEEVEF    !h*b*hh*hb*th1*tb1*hh1*hb1
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Parametric corbel profile definitions
+/*-------+------+----+---+----+----+------------------+------------------+
+CORBEL_A ! USER ! 0  !   !  4 !  4 !Corb.CORBEL_A     !h-c-t-a
+CORBEL_B ! USER ! 0  !   !  4 !  4 !Corb.CORBEL_B     !h-c-t-a
+CORBEL_C ! USER ! 0  !   !  5 !  5 !Corb.CORBEL_C     !h-c-t-a-f
+/*-------+------+----+---+----+----+------------------+------------------+
+/* Others
+/*-------+------+----+---+----+----+------------------+------------------+
+BLKS     ! USER ! 0  !   !  2 !  2 !1Gen.Sleeve       !d1-d2
+CAP      ! USER ! 0  !   !  1 !  1 !CS.CAP            !d
+HEMISPHER! USER ! 0  !   !  1 !  1 !TfrLib.HEMISPHER  !d
+NUT_M    ! USER ! 0  !   !  1 !  1 !1Gen.Nut          !d
+SOCLE    ! USER ! 0  !   !  4 !  4 !1Gen.Socle        !h*b-cv-ch
+SPHERE   ! USER ! 0  !   !  1 !  1 !1Gen.SPHERE       !d                 !
+STB      ! USER ! 0  !   !  6 !  6 !CS_ADD.STB        !b-h-h1-b1-b2-d
+STEP     ! USER ! 0  !   !  5 !  7 !CS_pu.STEP        !h-b*d-c-s[-ye[*ze]]
+RECTC    ! USER ! 0  !   !  2 !  3 !1Gen.RectChamfer  !h*b-[c]
+BORDER   ! USER ! 0  !   !  2 !  3 !1Gen.RectChamfer  !h*b-[c]
+RSTR     ! USER ! 0  !   !  2 !  3 !1Gen.RectChamfer  !h*b-[c]
+RECTCB   ! USER ! 0  !   !  2 !  4 !1Gen.RectChamfer2 !h*b-[ch*[cv]]
+VAULT    ! USER ! 0  !   !  2 !  4 !1Gen.RectChamfer2 !h*b-[ch*[cv]]
+RECTCC   ! USER ! 0  !   !  2 !  3 !1Gen.RectChamfer4 !h*b-[c]
+S_PNL    ! USER ! 0  !   !  2 !  3 !1Gen.RectChamfer4 !h*b-[c]
+RCSS     ! USER ! 0  !   !  4 !  4 !1Gen.Pyramid      !h*b-h2*b2
+RESS     ! USER ! 0  !   !  4 !  4 !1Gen.Pyramid      !h*b-h2*b2
+PRMB     ! USER ! 0  !   !  3 !  3 !1Gen.Pyrab        !h*b-b2
+TRPZM    ! USER ! 0  !   !  3 !  3 !1Gen.Pyrab        !h*b-b2
+AS_PNL_T ! USER ! 0  !   !  5 !  8 !1Gen.asymm_t      !h*b-c-ht*bt-[aht-[sht*[et]]]
+S_PNL_T  ! USER ! 0  !   !  5 !  8 !1Gen.symm_t       !h*b-c-ht*bt-[aht-[sht*[et]]]
+AS_PNL_TB! USER ! 0  !   !  5 !  8 !1Gen.asymm_t_a    !h*b-c-ht*bt-[aht-[sht*[et]]]
+AS_PNL_TA! USER ! 0  !   !  5 !  8 !1Gen.asymm_t_b    !h*b-c-ht*bt-[aht-[sht*[et]]]
+AS_PNL_TG! USER ! 0  !   !  5 !  8 !1Gen.asymm_t_g    !h*b-c-ht*bt-[aht-[sht*[et]]]

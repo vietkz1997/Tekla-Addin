@@ -1,0 +1,24 @@
+encoding 949
+out_file "standard"
+in_file "standard"
+name_enable 1
+name "SURFACING"
+TypeEnable 1
+Type 3
+finish_enable 1
+finish "TS1 - Tile surface 1"
+material_enable 1
+material "Tiles"
+LastUsedMaterial ""
+profile_enable 1
+profile "PL15"
+group_enable 1
+part_group ""
+CutPartByFatherCutsEnable 1
+CutPartByFatherCuts 1
+more_enable 1
+position_depth_enable 1
+position_depth 1
+value_position_depth 0.000000
+PatternTypeEnable 1
+PatternType "1_2"

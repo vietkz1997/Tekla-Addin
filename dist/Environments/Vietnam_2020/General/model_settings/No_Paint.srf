@@ -1,0 +1,24 @@
+encoding 949
+out_file "No_Paint"
+in_file "No_Paint"
+name_enable 1
+name "NO_PAINT"
+TypeEnable 1
+Type 4
+finish_enable 1
+finish "UP - Unpainted"
+material_enable 1
+material "DUMMY"
+LastUsedMaterial "Zero_Density"
+profile_enable 1
+profile "0.500000"
+group_enable 1
+part_group "1"
+CutPartByFatherCutsEnable 1
+CutPartByFatherCuts 1
+more_enable 1
+position_depth_enable 1
+position_depth 1
+value_position_depth 0.000000
+PatternTypeEnable 1
+PatternType "Grip_Strut"

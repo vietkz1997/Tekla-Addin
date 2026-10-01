@@ -1,0 +1,17 @@
+encoding 949
+Prefix "G"
+StartNumber 1
+Name "STR"
+Size "13"
+Grade "SD400"
+BendingRadius 27.500000
+Class 7
+RebarSetLayerOrderNumber 0
+GuidelineStartOffset 0.000000
+GuidelineEndOffset 0.000000
+GuidelineStartOffsetIsFixed 0
+GuidelineEndOffsetIsFixed 0
+GuidelineStartOffsetIsAutomatic 1
+GuidelineEndOffsetIsAutomatic 1
+InFile ""
+OutFile ""

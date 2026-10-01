@@ -1,0 +1,7 @@
+{
+  "DialogType": "export.common",
+  "TargetFileName": "model",
+  "Folder": ".\\Revit\\",
+  "LocationByIndex": 0,
+  "SelectionTypeIndex": 0
+}

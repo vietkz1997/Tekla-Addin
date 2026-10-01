@@ -1,0 +1,4342 @@
+
+template _tmp_833
+{
+    name = "template1";
+    type = TEXTUAL;
+    width = 90;
+    maxheight = 130;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (1, 1, 1, 1);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "05.02.2008 10:27";
+    modified = "16.06.2016 14:29";
+    notes = "";
+
+    row _tmp_20
+    {
+        name = "WELD_1";
+        height = 11;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "WELD";
+        sorttype = COMBINE;
+
+        valuefield _tmp_24
+        {
+            name = "WeldNumber";
+            location = (3, 9);
+            formula = "GetValue(\"TranslatedText(\"albl_Weld\")\")+\"(\"+GetValue(\"TranslatedText(\"albl_Number\")\") +\": \"+GetValue(\"WELD_NUMBER\")+\")\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25
+        {
+            name = "LogicalWeld";
+            location = (3, 8);
+            formula = "GetValue(\"TranslatedText(\"albl_Logical_weld\")\")+\": \"+GetValue(\"WELD_LOGICAL_WELD\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 40;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_26
+        {
+            name = "Text_2";
+            x1 = 2;
+            y1 = 7;
+            x2 = 2;
+            y2 = 7;
+            string = "------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_44
+        {
+            name = "ConnectedParts";
+            location = (3, 6);
+            formula = "GetValue(\"TranslatedText(\"albl_Connected_parts\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_45
+        {
+            name = "MainPart";
+            location = (33, 6);
+            formula = "GetValue(\"TranslatedText(\"albl_Main_part\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_46
+        {
+            name = "SecondaryPart";
+            location = (63, 6);
+            formula = "GetValue(\"TranslatedText(\"albl_Secondary_part\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_47
+        {
+            name = "PartPosition";
+            location = (6, 5);
+            formula = "GetValue(\"TranslatedText(\"albl_Part_position\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_48
+        {
+            name = "Name";
+            location = (6, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Name\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_49
+        {
+            name = "Grade";
+            location = (6, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Grade\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_50
+        {
+            name = "Text_5";
+            x1 = 2;
+            y1 = 1;
+            x2 = 2;
+            y2 = 1;
+            string = "------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_51
+        {
+            name = "PRIMID";
+            location = (33, 4);
+            formula = "GetValue(\"PRIMARY.ID\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_52
+        {
+            name = "PRIMNAME";
+            location = (33, 3);
+            formula = "GetValue(\"PRIMARY.NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_53
+        {
+            name = "PRIMARY.PART_POS_field_1";
+            location = (33, 5);
+            formula = "GetValue(\"PRIMARY.PART_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_54
+        {
+            name = "SECID";
+            location = (63, 4);
+            formula = "GetValue(\"SECONDARY.ID\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_55
+        {
+            name = "SECNAME_field";
+            location = (63, 3);
+            formula = "GetValue(\"SECONDARY.NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_56
+        {
+            name = "SECONDARY.PART_POS_field";
+            location = (63, 5);
+            formula = "GetValue(\"SECONDARY.PART_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_57
+        {
+            name = "PRIMARY.MATERIAL_TYPE_field";
+            location = (33, 2);
+            formula = "GetValue(\"PRIMARY.MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_58
+        {
+            name = "SECONDARY.MATERIAL_field";
+            location = (63, 2);
+            formula = "GetValue(\"SECONDARY.MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_0
+        {
+            name = "\\t";
+            x1 = 31;
+            y1 = 5;
+            x2 = 31;
+            y2 = 5;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_2
+        {
+            name = "Text_6";
+            x1 = 31;
+            y1 = 4;
+            x2 = 31;
+            y2 = 4;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_3
+        {
+            name = "Text_7";
+            x1 = 31;
+            y1 = 3;
+            x2 = 31;
+            y2 = 3;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_4
+        {
+            name = "Text_8";
+            x1 = 31;
+            y1 = 2;
+            x2 = 31;
+            y2 = 2;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_5
+        {
+            name = "Text_9";
+            x1 = 55;
+            y1 = 5;
+            x2 = 55;
+            y2 = 5;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_6
+        {
+            name = "Text_10";
+            x1 = 55;
+            y1 = 4;
+            x2 = 55;
+            y2 = 4;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_7
+        {
+            name = "Text_11";
+            x1 = 55;
+            y1 = 3;
+            x2 = 55;
+            y2 = 3;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8
+        {
+            name = "Text_12";
+            x1 = 55;
+            y1 = 2;
+            x2 = 55;
+            y2 = 2;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_10
+        {
+            name = "Text_13";
+            x1 = 4;
+            y1 = 4;
+            x2 = 4;
+            y2 = 4;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_11
+        {
+            name = "Text_14";
+            x1 = 4;
+            y1 = 3;
+            x2 = 4;
+            y2 = 3;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_12
+        {
+            name = "Text_15";
+            x1 = 4;
+            y1 = 2;
+            x2 = 4;
+            y2 = 2;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_13
+        {
+            name = "Text_16";
+            x1 = 4;
+            y1 = 5;
+            x2 = 4;
+            y2 = 5;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_18
+        {
+            name = "Text_17";
+            x1 = 31;
+            y1 = 6;
+            x2 = 31;
+            y2 = 6;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_19
+        {
+            name = "Text_18";
+            x1 = 55;
+            y1 = 6;
+            x2 = 55;
+            y2 = 6;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_9
+        {
+            name = "텍스트_1";
+            x1 = 84;
+            y1 = 5;
+            x2 = 84;
+            y2 = 5;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_14
+        {
+            name = "텍스트_2";
+            x1 = 84;
+            y1 = 4;
+            x2 = 84;
+            y2 = 4;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_15
+        {
+            name = "텍스트_3";
+            x1 = 84;
+            y1 = 3;
+            x2 = 84;
+            y2 = 3;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_16
+        {
+            name = "텍스트_4";
+            x1 = 84;
+            y1 = 2;
+            x2 = 84;
+            y2 = 2;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_17
+        {
+            name = "텍스트_5";
+            x1 = 84;
+            y1 = 6;
+            x2 = 84;
+            y2 = 6;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_19
+        {
+            name = "ID:";
+            location = (6, 4);
+            formula = "\"ID:\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+    };
+
+    row _tmp_59
+    {
+        name = "WELD_2";
+        height = 10;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if GetValue(\"WELD_ERRORLIST\") != \"\" then\nOutput() \nelse\nStepOver()\nendif";
+        contenttype = "WELD";
+        sorttype = COMBINE;
+
+        text _tmp_69
+        {
+            name = "Text_1";
+            x1 = 2;
+            y1 = 0;
+            x2 = 2;
+            y2 = 0;
+            string = "------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_70
+        {
+            name = "WELD_ERRORLIST_field_1";
+            location = (3, 8);
+            formula = "GetValue(\"TranslatedText(\"albl_Error_codes\")\")+\": \" + GetValue(\"WELD_ERRORLIST\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_72
+        {
+            name = "E1";
+            location = (6, 6);
+            formula = "\"E1 = \" + GetValue(\"TranslatedText(\"albl_no_position\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_73
+        {
+            name = "E2";
+            location = (6, 5);
+            formula = "\"E2 = \" + GetValue(\"TranslatedText(\"albl_parts_are_not_touching\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74
+        {
+            name = "E3";
+            location = (6, 4);
+            formula = "\"E3 = \" + GetValue(\"TranslatedText(\"albl_weld_is_not_on_the_edge_of_a_part\")\")\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_75
+        {
+            name = "E4";
+            location = (6, 3);
+            formula = "\"E4 = \" + GetValue(\"TranslatedText(\"albl_unsupported_weld_cross_section_type\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_76
+        {
+            name = "E5";
+            location = (6, 2);
+            formula = "\"E5 = \" + GetValue(\"TranslatedText(\"albl_incorrect_weld_parameters\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_77
+        {
+            name = "E6";
+            location = (6, 1);
+            formula = "\"E6 = \" + GetValue(\"TranslatedText(\"albl_solid_problems_in_welded_parts\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_78
+        {
+            name = "   ";
+            x1 = 3;
+            y1 = 7;
+            x2 = 3;
+            y2 = 7;
+            string = "   ";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_858
+    {
+        name = "WELD";
+        height = 43;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "WELD";
+        sorttype = COMBINE;
+
+        valuefield _tmp_2933
+        {
+            name = "SIZE1";
+            location = (33, 37);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_SIZE1\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(GetValue(\"WELD_SIZE1\"),\"Length\",\"mm\", 2)+\" mm \"\nendif\n";
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1030
+        {
+            name = "SIZE2";
+            location = (63, 37);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_SIZE2\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(GetValue(\"WELD_SIZE2\"),\"Length\",\"mm\", 2)+\" mm \"\nendif\n";
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1059
+        {
+            name = "ELEC-COEFFICIENT";
+            location = (33, 12);
+            formula = "GetValue(\"WELD_ELECTRODE_COEFFICIENT\")";
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1068
+        {
+            name = "NDTINSPECTION";
+            location = (33, 10);
+            formula = "GetValue(\"WELD_NDT_INSPECTION\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1072
+        {
+            name = "PROCESSTYPE";
+            location = (33, 16);
+            formula = "GetValue(\"WELD_PROCESS_TYPE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1073
+        {
+            name = "WELDTEXT";
+            location = (5, 5);
+            formula = "GetValue(\"WELD_TEXT\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 40;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_24618
+        {
+            name = "ElectStrength";
+            location = (3, 13);
+            formula = "GetValue(\"TranslatedText(\"albl_Electrode_Strength_\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_24676
+        {
+            name = "ElectCoef";
+            location = (3, 12);
+            formula = "GetValue(\"TranslatedText(\"albl_Electrode_Coefficient_\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 25;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25356
+        {
+            name = "NDT";
+            location = (3, 10);
+            formula = "GetValue(\"TranslatedText(\"albl_NDT_inspection_level_\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 25;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25586
+        {
+            name = "WeldProcType";
+            location = (3, 16);
+            formula = "GetValue(\"TranslatedText(\"albl_Welding_Process_Type_\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 25;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25644
+        {
+            name = "RefText";
+            location = (3, 7);
+            formula = "if GetValue(\"WELD_TEXT\")!=\"\" then GetValue(\"TranslatedText(\"albl_Reference_text_\")\") else \"\" endif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1994
+        {
+            name = "WELD_LENGTH1_field";
+            location = (33, 32);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_LENGTH1\"),\"Length\",\"inch-frac\", 1/64) + \" in\"\nelse\nformat(GetValue(\"WELD_LENGTH1\"),\"Length\",\"mm\", 0)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25247
+        {
+            name = "EFF_THROAT_ABOVE";
+            location = (33, 22);
+            formula = "GetValue(\"WELD_EFFECTIVE_THROAT\")";
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_25250
+        {
+            name = "ANGLE1";
+            location = (33, 28);
+            formula = "GetValue(\"WELD_ANGLE1\")";
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "Degrees";
+        };
+
+        valuefield _tmp_25251
+        {
+            name = "ROOT_FACE_THICKNESS_ABOVE";
+            location = (33, 24);
+            formula = "GetValue(\"WELD_ROOT_FACE_THICKNESS\")";
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_25252
+        {
+            name = "FILLTYPE1";
+            location = (33, 27);
+            formula = "GetValue(\"WELD_FILLTYPE1\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25253
+        {
+            name = "FINISH1";
+            location = (33, 26);
+            formula = "GetValue(\"WELD_FINISH1\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25254
+        {
+            name = "ROOT_OPENING_ABOVE";
+            location = (33, 23);
+            formula = "GetValue(\"WELD_ROOT_OPENING\")";
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_12360
+        {
+            name = "WELD_ACTUAL_LENGTH1_field_1";
+            location = (33, 33);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_ACTUAL_LENGTH1\"),\"Length\",\"inch-frac\", 1/64) + \" in\"\nelse\nformat(GetValue(\"WELD_ACTUAL_LENGTH1\"),\"Length\",\"mm\", 0)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_12876
+        {
+            name = "WeldIntermitten_EdgeAround";
+            location = (3, 40);
+            formula = "GetValue(\"WELD_INTERMITTENT\")+\" \"+GetValue(\"WELD_EDGE_AROUND\")+\" \"+GetValue(\"TranslatedText(\"albl_Weld\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_44068
+        {
+            name = "ValueField";
+            location = (63, 28);
+            formula = "GetValue(\"WELD_ANGLE2\")";
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "Degrees";
+        };
+
+        valuefield _tmp_44069
+        {
+            name = "FILLTYPE2";
+            location = (63, 27);
+            formula = "GetValue(\"WELD_FILLTYPE2\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_44070
+        {
+            name = "ValueField_3";
+            location = (63, 26);
+            formula = "GetValue(\"WELD_FINISH2\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_48187
+        {
+            name = "ValueField_4";
+            location = (63, 22);
+            formula = "GetValue(\"WELD_EFFECTIVE_THROAT2\")";
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_48188
+        {
+            name = "ValueField_5";
+            location = (63, 24);
+            formula = "GetValue(\"WELD_ROOT_FACE_THICKNESS2\")";
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_48189
+        {
+            name = "ValueField_6";
+            location = (63, 23);
+            formula = "GetValue(\"WELD_ROOT_OPENING2\")";
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_1940
+        {
+            name = "WELD_PERIOD1_field";
+            location = (33, 31);
+            formula = "if GetValue(\"WELD_PERIOD1\")==\"0.00\" then\n\" \"\n else\n GetValue(\"WELD_PERIOD1\")\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_8229
+        {
+            name = "WELD_PERIOD2";
+            location = (63, 31);
+            formula = "if GetValue(\"WELD_PERIOD2\")==\"0.00\" then\n\" \"\n else\n GetValue(\"WELD_PERIOD2\")\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_18763
+        {
+            name = "WELD_LENGTH2_field_1";
+            location = (63, 32);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_LENGTH2\"),\"Length\",\"inch-frac\", 1/64) + \" in\"\nelse\nformat(GetValue(\"WELD_LENGTH2\"),\"Length\",\"mm\", 0)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_14558
+        {
+            name = "WELD_CROSSSECTION_AREA1_field";
+            location = (33, 20);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_CROSSSECTION_AREA1\"),\"Area\",\"sq.inch\",4)+\" sq.inch\"\nelse\nformat(GetValue(\"WELD_CROSSSECTION_AREA1\"),\"Area\",\"mm2\",0)+\" mm�\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_15685
+        {
+            name = "WELD_CROSSSECTION_AREA2_field";
+            location = (63, 20);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_CROSSSECTION_AREA2\"),\"Area\",\"sq.inch\",4)+\" sq.inch\"\nelse\nformat(GetValue(\"WELD_CROSSSECTION_AREA2\"),\"Area\",\"mm2\",0)+\" mm�\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_17327
+        {
+            name = "WELD_VOLUME_field";
+            location = (33, 19);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_VOLUME\"),\"Volume\",\"sq.inch\",4)+\" sq.inch\"\nelse\nformat(GetValue(\"WELD_VOLUME\"),\"Volume\",\"mm3\",0)+\" mm�\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23642
+        {
+            name = "WeldAssemblyType";
+            location = (3, 41);
+            formula = "GetValue(\"WELD_ASSEMBLYTYPE\")+\" \"+GetValue(\"TranslatedText(\"albl_Weld\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_9901
+        {
+            name = "WELD_SIZE_PREFIX_ABOVE_field";
+            location = (30, 37);
+            formula = "GetValue(\"WELD_SIZE_PREFIX_ABOVE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_10928
+        {
+            name = "WELD_SIZE_PREFIX_BELOW_field";
+            location = (60, 37);
+            formula = "GetValue(\"WELD_SIZE_PREFIX_BELOW\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_12433
+        {
+            name = "WELD_INCREMENT_AMOUNT1_field";
+            location = (33, 30);
+            formula = "if GetValue(\"WELD_INCREMENT_AMOUNT1\") > 0 then\nGetValue(\"WELD_INCREMENT_AMOUNT1\")\nelse\n\"\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_17072
+        {
+            name = "WELD_INCREMENT_AMOUNT2";
+            location = (63, 30);
+            formula = "if GetValue(\"WELD_INCREMENT_AMOUNT2\") > 0 then\nGetValue(\"WELD_INCREMENT_AMOUNT2\")\nelse\n\"\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_10855
+        {
+            name = "WELD_ELECTRODE_CLASSIFICATION_field";
+            location = (33, 14);
+            formula = "GetValue(\"WELD_ELECTRODE_CLASSIFICATION\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_19160
+        {
+            name = "WELD_ELECTRODE_STRENGTH_field";
+            location = (33, 13);
+            formula = "GetValue(\"WELD_ELECTRODE_STRENGTH\")";
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_3033
+        {
+            name = "Text_4";
+            x1 = 2;
+            y1 = 39;
+            x2 = 2;
+            y2 = 39;
+            string = "------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_3035
+        {
+            name = "WeldProperties";
+            location = (3, 38);
+            formula = "GetValue(\"TranslatedText(\"lbl_Welding_attributes\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 25;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3296
+        {
+            name = "AboveLine";
+            location = (33, 38);
+            formula = "GetValue(\"TranslatedText(\"albl_Above_Line\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3503
+        {
+            name = "BelowLine";
+            location = (63, 38);
+            formula = "GetValue(\"TranslatedText(\"albl_Below_Line\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3615
+        {
+            name = "WeldSize";
+            location = (6, 37);
+            formula = "GetValue(\"TranslatedText(\"albl_Size\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3934
+        {
+            name = "WeldType";
+            location = (6, 36);
+            formula = "GetValue(\"TranslatedText(\"albl_Weld_type\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_6181
+        {
+            name = "WeldType1";
+            location = (33, 36);
+            formula = "if GetValue(\"WELD_TYPE1\") == \"W1\" then GetValue(\"TranslatedText(\"albl_Edge_flange\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W2\" then GetValue(\"TranslatedText(\"albl_Square_groove\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W3\" then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W4\" then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W5\" then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W6\" then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W7\" then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W8\" then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W9\" then GetValue(\"TranslatedText(\"albl_Bevel_backing\")\")\n else GetFieldFormula(\"WT1_10\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 25;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_6975
+        {
+            name = "WT1_20";
+            location = (31, 36);
+            formula = "if GetValue(\"WELD_TYPE1\") == \"W20\" then GetValue(\"TranslatedText(\"albl_Melt_through\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W21\" then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W22\" then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W23\" then GetValue(\"TranslatedText(\"albl_Edge\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W24\" then GetValue(\"TranslatedText(\"albl_Surfacing\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W25\" then GetValue(\"TranslatedText(\"albl_Fold_joint\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W26\" then GetValue(\"TranslatedText(\"albl_Inclined_joint\")\")\n else GetValue(\"WELD_TYPE1\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_8086
+        {
+            name = "WT1_10";
+            location = (30, 36);
+            formula = "if GetValue(\"WELD_TYPE1\") == \"W10\" then \"Fillet\"\n else if GetValue(\"WELD_TYPE1\") == \"W11\" then GetValue(\"TranslatedText(\"albl_Plug\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W12\" then GetValue(\"TranslatedText(\"albl_Spot\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W13\" then GetValue(\"TranslatedText(\"albl_Seam\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W14\" then GetValue(\"TranslatedText(\"albl_Slot\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W15\" then GetValue(\"TranslatedText(\"albl_Flare_bevel_groove\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W16\" then GetValue(\"TranslatedText(\"albl_Flare_V_groove\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W17\" then GetValue(\"TranslatedText(\"albl_Corner_flange\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W18\" then GetValue(\"TranslatedText(\"albl_Single_bevel\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W19\" then GetValue(\"TranslatedText(\"albl_Square_groove_plus_fillet\")\")\n else GetFieldFormula(\"WT1_20\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_16970
+        {
+            name = "WT2_10";
+            location = (60, 36);
+            formula = "if GetValue(\"WELD_TYPE2\") == \"W10\" then \"Fillet\"\n else if GetValue(\"WELD_TYPE2\") == \"W11\" then GetValue(\"TranslatedText(\"albl_Plug\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W12\" then GetValue(\"TranslatedText(\"albl_Spot\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W13\" then GetValue(\"TranslatedText(\"albl_Seam\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W14\" then GetValue(\"TranslatedText(\"albl_Slot\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W15\" then GetValue(\"TranslatedText(\"albl_Flare_bevel_groove\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W16\" then GetValue(\"TranslatedText(\"albl_Flare_V_groove\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W17\" then GetValue(\"TranslatedText(\"albl_Corner_flange\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W18\" then GetValue(\"TranslatedText(\"albl_Single_bevel\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W19\" then GetValue(\"TranslatedText(\"albl_Square_groove_plus_fillet\")\")\n else GetFieldFormula(\"WT2_20\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_16971
+        {
+            name = "WT2_20";
+            location = (61, 36);
+            formula = "if GetValue(\"WELD_TYPE2\") == \"W20\" then GetValue(\"TranslatedText(\"albl_Melt_through\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W21\" then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W22\" then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W23\" then GetValue(\"TranslatedText(\"albl_Edge\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W24\" then GetValue(\"TranslatedText(\"albl_Surfacing\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W25\" then GetValue(\"TranslatedText(\"albl_Fold_joint\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W26\" then GetValue(\"TranslatedText(\"albl_Inclined_joint\")\")\n else GetValue(\"WELD_TYPE2\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_17721
+        {
+            name = "WeldType2";
+            location = (63, 36);
+            formula = "if GetValue(\"WELD_TYPE2\") == \"W1\" then GetValue(\"TranslatedText(\"albl_Edge_flange\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W2\" then GetValue(\"TranslatedText(\"albl_Square_groove\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W3\" then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W4\" then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W5\" then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W6\" then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W7\" then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W8\" then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W9\" then GetValue(\"TranslatedText(\"albl_Bevel_backing\")\")\n else GetFieldFormula(\"WT2_10\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_18315
+        {
+            name = "WT1_2nd_10";
+            location = (30, 35);
+            formula = "if GetValue(\"WELD_TYPE1\") == \"W10\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W11\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W12\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W13\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W14\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W15\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W16\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W17\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W18\" then GetValue(\"TranslatedText(\"albl_butt_plus_fillet\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W19\" then \"\"\n else GetFieldFormula(\"WT1_2nd_20\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_18316
+        {
+            name = "WT1_2nd_20";
+            location = (31, 35);
+            formula = "if GetValue(\"WELD_TYPE1\") == \"W20\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W21\" then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W22\" then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W23\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W24\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W25\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W26\" then \"\"\n else GetValue(\"WELD_TYPE1\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_18317
+        {
+            name = "WeltType1_2ndLine";
+            location = (33, 35);
+            formula = "if GetValue(\"WELD_TYPE1\") == \"W1\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W2\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W3\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W4\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W5\" then GetValue(\"TranslatedText(\"albl_with_broad_root\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W6\" then GetValue(\"TranslatedText(\"albl_with_broad_root_face\")\")\n else if GetValue(\"WELD_TYPE1\") == \"W7\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W8\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W9\" then \"\"\n else GetFieldFormula(\"WT1_2nd_10\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 25;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_21390
+        {
+            name = "WT2_2nd_10";
+            location = (60, 35);
+            formula = "if GetValue(\"WELD_TYPE2\") == \"W10\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W11\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W12\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W13\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W14\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W15\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W16\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W17\" then \"\"\n else if GetValue(\"WELD_TYPE1\") == \"W18\" then GetValue(\"TranslatedText(\"albl_butt_plus_fillet\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W19\" then \"\"\n else GetFieldFormula(\"WT2_2nd_20\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_21391
+        {
+            name = "WT2_2nd_20";
+            location = (61, 35);
+            formula = "if GetValue(\"WELD_TYPE2\") == \"W20\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W21\" then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W22\" then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W23\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W24\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W25\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W26\" then \"\"\n else GetValue(\"WELD_TYPE2\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_21392
+        {
+            name = "WeltType2_2ndLine";
+            location = (63, 35);
+            formula = "if GetValue(\"WELD_TYPE2\") == \"W1\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W2\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W3\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W4\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W5\" then GetValue(\"TranslatedText(\"albl_with_broad_root\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W6\" then GetValue(\"TranslatedText(\"albl_with_broad_root_face\")\")\n else if GetValue(\"WELD_TYPE2\") == \"W7\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W8\" then \"\"\n else if GetValue(\"WELD_TYPE2\") == \"W9\" then \"\"\n else GetFieldFormula(\"WT2_2nd_10\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_22644
+        {
+            name = "ActualLength";
+            location = (6, 33);
+            formula = "GetValue(\"TranslatedText(\"albl_Actual_length\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_22866
+        {
+            name = "Length";
+            location = (6, 32);
+            formula = "GetValue(\"TranslatedText(\"albl_Length\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_22923
+        {
+            name = "Pitch";
+            location = (8, 31);
+            formula = "GetValue(\"TranslatedText(\"albl_Pitch\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23090
+        {
+            name = "IncrementAmount";
+            location = (8, 30);
+            formula = "GetValue(\"TranslatedText(\"albl_Increment_amount\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23314
+        {
+            name = "Angle";
+            location = (6, 28);
+            formula = "GetValue(\"TranslatedText(\"albl_Angle\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23371
+        {
+            name = "Contour";
+            location = (6, 27);
+            formula = "GetValue(\"TranslatedText(\"albl_Contour\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23428
+        {
+            name = "Finish";
+            location = (6, 26);
+            formula = "GetValue(\"TranslatedText(\"albl_Finish\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23485
+        {
+            name = "RootFace";
+            location = (6, 24);
+            formula = "GetValue(\"TranslatedText(\"albl_root_face\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23652
+        {
+            name = "RootOpening";
+            location = (6, 23);
+            formula = "GetValue(\"TranslatedText(\"albl_root_opening_\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23709
+        {
+            name = "ThroatThickness";
+            location = (6, 22);
+            formula = "GetValue(\"TranslatedText(\"albl_Throat_thickness\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_24600
+        {
+            name = "CrossSectionArea";
+            location = (6, 20);
+            formula = "GetValue(\"TranslatedText(\"albl_Cross_section_area\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_27910
+        {
+            name = "WELD_ACTUAL_LENGTH_field2";
+            location = (63, 33);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_ACTUAL_LENGTH2\"),\"Length\",\"inch-frac\", 1/64) + \" in\"\nelse\nformat(GetValue(\"WELD_ACTUAL_LENGTH2\"),\"Length\",\"mm\", 0)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_32635
+        {
+            name = "WeldVolumeTotal";
+            location = (6, 19);
+            formula = "GetValue(\"TranslatedText(\"albl_Weld_volume_total\")\")+\": \"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_32992
+        {
+            name = "Text";
+            x1 = 2;
+            y1 = 18;
+            x2 = 2;
+            y2 = 18;
+            string = "------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_33049
+        {
+            name = "WeldElectrodeClassification";
+            location = (3, 14);
+            formula = "GetValue(\"TranslatedText(\"albl_Weld_electrode_classification\")\")+\":\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 25;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_33271
+        {
+            name = "Text_3";
+            x1 = 2;
+            y1 = 9;
+            x2 = 2;
+            y2 = 9;
+            string = "------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_21
+        {
+            name = "텍스트_6";
+            x1 = 4;
+            y1 = 37;
+            x2 = 4;
+            y2 = 37;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_22
+        {
+            name = "텍스트_7";
+            x1 = 4;
+            y1 = 36;
+            x2 = 4;
+            y2 = 36;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_23
+        {
+            name = "텍스트_8";
+            x1 = 4;
+            y1 = 33;
+            x2 = 4;
+            y2 = 33;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_24
+        {
+            name = "텍스트_9";
+            x1 = 4;
+            y1 = 32;
+            x2 = 4;
+            y2 = 32;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_25
+        {
+            name = "텍스트_10";
+            x1 = 4;
+            y1 = 28;
+            x2 = 4;
+            y2 = 28;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_26
+        {
+            name = "텍스트_11";
+            x1 = 4;
+            y1 = 27;
+            x2 = 4;
+            y2 = 27;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_27
+        {
+            name = "텍스트_12";
+            x1 = 4;
+            y1 = 26;
+            x2 = 4;
+            y2 = 26;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_28
+        {
+            name = "텍스트_13";
+            x1 = 4;
+            y1 = 24;
+            x2 = 4;
+            y2 = 24;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_29
+        {
+            name = "텍스트_14";
+            x1 = 4;
+            y1 = 23;
+            x2 = 4;
+            y2 = 23;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_30
+        {
+            name = "텍스트_15";
+            x1 = 4;
+            y1 = 22;
+            x2 = 4;
+            y2 = 22;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_31
+        {
+            name = "텍스트_16";
+            x1 = 4;
+            y1 = 20;
+            x2 = 4;
+            y2 = 20;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_32
+        {
+            name = "텍스트_17";
+            x1 = 4;
+            y1 = 19;
+            x2 = 4;
+            y2 = 19;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_33
+        {
+            name = "텍스트_18";
+            x1 = 6;
+            y1 = 31;
+            x2 = 6;
+            y2 = 31;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_34
+        {
+            name = "텍스트_19";
+            x1 = 6;
+            y1 = 30;
+            x2 = 6;
+            y2 = 30;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_35
+        {
+            name = "텍스트_20";
+            x1 = 30;
+            y1 = 38;
+            x2 = 30;
+            y2 = 38;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_36
+        {
+            name = "텍스트_21";
+            x1 = 28;
+            y1 = 37;
+            x2 = 28;
+            y2 = 37;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_37
+        {
+            name = "텍스트_22";
+            x1 = 28;
+            y1 = 36;
+            x2 = 28;
+            y2 = 36;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_38
+        {
+            name = "텍스트_23";
+            x1 = 28;
+            y1 = 35;
+            x2 = 28;
+            y2 = 35;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_39
+        {
+            name = "텍스트_24";
+            x1 = 4;
+            y1 = 35;
+            x2 = 4;
+            y2 = 35;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_40
+        {
+            name = "텍스트_25";
+            x1 = 28;
+            y1 = 33;
+            x2 = 28;
+            y2 = 33;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_41
+        {
+            name = "텍스트_26";
+            x1 = 28;
+            y1 = 32;
+            x2 = 28;
+            y2 = 32;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_42
+        {
+            name = "텍스트_27";
+            x1 = 28;
+            y1 = 31;
+            x2 = 28;
+            y2 = 31;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_43
+        {
+            name = "텍스트_28";
+            x1 = 28;
+            y1 = 30;
+            x2 = 28;
+            y2 = 30;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_44
+        {
+            name = "텍스트_29";
+            x1 = 28;
+            y1 = 28;
+            x2 = 28;
+            y2 = 28;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_45
+        {
+            name = "텍스트_30";
+            x1 = 28;
+            y1 = 27;
+            x2 = 28;
+            y2 = 27;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_46
+        {
+            name = "텍스트_31";
+            x1 = 28;
+            y1 = 26;
+            x2 = 28;
+            y2 = 26;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_47
+        {
+            name = "텍스트_32";
+            x1 = 28;
+            y1 = 24;
+            x2 = 28;
+            y2 = 24;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_48
+        {
+            name = "텍스트_33";
+            x1 = 28;
+            y1 = 23;
+            x2 = 28;
+            y2 = 23;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_49
+        {
+            name = "텍스트_34";
+            x1 = 28;
+            y1 = 22;
+            x2 = 28;
+            y2 = 22;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_50
+        {
+            name = "텍스트_35";
+            x1 = 28;
+            y1 = 20;
+            x2 = 28;
+            y2 = 20;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_51
+        {
+            name = "텍스트_36";
+            x1 = 28;
+            y1 = 19;
+            x2 = 28;
+            y2 = 19;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_52
+        {
+            name = "텍스트_37";
+            x1 = 28;
+            y1 = 16;
+            x2 = 28;
+            y2 = 16;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_53
+        {
+            name = "텍스트_38";
+            x1 = 28;
+            y1 = 14;
+            x2 = 28;
+            y2 = 14;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_54
+        {
+            name = "텍스트_39";
+            x1 = 28;
+            y1 = 13;
+            x2 = 28;
+            y2 = 13;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_55
+        {
+            name = "텍스트_40";
+            x1 = 28;
+            y1 = 12;
+            x2 = 28;
+            y2 = 12;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_56
+        {
+            name = "텍스트_41";
+            x1 = 28;
+            y1 = 10;
+            x2 = 28;
+            y2 = 10;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_57
+        {
+            name = "텍스트_42";
+            x1 = 1;
+            y1 = 10;
+            x2 = 1;
+            y2 = 10;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_58
+        {
+            name = "텍스트_43";
+            x1 = 1;
+            y1 = 12;
+            x2 = 1;
+            y2 = 12;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_59
+        {
+            name = "텍스트_44";
+            x1 = 1;
+            y1 = 13;
+            x2 = 1;
+            y2 = 13;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_60
+        {
+            name = "텍스트_45";
+            x1 = 1;
+            y1 = 14;
+            x2 = 1;
+            y2 = 14;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_61
+        {
+            name = "텍스트_46";
+            x1 = 1;
+            y1 = 16;
+            x2 = 1;
+            y2 = 16;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_65
+        {
+            name = "텍스트_47";
+            x1 = 58;
+            y1 = 37;
+            x2 = 58;
+            y2 = 37;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_66
+        {
+            name = "텍스트_48";
+            x1 = 58;
+            y1 = 36;
+            x2 = 58;
+            y2 = 36;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_67
+        {
+            name = "텍스트_49";
+            x1 = 58;
+            y1 = 35;
+            x2 = 58;
+            y2 = 35;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_69
+        {
+            name = "텍스트_50";
+            x1 = 58;
+            y1 = 38;
+            x2 = 58;
+            y2 = 38;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_74
+        {
+            name = "텍스트_51";
+            x1 = 58;
+            y1 = 32;
+            x2 = 58;
+            y2 = 32;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_75
+        {
+            name = "텍스트_52";
+            x1 = 58;
+            y1 = 31;
+            x2 = 58;
+            y2 = 31;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_76
+        {
+            name = "텍스트_53";
+            x1 = 58;
+            y1 = 30;
+            x2 = 58;
+            y2 = 30;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_77
+        {
+            name = "텍스트_54";
+            x1 = 58;
+            y1 = 33;
+            x2 = 58;
+            y2 = 33;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_78
+        {
+            name = "텍스트_55";
+            x1 = 58;
+            y1 = 27;
+            x2 = 58;
+            y2 = 27;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_79
+        {
+            name = "텍스트_56";
+            x1 = 58;
+            y1 = 26;
+            x2 = 58;
+            y2 = 26;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_81
+        {
+            name = "텍스트_58";
+            x1 = 58;
+            y1 = 28;
+            x2 = 58;
+            y2 = 28;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_82
+        {
+            name = "텍스트_57";
+            x1 = 58;
+            y1 = 23;
+            x2 = 58;
+            y2 = 23;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_83
+        {
+            name = "텍스트_59";
+            x1 = 58;
+            y1 = 22;
+            x2 = 58;
+            y2 = 22;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_84
+        {
+            name = "텍스트_60";
+            x1 = 58;
+            y1 = 20;
+            x2 = 58;
+            y2 = 20;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_85
+        {
+            name = "텍스트_61";
+            x1 = 58;
+            y1 = 24;
+            x2 = 58;
+            y2 = 24;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_103
+        {
+            name = "텍스트_62";
+            x1 = 85;
+            y1 = 37;
+            x2 = 85;
+            y2 = 37;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_104
+        {
+            name = "텍스트_63";
+            x1 = 85;
+            y1 = 36;
+            x2 = 85;
+            y2 = 36;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_105
+        {
+            name = "텍스트_64";
+            x1 = 85;
+            y1 = 35;
+            x2 = 85;
+            y2 = 35;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_106
+        {
+            name = "텍스트_65";
+            x1 = 85;
+            y1 = 38;
+            x2 = 85;
+            y2 = 38;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_107
+        {
+            name = "텍스트_66";
+            x1 = 85;
+            y1 = 32;
+            x2 = 85;
+            y2 = 32;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_108
+        {
+            name = "텍스트_67";
+            x1 = 85;
+            y1 = 31;
+            x2 = 85;
+            y2 = 31;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_109
+        {
+            name = "텍스트_68";
+            x1 = 85;
+            y1 = 30;
+            x2 = 85;
+            y2 = 30;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_110
+        {
+            name = "텍스트_69";
+            x1 = 85;
+            y1 = 33;
+            x2 = 85;
+            y2 = 33;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_111
+        {
+            name = "텍스트_70";
+            x1 = 85;
+            y1 = 27;
+            x2 = 85;
+            y2 = 27;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_112
+        {
+            name = "텍스트_71";
+            x1 = 85;
+            y1 = 26;
+            x2 = 85;
+            y2 = 26;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_113
+        {
+            name = "텍스트_72";
+            x1 = 85;
+            y1 = 28;
+            x2 = 85;
+            y2 = 28;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_114
+        {
+            name = "텍스트_73";
+            x1 = 85;
+            y1 = 23;
+            x2 = 85;
+            y2 = 23;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_115
+        {
+            name = "텍스트_74";
+            x1 = 85;
+            y1 = 22;
+            x2 = 85;
+            y2 = 22;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_116
+        {
+            name = "텍스트_75";
+            x1 = 85;
+            y1 = 20;
+            x2 = 85;
+            y2 = 20;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_117
+        {
+            name = "텍스트_76";
+            x1 = 85;
+            y1 = 24;
+            x2 = 85;
+            y2 = 24;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_119
+        {
+            name = "텍스트_77";
+            x1 = 58;
+            y1 = 19;
+            x2 = 58;
+            y2 = 19;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_120
+        {
+            name = "텍스트_78";
+            x1 = 85;
+            y1 = 19;
+            x2 = 85;
+            y2 = 19;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+};

@@ -1,0 +1,110 @@
+/***************************************************************************/
+/* User defined attributes for objects */
+/***************************************************************************/
+/***************************************************************************/
+/* Part attributes  */
+/***************************************************************************/
+part(0,"Part")
+{
+tab_page("Couplers")
+	{
+	attribute("label", "j_Rebar_start", label, "%s", no, none, "0.0", "0.0", 370, 0, 200)
+	attribute("METHOD_START", "j_Method_start", option, "%s", yes, none, "0.0", "0.0", 370, 30, 200)
+		{
+		value("", 2)
+		value("j_Coupler", 0)
+		value("j_Coupler_female", 0)
+		value("j_Coupler_male", 0)
+		value("j_Threaded", 0)
+		value("j_Anchor", 0)
+		}
+	attribute("TYPE_START", "j_Type_start", option, "%s", yes, none, "0.0", "0.0", 370, 60, 200)
+		{
+		value("", 2)
+		value("j_Standard", 0)
+		value("j_Position", 0)
+		value("j_Bridging", 0)
+		value("j_Transition", 0)
+		value("j_Bolt", 0)
+		value("j_Weldable", 0)
+		}
+	attribute("PRODUCT_START", "j_Product_start", string, "%d", yes, none, "0.0", "0.0", 370, 90, 200)
+		{
+		value("", 0)
+		}
+	attribute("CODE_START", "j_Code_start", string, "%s", yes, none, "0.0", "0.0", 370, 120, 200)
+		{
+		value("", 0)
+		}
+	attribute("THREAD_LENGTH_START", "j_Threaded_length_start", distance, "%d", yes, none, "0.0", "0.0", 370, 150, 200)
+		{
+		value("", 0)
+		}
+	attribute("EXTRA_LENGTH_START", "j_Extra_fab_length_start", distance, "%d", yes, none, "0.0", "0.0", 370, 180, 200)
+		{
+		value("", 0)
+		}
+	attribute("FREE_1_START", "j_Free_distance_1_start", distance, "%d", yes, none, "0.0", "0.0", 370, 210, 200)
+		{
+		value("", 0)
+		}
+	attribute("FREE_2_START", "j_Free_text_2_start", string, "%d", yes, none, "0.0", "0.0", 370, 240, 200)
+		{
+		value("", 0)
+		}
+	attribute("label", "j_Rebar_end", label,"%s", no, none, "0.0", "0.0", 370, 280, 200)
+	attribute("METHOD_END", "j_Method_end", option, "%s", yes, none, "0.0", "0.0", 370, 310, 200)
+		{
+		value("", 2)
+		value("j_Coupler", 0)
+		value("j_Coupler_female", 0)
+		value("j_Coupler_male", 0)
+		value("j_Threaded", 0)
+		value("j_Anchor", 0)
+		}
+	attribute("TYPE_END", "j_Type_end", option, "%s", yes, none, "0.0", "0.0", 370, 340, 200)
+		{
+		value("", 2)
+		value("j_Standard", 0)
+		value("j_Position", 0)
+		value("j_Bridging", 0)
+		value("j_Transition", 0)
+		value("j_Bolt", 0)
+		value("j_Weldable", 0)
+		}
+	attribute("PRODUCT_END", "j_Product_end", string, "%d", yes, none, "0.0", "0.0", 370, 370, 200)
+		{
+		value("", 0)
+		} 
+	attribute("CODE_END", "j_Code_end", string, "%s", yes, none, "0.0", "0.0", 370, 400, 200)
+		{
+		value("", 0)
+		}
+	attribute("THREAD_LENGTH_END", "j_Threaded_length_end", distance, "%d", yes, none, "0.0", "0.0", 370, 430, 200)
+		{
+		value("", 0)
+		}
+	attribute("EXTRA_LENGTH_END", "j_Extra_fab_length_end", distance, "%d", yes, none, "0.0", "0.0", 370, 460, 200)
+		{
+		value("", 0)
+		}
+	attribute("FREE_1_END", "j_Free_distance_1_end", distance, "%d", yes, none, "0.0", "0.0", 370, 490, 200)
+		{
+		value("", 0)
+		}
+	attribute("FREE_2_END", "j_Free_text_2_end", string, "%d", yes, none, "0.0", "0.0", 370, 520, 200)
+		{
+		value("", 0)
+		}
+	}
+tab_page("Couplers","j_Couplers",91)
+modify(1)
+}
+/***************************************************************************/
+/* Reinforcing bar attributes                                              */
+/***************************************************************************/
+rebar(0,"j_Reinforcing_bar")
+{
+tab_page("Couplers","j_Couplers",91)
+modify(1)
+}

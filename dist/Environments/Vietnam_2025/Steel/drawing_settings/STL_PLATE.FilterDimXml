@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rule name="STL_PLATE" xsi:noNamespaceSchemaLocation="DimRule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <selection type="Filter">
+    <filterName>PLATE</filterName>
+  </selection>
+  <position>
+    <selectionArea>Whole</selectionArea>
+    <placing>Left</placing>
+    <placing>Right</placing>
+    <placing>Above</placing>
+    <edgeShapeVisbleFaceType>All</edgeShapeVisbleFaceType>
+    <linkingTopLeft>false</linkingTopLeft>
+    <linkingTopRight>false</linkingTopRight>
+    <linkingBottomLeft>false</linkingBottomLeft>
+    <linkingBottomRight>false</linkingBottomRight>
+    <dimensionInside>false</dimensionInside>
+    <orientation>Global</orientation>
+    <bevelAngle>false</bevelAngle>
+  </position>
+  <settings>
+    <startPointHorizontal>Left</startPointHorizontal>
+    <startPointVertical>Bottom</startPointVertical>
+    <verticalEqualsHorizontal>true</verticalEqualsHorizontal>
+    <closeLinesHorizontal>true</closeLinesHorizontal>
+    <dimensionToHorizontal>Both</dimensionToHorizontal>
+    <sameDimensionOnAllSides>true</sameDimensionOnAllSides>
+    <dimPropertiesHorizontal>standard</dimPropertiesHorizontal>
+    <dimPropertiesBottom>standard</dimPropertiesBottom>
+    <dimPropertiesLeft>standard</dimPropertiesLeft>
+    <dimPropertiesRight>standard</dimPropertiesRight>
+    <dimPropertiesTop>standard</dimPropertiesTop>
+    <dimensionType>Straight</dimensionType>
+    <measureFrom>Filter</measureFrom>
+    <dimensionAlsoFromGrid>false</dimensionAlsoFromGrid>
+    <measureFromFilterName>PLATE</measureFromFilterName>
+    <measureObject>0</measureObject>
+    <combine>ObjectsAll</combine>
+    <minDistanceToCreate>0.00</minDistanceToCreate>
+    <componentObjects>ByReferencePoint</componentObjects>
+  </settings>
+</rule>

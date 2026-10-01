@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <MethodLeft>4</MethodLeft>
+  <TypeLeft>0</TypeLeft>
+  <CodeLeft></CodeLeft>
+  <Class>100</Class>
+  <Finish></Finish>
+  <Material>Steel_Undefined</Material>
+  <Profile>
+    <Millimeters>75</Millimeters>
+  </Profile>
+  <Name>REBAR_ANCHOR</Name>
+  <StartAssembly>1</StartAssembly>
+  <PrefixAssembly>anc</PrefixAssembly>
+  <StartPart>1000</StartPart>
+  <PrefixPart>ANC</PrefixPart>
+  <ToleranceLeft>
+    <Millimeters>-2147483648</Millimeters>
+  </ToleranceLeft>
+  <CouplerLength>
+    <Millimeters>20</Millimeters>
+  </CouplerLength>
+  <TreadLeft>
+    <Millimeters>-2147483648</Millimeters>
+  </TreadLeft>
+  <UseCustomComponent>0</UseCustomComponent>
+  <ComponentName></ComponentName>
+  <CustomAttribute></CustomAttribute>
+  <CustomInputPoints>0</CustomInputPoints>
+  <AnchorOffset>
+    <Millimeters>0</Millimeters>
+  </AnchorOffset>
+  <AttributeTable></AttributeTable>
+  <UseAutoAttributes>0</UseAutoAttributes>
+  <PlateThickness>
+    <Millimeters>0</Millimeters>
+  </PlateThickness>
+  <PlateDiameter>
+    <Millimeters>0</Millimeters>
+  </PlateDiameter>
+</config>

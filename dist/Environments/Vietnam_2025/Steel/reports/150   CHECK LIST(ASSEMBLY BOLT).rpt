@@ -1,0 +1,1097 @@
+
+template _tmp_0
+{
+    name = "tpled_template1";
+    type = TEXTUAL;
+    width = 120;
+    maxheight = 2147483647;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "25.08.2015 10:53";
+    modified = "27.08.2015 14:51";
+    notes = "";
+
+    header _tmp_17
+    {
+        name = "Header";
+        height = 1;
+
+        text _tmp_18
+        {
+            name = "ASS.MARK";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "ASS.MARK";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_19
+        {
+            name = "\\t";
+            x1 = 12;
+            y1 = 0;
+            x2 = 12;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_21
+        {
+            name = "Text";
+            x1 = 17;
+            y1 = 0;
+            x2 = 17;
+            y2 = 0;
+            string = "PROFILE";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_23
+        {
+            name = "Text_1";
+            x1 = 31;
+            y1 = 0;
+            x2 = 31;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_25
+        {
+            name = "Text_2";
+            x1 = 37;
+            y1 = 0;
+            x2 = 37;
+            y2 = 0;
+            string = "NAME";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_27
+        {
+            name = "Text_3";
+            x1 = 47;
+            y1 = 0;
+            x2 = 47;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_29
+        {
+            name = "Text_4";
+            x1 = 52;
+            y1 = 0;
+            x2 = 52;
+            y2 = 0;
+            string = "BOLT DESCRIPTION";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_31
+        {
+            name = "Text_5";
+            x1 = 74;
+            y1 = 0;
+            x2 = 74;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_33
+        {
+            name = "Text_6";
+            x1 = 80;
+            y1 = 0;
+            x2 = 80;
+            y2 = 0;
+            string = "Qt'y";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_35
+        {
+            name = "Text_7";
+            x1 = 88;
+            y1 = 0;
+            x2 = 88;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_65
+        {
+            name = "Text_28";
+            x1 = 117;
+            y1 = 0;
+            x2 = 117;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_1
+    {
+        name = "ASSEMBLY";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "ASSEMBLY";
+        sorttype = COMBINE;
+
+        valuefield _tmp_2
+        {
+            name = "ASSEMBLY_POS_field";
+            location = (0, 0);
+            formula = "GetValue(\"ASSEMBLY_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "romsim";
+            fontcolor = 161;
+            fonttype = 4;
+            fontsize = 3;
+            fontratio = 0.8;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_15
+        {
+            name = "MAINPART.PROFILE_field";
+            location = (15, 0);
+            formula = "GetValue(\"MAINPART.PROFILE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "romsim";
+            fontcolor = 161;
+            fonttype = 4;
+            fontsize = 3;
+            fontratio = 0.8;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_16
+        {
+            name = "MAINPART.NAME_field";
+            location = (34, 0);
+            formula = "GetValue(\"MAINPART.NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "romsim";
+            fontcolor = 161;
+            fonttype = 4;
+            fontsize = 3;
+            fontratio = 0.8;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_36
+        {
+            name = "Id:";
+            x1 = 93;
+            y1 = 0;
+            x2 = 93;
+            y2 = 0;
+            string = "Id:";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_37
+        {
+            name = "ID_field";
+            location = (98, 0);
+            formula = "GetValue(\"ID\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "romsim";
+            fontcolor = 161;
+            fonttype = 4;
+            fontsize = 3;
+            fontratio = 0.8;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_44
+        {
+            name = "Text_8";
+            x1 = 12;
+            y1 = 0;
+            x2 = 12;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_48
+        {
+            name = "Text_12";
+            x1 = 31;
+            y1 = 0;
+            x2 = 31;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_53
+        {
+            name = "Text_16";
+            x1 = 47;
+            y1 = 0;
+            x2 = 47;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_57
+        {
+            name = "Text_20";
+            x1 = 74;
+            y1 = 0;
+            x2 = 74;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_61
+        {
+            name = "Text_24";
+            x1 = 88;
+            y1 = 0;
+            x2 = 88;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_66
+        {
+            name = "Text_29";
+            x1 = 117;
+            y1 = 0;
+            x2 = 117;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        row _tmp_3
+        {
+            name = "PART";
+            height = 1;
+            visibility = FALSE;
+            usecolumns = FALSE;
+            rule = "";
+            contenttype = "PART";
+            sorttype = COMBINE;
+
+            valuefield _tmp_4
+            {
+                name = "PART_POS_field";
+                location = (0, 0);
+                formula = "GetValue(\"PART_POS\")";
+                datatype = STRING;
+                class = "";
+                cacheable = TRUE;
+                justify = LEFT;
+                visibility = TRUE;
+                angle = 0;
+                length = 10;
+                decimals = 0;
+                sortdirection = NONE;
+                fontname = "romsim";
+                fontcolor = 161;
+                fonttype = 4;
+                fontsize = 3;
+                fontratio = 0.8;
+                fontstyle = 0;
+                fontslant = 0;
+                pen = -1;
+                oncombine = NONE;
+            };
+
+            text _tmp_45
+            {
+                name = "Text_9";
+                x1 = 12;
+                y1 = 0;
+                x2 = 12;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_49
+            {
+                name = "Text_13";
+                x1 = 31;
+                y1 = 0;
+                x2 = 31;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_54
+            {
+                name = "Text_17";
+                x1 = 47;
+                y1 = 0;
+                x2 = 47;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_58
+            {
+                name = "Text_21";
+                x1 = 74;
+                y1 = 0;
+                x2 = 74;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_62
+            {
+                name = "Text_25";
+                x1 = 88;
+                y1 = 0;
+                x2 = 88;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_67
+            {
+                name = "Text_30";
+                x1 = 117;
+                y1 = 0;
+                x2 = 117;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            row _tmp_5
+            {
+                name = "BOLT";
+                height = 1;
+                visibility = TRUE;
+                usecolumns = FALSE;
+                rule = "";
+                contenttype = "BOLT";
+                sorttype = COMBINE;
+
+                valuefield _tmp_11
+                {
+                    name = "BOLT_STANDARD_field";
+                    location = (50, 0);
+                    formula = "GetValue(\"NAME_SHORT\")+\"     - M\"+int(GetValue(\"DIAMETER\"))+\" X \"+int(GetValue(\"LENGTH\"))";
+                    datatype = STRING;
+                    class = "";
+                    cacheable = TRUE;
+                    justify = LEFT;
+                    visibility = TRUE;
+                    angle = 0;
+                    length = 24;
+                    decimals = 0;
+                    sortdirection = ASCENDING;
+                    fontname = "romsim";
+                    fontcolor = 161;
+                    fonttype = 4;
+                    fontsize = 3;
+                    fontratio = 0.8;
+                    fontstyle = 0;
+                    fontslant = 0;
+                    pen = -1;
+                    oncombine = NONE;
+                };
+
+                valuefield _tmp_9
+                {
+                    name = "NUMBER_field";
+                    location = (80, 0);
+                    formula = "GetValue(\"NUMBER\")";
+                    datatype = INTEGER;
+                    class = "";
+                    cacheable = TRUE;
+                    justify = LEFT;
+                    visibility = TRUE;
+                    angle = 0;
+                    length = 5;
+                    decimals = 0;
+                    sortdirection = NONE;
+                    fontname = "romsim";
+                    fontcolor = 161;
+                    fonttype = 4;
+                    fontsize = 3;
+                    fontratio = 0.8;
+                    fontstyle = 0;
+                    fontslant = 0;
+                    pen = -1;
+                    oncombine = SUM;
+                };
+
+                text _tmp_46
+                {
+                    name = "Text_10";
+                    x1 = 12;
+                    y1 = 0;
+                    x2 = 12;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_50
+                {
+                    name = "Text_14";
+                    x1 = 31;
+                    y1 = 0;
+                    x2 = 31;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_55
+                {
+                    name = "Text_18";
+                    x1 = 47;
+                    y1 = 0;
+                    x2 = 47;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_59
+                {
+                    name = "Text_22";
+                    x1 = 74;
+                    y1 = 0;
+                    x2 = 74;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_63
+                {
+                    name = "Text_26";
+                    x1 = 88;
+                    y1 = 0;
+                    x2 = 88;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_68
+                {
+                    name = "Text_31";
+                    x1 = 117;
+                    y1 = 0;
+                    x2 = 117;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                valuefield _tmp_0
+                {
+                    name = "DIAMETER_field";
+                    location = (35, 0);
+                    formula = "GetValue(\"DIAMETER\")";
+                    datatype = DOUBLE;
+                    class = "Length";
+                    cacheable = TRUE;
+                    justify = RIGHT;
+                    visibility = FALSE;
+                    angle = 0;
+                    length = 5;
+                    decimals = 0;
+                    sortdirection = APPLICATION;
+                    fontname = "romsim";
+                    fontcolor = 161;
+                    fonttype = 4;
+                    fontsize = 3;
+                    fontratio = 0.8;
+                    fontstyle = 0;
+                    fontslant = 0;
+                    pen = -1;
+                    oncombine = NONE;
+                    unit = "mm";
+                };
+
+                valuefield _tmp_1
+                {
+                    name = "LENGTH_field";
+                    location = (22, 0);
+                    formula = "GetValue(\"LENGTH\")";
+                    datatype = DOUBLE;
+                    class = "Length";
+                    cacheable = TRUE;
+                    justify = RIGHT;
+                    visibility = FALSE;
+                    angle = 0;
+                    length = 8;
+                    decimals = 0;
+                    sortdirection = APPLICATION;
+                    fontname = "romsim";
+                    fontcolor = 161;
+                    fonttype = 4;
+                    fontsize = 3;
+                    fontratio = 0.8;
+                    fontstyle = 0;
+                    fontslant = 0;
+                    pen = -1;
+                    oncombine = NONE;
+                    unit = "mm";
+                };
+            };
+
+            row _tmp_38
+            {
+                name = "STUD";
+                height = 1;
+                visibility = TRUE;
+                usecolumns = FALSE;
+                rule = "";
+                contenttype = "STUD";
+                sorttype = COMBINE;
+
+                valuefield _tmp_40
+                {
+                    name = "ValueField";
+                    location = (50, 0);
+                    formula = "GetValue(\"NAME_SHORT\")+\" - M\"+int(GetValue(\"DIAMETER\"))+\" X \"+int(GetValue(\"LENGTH\"))";
+                    datatype = STRING;
+                    class = "";
+                    cacheable = TRUE;
+                    justify = LEFT;
+                    visibility = TRUE;
+                    angle = 0;
+                    length = 24;
+                    decimals = 0;
+                    sortdirection = ASCENDING;
+                    fontname = "romsim";
+                    fontcolor = 161;
+                    fonttype = 4;
+                    fontsize = 3;
+                    fontratio = 0.8;
+                    fontstyle = 0;
+                    fontslant = 0;
+                    pen = -1;
+                    oncombine = NONE;
+                };
+
+                valuefield _tmp_42
+                {
+                    name = "ValueField_1";
+                    location = (80, 0);
+                    formula = "GetValue(\"NUMBER\")";
+                    datatype = INTEGER;
+                    class = "";
+                    cacheable = TRUE;
+                    justify = LEFT;
+                    visibility = TRUE;
+                    angle = 0;
+                    length = 5;
+                    decimals = 0;
+                    sortdirection = NONE;
+                    fontname = "romsim";
+                    fontcolor = 161;
+                    fonttype = 4;
+                    fontsize = 3;
+                    fontratio = 0.8;
+                    fontstyle = 0;
+                    fontslant = 0;
+                    pen = -1;
+                    oncombine = SUM;
+                };
+
+                text _tmp_47
+                {
+                    name = "Text_11";
+                    x1 = 12;
+                    y1 = 0;
+                    x2 = 12;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_51
+                {
+                    name = "Text_15";
+                    x1 = 31;
+                    y1 = 0;
+                    x2 = 31;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_56
+                {
+                    name = "Text_19";
+                    x1 = 47;
+                    y1 = 0;
+                    x2 = 47;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_60
+                {
+                    name = "Text_23";
+                    x1 = 74;
+                    y1 = 0;
+                    x2 = 74;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_64
+                {
+                    name = "Text_27";
+                    x1 = 88;
+                    y1 = 0;
+                    x2 = 88;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+
+                text _tmp_69
+                {
+                    name = "Text_32";
+                    x1 = 117;
+                    y1 = 0;
+                    x2 = 117;
+                    y2 = 0;
+                    string = "\\t";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+            };
+
+            row _tmp_70
+            {
+                name = "BOLT_1";
+                height = 1;
+                visibility = TRUE;
+                usecolumns = FALSE;
+                rule = "";
+                contenttype = "PART";
+                sorttype = COMBINE;
+
+                text _tmp_71
+                {
+                    name = "------------------------------";
+                    x1 = 0;
+                    y1 = 0;
+                    x2 = 0;
+                    y2 = 0;
+                    string = "-------------------------------------------------------------------------------------------------------";
+                    fontname = "fixfont";
+                    fontcolor = 160;
+                    fonttype = 4;
+                    fontsize = 5;
+                    fontratio = 1.5;
+                    fontslant = 0;
+                    fontstyle = 0;
+                    angle = 0;
+                    justify = LEFT;
+                    pen = -1;
+                };
+            };
+        };
+    };
+};

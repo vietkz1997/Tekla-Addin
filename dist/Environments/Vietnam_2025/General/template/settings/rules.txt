@@ -1,0 +1,6 @@
+
+predefined _tmp_841
+{
+    name = "Assembly pos check";
+    content = "if (GetValue(\"ASSEMBLY_POS\") != NextValue(\"ASSEMBLY_POS\")) then\n  Output()\nelse\n  StepOut()\nendif";
+};

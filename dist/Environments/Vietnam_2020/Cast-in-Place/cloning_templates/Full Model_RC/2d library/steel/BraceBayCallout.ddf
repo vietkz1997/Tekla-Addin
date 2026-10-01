@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Bracing Bay Callout">
+  <Line StartPointX="0.990143766386344" StartPointY="-3.23090001026558" EndPointX="134.478857469419" EndPointY="-3.23090001026558" Color="NewLine3" LineType="SlashDash" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <Text InsertionPointX="70.5220674180001" InsertionPointY="-9.2535828160873" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Center" FrameColor="Black" FrameType="Rectangular" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">BRACING SEE SHEET EXX
+FOR MORE INFORMATION</Text>
+</DrawingDetail>

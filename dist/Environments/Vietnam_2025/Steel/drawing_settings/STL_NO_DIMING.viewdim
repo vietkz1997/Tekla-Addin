@@ -1,0 +1,4 @@
+encoding 949
+in_file "STL_NO_DIMING"
+out_file "K_SECTION_DIMENSIONING"
+aDimensioningPlugins ",albl_General,STL_NO_DIMING,"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Revit QTO &amp; Clash Pro</Name>
+    <Assembly>Revit_2026\RevitQtoTool.dll</Assembly>
+    <FullClassName>RevitQtoTool.AppRibbon</FullClassName>
+    <ClientId>B8E5F921-6D34-4C2E-99A1-8C56B2D19A70</ClientId>
+    <VendorId>BIM_VN</VendorId>
+    <VendorDescription>BIM Structural Suite</VendorDescription>
+  </AddIn>
+</RevitAddIns>

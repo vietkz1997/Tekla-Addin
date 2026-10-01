@@ -1,0 +1,31 @@
+TITLE_OBJECT_GROUP 
+{
+    Version= 1.05 
+    Count= 2 
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        co_assembly 
+        D_REVISION 
+        D_REVISION 
+        >= 
+        albl_LaterOrEqual 
+        01.01.2018 
+        0 
+        && 
+        }
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        co_object 
+        proOBJECT_TYPE 
+        albl_ObjectType 
+        == 
+        albl_Equals 
+        albl_Assembly 
+        0 
+        && 
+        }
+    }

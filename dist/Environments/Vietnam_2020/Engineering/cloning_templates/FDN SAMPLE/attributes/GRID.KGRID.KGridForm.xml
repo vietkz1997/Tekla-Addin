@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <ZLabelEnabled>-2147483648</ZLabelEnabled>
+  <ZCoordEnabled>-2147483648</ZCoordEnabled>
+  <YLabelEnabled>-2147483648</YLabelEnabled>
+  <YCoordEnabled>-2147483648</YCoordEnabled>
+  <XLabelEnabled>-2147483648</XLabelEnabled>
+  <XCoordEnabled>-2147483648</XCoordEnabled>
+  <ZLabelPrefix>EL</ZLabelPrefix>
+  <LockedEnabled>-2147483648</LockedEnabled>
+  <zright>2000.00</zright>
+  <yright>2000.00</yright>
+  <xright>2000.00</xright>
+  <ZRightAboveEnabled>-2147483648</ZRightAboveEnabled>
+  <YRightAboveEnabled>-2147483648</YRightAboveEnabled>
+  <XRightAboveEnabled>-2147483648</XRightAboveEnabled>
+  <zleft>2000.00</zleft>
+  <yleft>2000.00</yleft>
+  <xleft>2000.00</xleft>
+  <ZLeftBelowEnabled>-2147483648</ZLeftBelowEnabled>
+  <YLeftBelowEnabled>-2147483648</YLeftBelowEnabled>
+  <XLeftBelowEnabled>-2147483648</XLeftBelowEnabled>
+  <Locked>1</Locked>
+  <dataGridViewX>
+    <ColumnXRow id="0">1</ColumnXRow>
+    <ColumnXC id="0">0</ColumnXC>
+    <ColumnXL id="0">A</ColumnXL>
+    <ColumnXRow id="1">2</ColumnXRow>
+    <ColumnXC id="1">3000</ColumnXC>
+    <ColumnXL id="1">B</ColumnXL>
+    <ColumnXRow id="2">3</ColumnXRow>
+    <ColumnXC id="2">2400</ColumnXC>
+    <ColumnXL id="2">C</ColumnXL>
+    <ColumnXRow id="3">4</ColumnXRow>
+    <ColumnXC id="3">3000</ColumnXC>
+    <ColumnXL id="3">D</ColumnXL>
+    <ColumnXRow id="4">5</ColumnXRow>
+    <ColumnXC id="4">4000</ColumnXC>
+    <ColumnXL id="4">E</ColumnXL>
+    <ColumnXRow id="5">6</ColumnXRow>
+    <ColumnXC id="5">4000</ColumnXC>
+    <ColumnXL id="5">F</ColumnXL>
+    <ColumnXRow id="6">7</ColumnXRow>
+    <ColumnXC id="6">4000</ColumnXC>
+    <ColumnXL id="6">G</ColumnXL>
+    <ColumnXRow id="7">8</ColumnXRow>
+    <ColumnXC id="7">4000</ColumnXC>
+    <ColumnXL id="7">H</ColumnXL>
+    <ColumnXRow id="8">9</ColumnXRow>
+    <ColumnXC id="8">6000</ColumnXC>
+    <ColumnXL id="8">I</ColumnXL>
+    <ColumnXRow id="9">10</ColumnXRow>
+    <ColumnXC id="9">4000</ColumnXC>
+    <ColumnXL id="9">J</ColumnXL>
+    <ColumnXRow id="10">11</ColumnXRow>
+    <ColumnXC id="10">4000</ColumnXC>
+    <ColumnXL id="10">K</ColumnXL>
+    <ColumnXRow id="11">12</ColumnXRow>
+    <ColumnXC id="11">4000</ColumnXC>
+    <ColumnXL id="11">K</ColumnXL>
+    <ColumnXRow id="12">13</ColumnXRow>
+    <ColumnXC id="12">4000</ColumnXC>
+    <ColumnXL id="12">M</ColumnXL>
+    <ColumnXRow id="13">14</ColumnXRow>
+    <ColumnXC id="13">3000</ColumnXC>
+    <ColumnXL id="13">N</ColumnXL>
+    <ColumnXRow id="14">15</ColumnXRow>
+    <ColumnXC id="14">2400</ColumnXC>
+    <ColumnXL id="14">O</ColumnXL>
+    <ColumnXRow id="15">16</ColumnXRow>
+    <ColumnXC id="15">3000</ColumnXC>
+    <ColumnXL id="15">P</ColumnXL>
+  </dataGridViewX>
+  <dataGridViewY>
+    <ColumnYRow id="0">1</ColumnYRow>
+    <ColumnYC id="0">0</ColumnYC>
+    <ColumnYL id="0">10</ColumnYL>
+    <ColumnYRow id="1">2</ColumnYRow>
+    <ColumnYC id="1">11000</ColumnYC>
+    <ColumnYL id="1">9</ColumnYL>
+    <ColumnYRow id="2">3</ColumnYRow>
+    <ColumnYC id="2">2500</ColumnYC>
+    <ColumnYL id="2">8</ColumnYL>
+    <ColumnYRow id="3">4</ColumnYRow>
+    <ColumnYC id="3">2500</ColumnYC>
+    <ColumnYL id="3">7</ColumnYL>
+    <ColumnYRow id="4">5</ColumnYRow>
+    <ColumnYC id="4">5000</ColumnYC>
+    <ColumnYL id="4">6A</ColumnYL>
+    <ColumnYRow id="5">6</ColumnYRow>
+    <ColumnYC id="5">7000</ColumnYC>
+    <ColumnYL id="5">6</ColumnYL>
+    <ColumnYRow id="6">7</ColumnYRow>
+    <ColumnYC id="6">4000</ColumnYC>
+    <ColumnYL id="6">5</ColumnYL>
+    <ColumnYRow id="7">8</ColumnYRow>
+    <ColumnYC id="7">3000</ColumnYC>
+    <ColumnYL id="7">4</ColumnYL>
+    <ColumnYRow id="8">9</ColumnYRow>
+    <ColumnYC id="8">5000</ColumnYC>
+    <ColumnYL id="8">3</ColumnYL>
+    <ColumnYRow id="9">10</ColumnYRow>
+    <ColumnYC id="9">5000</ColumnYC>
+    <ColumnYL id="9">2</ColumnYL>
+    <ColumnYRow id="10">11</ColumnYRow>
+    <ColumnYC id="10">5000</ColumnYC>
+    <ColumnYL id="10">1</ColumnYL>
+  </dataGridViewY>
+  <dataGridViewZ>
+    <ColumnZRow id="0">1</ColumnZRow>
+    <ColumnZC id="0">-900</ColumnZC>
+    <ColumnZL id="0">EL-900</ColumnZL>
+    <ColumnZRow id="1">2</ColumnZRow>
+    <ColumnZC id="1">-450</ColumnZC>
+    <ColumnZL id="1">EL-450</ColumnZL>
+    <ColumnZRow id="2">3</ColumnZRow>
+    <ColumnZC id="2">-250</ColumnZC>
+    <ColumnZL id="2">EL-250</ColumnZL>
+    <ColumnZRow id="3">4</ColumnZRow>
+    <ColumnZC id="3">0</ColumnZC>
+    <ColumnZL id="3">EL+0</ColumnZL>
+    <ColumnZRow id="4">5</ColumnZRow>
+    <ColumnZC id="4">350</ColumnZC>
+    <ColumnZL id="4">EL+350</ColumnZL>
+  </dataGridViewZ>
+</config>

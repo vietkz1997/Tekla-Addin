@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <Grade>SD400</Grade>
+  <Size>19</Size>
+  <Name>REBAR</Name>
+  <ShapeCode>1 [0]</ShapeCode>
+  <Radius>
+    <Millimeters>60</Millimeters>
+  </Radius>
+  <TargetSpacing>
+    <Millimeters>150</Millimeters>
+  </TargetSpacing>
+  <OverlapDistance>
+    <Millimeters>0</Millimeters>
+  </OverlapDistance>
+  <ExactSpacing>
+    <Millimeters>-2147483648</Millimeters>
+  </ExactSpacing>
+  <ExactSpacingList />
+  <OnPlaneCover>
+    <Millimeters>40</Millimeters>
+  </OnPlaneCover>
+  <FromPlaneCover>
+    <Millimeters>40</Millimeters>
+  </FromPlaneCover>
+  <Prefix></Prefix>
+  <CreationMethod>0</CreationMethod>
+  <NumberOfBars>4</NumberOfBars>
+  <StartNumber>1</StartNumber>
+  <LayerOrderNo>0</LayerOrderNo>
+  <Class>11</Class>
+  <EndHookShape>0</EndHookShape>
+  <EndHookAngle>0</EndHookAngle>
+  <EndHookRadius>
+    <Millimeters>0</Millimeters>
+  </EndHookRadius>
+  <EndHookLength>
+    <Millimeters>0</Millimeters>
+  </EndHookLength>
+  <StartHookShape>0</StartHookShape>
+  <StartHookAngle>0</StartHookAngle>
+  <StartHookRadius>
+    <Millimeters>0</Millimeters>
+  </StartHookRadius>
+  <StartHookLength>
+    <Millimeters>0</Millimeters>
+  </StartHookLength>
+  <PickingMode>0</PickingMode>
+  <KeepMode>0</KeepMode>
+</config>

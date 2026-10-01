@@ -1,0 +1,24 @@
+//
+// The custom properties to be used in Rebar Shape Manager
+// 
+// Each row shall contain 2 or 3 fields separated by tab(s) or semicolon. 
+//
+// Field 1: Report property name. 
+// Field 2: The data type of the attribute. Valid values are: Double, Integer, String
+// Field 3: The value type. Valid values are: AngleValue, DistanceValue, NumericValue, WeightValue, LinearWeightValue, TextValue
+//
+GRADE			String		TextValue
+comment			String		TextValue
+USER_FIELD_1		String 		TextValue
+USER_FIELD_2		String		TextValue
+USER_FIELD_3		String 		TextValue
+USER_FIELD_4		String 		TextValue
+
+METHOD_START		Integer		NumericValue
+METHOD_END		Integer		NumericValue
+TYPE_START		Integer		NumericValue
+TYPE_END		Integer		NumericValue
+PRODUCT_START 		String 		TextValue
+PRODUCT_END 		String 		TextValue
+CODE_START	 	String 		TextValue
+CODE_END 		String 		TextValue

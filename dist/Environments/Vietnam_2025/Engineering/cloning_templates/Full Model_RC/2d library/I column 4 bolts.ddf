@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="New detail" OriginalScale="20" Scale="0" InsertionPointX="0" InsertionPointY="-7.52803584397265" ViewGuid="d4e7e8a0-ccb8-414e-b99e-f0920530bce9">
+  <Line StartPointX="-5.57961087140916" StartPointY="18.5835235733851" EndPointX="-4.16539730903603" EndPointY="17.1693100110119" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="2.74998500000004" StartPointY="17.8764167921986" EndPointX="-7.37250409022261" EndPointY="17.8764167921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-5.57961087140916" StartPointY="8.58349357338531" EndPointX="-4.16539730903604" EndPointY="7.16928001101217" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="2.74998500000004" StartPointY="7.87638679219864" EndPointX="-7.37250409022261" EndPointY="7.87638679219864" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-4.87250409022261" StartPointY="7.87638679219864" EndPointX="-4.87250409022261" EndPointY="17.8764167921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-10.7736118667368" StartPointY="26.0835085733851" EndPointX="-9.35939830436368" EndPointY="24.669295011012" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-1" StartPointY="25.3764017921986" EndPointX="-12.5665050855503" EndPointY="25.3764017921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-10.7736118667368" StartPointY="1.08350857338512" EndPointX="-9.35939830436372" EndPointY="-0.330704988988042" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-1" StartPointY="0.376401792198632" EndPointX="-12.5665050855503" EndPointY="0.376401792198632" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-10.0665050855503" StartPointY="0.376401792198632" EndPointX="-10.0665050855503" EndPointY="25.3764017921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="14.4571217811865" StartPointY="32.6581980915146" EndPointX="13.0429082188134" EndPointY="31.2439845291415" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="13.750015" StartPointY="18.8764167921986" EndPointX="13.750015" EndPointY="34.4510913103281" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="4.45709178118659" StartPointY="32.6581980915146" EndPointX="3.04287821881349" EndPointY="31.2439845291415" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="3.74998500000004" StartPointY="18.8764167921986" EndPointX="3.74998500000004" EndPointY="34.4510913103281" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="3.74998500000004" StartPointY="31.9510913103281" EndPointX="13.750015" EndPointY="31.9510913103281" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="18.2071067811866" StartPointY="38.5204703578539" EndPointX="16.7928932188134" EndPointY="37.1062567954807" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="17.5" StartPointY="26.3764017921986" EndPointX="17.5" EndPointY="40.3133635766674" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0.707106781186553" StartPointY="38.5204703578539" EndPointX="-0.707106781186571" EndPointY="37.1062567954807" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="26.3764017921986" EndPointX="0" EndPointY="40.3133635766674" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="37.8133635766674" EndPointX="17.5" EndPointY="37.8133635766674" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="14.0976656337425" StartPointY="23.8764017921986" EndPointX="20.4189331650661" EndPointY="30.1976693235223" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="20.4189331650662" StartPointY="30.1976693235222" EndPointX="27.3023316025663" EndPointY="30.1976693235222" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="20.4189331650662" StartPointY="31.1976683235224" EndPointX="20.4189331650662" EndPointY="29.1976703235224" Color="Green" LineType="SolidLine" Bulge="0.5" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="20.4189331650662" StartPointY="31.1976683235224" EndPointX="20.4189331650662" EndPointY="29.1976703235224" Color="Green" LineType="SolidLine" Bulge="-0.5" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="23.8737596025662" StartPointY="27.3405293235225" EndPointX="23.8737596025662" EndPointY="30.1976693235222" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="26.7308996025663" StartPointY="30.1976693235222" EndPointX="23.8737596025664" EndPointY="27.3405293235223" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="23.8737596025662" StartPointY="30.1976693235222" EndPointX="26.7308996025663" EndPointY="30.1976693235222" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="23.8737596025662" StartPointY="33.0548093235223" EndPointX="23.8737596025662" EndPointY="30.1976693235222" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="26.7308996025663" StartPointY="30.1976693235222" EndPointX="23.8737596025662" EndPointY="33.0548093235223" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="23.8737596025662" StartPointY="30.1976693235222" EndPointX="26.7308996025663" EndPointY="30.1976693235222" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="13.3300583897717" StartPointY="0.376401792198632" EndPointX="17.905696067058" EndPointY="-4.19923588508748" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="5.05" StartPointY="7.87640179219863" EndPointX="2.45" EndPointY="7.87640179219863" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="3.75" StartPointY="6.57640179219863" EndPointX="3.75" EndPointY="9.17640179219863" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="15.05" StartPointY="7.87640179219863" EndPointX="12.45" EndPointY="7.87640179219863" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="13.75" StartPointY="6.57640179219863" EndPointX="13.75" EndPointY="9.17640179219863" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="5.05" StartPointY="17.8764017921986" EndPointX="2.45" EndPointY="17.8764017921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="3.75" StartPointY="16.5764017921986" EndPointX="3.75" EndPointY="19.1764017921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="15.05" StartPointY="17.8764017921986" EndPointX="12.45" EndPointY="17.8764017921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="13.75" StartPointY="16.5764017921986" EndPointX="13.75" EndPointY="19.1764017921986" Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="17.5" StartPointY="0.376401792198632" EndPointX="0" EndPointY="0.376401792198632" Color="Yellow" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="17.5" StartPointY="25.3764017921986" EndPointX="17.5" EndPointY="0.376401792198632" Color="Yellow" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="25.3764017921986" EndPointX="0" EndPointY="0.376401792198632" Color="Yellow" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="17.5" StartPointY="25.3764017921986" EndPointX="0" EndPointY="25.3764017921986" Color="Yellow" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="9.14026263110976" StartPointY="3.75977915850573" EndPointX="9.0375" EndPointY="4.27640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="9.87087736630713" StartPointY="3.02916442330836" EndPointX="9.14026263110976" EndPointY="3.75977915850573" Color="Green" LineType="SolidLine" Bulge="0.0994561836899022" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="10.3875" StartPointY="2.92640179219863" EndPointX="9.87087736630713" EndPointY="3.02916442330836" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="9.87087736630713" StartPointY="22.7236391610889" EndPointX="10.3875" EndPointY="22.8264017921986" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="9.14026263110976" StartPointY="21.9930244258915" EndPointX="9.87087736630713" EndPointY="22.7236391610889" Color="Green" LineType="SolidLine" Bulge="0.0994561836899022" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="9.0375" StartPointY="21.4764017921986" EndPointX="9.14026263110976" EndPointY="21.9930244258915" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="8.35973736889024" StartPointY="21.9930244258915" EndPointX="8.4625" EndPointY="21.4764017921986" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="7.62912263369287" StartPointY="22.7236391610889" EndPointX="8.35973736889024" EndPointY="21.9930244258915" Color="Green" LineType="SolidLine" Bulge="0.0994561836899022" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="7.1125" StartPointY="22.8264017921986" EndPointX="7.62912263369287" EndPointY="22.7236391610889" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="7.62912263369287" StartPointY="3.02916442330836" EndPointX="7.1125" EndPointY="2.92640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="8.35973736889024" StartPointY="3.75977915850573" EndPointX="7.62912263369287" EndPointY="3.02916442330836" Color="Green" LineType="SolidLine" Bulge="0.0994561836899022" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="8.4625" StartPointY="4.27640179219863" EndPointX="8.35973736889024" EndPointY="3.75977915850573" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="16.25" StartPointY="2.92640179219863" EndPointX="16.25" EndPointY="1.87640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="10.3875" StartPointY="2.92640179219863" EndPointX="16.25" EndPointY="2.92640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="9.0375" StartPointY="21.4764017921986" EndPointX="9.0375" EndPointY="4.27640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="16.25" StartPointY="22.8264017921986" EndPointX="10.3875" EndPointY="22.8264017921986" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="16.25" StartPointY="23.8764017921986" EndPointX="16.25" EndPointY="22.8264017921986" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="1.25" StartPointY="23.8764017921986" EndPointX="1.25" EndPointY="22.8264017921986" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="8.4625" StartPointY="21.4764017921986" EndPointX="8.4625" EndPointY="4.27640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="1.25" StartPointY="2.92640179219863" EndPointX="1.25" EndPointY="1.87640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="1.25" StartPointY="23.8764017921986" EndPointX="16.25" EndPointY="23.8764017921986" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="1.25" StartPointY="22.8264017921986" EndPointX="7.1125" EndPointY="22.8264017921986" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="1.25" StartPointY="2.92640179219863" EndPointX="7.1125" EndPointY="2.92640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="1.25" StartPointY="1.87640179219863" EndPointX="16.25" EndPointY="1.87640179219863" Color="Green" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="8.75" StartPointY="-1.60657324964002" EndPointX="8.75" EndPointY="27.4608137233447" Color="Red" LineType="DashDot" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-2.39483825838441" StartPointY="12.8764017921986" EndPointX="18.8212921399212" EndPointY="12.8764017921986" Color="Red" LineType="DashDot" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Polygon Color="Invisible" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="0" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="16.25" Y="1.87640179219863" />
+    <Point X="16.25" Y="2.92640179219863" />
+    <Point X="16.25" Y="2.92640179219863" />
+    <Point X="10.4" Y="2.92640179219863" />
+    <Point X="10.4" Y="2.92640179219863" />
+    <Point X="9.85" Y="3.02640179219863" />
+    <Point X="9.85" Y="3.02640179219863" />
+    <Point X="9.45" Y="3.32640179219863" />
+    <Point X="9.45" Y="3.32640179219863" />
+    <Point X="9.15" Y="3.77640179219863" />
+    <Point X="9.15" Y="3.77640179219863" />
+    <Point X="9.05" Y="4.27640179219863" />
+    <Point X="9.05" Y="4.27640179219863" />
+    <Point X="9.05" Y="21.4764017921986" />
+    <Point X="9.05" Y="21.4764017921986" />
+    <Point X="9.15" Y="21.9764017921986" />
+    <Point X="9.15" Y="21.9764017921986" />
+    <Point X="9.45" Y="22.4264017921986" />
+    <Point X="9.45" Y="22.4264017921986" />
+    <Point X="9.85" Y="22.7264017921986" />
+    <Point X="9.85" Y="22.7264017921986" />
+    <Point X="10.4" Y="22.8264017921986" />
+    <Point X="10.4" Y="22.8264017921986" />
+    <Point X="16.25" Y="22.8264017921986" />
+    <Point X="16.25" Y="22.8264017921986" />
+    <Point X="16.25" Y="23.8764017921986" />
+    <Point X="16.25" Y="23.8764017921986" />
+    <Point X="1.25" Y="23.8764017921986" />
+    <Point X="1.25" Y="23.8764017921986" />
+    <Point X="1.25" Y="22.8264017921986" />
+    <Point X="1.25" Y="22.8264017921986" />
+    <Point X="7.1" Y="22.8264017921986" />
+    <Point X="7.1" Y="22.8264017921986" />
+    <Point X="7.65" Y="22.7264017921986" />
+    <Point X="7.65" Y="22.7264017921986" />
+    <Point X="8.05" Y="22.4264017921986" />
+    <Point X="8.05" Y="22.4264017921986" />
+    <Point X="8.35" Y="21.9764017921986" />
+    <Point X="8.35" Y="21.9764017921986" />
+    <Point X="8.45" Y="21.4764017921986" />
+    <Point X="8.45" Y="21.4764017921986" />
+    <Point X="8.45" Y="4.27640179219863" />
+    <Point X="8.45" Y="4.27640179219863" />
+    <Point X="8.35" Y="3.77640179219863" />
+    <Point X="8.35" Y="3.77640179219863" />
+    <Point X="8.05" Y="3.32640179219863" />
+    <Point X="8.05" Y="3.32640179219863" />
+    <Point X="7.65" Y="3.02640179219863" />
+    <Point X="7.65" Y="3.02640179219863" />
+    <Point X="7.1" Y="2.92640179219863" />
+    <Point X="7.1" Y="2.92640179219863" />
+    <Point X="1.25" Y="2.92640179219863" />
+    <Point X="1.25" Y="2.92640179219863" />
+    <Point X="1.25" Y="1.87640179219863" />
+    <Point X="1.25" Y="1.87640179219863" />
+    <Point X="16.25" Y="1.87640179219863" />
+  </Polygon>
+  <Text InsertionPointX="-7.3725074396822" InsertionPointY="12.8763972006861" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="NewLine2" FontName="Arial Narrow" FontHeight="2.5" FontItalic="False" Angle="90.0002104591497" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">A</Text>
+  <Text InsertionPointX="-12.5665078767652" InsertionPointY="12.8763972006872" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="NewLine2" FontName="Arial Narrow" FontHeight="2.5" FontItalic="False" Angle="90.0002104591497" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">L</Text>
+  <Text InsertionPointX="8.75" InsertionPointY="34.4510913103281" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="NewLine2" FontName="Arial Narrow" FontHeight="2.5" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">A</Text>
+  <Text InsertionPointX="8.75" InsertionPointY="40.3133635766674" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="NewLine2" FontName="Arial Narrow" FontHeight="2.5" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">W</Text>
+  <Text InsertionPointX="22.5606323838163" InsertionPointY="28.5976693235224" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">6</Text>
+  <Text InsertionPointX="22.5606323838163" InsertionPointY="31.5976693235224" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">6</Text>
+  <Text InsertionPointX="26.1541335670579" InsertionPointY="-8.54923588508762" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="NewLine2" FontName="Arial Narrow" FontHeight="2" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">THICKNESS 'T'</Text>
+  <Text InsertionPointX="25.1922195045579" InsertionPointY="-5.79923588508762" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="NewLine2" FontName="Arial Narrow" FontHeight="2" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.5" ArrowHeight="2" ArrowHead="FilledArrow" UseWordWrapping="False" RulerWidth="0">BASE PLATE</Text>
+  <Symbol InsertionPointX="14.0976656337425" InsertionPointY="23.8764017921986" Placing="Tekla.Structures.Drawing.PointPlacingType" FrameColor="NewLine2" FrameType="None" Height="2" Color="Green" Angle="-135" SymbolFile="arrows.sym" SymbolIndex="1" />
+  <Symbol InsertionPointX="13.3300583897717" InsertionPointY="0.376401792198632" Placing="Tekla.Structures.Drawing.PointPlacingType" FrameColor="NewLine2" FrameType="None" Height="2" Color="Black" Angle="135.000000000001" SymbolFile="arrows.sym" SymbolIndex="17" />
+  <Symbol InsertionPointX="3.75" InsertionPointY="7.87640179219863" Placing="Tekla.Structures.Drawing.PointPlacingType" FrameColor="NewLine2" FrameType="None" Height="2.6" Color="Black" Angle="-90" SymbolFile="xsteel" SymbolIndex="17" />
+  <Symbol InsertionPointX="13.75" InsertionPointY="7.87640179219863" Placing="Tekla.Structures.Drawing.PointPlacingType" FrameColor="NewLine2" FrameType="None" Height="2.6" Color="Black" Angle="-90" SymbolFile="xsteel" SymbolIndex="17" />
+  <Symbol InsertionPointX="3.75" InsertionPointY="17.8764017921986" Placing="Tekla.Structures.Drawing.PointPlacingType" FrameColor="NewLine2" FrameType="None" Height="2.6" Color="Black" Angle="-90" SymbolFile="xsteel" SymbolIndex="17" />
+  <Symbol InsertionPointX="13.75" InsertionPointY="17.8764017921986" Placing="Tekla.Structures.Drawing.PointPlacingType" FrameColor="NewLine2" FrameType="None" Height="2.6" Color="Black" Angle="-90" SymbolFile="xsteel" SymbolIndex="17" />
+</DrawingDetail>

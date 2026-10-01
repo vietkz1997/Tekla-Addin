@@ -1,0 +1,223 @@
+/***************************************************************************/
+/* Rebar set related part attributes                                       */
+/***************************************************************************/
+part(0,"Part")
+{
+  tab_page("RebarSet")
+  {
+    attribute("ConcreteCovers", "albl_Concrete_covers_for_rebar_sets", label, "%s", no, none, "0.0", "0.0", 20, 0, 200) 
+    attribute("Top", "j_Top", label, "%s", no, none, "0.0", "0.0", 40, 30, 200) 	
+	attribute("__CovThickTop", "", distance, "%d", no, none, "0.0", "0.0", 560, 30, 180)
+    {
+        value("", 0)
+    }
+    attribute("Bottom", "j_Bottom", label, "%s", no, none, "0.0", "0.0", 40, 60, 200)     
+	attribute("__CovThickBottom", "", distance, "%d", no, none, "0.0", "0.0", 560, 60, 180)
+    {
+        value("", 0)
+    }
+	attribute("Sides", "j_Sides", label, "%s", no, none, "0.0", "0.0", 40, 90, 200)  
+    attribute("__CovThickSides", "", distance, "%d", no, none, "0.0", "0.0", 560, 90, 180)
+    {
+        value("", 0)
+    }	 
+  }
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete beam attributes                                                */
+/***************************************************************************/
+concrete_beam(0,"Concrete beam")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete spiral beam attributes                                         */
+/***************************************************************************/
+concrete_spiral_beam(0,"j_concrete_spiral_beam")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete column attributes                                              */
+/***************************************************************************/
+concrete_column(0,"Concrete column")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete pad footing attributes                                         */
+/***************************************************************************/
+pad_footing(0,"j_Pad_Footing")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete strip footing attributes                                       */
+/***************************************************************************/
+strip_footing(0,"j_Strip_Footing")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete panel attributes                                               */
+/***************************************************************************/
+concrete_panel(0,"j_Panel")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete slab attributes                                                */
+/***************************************************************************/
+concrete_slab(0,"j_Slab")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete lofted slab attributes                                         */
+/***************************************************************************/
+loftedslab(0,"j_lofted_slab")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Concrete item (BREP) attributes                                         */
+/***************************************************************************/
+concrete_item(0,"j_Concrete_Item")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Contour plate attributes  */
+/***************************************************************************/
+contourplate(0,"j_contour_plate")
+{
+  tab_page("RebarSet","albl_rebar_set",19)
+  modify(1)
+}
+/***************************************************************************/
+/* Surface Object Attributes                                               */
+/***************************************************************************/
+surface_object(0,"j_Surface_Object")
+{
+  tab_page("","albl_rebar_set",4)
+  {
+    attribute("__CovThickFace", "albl_Concrete_cover", distance, "%d", no, none, "0.0", "0.0") 
+    {
+        value("", 0)
+    }
+  }
+  modify(1)
+}
+/***************************************************************************/
+/* Rebar attributes                                                        */
+/***************************************************************************/
+rebar(0,"j_Reinforcing_bar")
+{
+  tab_page("","albl_rebar_set",4)
+  {
+	attribute("LengthAdjustment", "j_Length_adjustment", label, "%s", no, none, "0.0", "0.0", 20, 0, 200)  
+    attribute("Rounding", "j_Rounding", label, "%s", no, none, "0.0", "0.0", 40, 30)
+    attribute("StraightBars", "j_Straight_bars", label, "%s", no, none, "0.0", "0.0", 60, 60)
+    attribute("__ROUNDING_TYPE_ST", "", option, "%s", yes, none, "0.0", "0.0", 300, 60, 180)
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Down", 0)
+        value("j_Up", 0)
+        value("j_Nearest", 0)
+    }
+    attribute("__ROUNDING_ST", "", distance, "%d", yes, none, "0.0", "0.0", 560, 60, 180)
+    {
+        value("", 0)
+    }
+    attribute("FirstAndLastLegs", "j_First_and_last_legs", label, "%s", no, none, "0.0", "0.0", 60, 90)
+    attribute("__ROUNDING_TYPE_FL", "", option, "%s", yes, none, "0.0", "0.0", 300, 90, 180)
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Down", 0)
+        value("j_Up", 0)
+        value("j_Nearest", 0)
+    }
+    attribute("__ROUNDING_FL", "", distance, "%d", yes, none, "0.0", "0.0", 560, 90, 180)
+    {
+        value("", 0)
+    }
+    attribute("IntermediateLegs", "j_Intermediate_legs", label, "%s", no, none, "0.0", "0.0", 60, 120)
+    attribute("__ROUNDING_TYPE_IM", "", option, "%s", yes, none, "0.0", "0.0", 300, 120, 180)
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Down", 0)
+        value("j_Up", 0)
+        value("j_Nearest", 0)
+    }
+    attribute("__ROUNDING_IM", "", distance, "%d", yes, none, "0.0", "0.0", 560, 120, 180)
+    {
+        value("", 0)
+    }
+    attribute("RoundingUpInSplitters", "j_Rounding_up_in_splitters", label, "%s", no, none, "0.0", "0.0", 60, 150)
+    attribute("__ROUNDING_SPLITTER", "", distance, "%d", yes, none, "0.0", "0.0", 560, 150, 180)
+    {
+        value("", 0)
+    }
+    attribute("StepTapering", "j_Step_tapering", label, "%s", no, none, "0.0", "0.0", 40, 190)
+    attribute("StepTaperingType", "j_Type", label, "%s", no, none, "0.0", "0.0", 60, 220)
+    attribute("__STEPTAPER_TYPE", "", option, "%s", no, none,  "0.0", "0.0", 300, 220, 180,
+              "toggle_field:!StraightBars=0,1,3;!__STEPTAPER_ST=0,1,3;!FirstAndLastLegs=0,1,3;!__STEPTAPER_FL=0,1,3;!IntermediateLegs=0,1,3;!__STEPTAPER_IM=0,1,3;!__STEPTAPER_NOB=0,1,2")
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Distance", 0)
+        value("j_Number_of_bars", 0)
+    }
+    attribute("StraightBars", "j_Straight_bars", label, "%s", no, none, "0.0", "0.0", 60, 250)
+    attribute("__STEPTAPER_ST", "", distance, "%d", yes, none, "0.0", "0.0", 560, 250, 180)
+    {
+        value("", 0)
+    }
+    attribute("FirstAndLastLegs", "j_First_and_last_legs", label, "%s", no, none, "0.0", "0.0", 60, 280)
+    attribute("__STEPTAPER_FL", "", distance, "%d", yes, none, "0.0", "0.0", 560, 280, 180)
+    {
+        value("", 0)
+    }
+    attribute("IntermediateLegs", "j_Intermediate_legs", label, "%s", no, none, "0.0", "0.0", 60, 310)
+    attribute("__STEPTAPER_IM", "", distance, "%d", yes, none, "0.0", "0.0", 560, 310, 180)
+    {
+        value("", 0)
+    }
+    attribute("__STEPTAPER_NOB", "", integer, "%d", yes, none, "0.0", "0.0", 560, 220, 180)
+    {
+        value("", 0)
+    }
+  }
+  modify(1)
+}
+/***************************************************************************/
+/* Rebar set end detail modifier attributes                                */
+/***************************************************************************/
+rebarset_enddetail_modifier(0,"j_End_Detail_Modifier")
+{
+  tab_page("Parameters")
+  {  
+	attribute("ALIGN_BARS", "j_Align_bars_ends", option,"%s", no, none,"0.0", "0.0", 370, 0, 200)
+    {
+	    value("", 2)
+	    value("j_No", 0)
+	    value("j_Yes", 0)
+    }
+  }
+  tab_page("Parameters","jd_Parameters",91)
+  modify(1)
+}

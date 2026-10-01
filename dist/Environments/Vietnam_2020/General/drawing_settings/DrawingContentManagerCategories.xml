@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-16"?>
+<GridSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0">
+  <Contents AssemblyColumnsVisible="true" PartColumnsVisible="true" NeighborPartColumnsVisible="true" ConnectionColumnsVisible="true" PourColumnsVisible="true" WeldColumnsVisible="true" BoltColumnsVisible="true" ReinforcingColumnsVisible="true" NeighborReinforcingColumnsVisible="true">
+    <AssemblyColumns>
+      <ColumnInfo Header="translation:albl_Name" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="ASSEMBLY_NAME" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Position" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="ASSEMBLY_POS" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="Column 4" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList />
+      </ColumnInfo>
+    </AssemblyColumns>
+    <PartColumns>
+      <ColumnInfo Header="translation:albl_Name" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="NAME" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Position" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="PART_POS" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Class" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="CLASS_ATTR" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Profile" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="PROFILE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </PartColumns>
+    <NeighborPartColumns>
+      <ColumnInfo Header="translation:albl_Name" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="NAME" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Position" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="PART_POS" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Class" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="CLASS_ATTR" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Profile" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="PROFILE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </NeighborPartColumns>
+    <ConnectionColumns>
+      <ColumnInfo Header="translation:albl_Name" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="NAME" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Number" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="CONNECTION_NUMBER" Type="INT" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Group" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="CONNECTION_GROUP" Type="INT" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </ConnectionColumns>
+    <PourColumns>
+      <ColumnInfo Header="translation:albl_Name" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="POUR_UNIT.NAME" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Number" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="POUR_NUMBER" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Type" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="POUR_UNIT.OBJECT_TYPE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Material" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="MATERIAL" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </PourColumns>
+    <WeldColumns>
+      <ColumnInfo Header="translation:albl_Side" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="translation:albl_Above" Type="TEXT" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+          <Property Name="translation:albl_Below" Type="TEXT" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Type" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="WELD_TYPE1" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+          <Property Name="WELD_TYPE2" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Size" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="WELD_SIZE1" Type="DOUBLE" SubType="UNKNOWN" UserDefined="false" Accuracy="1" ImpAccuracy="1/16" Unit="mm" Justify="LEFT" />
+          <Property Name="WELD_SIZE2" Type="DOUBLE" SubType="UNKNOWN" UserDefined="false" Accuracy="1" ImpAccuracy="1/16" Unit="mm" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Asm_type" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="WELD_ASSEMBLYTYPE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Length" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="WELD_ACTUAL_LENGTH1" Type="DOUBLE" SubType="LENGTH" UserDefined="false" Accuracy="1" ImpAccuracy="1/16" Unit="mm" Justify="LEFT" />
+          <Property Name="WELD_ACTUAL_LENGTH2" Type="DOUBLE" SubType="LENGTH" UserDefined="false" Accuracy="1" ImpAccuracy="1/16" Unit="mm" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </WeldColumns>
+    <BoltColumns>
+      <ColumnInfo Header="translation:j_d_arl_Qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="NUMBER" Type="INT" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Diameter" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="DIAMETER" Type="DOUBLE" SubType="LENGTH" UserDefined="false" Accuracy="0" ImpAccuracy="" Unit="mm" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Length" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="LENGTH" Type="DOUBLE" SubType="LENGTH" UserDefined="false" Accuracy="0" ImpAccuracy="" Unit="mm" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Standard" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="TYPE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Type" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="SITE_WORKSHOP" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </BoltColumns>
+    <ReinforcingColumns>
+      <ColumnInfo Header="translation:albl_Name" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="NAME" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Position" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="REBAR_POS" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Shape" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="SHAPE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Size" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="SIZE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Length" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="LENGTH" Type="DOUBLE" SubType="LENGTH" UserDefined="false" Accuracy="0" ImpAccuracy="" Unit="mm" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </ReinforcingColumns>
+    <NeighborReinforcingColumns>
+      <ColumnInfo Header="translation:albl_Name" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="NAME" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Position" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="REBAR_POS" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Shape" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="SHAPE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Size" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="SIZE" Type="STRING" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="LEFT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Length" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="LENGTH" Type="DOUBLE" SubType="LENGTH" UserDefined="false" Accuracy="0" ImpAccuracy="" Unit="mm" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+      <ColumnInfo Header="translation:albl_Mark_qty" PropertyCombinationString="&#xA;" ShowEmptyProperties="true">
+        <PropertyList>
+          <Property Name="" Type="MARKQTY" SubType="UNKNOWN" UserDefined="false" Accuracy="" ImpAccuracy="" Unit="" Justify="RIGHT" />
+        </PropertyList>
+      </ColumnInfo>
+    </NeighborReinforcingColumns>
+  </Contents>
+</GridSettings>

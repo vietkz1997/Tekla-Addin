@@ -1,0 +1,284 @@
+/******* PRECAST SPECIFIC UDA DEFINITIONS *******/
+
+/*****************************************************************************
+object(int dummy_number, char *object_name)
+{
+
+    attribute( char *attribute_name,
+               char *label_text,
+               int   value_type,
+               char *field_format,
+               int   special_flag, 
+               int   check_switch,
+               char *attribute_value_max,
+               char *attribute_value_min )
+    {
+        value( char *attribute_value,
+               int   default_switch )
+    }
+    modify( int modify_type )
+}
+
+where object is part, welding or bolt
+
+****************************************************************************/
+
+/*---------------------------------------------------------------------------
+object(int *dummy_number, char *object_name)
+
+dummy_number:       dummy parameter
+object_name:        unique name for object (part || bolt || welding ...)
+
+---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------
+attribute( char *attribute_name,
+           char *label_text,
+           int   value_type,
+           char *field_format,
+           int   special_flag, 
+           int   check_switch,
+           char *attribute_value_max,
+           char *attribute_value_min )
+
+     attribute_name: unique name of attribute,
+                     used for inquiring attribute value
+         label_text: label text shown in dialog
+         value_type: integer || float || string || option || label || material ||
+                     profile || file_in || file_out || bolt_standard || bolt_size ||
+                     ratio || strain || angle || deformation || dimension ||
+                     radiusofinertia || area || areaperlength || sectionmodulus ||
+                     momentofinertia || torsionconstant || warpingconstant ||
+                     force || weight || distribload || springconstant || surfaceload
+                     strength || modulus || density || moment || distribmoment ||
+                     rotspringconst || temperature || thermdilatcoeff
+       field_format: C-like format definition for dialog field
+       special_flag: yes || no
+                     For parts         : consider in numering
+                     For drawings      : display the attribute's value in drawing list
+                     For other elements: (no effect)
+
+                     Note: Special flag is not considered for attribute "FixedMainView".
+
+       check_switch: none
+attribute_value_max: allowed maximum value of attribute
+attribute_value_min: allowed minimum value of attribute
+---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------
+value( char *attribute_value,
+       int   default_switch )
+
+attribute_value:     value of attribute
+default_switch:      In case of option menu attribute one of the values
+                     can be set to default value. If none is set to default
+                     the first one is taken. In case of value field
+                     default has no meaning (value is always default).
+                      	2 for default, which is not stored to the database
+                        1 for default, which is stored to the database
+                        0 for no default
+		     2 is recommended instead of 1 to avoid unnecessarily
+		     increasing the database size.
+
+---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------
+modify( int modify_type )
+
+modify_type:         0 modify not possible
+                     1 modify is possible
+---------------------------------------------------------------------------*/
+
+
+
+/***************************************************************************/
+/* User defined attributes for objects */
+/***************************************************************************/
+/***************************************************************************/
+/* Part attributes  */
+/***************************************************************************/
+part(0,"Part")
+{
+/* Common part attribute tab pages */
+tab_page("Unitechnik")
+  {
+    attribute("UT_product_type", "j_UT_product_type", option,"%s", no, none,"0.0", "0.0",374,0,190, "toggle_field:UT_UD_product_type=0,1,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21")
+    {
+        value("", 2)
+        value("j_00_element_and_roof_slab", 0)
+        value("j_01_double_wall_1", 0)
+        value("j_02_double_wall_2", 0)
+        value("j_03_span_plate", 0)
+        value("j_04_insulation_plate", 0)
+        value("j_05_facade_element", 0)
+        value("j_06_solid_floor", 0)
+        value("j_07_silo_plate", 0)
+        value("j_08_construction_part", 0)
+        value("j_09_solid_wall", 0)
+        value("j_10_hollow_floor", 0)
+        value("j_11_sandwich_element", 0)
+        value("j_16_brick_floor", 0)
+        value("j_19_brick_wall", 0)
+        value("j_21_zero_wall_(1st_stage)", 0)
+        value("j_22_zero_wall_(2nd_stage)", 0)
+        value("j_23_thermo_wall_(1st_stage)", 0) 
+        value("j_24_thermo_wall_(2nd_stage)", 0)
+       	value("j_36_light_concr_solid_floor", 0) 
+        value("j_39_light_concr_solid_wall", 0)
+        value("j_cast_unit_prefix_2digits", 0)
+        value("j_UD_product_type", 0)
+     }
+     attribute("UT_UD_product_type", "j_user_defined_product_type", integer,"%d", no, none,"0.0", "0.0",374,30,190)
+     {
+	value("", 0)
+     }
+     attribute("UT_PRODUCT_GROUP", "j_UT_product_group", string,"%s", no, none,"0.0", "0.0",374,60,190)
+     {
+	value("", 0)
+     }
+     attribute("UT_storey", "j_UT_storey", string,"%s", no, none,"0.0", "0.0",374,120,190)
+     {
+	value("", 0)
+     }	 	 
+     unique_attribute("UT_TRANSPORT_UNIT", "j_transport_unit_number", integer, "%d", no, none, "0.0", "0.0",374,150,190)
+     {
+	value("", 0)
+     }
+     unique_attribute("UT_TRANSPORT_SEQ", "j_transport_ass_seq_number", integer, "%d", no, none, "0.0", "0.0",374,180,190)
+     {
+	value("", 0)
+     }
+     unique_attribute("UT_ConcrIdent", "j_Concreting_identification_LOT_block", option, "%s", no, none, "0.0", "0.0",374,210,190)
+     {
+	 value("", 2)	
+	 value("j_no_special_treatment", 0)
+	 value("j_SB_shovel_concrete", 0)
+     }
+
+     picture("cs_m079obj_inp_extra_layer_thick", 205, 70, 10, 305)
+     attribute("label", "j_layer_split_thicknesses", label,"%s", no, none, "0.0", "0.0", 24, 290)
+
+     attribute("label", "j_thicknesses", label,"%s", no, none, "0.0", "0.0", 250, 290)
+     attribute("label", "j_rest", label,"%s", no, none, "0.0", "0.0", 250, 310)
+
+     attribute("UT_split_thickness2", "", distance, "%d", no, none, "0.0", "0.0", 250, 345, 105)
+     {
+        value("", 0)
+     }
+     attribute("UT_split_thickness1", "", distance, "%d", no, none, "0.0", "0.0", 250, 370, 105)
+     {
+        value("", 0)
+     }
+     attribute("label", "j_layer_not_to_export", label,"%s", no, none, "0.0", "0.0", 80, 445)
+     attribute("UT_split_thickness0", "", distance, "%d", no, none, "0.0", "0.0", 80, 415, 105)
+     {
+        value("", 0)
+     }
+     attribute("label", "j_name", label,"%s", no, none, "0.0", "0.0", 430, 290)	
+     attribute("UT_split_name3", "", string, "%s", no, none, "0.0", "0.0", 430, 320, 135)
+     {
+        value("0.0", 0)
+     }
+     attribute("UT_split_name2", "", string, "%s", no, none, "0.0", "0.0", 430, 345, 135)
+     {
+        value("0.0", 0)
+     }
+     attribute("UT_split_name1", "", string, "%s", no, none, "0.0", "0.0", 430, 370, 135)
+     {
+        value("0.0", 0)
+     }
+	   attribute("utProductAddition", "j_product_addition", option,"%s", no, none,"0.0", "0.0", 374, 90, 190)
+     {
+        value("j_standard_element", 1)
+        value("j_balcony", 0)
+        value("j_roof", 0)
+        value("j_plastered_element", 0)
+     }
+  }
+
+  
+ tab_page("Unitechnik","jd_Unitechnik_data",16)
+ modify(1)
+}
+
+
+/***************************************************************************/
+/* Concrete beam attributes  */
+/***************************************************************************/
+concrete_beam(0,"Concrete beam")
+{
+
+ tab_page("Unitechnik","jd_Unitechnik_data",16)
+
+ modify(1)
+}
+/***************************************************************************/
+/* Concrete column attributes  */
+/***************************************************************************/
+concrete_column(0,"Concrete column")
+{ 
+
+ tab_page("Unitechnik","jd_Unitechnik_data",16)
+
+ modify(1)
+}
+/***************************************************************************/
+/* Concrete panel attributes                                               */
+/***************************************************************************/
+concrete_panel(0,"j_Panel")
+{
+
+ tab_page("Unitechnik","jd_Unitechnik_data",16)
+
+ modify(1)
+}
+/***************************************************************************/
+/* Concrete slab attributes                                                */
+/***************************************************************************/
+concrete_slab(0,"j_Slab")
+{
+
+ tab_page("Unitechnik","jd_Unitechnik_data",16)
+
+ modify(1)
+}
+/***************************************************************************/
+/* Concrete item (BREP) attributes                                         */
+/***************************************************************************/
+concrete_item(0,"j_Concrete_Item")
+{
+
+ tab_page("Unitechnik","jd_Unitechnik_data",16)
+
+ modify(1)
+}
+/***************************************************************************/
+/* Surface Object Attributes                                                   */
+/***************************************************************************/
+surface_object(0,"j_Surface_Object")
+{
+  tab_page("","jd_Unitechnik_data",4)
+  {
+    attribute("UT_LINE_TYPE", "j_UT_Line_type", option, "%s", no, none, "0.0", "0.0", 380, 0, 120, "toggle_field:UT_LINE_TYPE_CODE=0,2,3,4,5,6,7,8,9,10,11,12,13,14")
+    { 
+        value("UT_LineAtributeType01.xbm", 1)
+        value("UT_LineAtributeType02.xbm", 0)
+        value("UT_LineAtributeType03.xbm", 0)
+        value("UT_LineAtributeType04.xbm", 0)
+        value("UT_LineAtributeType05.xbm", 0)
+        value("UT_LineAtributeType06.xbm", 0)
+        value("UT_LineAtributeType07.xbm", 0)
+        value("UT_LineAtributeType08.xbm", 0)
+        value("UT_LineAtributeType09.xbm", 0)
+        value("UT_LineAtributeType10.xbm", 0)
+        value("UT_LineAtributeType11.xbm", 0)
+        value("UT_LineAtributeType12.xbm", 0)
+        value("UT_LineAtributeType13.xbm", 0)
+        value("UT_LineAtributeType14.xbm", 0)
+    }
+    attribute("UT_LINE_TYPE_CODE", "j_UT_Line_attribute_code", string, "%d", no, none, "0.0", "0.0", 380, 60)
+    {
+        value("", 0)
+    }
+  }
+}

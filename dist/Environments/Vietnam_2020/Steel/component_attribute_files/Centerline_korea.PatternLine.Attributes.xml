@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <textBoxSize>
+    <Millimeters>10</Millimeters>
+  </textBoxSize>
+  <endComboBox>1</endComboBox>
+  <startComboBox>1</startComboBox>
+  <spacingComboBox>0</spacingComboBox>
+  <cLImageComboBox>Centerline</cLImageComboBox>
+  <scalingComboBox>0</scalingComboBox>
+  <comboBoxColor>0</comboBoxColor>
+  <verticalOffset>
+    <Millimeters>0</Millimeters>
+  </verticalOffset>
+</config>

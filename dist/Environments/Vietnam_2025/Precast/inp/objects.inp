@@ -1,0 +1,193 @@
+/***************************************************************************/
+/* Assembly attributes */
+/***************************************************************************/
+precastassembly(0, "jd_PrecastCastUnit")
+{
+  tab_page("","Precast_CM",8)
+  {
+        unique_attribute("label", "<설계관리>", label, "%s", no, none, "0.0", "0.0", 5, 25, 150)
+	unique_attribute("label", "날짜", label, "%s", no, none, "0.0", "0.0", 275, 0, 150)
+	unique_attribute("label", "설계납품", label, "%s", no, none, "0.0", "0.0", 125, 25, 150)
+    	unique_attribute("D_DELIVERY", "", date, "%d", no, none, "0.0", "0.0",275, 25, 100)
+    	{
+       	 	value("", 0)
+   	 }
+        unique_attribute("label", "설계변경", label, "%s", no, none, "0.0", "0.0", 125, 50, 150)
+    	unique_attribute("D_REVISION", "", date, "%d", no, none, "0.0", "0.0",275, 50, 100)
+    	{
+       	 	value("", 0)
+   	 }
+picture("line.bmp", 457, 10, 50, 80)
+unique_attribute("label", "<제작관리>", label, "%s", no, none, "0.0", "0.0", 5, 100, 150)
+	unique_attribute("label", "제작일(타설일)", label, "%s", no, none, "0.0", "0.0", 125, 100, 150)
+    	unique_attribute("F_FABRICATION", "", date, "%d", no, none, "0.0", "0.0",275, 100, 100)
+    	{
+       	 	value("", 0)
+   	 }
+unique_attribute("label", "육안검사", label, "%s", no, none, "0.0", "0.0", 125, 125, 150)
+    	unique_attribute("F_INSPECTION", "", date, "%d", no, none, "0.0", "0.0",275, 125, 100)
+    	{
+       	 	value("", 0)
+   	 }
+unique_attribute("label", "출하일", label, "%s", no, none, "0.0", "0.0", 125, 150, 150)
+    	unique_attribute("F_DELIVERY", "", date, "%d", no, none, "0.0", "0.0",275, 150, 100)
+    	{
+       	 	value("", 0)
+   	 }
+    unique_attribute("label", "반송일", label, "%s", no, none, "0.0", "0.0", 125, 175, 150)
+    	unique_attribute("F_RETURN", "", date, "%d", no, none, "0.0", "0.0",275, 175, 100)
+    	{
+       	 	value("", 0)
+   	 }
+picture("line.bmp", 457, 10, 50, 205)
+unique_attribute("label", "<시공관리>", label, "%s", no, none, "0.0", "0.0", 5, 230, 150)
+unique_attribute("label", "출하요청일", label, "%s", no, none, "0.0", "0.0", 125, 230, 150)
+    	unique_attribute("C_ORDER", "", date, "%d", no, none, "0.0", "0.0",275, 230, 100)
+       {
+       	 	value("", 0)
+   	}
+unique_attribute("label", "반입일", label, "%s", no, none, "0.0", "0.0", 125, 255, 150)
+    	unique_attribute("C_INCOME", "", date, "%d", no, none, "0.0", "0.0",275, 255, 100)
+       {
+       	 	value("", 0)
+   	}
+unique_attribute("label", "설치일", label, "%s", no, none, "0.0", "0.0", 125, 280, 150)
+    	unique_attribute("C_ERECTION", "", date, "%d", no, none, "0.0", "0.0",275, 280, 100)
+       {
+       	 	value("", 0)
+   	}
+
+	picture("line.bmp", 457, 10, 50, 320)
+
+ }
+  modify(1)
+}
+
+/***************************************************************************/
+/* Assembly attributes */
+/***************************************************************************/
+steelassembly(0, "jd_SteelAssembly")
+{
+  tab_page("","Steel_CM",81)
+{
+        unique_attribute("label", "<설계관리>", label, "%s", no, none, "0.0", "0.0", 5, 25, 150)
+	unique_attribute("label", "날짜", label, "%s", no, none, "0.0", "0.0", 275, 0, 150)
+	unique_attribute("label", "설계납품", label, "%s", no, none, "0.0", "0.0", 125, 25, 150)
+    	unique_attribute("D_DELIVERY", "", date, "%d", no, none, "0.0", "0.0",275, 25, 100)
+    	{
+       	 	value("", 0)
+   	 }
+        unique_attribute("label", "설계변경", label, "%s", no, none, "0.0", "0.0", 125, 50, 150)
+    	unique_attribute("D_REVISION", "", date, "%d", no, none, "0.0", "0.0",275, 50, 100)
+    	{
+       	 	value("", 0)
+   	 }
+picture("line.bmp", 457, 10, 50, 80)
+unique_attribute("label", "<제작관리>", label, "%s", no, none, "0.0", "0.0", 5, 100, 150)
+	unique_attribute("label", "제작일(타설일)", label, "%s", no, none, "0.0", "0.0", 125, 100, 150)
+    	unique_attribute("F_FABRICATION", "", date, "%d", no, none, "0.0", "0.0",275, 100, 100)
+    	{
+       	 	value("", 0)
+   	 }
+unique_attribute("label", "육안검사", label, "%s", no, none, "0.0", "0.0", 125, 125, 150)
+    	unique_attribute("F_INSPECTION", "", date, "%d", no, none, "0.0", "0.0",275, 125, 100)
+    	{
+       	 	value("", 0)
+   	 }
+unique_attribute("label", "출하일", label, "%s", no, none, "0.0", "0.0", 125, 150, 150)
+    	unique_attribute("F_DELIVERY", "", date, "%d", no, none, "0.0", "0.0",275, 150, 100)
+    	{
+       	 	value("", 0)
+   	 }
+    unique_attribute("label", "반송일", label, "%s", no, none, "0.0", "0.0", 125, 175, 150)
+    	unique_attribute("F_RETURN", "", date, "%d", no, none, "0.0", "0.0",275, 175, 100)
+    	{
+       	 	value("", 0)
+   	 }
+	picture("line.bmp", 457, 10, 50, 205)
+	unique_attribute("label", "<시공관리>", label, "%s", no, none, "0.0", "0.0", 5, 230, 150)
+unique_attribute("label", "출하요청일", label, "%s", no, none, "0.0", "0.0", 125, 230, 150)
+    	unique_attribute("C_ORDER", "", date, "%d", no, none, "0.0", "0.0",275, 230, 100)
+       {
+       	 	value("", 0)
+   	}
+unique_attribute("label", "반입일", label, "%s", no, none, "0.0", "0.0", 125, 255, 150)
+    	unique_attribute("C_INCOME", "", date, "%d", no, none, "0.0", "0.0",275, 255, 100)
+       {
+       	 	value("", 0)
+   	}
+unique_attribute("label", "설치일", label, "%s", no, none, "0.0", "0.0", 125, 280, 150)
+    	unique_attribute("C_ERECTION", "", date, "%d", no, none, "0.0", "0.0",275, 280, 100)
+       {
+       	 	value("", 0)
+   	}
+
+	picture("line.bmp", 457, 10, 50, 320)
+
+ }
+  modify(1)
+}
+/***************************************************************************/
+/* Cast in place cast unit attributes */
+/***************************************************************************/
+insituassembly(0, "jd_CastInPlaceCastUnit")
+{
+  tab_page("","RC_CM",82)
+{
+        unique_attribute("label", "<설계관리>", label, "%s", no, none, "0.0", "0.0", 5, 25, 150)
+	unique_attribute("label", "날짜", label, "%s", no, none, "0.0", "0.0", 275, 0, 150)
+	unique_attribute("label", "설계납품", label, "%s", no, none, "0.0", "0.0", 125, 25, 150)
+    	unique_attribute("D_DELIVERY", "", date, "%d", no, none, "0.0", "0.0",275, 25, 100)
+    	{
+       	 	value("", 0)
+   	 }
+        unique_attribute("label", "설계변경", label, "%s", no, none, "0.0", "0.0", 125, 50, 150)
+    	unique_attribute("D_REVISION", "", date, "%d", no, none, "0.0", "0.0",275, 50, 100)
+    	{
+       	 	value("", 0)
+   	 }
+picture("line.bmp", 457, 10, 50, 80)
+unique_attribute("label", "<제작관리>", label, "%s", no, none, "0.0", "0.0", 5, 100, 150)
+	unique_attribute("label", "제작일(타설일)", label, "%s", no, none, "0.0", "0.0", 125, 100, 150)
+    	unique_attribute("F_FABRICATION", "", date, "%d", no, none, "0.0", "0.0",275, 100, 100)
+    	{
+       	 	value("", 0)
+   	 }
+unique_attribute("label", "육안검사", label, "%s", no, none, "0.0", "0.0", 125, 125, 150)
+    	unique_attribute("F_INSPECTION", "", string, "%s", no, none, "0.0", "0.0",275, 125, 100)
+    	{
+       	 	value("", 0)
+   	 }
+unique_attribute("label", "출하일", label, "%s", no, none, "0.0", "0.0", 125, 150, 150)
+    	unique_attribute("F_DELIVERY", "", date, "%d", no, none, "0.0", "0.0",275, 150, 100)
+    	{
+       	 	value("", 0)
+   	 }
+    unique_attribute("label", "반송일", label, "%s", no, none, "0.0", "0.0", 125, 175, 150)
+    	unique_attribute("F_RETURN", "", date, "%d", no, none, "0.0", "0.0",275, 175, 100)
+    	{
+       	 	value("", 0)
+   	 }
+	picture("line.bmp", 457, 10, 50, 205)
+	unique_attribute("label", "<시공관리>", label, "%s", no, none, "0.0", "0.0", 5, 230, 150)
+unique_attribute("label", "출하요청일", label, "%s", no, none, "0.0", "0.0", 125, 230, 150)
+    	unique_attribute("C_ORDER", "", date, "%d", no, none, "0.0", "0.0",275, 230, 100)
+       {
+       	 	value("", 0)
+   	}
+unique_attribute("label", "반입일", label, "%s", no, none, "0.0", "0.0", 125, 255, 150)
+    	unique_attribute("C_INCOME", "", date, "%d", no, none, "0.0", "0.0",275, 255, 100)
+       {
+       	 	value("", 0)
+   	}
+unique_attribute("label", "설치일", label, "%s", no, none, "0.0", "0.0", 125, 280, 150)
+    	unique_attribute("C_ERECTION", "", date, "%d", no, none, "0.0", "0.0",275, 280, 100)
+       {
+       	 	value("", 0)
+   	}
+
+	picture("line.bmp", 457, 10, 50, 320)
+
+ }
+  modify(1)
+}

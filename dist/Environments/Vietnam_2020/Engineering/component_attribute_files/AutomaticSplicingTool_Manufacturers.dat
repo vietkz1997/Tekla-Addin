@@ -1,0 +1,11 @@
+/*											*/
+/*			This is an example of the Manufactures file 			*/
+/*			for the application 'AutomaticSplicingTool'			*/
+/*											*/
+
+/*Manufacturer		Grade		Size		MaxLength	LapLength	*/
+Company_A		SD400		10		8000		400
+Company_A		SD400		13		8000		400
+Company_A		SD400		16		10000		500
+Company_A		SD400		19		12000		500
+

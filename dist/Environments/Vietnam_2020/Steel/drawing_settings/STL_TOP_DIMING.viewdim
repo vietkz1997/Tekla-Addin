@@ -1,0 +1,4 @@
+encoding 949
+in_file "STL_TOP_DIMING"
+out_file "K_TOP_DIMING"
+aDimensioningPlugins ",albl_General,STL_TOP_DIMING,"

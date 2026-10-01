@@ -1,0 +1,388 @@
+
+template 
+{
+    name = "template_213";
+    type = TEXTUAL;
+    width = 100;
+    maxheight = 1000000000;
+    columns = (1, 1);
+    gap = 1;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "27.10.2006 08:38";
+    modified = "07.06.2013 10:19";
+    notes = "Converted template";
+
+    header _tmp_1100
+    {
+        name = "ReportHeader";
+        height = 10;
+
+        text _tmp_1101
+        {
+            name = "ConcreteListReport";
+            x1 = 12;
+            y1 = 7;
+            x2 = 12;
+            y2 = 7;
+            string = "Interactive Rebar Status Report";
+            fontname = "Courier New";
+            fontcolor = 162;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_1111
+        {
+            name = "Sys_Time";
+            location = (72, 9);
+            formula = "GetValue(\"DATE\")";
+            datatype = INTEGER;
+            class = "Date";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 13;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 164;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "mm/dd/yyyy";
+        };
+
+        text _tmp_4144
+        {
+            name = "Date";
+            x1 = 65;
+            y1 = 9;
+            x2 = 65;
+            y2 = 9;
+            string = "Date:";
+            fontname = "Courier New";
+            fontcolor = 162;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_933
+        {
+            name = "id:";
+            x1 = 47;
+            y1 = 1;
+            x2 = 47;
+            y2 = 1;
+            string = "GUID:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_992
+        {
+            name = "Click Below on the line item to ";
+            x1 = 1;
+            y1 = 4;
+            x2 = 1;
+            y2 = 4;
+            string = "Click Below on the line item to select the bar in the Model";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1300
+        {
+            name = "Text_1";
+            x1 = 13;
+            y1 = 1;
+            x2 = 13;
+            y2 = 1;
+            string = "Shape:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1414
+        {
+            name = "Text_3";
+            x1 = 29;
+            y1 = 1;
+            x2 = 29;
+            y2 = 1;
+            string = "Length:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1586
+        {
+            name = "Text_4";
+            x1 = 3;
+            y1 = 1;
+            x2 = 3;
+            y2 = 1;
+            string = "Mark:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1964
+        {
+            name = "Text_5";
+            x1 = 21;
+            y1 = 1;
+            x2 = 21;
+            y2 = 1;
+            string = "Size:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_1965
+        {
+            name = "_______________________________";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "____________________________________________________________________";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+    };
+
+    row _tmp_932
+    {
+        name = "REBAR";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "REBAR";
+        sorttype = COMBINE;
+
+        text _tmp_935
+        {
+            name = "Text";
+            x1 = 42;
+            y1 = 0;
+            x2 = 42;
+            y2 = 0;
+            string = "guid:";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.38;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_1907
+        {
+            name = "SIZE_field";
+            location = (21, 0);
+            formula = "GetValue(\"SIZE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1412
+        {
+            name = "LENGTH";
+            location = (28, 0);
+            formula = "GetValue(\"LENGTH\")";
+            datatype = INTEGER;
+            class = "Length";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = DESCENDING;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "mm";
+        };
+
+        valuefield _tmp_1243
+        {
+            name = "SHAPE_field";
+            location = (13, 0);
+            formula = "GetValue(\"SHAPE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_1587
+        {
+            name = "REBAR_POS_field";
+            location = (3, 0);
+            formula = "GetValue(\"REBAR_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_936
+        {
+            name = "ID_field";
+            location = (47, 0);
+            formula = "GetValue(\"GUID\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 40;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+    };
+};

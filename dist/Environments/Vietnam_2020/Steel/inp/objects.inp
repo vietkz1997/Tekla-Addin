@@ -1,0 +1,79 @@
+/***************************************************************************/
+/* Assembly attributes */
+/***************************************************************************/
+steelassembly(0, "jd_SteelAssembly")
+{
+ tab_page("","FAB/SITE(steel)",8)
+  {
+	attribute("label", "albl_Date", label, "%s", no, none, "0.0", "0.0", 400, 0, 150)
+	attribute("label", "albl_Fabrication_Management", label, "%s", no, none, "0.0", "0.0", 5, 25, 150)
+	attribute("label", "albl_Fit_Up", label, "%s", no, none, "0.0", "0.0", 50, 50, 150)
+    	attribute("F_FITUP", "", date, "%d", no, none, "0.0", "0.0", 400, 50, 150)
+    	{
+       	 	value("", 0)
+   	 }
+	attribute("label", "albl_Weld", label, "%s", no, none, "0.0", "0.0", 50, 75, 150)
+    	attribute("F_WELD", "", date, "%d", no, none, "0.0", "0.0", 400, 75, 150)
+    	{
+       	 	value("", 0)
+   	 }
+	attribute("label", "albl_Weld_Inspection", label, "%s", no, none, "0.0", "0.0", 50, 100, 150)
+    	attribute("F_WELD_INSPEC", "", date, "%d", no, none, "0.0", "0.0", 400, 100, 150)
+    	{
+       	 	value("", 0)
+   	 }
+	attribute("label", "albl_Painting", label, "%s", no, none, "0.0", "0.0", 50, 125, 150)
+    	attribute("F_PAINTING", "", date, "%d", no, none, "0.0", "0.0", 400, 125, 150)
+    	{
+       	 	value("", 0)
+   	 }
+
+	attribute("label", "albl_Inspection_Report", label, "%s", no, none, "0.0", "0.0", 50, 150, 150)
+    	attribute("F_REPORT", "", date, "%d", no, none, "0.0", "0.0", 400, 150, 150)
+    	{
+       	 	value("", 0)
+   	 }
+	
+	picture("line.bmp", 457, 10, 50, 175)
+
+	attribute("label", "albl_Packing_Management", label, "%s", no, none, "0.0", "0.0", 5, 200, 120)
+
+	attribute("label", "albl_Packing", label, "%s", no, none, "0.0", "0.0", 50, 225, 150)
+    	attribute("F_PACKAGE", "", date, "%d", no, none, "0.0", "0.0", 400, 225, 150)
+    	{
+       	 	value("", 0)
+   	 }
+	picture("line.bmp", 457, 10, 50, 250)
+
+	attribute("label", "albl_Delivery_Management", label, "%s", no, none, "0.0", "0.0", 5, 275, 120)
+	attribute("label", "albl_Out_Of_Factory", label, "%s", no, none, "0.0", "0.0", 50, 300, 150)
+    	attribute("F_DELIVERY_1", "", date, "%d", no, none, "0.0", "0.0", 400, 300, 150)
+    	{
+       	 	value("", 0)
+   	 }
+	attribute("label", "albl_Site_Arrival", label, "%s", no, none, "0.0", "0.0", 50, 325, 150)
+    	attribute("F_DELIVERY_2", "", date, "%d", no, none, "0.0", "0.0", 400, 325, 150)
+    	{
+       	 	value("", 0)
+   	 }
+
+	picture("line.bmp", 457, 10, 50, 350)
+
+	attribute("label", "albl_Site_Management", label, "%s", no, none, "0.0", "0.0", 5, 375, 120)
+
+	attribute("label", "albl_Arrival_Inspection", label, "%s", no, none, "0.0", "0.0", 50, 400, 150)
+    	attribute("F_DELIVERY_3", "", date, "%d", no, none, "0.0", "0.0", 400, 400, 150)
+    	{
+       	 	value("", 0)
+   	 }
+	attribute("label", "albl_Erection", label, "%s", no, none, "0.0", "0.0", 50, 425, 150)
+    	attribute("F_ERECTION", "", date, "%d", no, none, "0.0", "0.0", 400, 425, 150)
+    	{
+       	 	value("", 0)
+   	 }
+
+	picture("line.bmp", 457, 10, 50, 450)
+
+   }
+  modify(1)
+}

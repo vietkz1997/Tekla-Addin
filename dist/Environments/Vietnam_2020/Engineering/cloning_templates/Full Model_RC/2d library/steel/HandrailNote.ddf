@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Handrail Smooth to touch Note">
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0.5" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="None" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="-22.9612654584134" Y="9.28708568823704" />
+    <Point X="-17.8360797364924" Y="9.33038474373151" />
+    <Point X="-12.7108940145713" Y="9.373683799226" />
+    <Point X="-7.58570829265022" Y="9.41698285472047" />
+    <Point X="-2.46052257072915" Y="9.46028191021492" />
+    <Point X="2.66466315119237" Y="9.50358096570938" />
+    <Point X="7.78984887311344" Y="9.54688002120385" />
+    <Point X="12.9150345950345" Y="9.59017907669833" />
+    <Point X="18.0402203169556" Y="9.63347813219278" />
+    <Point X="23.1654060388767" Y="9.67677718768726" />
+    <Point X="23.5552088965931" Y="3.52831130831139" />
+    <Point X="23.9450117543097" Y="-2.62015457106452" />
+    <Point X="24.3348146120261" Y="-8.76862045044044" />
+    <Point X="19.0219460326828" Y="-8.79748648743889" />
+    <Point X="13.7090774533392" Y="-8.82635252443738" />
+    <Point X="8.39620887399542" Y="-8.85521856143585" />
+    <Point X="3.08334029465186" Y="-8.88408459843433" />
+    <Point X="-2.22952828469147" Y="-8.91295063543281" />
+    <Point X="-7.54239686403503" Y="-8.94181667243129" />
+    <Point X="-12.8552654433788" Y="-8.97068270942978" />
+    <Point X="-18.1681340227226" Y="-8.99954874642826" />
+    <Point X="-23.4810026020659" Y="-9.02841478342671" />
+    <Point X="-23.3077568875153" Y="-2.92324795953881" />
+    <Point X="-23.1345111729645" Y="3.18191886434911" />
+  </Polygon>
+  <Text InsertionPointX="-1.69183403461648" InsertionPointY="2.97102396198463" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Green" FrameType="Line" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="4.7625" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">SHOP NOTE:</Text>
+  <Text InsertionPointX="-0.429517514982763" InsertionPointY="-4.17516979639333" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">GRIND ALL ROUGH EDGES
+SMOOTH TO TOUCH</Text>
+</DrawingDetail>

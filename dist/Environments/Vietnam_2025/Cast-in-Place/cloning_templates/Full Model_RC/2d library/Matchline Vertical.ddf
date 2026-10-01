@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Adds a Vertical Matchline for Erection Plans that span across multiple sheets" Scale="0">
+  <Line StartPointX="0" StartPointY="108.684277197055" EndPointX="0" EndPointY="-9.87310631338541" Color="NewLine3" LineType="DashDot" Bulge="0" ArrowPosition="None" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="FilledArrow" />
+  <Text InsertionPointX="-2.70027065705028" InsertionPointY="21.696447807473" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="90" ArrowPosition="None" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">MATCHLINE SEE EXX</Text>
+</DrawingDetail>

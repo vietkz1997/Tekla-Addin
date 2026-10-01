@@ -1,0 +1,4336 @@
+
+template _tmp_85801
+{
+    name = "tpled_template4";
+    type = TEXTUAL;
+    width = 250;
+    maxheight = 250;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    fillstartfrom = TOPLEFT;
+    margins = (0, 1, 0, 1);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 4.1;
+    created = "08.03.2013 15:55";
+    modified = "01.04.2022 14:39";
+    notes = "";
+
+    header _tmp_85859
+    {
+        name = "Header";
+        height = 9;
+
+        text _tmp_14245
+        {
+            name = "text_343";
+            x1 = 0;
+            y1 = 8;
+            x2 = 0;
+            y2 = 8;
+            string = "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_14532
+        {
+            name = "Date";
+            location = (175, 6);
+            formula = "GetValue(\"TranslatedText(\"albl_Date_\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_14533
+        {
+            name = "ValueField_3";
+            location = (186, 6);
+            formula = "GetValue(\"DATE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_14648
+        {
+            name = "Text_2";
+            x1 = 0;
+            y1 = 1;
+            x2 = 0;
+            y2 = 1;
+            string = "==========================================================================================================================================================================================================";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_35
+        {
+            name = "텍스트_3";
+            x1 = 170;
+            y1 = 6;
+            x2 = 170;
+            y2 = 6;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_312
+        {
+            name = "TeklaStructuresWelding";
+            x1 = 1;
+            y1 = 6;
+            x2 = 1;
+            y2 = 6;
+            string = "TeklaStructures WELDING SUMMARY LIST";
+            fontname = "Arial";
+            fontcolor = 162;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_313
+        {
+            name = "Project name :";
+            x1 = 1;
+            y1 = 5;
+            x2 = 1;
+            y2 = 5;
+            string = "Project name :";
+            fontname = "Arial";
+            fontcolor = 162;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_314
+        {
+            name = "PROJECT.NAME_field";
+            location = (19, 5);
+            formula = "GetValue(\"PROJECT.NAME\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 40;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 165;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_315
+        {
+            name = "Phase";
+            x1 = 1;
+            y1 = 3;
+            x2 = 1;
+            y2 = 3;
+            string = "Phase :";
+            fontname = "Arial";
+            fontcolor = 162;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_316
+        {
+            name = "ValueField_2";
+            location = (19, 3);
+            formula = "GetValue(\"PHASE\")";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 165;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_317
+        {
+            name = "텍스트_1";
+            x1 = 17;
+            y1 = 5;
+            x2 = 17;
+            y2 = 5;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_318
+        {
+            name = "텍스트_2";
+            x1 = 17;
+            y1 = 3;
+            x2 = 17;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_319
+        {
+            name = "텍스트_5";
+            x1 = 1;
+            y1 = 4;
+            x2 = 1;
+            y2 = 4;
+            string = "Model name :";
+            fontname = "Arial";
+            fontcolor = 162;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_320
+        {
+            name = "텍스트_6";
+            x1 = 17;
+            y1 = 4;
+            x2 = 17;
+            y2 = 4;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_321
+        {
+            name = "Model";
+            location = (19, 4);
+            formula = "GetValue(\"PROJECT.MODEL\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 165;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+    };
+
+    pageheader _tmp_61
+    {
+        name = "페이지 머리말";
+        height = 5;
+        outputpolicy = NONE;
+
+        text _tmp_86
+        {
+            name = "텍스트";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_272
+        {
+            name = "WeldProperties";
+            location = (1, 3);
+            formula = "GetValue(\"TranslatedText(\"lbl_Welding_attributes\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_273
+        {
+            name = "텍스트_8";
+            x1 = 39;
+            y1 = 3;
+            x2 = 39;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_274
+        {
+            name = "Size_Label";
+            location = (41, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Size\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_275
+        {
+            name = "텍스트_9";
+            x1 = 51;
+            y1 = 3;
+            x2 = 51;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_276
+        {
+            name = "WeldType";
+            location = (53, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Weld_type\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_277
+        {
+            name = "텍스트_10";
+            x1 = 74;
+            y1 = 3;
+            x2 = 74;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_278
+        {
+            name = "Angle";
+            location = (76, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Angle\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_279
+        {
+            name = "텍스트_11";
+            x1 = 83;
+            y1 = 3;
+            x2 = 83;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_280
+        {
+            name = "Contour";
+            location = (85, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Contour\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_281
+        {
+            name = "텍스트_12";
+            x1 = 98;
+            y1 = 3;
+            x2 = 98;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_282
+        {
+            name = "Finish";
+            location = (100, 3);
+            formula = "GetValue(\"TranslatedText(\"j_d_jd_weld_Finish\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_283
+        {
+            name = "RootFace";
+            location = (115, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_root_face\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_284
+        {
+            name = "텍스트_13";
+            x1 = 113;
+            y1 = 3;
+            x2 = 113;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_285
+        {
+            name = "RootOpening";
+            location = (130, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_root_opening_\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_286
+        {
+            name = "텍스트_14";
+            x1 = 128;
+            y1 = 3;
+            x2 = 128;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_287
+        {
+            name = "텍스트_15";
+            x1 = 143;
+            y1 = 3;
+            x2 = 143;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_288
+        {
+            name = "ThroatThickness";
+            location = (145, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Throat_thickness\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_289
+        {
+            name = "텍스트_16";
+            x1 = 158;
+            y1 = 3;
+            x2 = 158;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_290
+        {
+            name = "텍스트_17";
+            x1 = 176;
+            y1 = 3;
+            x2 = 176;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_291
+        {
+            name = "Length";
+            location = (160, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Length\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_292
+        {
+            name = "ActualLength";
+            location = (178, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Actual_length\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_293
+        {
+            name = "텍스트_18";
+            x1 = 194;
+            y1 = 3;
+            x2 = 194;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_294
+        {
+            name = "Area_Label";
+            location = (196, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Units_Area\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_295
+        {
+            name = "텍스트_19";
+            x1 = 212;
+            y1 = 3;
+            x2 = 212;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_296
+        {
+            name = "Volume_Label";
+            location = (214, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Units_Volume\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_297
+        {
+            name = "텍스트_20";
+            x1 = 230;
+            y1 = 3;
+            x2 = 230;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_298
+        {
+            name = "Weld_Label2";
+            location = (232, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_WeldingsL\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 15;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_299
+        {
+            name = "ValueField_4";
+            location = (246, 4);
+            formula = "GetValue(\"PAGE\")";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = FALSE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 2;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_300
+        {
+            name = "Page";
+            location = (235, 4);
+            formula = "GetValue(\"TranslatedText(\"albl_Page\")\")+\":\"";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_301
+        {
+            name = "텍스트_82";
+            x1 = 26;
+            y1 = 3;
+            x2 = 26;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_168
+    {
+        name = "WELD_1";
+        height = 5;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "WELD";
+        sorttype = COMBINE;
+
+        valuefield _tmp_870
+        {
+            name = "AboveLabel";
+            location = (28, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Above_Line\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_871
+        {
+            name = "BelowLabel";
+            location = (28, 1);
+            formula = "GetValue(\"TranslatedText(\"albl_Below_Line\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_872
+        {
+            name = "ML1";
+            location = (28, 2);
+            formula = "find(GetValue(\"WELD_TEXT\"),\"\\n\")";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 2;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_873
+        {
+            name = "ML2";
+            location = (30, 2);
+            formula = "if (GetFieldFormula(\"ML1\") >= 0)\nthen\nfind(mid(GetValue(\"WELD_TEXT\"),GetFieldFormula(\"ML1\")+1),\"\\n\") + GetFieldFormula(\"ML1\") + 1\nelse\n-1\nendif";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 2;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_874
+        {
+            name = "ML3";
+            location = (32, 2);
+            formula = "if (GetFieldFormula(\"ML2\") >= 0)\nthen\nfind(mid(GetValue(\"WELD_TEXT\"),GetFieldFormula(\"ML2\")+1),\"\\n\") + GetFieldFormula(\"ML2\") + 1\nelse\n-1\nendif";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 2;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_875
+        {
+            name = "텍스트_23";
+            x1 = 39;
+            y1 = 3;
+            x2 = 39;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_876
+        {
+            name = "텍스트_24";
+            x1 = 39;
+            y1 = 2;
+            x2 = 39;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_877
+        {
+            name = "텍스트_25";
+            x1 = 39;
+            y1 = 1;
+            x2 = 39;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_878
+        {
+            name = "SIZE1";
+            location = (41, 3);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_SIZE1\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(GetValue(\"WELD_SIZE1\"),\"Length\",\"mm\", 2)\nendif\n";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_879
+        {
+            name = "SIZE2";
+            location = (41, 1);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WELD_SIZE2\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(GetValue(\"WELD_SIZE2\"),\"Length\",\"mm\", 2)\nendif\n";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_882
+        {
+            name = "WeldType1_1stLine";
+            location = (53, 3);
+            formula = "if match(GetValue(\"WELD_TYPE1\"),\"*W20*\") then GetValue(\"TranslatedText(\"albl_Melt_through\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W21*\") then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W22*\") then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W23*\") then GetValue(\"TranslatedText(\"albl_Edge\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W24*\") then GetValue(\"TranslatedText(\"albl_Surfacing\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W25*\") then GetValue(\"TranslatedText(\"albl_Fold_joint\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W26*\") then GetValue(\"TranslatedText(\"albl_Inclined_joint\")\")\n else GetFieldFormula(\"WT1_10_19\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_883
+        {
+            name = "WeldType1_2ndLine";
+            location = (53, 2);
+            formula = "if match(GetValue(\"WELD_TYPE1\"),\"*W21*\") then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W22*\") then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W5*\") then GetValue(\"TranslatedText(\"albl_with_broad_root\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W6*\") then GetValue(\"TranslatedText(\"albl_with_broad_root_face\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W18*\") then GetValue(\"TranslatedText(\"albl_butt_plus_fillet\")\")\n else \"\"\nendif\nendif\nendif\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_884
+        {
+            name = "WeldType2_1stLine";
+            location = (53, 1);
+            formula = "if match(GetValue(\"WELD_TYPE2\"),\"*W20*\") then GetValue(\"TranslatedText(\"albl_Melt_through\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W21*\") then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W22*\") then GetValue(\"TranslatedText(\"albl_Steep_flanked\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W23*\") then GetValue(\"TranslatedText(\"albl_Edge\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W24*\") then GetValue(\"TranslatedText(\"albl_Surfacing\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W25*\") then GetValue(\"TranslatedText(\"albl_Fold_joint\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W26*\") then GetValue(\"TranslatedText(\"albl_Inclined_joint\")\")\n else GetFieldFormula(\"WT2_10_19\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_885
+        {
+            name = "WeldType2_2ndLine";
+            location = (53, 0);
+            formula = "if match(GetValue(\"WELD_TYPE2\"),\"*W21*\") then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W22*\") then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W5*\") then GetValue(\"TranslatedText(\"albl_with_broad_root\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W6*\") then GetValue(\"TranslatedText(\"albl_with_broad_root_face\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W18*\") then GetValue(\"TranslatedText(\"albl_butt_plus_fillet\")\")\n else \"\"\nendif\nendif\nendif\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_886
+        {
+            name = "텍스트_28";
+            x1 = 51;
+            y1 = 3;
+            x2 = 51;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_887
+        {
+            name = "텍스트_29";
+            x1 = 51;
+            y1 = 2;
+            x2 = 51;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_888
+        {
+            name = "텍스트_30";
+            x1 = 51;
+            y1 = 1;
+            x2 = 51;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_889
+        {
+            name = "텍스트_31";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_890
+        {
+            name = "WT1_10_19";
+            location = (71, 3);
+            formula = "if match(GetValue(\"WELD_TYPE1\"),\"*W10*\") then GetValue(\"TranslatedText(\"albl_Fillet\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W11*\") then GetValue(\"TranslatedText(\"albl_Plug\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W12*\") then GetValue(\"TranslatedText(\"albl_Spot\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W13*\") then GetValue(\"TranslatedText(\"albl_Seam\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W14*\") then GetValue(\"TranslatedText(\"albl_Slot\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W15*\") then GetValue(\"TranslatedText(\"albl_Flare_bevel_groove\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W16*\") then GetValue(\"TranslatedText(\"albl_Flare_V_groove\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W17*\") then GetValue(\"TranslatedText(\"albl_Corner_flange\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W18*\") then GetValue(\"TranslatedText(\"albl_Single_bevel\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W19*\") then GetValue(\"TranslatedText(\"albl_Square_groove_plus_fillet\")\")\n else GetFieldFormula(\"WT1_1_9\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\n";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_891
+        {
+            name = "WT1_1_9";
+            location = (72, 3);
+            formula = "if match(GetValue(\"WELD_TYPE1\"),\"*W1*\") then GetValue(\"TranslatedText(\"albl_Edge_flange\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W2*\") then GetValue(\"TranslatedText(\"albl_Square_groove\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W3*\") then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W4*\") then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W5*\") then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W6*\") then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W7*\") then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W8*\") then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if match(GetValue(\"WELD_TYPE1\"),\"*W9*\") then GetValue(\"TranslatedText(\"albl_Bevel_backing\")\")\n else GetValue(\"WELD_TYPE1\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_892
+        {
+            name = "WT2_10_19";
+            location = (71, 1);
+            formula = "if match(GetValue(\"WELD_TYPE2\"),\"*W10*\") then GetValue(\"TranslatedText(\"albl_Fillet\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W11*\") then GetValue(\"TranslatedText(\"albl_Plug\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W12*\") then GetValue(\"TranslatedText(\"albl_Spot\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W13*\") then GetValue(\"TranslatedText(\"albl_Seam\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W14*\") then GetValue(\"TranslatedText(\"albl_Slot\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W15*\") then GetValue(\"TranslatedText(\"albl_Flare_bevel_groove\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W16*\") then GetValue(\"TranslatedText(\"albl_Flare_V_groove\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W17*\") then GetValue(\"TranslatedText(\"albl_Corner_flange\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W18*\") then GetValue(\"TranslatedText(\"albl_Single_bevel\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W19*\") then GetValue(\"TranslatedText(\"albl_Square_groove_plus_fillet\")\")\n else GetFieldFormula(\"WT2_1_9\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\n";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_893
+        {
+            name = "WT2_1_9";
+            location = (72, 1);
+            formula = "if match(GetValue(\"WELD_TYPE2\"),\"*W1*\") then GetValue(\"TranslatedText(\"albl_Edge_flange\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W2*\") then GetValue(\"TranslatedText(\"albl_Square_groove\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W3*\") then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W4*\") then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W5*\") then GetValue(\"TranslatedText(\"albl_Single_V_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W6*\") then GetValue(\"TranslatedText(\"albl_Single_bevel_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W7*\") then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W8*\") then GetValue(\"TranslatedText(\"albl_Single_U_butt\")\")\n else if match(GetValue(\"WELD_TYPE2\"),\"*W9*\") then GetValue(\"TranslatedText(\"albl_Bevel_backing\")\")\n else GetValue(\"WELD_TYPE2\")\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_894
+        {
+            name = "텍스트_32";
+            x1 = 74;
+            y1 = 3;
+            x2 = 74;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_895
+        {
+            name = "텍스트_33";
+            x1 = 74;
+            y1 = 2;
+            x2 = 74;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_896
+        {
+            name = "텍스트_34";
+            x1 = 74;
+            y1 = 1;
+            x2 = 74;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_897
+        {
+            name = "텍스트_35";
+            x1 = 74;
+            y1 = 0;
+            x2 = 74;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_898
+        {
+            name = "ANGLE2";
+            location = (76, 1);
+            formula = "GetValue(\"WELD_ANGLE2\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "Degrees";
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_899
+        {
+            name = "ANGLE1";
+            location = (76, 3);
+            formula = "GetValue(\"WELD_ANGLE1\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 4;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "Degrees";
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_900
+        {
+            name = "텍스트_36";
+            x1 = 83;
+            y1 = 3;
+            x2 = 83;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_901
+        {
+            name = "텍스트_37";
+            x1 = 83;
+            y1 = 2;
+            x2 = 83;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_902
+        {
+            name = "텍스트_38";
+            x1 = 83;
+            y1 = 1;
+            x2 = 83;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_903
+        {
+            name = "텍스트_39";
+            x1 = 83;
+            y1 = 0;
+            x2 = 83;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_904
+        {
+            name = "WELD_FILLTYPE1";
+            location = (85, 3);
+            formula = "if GetValue(\"WELD_FILLTYPE1\")== \"No\" then \"?\" \nelse\nGetValue(\"WELD_FILLTYPE1\")\nendif\n";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_905
+        {
+            name = "WELD_FILLTYPE2";
+            location = (85, 1);
+            formula = "GetValue(\"WELD_FILLTYPE2\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_906
+        {
+            name = "텍스트_40";
+            x1 = 98;
+            y1 = 3;
+            x2 = 98;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_907
+        {
+            name = "텍스트_41";
+            x1 = 98;
+            y1 = 2;
+            x2 = 98;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_908
+        {
+            name = "텍스트_42";
+            x1 = 98;
+            y1 = 1;
+            x2 = 98;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_909
+        {
+            name = "텍스트_43";
+            x1 = 98;
+            y1 = 0;
+            x2 = 98;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_910
+        {
+            name = "WELD_FINISH2";
+            location = (100, 1);
+            formula = "GetValue(\"WELD_FINISH2\")\n\n";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_911
+        {
+            name = "WELD_FINISH1";
+            location = (100, 3);
+            formula = "GetValue(\"WELD_FINISH1\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_912
+        {
+            name = "텍스트_44";
+            x1 = 113;
+            y1 = 3;
+            x2 = 113;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_913
+        {
+            name = "텍스트_45";
+            x1 = 113;
+            y1 = 2;
+            x2 = 113;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_914
+        {
+            name = "텍스트_46";
+            x1 = 113;
+            y1 = 1;
+            x2 = 113;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_915
+        {
+            name = "텍스트_47";
+            x1 = 113;
+            y1 = 0;
+            x2 = 113;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_916
+        {
+            name = "FACE1";
+            location = (115, 3);
+            formula = "if GetValue(\"WELD_ROOT_FACE_THICKNESS\")>0 then\n GetValue(\"WELD_ROOT_FACE_THICKNESS\")\n else\n \"\"\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_917
+        {
+            name = "FACE2";
+            location = (115, 1);
+            formula = "if GetValue(\"WELD_ROOT_FACE_THICKNESS2\")>0 then\n GetValue(\"WELD_ROOT_FACE_THICKNESS2\")\n else\n \"\"\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_918
+        {
+            name = "텍스트_48";
+            x1 = 128;
+            y1 = 3;
+            x2 = 128;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_919
+        {
+            name = "텍스트_49";
+            x1 = 128;
+            y1 = 2;
+            x2 = 128;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_920
+        {
+            name = "텍스트_50";
+            x1 = 128;
+            y1 = 1;
+            x2 = 128;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_921
+        {
+            name = "텍스트_51";
+            x1 = 128;
+            y1 = 0;
+            x2 = 128;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_922
+        {
+            name = "OPENING1";
+            location = (130, 3);
+            formula = "if GetValue(\"WELD_ROOT_OPENING\")>0 then\n GetValue(\"WELD_ROOT_OPENING\")\n else\n \"\"\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_923
+        {
+            name = "OPENING2";
+            location = (130, 1);
+            formula = "if GetValue(\"WELD_ROOT_OPENING2\")>0 then\n GetValue(\"WELD_ROOT_OPENING2\")\n else\n \"\"\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_924
+        {
+            name = "텍스트_52";
+            x1 = 143;
+            y1 = 3;
+            x2 = 143;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_925
+        {
+            name = "텍스트_53";
+            x1 = 143;
+            y1 = 2;
+            x2 = 143;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_926
+        {
+            name = "텍스트_54";
+            x1 = 143;
+            y1 = 1;
+            x2 = 143;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_927
+        {
+            name = "텍스트_55";
+            x1 = 143;
+            y1 = 0;
+            x2 = 143;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_928
+        {
+            name = "EffectiveThroat1";
+            location = (145, 3);
+            formula = "if GetValue(\"WELD_EFFECTIVE_THROAT\")>0 then\n GetValue(\"WELD_EFFECTIVE_THROAT\")\n else\n \"\"\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_929
+        {
+            name = "EffectiveThroat2";
+            location = (145, 1);
+            formula = "if GetValue(\"WELD_EFFECTIVE_THROAT2\")>0 then\n GetValue(\"WELD_EFFECTIVE_THROAT2\")\n else\n \"\"\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_930
+        {
+            name = "텍스트_56";
+            x1 = 158;
+            y1 = 3;
+            x2 = 158;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_931
+        {
+            name = "텍스트_57";
+            x1 = 158;
+            y1 = 2;
+            x2 = 158;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_932
+        {
+            name = "텍스트_58";
+            x1 = 158;
+            y1 = 1;
+            x2 = 158;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_933
+        {
+            name = "텍스트_59";
+            x1 = 158;
+            y1 = 0;
+            x2 = 158;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_934
+        {
+            name = "WELD_ACTUAL_LENGTH1_field_1";
+            location = (160, 3);
+            formula = "if GetValue(\"WELD_INCREMENT_AMOUNT1\") > 0 then\nGetValue(\"WELD_INCREMENT_AMOUNT1\") + \" x \" + GetValue(\"WELD_LENGTH1\")\nelse\nGetValue(\"WELD_LENGTH1\")\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_935
+        {
+            name = "WELD_ACTUAL_LENGTH_field2";
+            location = (160, 1);
+            formula = "if GetValue(\"WELD_INCREMENT_AMOUNT2\") > 0 then\nGetValue(\"WELD_INCREMENT_AMOUNT2\") + \" x \" + GetValue(\"WELD_LENGTH2\")\nelse\nGetValue(\"WELD_LENGTH2\")\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_936
+        {
+            name = "텍스트_60";
+            x1 = 176;
+            y1 = 3;
+            x2 = 176;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_937
+        {
+            name = "텍스트_62";
+            x1 = 176;
+            y1 = 1;
+            x2 = 176;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_938
+        {
+            name = "텍스트_63";
+            x1 = 176;
+            y1 = 0;
+            x2 = 176;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_939
+        {
+            name = "ValueField_7";
+            location = (179, 3);
+            formula = "GetValue(\"WELD_ACTUAL_LENGTH1\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_940
+        {
+            name = "ValueField_8";
+            location = (179, 1);
+            formula = "GetValue(\"WELD_ACTUAL_LENGTH2\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_941
+        {
+            name = "Text_1";
+            x1 = 188;
+            y1 = 3;
+            x2 = 188;
+            y2 = 3;
+            string = "mm";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_942
+        {
+            name = "Text_5";
+            x1 = 188;
+            y1 = 1;
+            x2 = 188;
+            y2 = 1;
+            string = "mm";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_943
+        {
+            name = "WeldLength";
+            location = (185, 2);
+            formula = "GetValue(\"WELD_ACTUAL_LENGTH1\")+GetValue(\"WELD_ACTUAL_LENGTH2\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 1;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = CLOSESUM;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_944
+        {
+            name = "텍스트_64";
+            x1 = 167;
+            y1 = 3;
+            x2 = 167;
+            y2 = 3;
+            string = "mm";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_945
+        {
+            name = "텍스트_65";
+            x1 = 167;
+            y1 = 1;
+            x2 = 167;
+            y2 = 1;
+            string = "mm";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_946
+        {
+            name = "텍스트_61";
+            x1 = 176;
+            y1 = 2;
+            x2 = 176;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_947
+        {
+            name = "텍스트_66";
+            x1 = 194;
+            y1 = 3;
+            x2 = 194;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_948
+        {
+            name = "텍스트_67";
+            x1 = 194;
+            y1 = 1;
+            x2 = 194;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_949
+        {
+            name = "텍스트_68";
+            x1 = 194;
+            y1 = 0;
+            x2 = 194;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_950
+        {
+            name = "텍스트_69";
+            x1 = 194;
+            y1 = 2;
+            x2 = 194;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_951
+        {
+            name = "Text_31";
+            x1 = 205;
+            y1 = 3;
+            x2 = 205;
+            y2 = 3;
+            string = "mm2";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_952
+        {
+            name = "WELD_CROSSSECTION_AREA1_field";
+            location = (198, 3);
+            formula = "GetValue(\"WELD_CROSSSECTION_AREA1\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Area";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm2";
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_953
+        {
+            name = "WELD_CROSSSECTION_AREA2_field";
+            location = (198, 1);
+            formula = "GetValue(\"WELD_CROSSSECTION_AREA2\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Area";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm2";
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_954
+        {
+            name = "Text_32";
+            x1 = 205;
+            y1 = 1;
+            x2 = 205;
+            y2 = 1;
+            string = "mm2";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_955
+        {
+            name = "WeldTextLine4";
+            location = (196, 0);
+            formula = "if (GetFieldFormula(\"ML3\") >= 0)\nthen\nmid(GetValue(\"WELD_TEXT\"),GetFieldFormula(\"ML3\"))\nelse\n\"\"\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_956
+        {
+            name = "텍스트_70";
+            x1 = 212;
+            y1 = 3;
+            x2 = 212;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_957
+        {
+            name = "텍스트_71";
+            x1 = 212;
+            y1 = 2;
+            x2 = 212;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_958
+        {
+            name = "텍스트_72";
+            x1 = 212;
+            y1 = 1;
+            x2 = 212;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_959
+        {
+            name = "텍스트_74";
+            x1 = 230;
+            y1 = 3;
+            x2 = 230;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_960
+        {
+            name = "텍스트_75";
+            x1 = 230;
+            y1 = 2;
+            x2 = 230;
+            y2 = 2;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_961
+        {
+            name = "텍스트_76";
+            x1 = 230;
+            y1 = 1;
+            x2 = 230;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_962
+        {
+            name = "텍스트_77";
+            x1 = 230;
+            y1 = 0;
+            x2 = 230;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_963
+        {
+            name = "WELD_VOLUME_field";
+            location = (214, 3);
+            formula = "GetValue(\"WELD_VOLUME\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm3";
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_964
+        {
+            name = "Text_34";
+            x1 = 223;
+            y1 = 3;
+            x2 = 223;
+            y2 = 3;
+            string = "mm3";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_965
+        {
+            name = "ID";
+            location = (232, 3);
+            formula = "\"GUID: \"+GetValue(\"GUID\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_966
+        {
+            name = "WELD_TEXT1";
+            location = (232, 2);
+            formula = "if \n(GetFieldFormula(\"ML1\") >= 0)\nthen\nmid(GetValue(\"WELD_TEXT\"),0,GetFieldFormula(\"ML1\"))\nelse\nGetValue(\"WELD_TEXT\")\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_967
+        {
+            name = "WELD_TEXT2";
+            location = (232, 1);
+            formula = "if \n(GetFieldFormula(\"ML1\") >= 0)\nthen \n  if (GetFieldFormula(\"ML2\") >= 0)\n  then\n  mid(GetValue(\"WELD_TEXT\"),GetFieldFormula(\"ML1\")+1,GetFieldFormula(\"ML2\")-GetFieldFormula(\"ML1\")-1)\n  else\n  mid(GetValue(\"WELD_TEXT\"),GetFieldFormula(\"ML1\")+1)\n  endif\nelse\n\"\"\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_968
+        {
+            name = "WELD_TEXT3";
+            location = (232, 0);
+            formula = "if \n(GetFieldFormula(\"ML2\") >= 0)\nthen \n  if (GetFieldFormula(\"ML3\") >= 0)\n  then\n  mid(GetValue(\"WELD_TEXT\"),GetFieldFormula(\"ML2\")+1,GetFieldFormula(\"ML3\")-GetFieldFormula(\"ML2\")-1)\n  else\n  mid(GetValue(\"WELD_TEXT\"),GetFieldFormula(\"ML2\")+1)\n  endif\nelse\n\"\"\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = FALSE;
+            angle = 0;
+            length = 15;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_969
+        {
+            name = "텍스트_73";
+            x1 = 212;
+            y1 = 0;
+            x2 = 212;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_970
+        {
+            name = "텍스트_83";
+            x1 = 26;
+            y1 = 3;
+            x2 = 26;
+            y2 = 3;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_971
+        {
+            name = "텍스트_84";
+            x1 = 26;
+            y1 = 1;
+            x2 = 26;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_972
+        {
+            name = "WeldAssemblyType";
+            location = (1, 3);
+            formula = "GetValue(\"WELD_ASSEMBLYTYPE\")+\" \"+GetValue(\"TranslatedText(\"albl_Weld\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 24;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_973
+        {
+            name = "WeldIntermitten_EdgeAround";
+            location = (1, 2);
+            formula = "GetValue(\"WELD_INTERMITTENT\")+\" \"+GetValue(\"WELD_EDGE_AROUND\")+\" \"+GetValue(\"TranslatedText(\"albl_Weld\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 24;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+    };
+
+    pagefooter _tmp_123455
+    {
+        name = "PageFooter";
+        height = 3;
+        outputpolicy = NONE;
+
+        valuefield _tmp_123813
+        {
+            name = "PageSum";
+            location = (179, 1);
+            formula = "Sum(\"WeldLength\")\n\n";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_38054
+        {
+            name = "Text_3";
+            x1 = 0;
+            y1 = 2;
+            x2 = 0;
+            y2 = 2;
+            string = "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_89867
+        {
+            name = "Text_22";
+            x1 = 188;
+            y1 = 1;
+            x2 = 188;
+            y2 = 1;
+            string = "mm";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_94535
+        {
+            name = "ValueField_5";
+            location = (214, 1);
+            formula = "Sum(\"WELD_VOLUME_field\")\r\n\r\n";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm3";
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_95209
+        {
+            name = "Text_35";
+            x1 = 223;
+            y1 = 1;
+            x2 = 223;
+            y2 = 1;
+            string = "mm3";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_3
+        {
+            name = "ValueField_1";
+            location = (160, 1);
+            formula = "GetValue(\"TranslatedText(\"albl_Page\")\")+\" \"+GetValue(\"TranslatedText(\"albl_Total\")\")+\":\"";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_405
+        {
+            name = "텍스트_78";
+            x1 = 212;
+            y1 = 1;
+            x2 = 212;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_409
+        {
+            name = "텍스트_80";
+            x1 = 194;
+            y1 = 1;
+            x2 = 194;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1020
+        {
+            name = "텍스트_4";
+            x1 = 158;
+            y1 = 1;
+            x2 = 158;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1022
+        {
+            name = "텍스트_21";
+            x1 = 176;
+            y1 = 1;
+            x2 = 176;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1030
+        {
+            name = "텍스트_26";
+            x1 = 143;
+            y1 = 1;
+            x2 = 143;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1031
+        {
+            name = "텍스트_27";
+            x1 = 128;
+            y1 = 1;
+            x2 = 128;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1032
+        {
+            name = "텍스트_85";
+            x1 = 113;
+            y1 = 1;
+            x2 = 113;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1033
+        {
+            name = "텍스트_86";
+            x1 = 98;
+            y1 = 1;
+            x2 = 98;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1034
+        {
+            name = "텍스트_87";
+            x1 = 83;
+            y1 = 1;
+            x2 = 83;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1035
+        {
+            name = "텍스트_88";
+            x1 = 74;
+            y1 = 1;
+            x2 = 74;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1036
+        {
+            name = "텍스트_89";
+            x1 = 51;
+            y1 = 1;
+            x2 = 51;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1037
+        {
+            name = "텍스트_90";
+            x1 = 39;
+            y1 = 1;
+            x2 = 39;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1038
+        {
+            name = "텍스트_91";
+            x1 = 26;
+            y1 = 1;
+            x2 = 26;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    footer _tmp_111570
+    {
+        name = "Footer";
+        height = 3;
+
+        valuefield _tmp_91085
+        {
+            name = "TotLength";
+            location = (179, 1);
+            formula = "Total(\"WeldLength\")\r\n\r\n";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Length";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm";
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_95336
+        {
+            name = "TotVolume";
+            location = (214, 1);
+            formula = "Total(\"WELD_VOLUME_field\")\r\r\n\r\r\n";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Volume";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm3";
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_91212
+        {
+            name = "Text_25";
+            x1 = 188;
+            y1 = 1;
+            x2 = 188;
+            y2 = 1;
+            string = "mm";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_95461
+        {
+            name = "Text_36";
+            x1 = 223;
+            y1 = 1;
+            x2 = 223;
+            y2 = 1;
+            string = "mm3";
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_38065
+        {
+            name = "Text_4";
+            x1 = 0;
+            y1 = 2;
+            x2 = 0;
+            y2 = 2;
+            string = "==========================================================================================================================================================================================================";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_1
+        {
+            name = "Total_Label";
+            location = (162, 1);
+            formula = "GetValue(\"TranslatedText(\"albl_Total\")\")+\":\"";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_406
+        {
+            name = "텍스트_79";
+            x1 = 212;
+            y1 = 1;
+            x2 = 212;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_410
+        {
+            name = "텍스트_81";
+            x1 = 194;
+            y1 = 1;
+            x2 = 194;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1018
+        {
+            name = "텍스트_7";
+            x1 = 158;
+            y1 = 1;
+            x2 = 158;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1024
+        {
+            name = "텍스트_22";
+            x1 = 176;
+            y1 = 1;
+            x2 = 176;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1039
+        {
+            name = "텍스트_92";
+            x1 = 26;
+            y1 = 1;
+            x2 = 26;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1040
+        {
+            name = "텍스트_93";
+            x1 = 39;
+            y1 = 1;
+            x2 = 39;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1042
+        {
+            name = "텍스트_94";
+            x1 = 51;
+            y1 = 1;
+            x2 = 51;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1043
+        {
+            name = "텍스트_95";
+            x1 = 74;
+            y1 = 1;
+            x2 = 74;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1044
+        {
+            name = "텍스트_96";
+            x1 = 83;
+            y1 = 1;
+            x2 = 83;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1045
+        {
+            name = "텍스트_97";
+            x1 = 98;
+            y1 = 1;
+            x2 = 98;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1046
+        {
+            name = "텍스트_98";
+            x1 = 113;
+            y1 = 1;
+            x2 = 113;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1047
+        {
+            name = "텍스트_99";
+            x1 = 128;
+            y1 = 1;
+            x2 = 128;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_1048
+        {
+            name = "텍스트_100";
+            x1 = 143;
+            y1 = 1;
+            x2 = 143;
+            y2 = 1;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+};

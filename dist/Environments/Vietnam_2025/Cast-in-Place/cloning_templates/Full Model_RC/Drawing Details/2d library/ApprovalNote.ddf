@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Adds a typical Approval Note">
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0.5" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="None" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="-22.2187628901627" Y="8.44331582027293" />
+    <Point X="-17.0935771682582" Y="8.4866148757615" />
+    <Point X="-11.9683914463537" Y="8.52991393125008" />
+    <Point X="-6.84320572444924" Y="8.57321298673865" />
+    <Point X="-1.71802000254477" Y="8.61651204222721" />
+    <Point X="3.40716571935972" Y="8.65981109771578" />
+    <Point X="8.53235144126419" Y="8.70311015320434" />
+    <Point X="13.6575371631687" Y="8.74640920869293" />
+    <Point X="18.7827228850732" Y="8.78970826418149" />
+    <Point X="23.9079086069776" Y="8.83300731967006" />
+    <Point X="24.2977114646999" Y="2.6845414402942" />
+    <Point X="24.6875143224222" Y="-3.46392443908167" />
+    <Point X="25.0773171801446" Y="-9.61239031845755" />
+    <Point X="19.7644486008182" Y="-9.64125635544991" />
+    <Point X="14.4515800214919" Y="-9.67012239244228" />
+    <Point X="9.13871144216555" Y="-9.69898842943464" />
+    <Point X="3.82584286283922" Y="-9.727854466427" />
+    <Point X="-1.48702571648712" Y="-9.75672050341937" />
+    <Point X="-6.79989429581345" Y="-9.78558654041175" />
+    <Point X="-12.1127628751398" Y="-9.81445257740412" />
+    <Point X="-17.4256314544661" Y="-9.84331861439648" />
+    <Point X="-22.7385000337925" Y="-9.87218465138884" />
+    <Point X="-22.5652543192492" Y="-3.76701782750159" />
+    <Point X="-22.392008604706" Y="2.33814899638567" />
+  </Polygon>
+  <Text InsertionPointX="2.22690662321916" InsertionPointY="-3.68893099156105" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">PLEASE VERIFY/PROVIDE</Text>
+  <Text InsertionPointX="-1.99991697203478" InsertionPointY="2.12725409402051" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="4.7625" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">APPROVER:</Text>
+</DrawingDetail>

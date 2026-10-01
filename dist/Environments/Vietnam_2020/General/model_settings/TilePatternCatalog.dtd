@@ -1,0 +1,75 @@
+<!-- The root element.  -->
+<!ELEMENT TilePatternCatalog  (TilePattern*)>
+
+<!-- 
+    This element represents a single TilePattern. 
+    A TilePattern must have HOffset and VOffset elements and at least one 
+    Tile element. Parameter elements are optional.
+-->
+<!ELEMENT TilePattern (Parameter*, HOffset, VOffset, Color?, Tile+)>
+<!ATTLIST TilePattern 
+                Name CDATA #REQUIRED
+                LinearUnit (MILLIMETER|CENTIMETER|METER|INCH|FOOT) "MILLIMETER"
+                AngleUnit (RADIAN|DEGREE) "DEGREE"
+>
+<!-- 
+    The ParameterName is an identifier, which can be used in equations just like
+    the more general parameters.
+-->
+
+<!-- Horizontal Offset Vector -->
+<!ELEMENT HOffset (Vector2D)>
+
+<!-- Vertical Offset Vector -->
+<!ELEMENT VOffset (Vector2D)>
+
+<!-- 
+    The default color is black. The integer values given in this element are default
+    values. They can be changed in the dialog. Use space as the separator.
+    Example: <Color Color="128 102 77" />
+-->
+<!ELEMENT Color EMPTY>
+<!ATTLIST Color 
+                Color CDATA "0 0 0"
+>
+
+<!-- 
+    A Parameter is something you can use in the values of attributes of 
+    all the elements in a TilePattern. The name of the Parameter is replaced
+    with its value from the dialog and then the value of the attribute is 
+    calculated.
+-->
+<!ELEMENT Parameter (Label)>
+<!ATTLIST Parameter
+        Name CDATA #REQUIRED
+		UnitType (Length|Angle|Color) "Length"
+		DefaultValue  CDATA #REQUIRED
+>
+
+<!-- 
+     The content is first transcoded to local code page and then spaces and
+     new lines are replaced with spaces. Then spaces are removed from the 
+     beginning and the end of the string. 
+-->
+<!ELEMENT Label (#PCDATA)>
+
+<!--
+    Represents one tile in the pattern. The unit of the attributes is given
+    in the attributes of the pattern.
+-->
+<!ELEMENT Tile (TileOrigin, Color?)>
+<!ATTLIST Tile
+		Angle     CDATA  #REQUIRED
+		Width     CDATA  #REQUIRED
+		Height    CDATA  #REQUIRED
+		Thickness CDATA  #REQUIRED
+>
+
+<!ELEMENT TileOrigin (Vector2D)>
+
+<!ELEMENT Vector2D EMPTY>
+<!ATTLIST Vector2D
+            X CDATA "0"
+            Y CDATA "0"
+>
+

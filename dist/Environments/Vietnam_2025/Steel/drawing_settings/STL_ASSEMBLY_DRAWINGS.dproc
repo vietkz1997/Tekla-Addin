@@ -1,0 +1,84 @@
+/* First filter out columns and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_COLUMN)
+set_filter(STL_COLUMN)
+create_drawings()
+
+/* Then filter out beams and create those assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_GIRDER)
+set_filter(STL_GIRDER)
+create_drawings()
+
+/* Then filter out beams and create those assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_POST)
+set_filter(STL_POST)
+create_drawings()
+
+/* Then filter out chs horizontal bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_BEAM)
+set_filter(STL_BEAM)
+create_drawings()
+
+/* Then filter out chs vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_JOIST)
+set_filter(STL_JOIST)
+create_drawings()
+
+/* Then filter out remainder of horizontal bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_HORBRACE)
+set_filter(STL_HORBRACE)
+create_drawings()
+
+/* Then filter out remainder of vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_VERBRACE)
+set_filter(STL_VERBRACE)
+create_drawings()
+
+/* Then filter out remainder of vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_STAIR)
+set_filter(STL_STAIR)
+create_drawings()
+
+/* Then filter out remainder of vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_HANDRAIL)
+set_filter(STL_HANDRAIL)
+create_drawings()
+
+/* Then filter out remainder of vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_TRIM)
+set_filter(STL_TRIM)
+create_drawings()
+
+/* Then filter out remainder of vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_GIRTH)
+set_filter(STL_GIRTH)
+create_drawings()
+
+/* Then filter out remainder of vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_PURLIN)
+set_filter(STL_PURLIN)
+create_drawings()
+
+/* Then filter out remainder of vertical bracing and create the assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(STL_FRAME)
+set_filter(STL_FRAME)
+create_drawings()
+
+/* Create rest of assembly drawings */
+set_drawing_type(assembly)
+set_drawing_attributes(standard)
+set_filter(standard)
+create_drawings()
+

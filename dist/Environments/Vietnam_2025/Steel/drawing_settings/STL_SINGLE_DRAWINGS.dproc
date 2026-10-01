@@ -1,0 +1,19 @@
+/* Then filter out chs horizontal bracing and create the assembly drawings */
+set_drawing_type(single)
+set_drawing_attributes(STL_PLATE)
+set_filter(STL_PLATE)
+create_drawings()
+
+/* Then filter out chs vertical bracing and create the assembly drawings */
+set_drawing_type(single)
+set_drawing_attributes(STL_SHAPE)
+set_filter(STL_SHAPE)
+create_drawings()
+
+/* Create rest of assembly drawings */
+set_drawing_type(single)
+set_drawing_attributes(standard)
+set_filter(standard)
+create_drawings()
+
+

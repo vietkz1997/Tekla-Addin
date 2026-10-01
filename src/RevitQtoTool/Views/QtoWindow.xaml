@@ -1,0 +1,239 @@
+<Window x:Class="RevitQtoTool.Views.QtoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Auto-QTO &amp; Clash Pro - BIM Structural Suite" 
+        Height="780" Width="1200" MinHeight="650" MinWidth="950"
+        WindowStartupLocation="CenterScreen" Background="#F4F6F9"
+        FontFamily="Segoe UI" FontSize="13">
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Header -->
+            <RowDefinition Height="Auto"/> <!-- KPI Cards -->
+            <RowDefinition Height="*"/>    <!-- Main Body: Sidebar + Tabs -->
+            <RowDefinition Height="Auto"/> <!-- Footer & Progress -->
+        </Grid.RowDefinitions>
+
+        <!-- 1. Header with Option Checkbox -->
+        <Border Grid.Row="0" Background="#1E293B" CornerRadius="8" Padding="16,12" Margin="0,0,0,12">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                    <TextBlock Text="🏗️" FontSize="26" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="CÔNG CỤ BÓC TÁCH KHỐI LƯỢNG BÊ TÔNG, VÁN KHUÔN, CỐT THÉP &amp; KIỂM TRA VA CHẠM" Foreground="White" FontWeight="Bold" FontSize="15"/>
+                        <TextBlock Text="Chuẩn hóa theo định mức bóc tách BOQ/QTO các tổng thầu Việt Nam" Foreground="#94A3B8" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <CheckBox Content="🔗 Quét cả file Revit Link" IsChecked="{Binding IncludeLinks}"
+                          Foreground="#38BDF8" FontWeight="SemiBold" FontSize="13"
+                          VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+            </DockPanel>
+        </Border>
+
+        <!-- 2. KPI Summary Cards -->
+        <Grid Grid.Row="1" Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="White" CornerRadius="6" Padding="10,8" Margin="0,0,4,0" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="TỔNG CẤU KIỆN" Foreground="#64748B" FontSize="11" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TotalElements, StringFormat='{}{0:N0}'}" Foreground="#0F172A" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" Background="White" CornerRadius="6" Padding="10,8" Margin="2,0,2,0" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="THỂ TÍCH BÊ TÔNG" Foreground="#0284C7" FontSize="11" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TotalVolumeM3, StringFormat='{}{0:N2} m³'}" Foreground="#0284C7" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="2" Background="White" CornerRadius="6" Padding="10,8" Margin="2,0,2,0" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="DIỆN TÍCH VÁN KHUÔN" Foreground="#059669" FontSize="11" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TotalFormworkM2, StringFormat='{}{0:N2} m²'}" Foreground="#059669" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="3" Background="White" CornerRadius="6" Padding="10,8" Margin="2,0,2,0" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="KHỐI LƯỢNG THÉP" Foreground="#D97706" FontSize="11" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TotalRebarTons, StringFormat='{}{0:N3} Tấn'}" Foreground="#D97706" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="4" Background="White" CornerRadius="6" Padding="10,8" Margin="4,0,0,0" BorderBrush="#E2E8F0" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="LỖI VA CHẠM / TRÙNG" Foreground="#DC2626" FontSize="11" FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding TotalOverlapIssues, StringFormat='{}{0:N0} lỗi'}" Foreground="#DC2626" FontSize="16" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- 3. Main Workspace: Filters (Left) + TabControl (Right) -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar Filters -->
+            <Border Grid.Column="0" Background="White" CornerRadius="6" Padding="12" Margin="0,0,12,0" BorderBrush="#E2E8F0" BorderThickness="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <TextBlock Text="Hạng mục cấu kiện" FontWeight="Bold" Margin="0,0,0,6"/>
+                        <ItemsControl ItemsSource="{Binding Categories}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Margin="0,3"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <Separator Margin="0,12"/>
+
+                        <DockPanel Margin="0,0,0,6">
+                            <TextBlock Text="Danh sách tầng" FontWeight="Bold" DockPanel.Dock="Left"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="Tất cả" Command="{Binding ToggleAllLevelsCommand}" CommandParameter="True" Padding="4,1" Margin="0,0,4,0" FontSize="11"/>
+                                <Button Content="Bỏ chọn" Command="{Binding ToggleAllLevelsCommand}" CommandParameter="False" Padding="4,1" FontSize="11"/>
+                            </StackPanel>
+                        </DockPanel>
+
+                        <ItemsControl ItemsSource="{Binding Levels}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Margin="0,3"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Multi Tab Data View -->
+            <TabControl Grid.Column="1" Background="Transparent" BorderThickness="0">
+                <!-- TAB 1: CONCRETE & FORMWORK -->
+                <TabItem Header="🧱 Bê tông &amp; Ván khuôn" FontWeight="SemiBold" Padding="12,6">
+                    <Border Background="White" CornerRadius="0,6,6,6" BorderBrush="#CBD5E1" BorderThickness="1">
+                        <DataGrid ItemsSource="{Binding ExtractedItems}" AutoGenerateColumns="False" 
+                                  CanUserAddRows="False" IsReadOnly="True" GridLinesVisibility="Horizontal"
+                                  HorizontalGridLinesBrush="#F1F5F9" RowHeight="28" HeadersVisibility="Column">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ElementId}" Width="75"/>
+                                <DataGridTextColumn Header="Tầng (Level)" Binding="{Binding LevelName}" Width="110"/>
+                                <DataGridTextColumn Header="Category" Binding="{Binding CategoryName}" Width="120"/>
+                                <DataGridTextColumn Header="Loại (Type Name)" Binding="{Binding TypeName}" Width="150"/>
+                                <DataGridTextColumn Header="Vật liệu" Binding="{Binding MaterialName}" Width="130"/>
+                                <DataGridTextColumn Header="Bê tông (m³)" Binding="{Binding NetVolumeM3, StringFormat='{}{0:N3}'}" Width="110"/>
+                                <DataGridTextColumn Header="Ván khuôn (m²)" Binding="{Binding FormworkAreaM2, StringFormat='{}{0:N2}'}" Width="115"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+                </TabItem>
+
+                <!-- TAB 2: REBAR QUANTITY -->
+                <TabItem Header="🔩 Khối lượng Cốt thép" FontWeight="SemiBold" Padding="12,6">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Background="#FEF3C7" CornerRadius="6" Padding="10,8" Margin="0,0,0,8" BorderBrush="#FDE68A" BorderThickness="1">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="📊 Phân nhóm thanh toán: " FontWeight="Bold" Foreground="#92400E" Margin="0,0,16,0"/>
+                                <TextBlock Text="{Binding RebarD10Kg, StringFormat='{}Φ ≤ 10: {0:N1} kg'}" Foreground="#92400E" Margin="0,0,16,0"/>
+                                <TextBlock Text="{Binding RebarD18Kg, StringFormat='{}10 &lt; Φ ≤ 18: {0:N1} kg'}" Foreground="#92400E" Margin="0,0,16,0"/>
+                                <TextBlock Text="{Binding RebarDOver18Kg, StringFormat='{}Φ &gt; 18: {0:N1} kg'}" Foreground="#92400E"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Row="1" Background="White" CornerRadius="6" BorderBrush="#CBD5E1" BorderThickness="1">
+                            <DataGrid ItemsSource="{Binding ExtractedRebars}" AutoGenerateColumns="False" 
+                                      CanUserAddRows="False" IsReadOnly="True" GridLinesVisibility="Horizontal"
+                                      HorizontalGridLinesBrush="#F1F5F9" RowHeight="28" HeadersVisibility="Column">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding ElementId}" Width="75"/>
+                                    <DataGridTextColumn Header="Cấu kiện chủ" Binding="{Binding HostCategory}" Width="110"/>
+                                    <DataGridTextColumn Header="Tầng" Binding="{Binding LevelName}" Width="100"/>
+                                    <DataGridTextColumn Header="Mác thép" Binding="{Binding RebarType}" Width="110"/>
+                                    <DataGridTextColumn Header="Đường kính" Binding="{Binding DiameterMm, StringFormat='{}Φ{0}'}" Width="90"/>
+                                    <DataGridTextColumn Header="Nhóm tiêu chuẩn" Binding="{Binding DiameterGroup}" Width="120"/>
+                                    <DataGridTextColumn Header="Số thanh" Binding="{Binding Quantity}" Width="85"/>
+                                    <DataGridTextColumn Header="Tổng dài (m)" Binding="{Binding TotalLengthM, StringFormat='{}{0:N2}'}" Width="105"/>
+                                    <DataGridTextColumn Header="Tổng KL (kg)" Binding="{Binding TotalWeightKg, StringFormat='{}{0:N2}'}" Width="110"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+
+                <!-- TAB 3: CLASH & OVERLAP CHECKER -->
+                <TabItem Header="⚠️ Kiểm tra Trùng lặp &amp; Va chạm" FontWeight="SemiBold" Padding="12,6">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Actions Bar for Clash Tab -->
+                        <Border Grid.Row="0" Background="#FEE2E2" CornerRadius="6" Padding="10,8" Margin="0,0,0,8" BorderBrush="#FECACA" BorderThickness="1">
+                            <DockPanel>
+                                <TextBlock Text="Phát hiện các cấu kiện đè lên nhau chưa Join hình học dẫn đến tính trùng thể tích bê tông."
+                                           VerticalAlignment="Center" Foreground="#991B1B" FontWeight="SemiBold" DockPanel.Dock="Left"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                                    <Button Content="🔍 Quét va chạm" Command="{Binding ScanOverlapsCommand}" Padding="12,5" Margin="0,0,8,0" Background="#DC2626" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
+                                    <Button Content="⚡ Tự động Join tất cả" Command="{Binding AutoJoinAllCommand}" Padding="12,5" Background="#2563EB" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+
+                        <Border Grid.Row="1" Background="White" CornerRadius="6" BorderBrush="#CBD5E1" BorderThickness="1">
+                            <DataGrid ItemsSource="{Binding OverlapIssues}" AutoGenerateColumns="False" 
+                                      CanUserAddRows="False" IsReadOnly="True" GridLinesVisibility="Horizontal"
+                                      HorizontalGridLinesBrush="#F1F5F9" RowHeight="28" HeadersVisibility="Column">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Phần tử A" Binding="{Binding ElementIdA}" Width="90"/>
+                                    <DataGridTextColumn Header="Category A" Binding="{Binding CategoryA}" Width="120"/>
+                                    <DataGridTextColumn Header="Phần tử B" Binding="{Binding ElementIdB}" Width="90"/>
+                                    <DataGridTextColumn Header="Category B" Binding="{Binding CategoryB}" Width="120"/>
+                                    <DataGridTextColumn Header="Tầng" Binding="{Binding LevelName}" Width="110"/>
+                                    <DataGridTextColumn Header="Thể tích giao (m³)" Binding="{Binding ClashingVolumeM3, StringFormat='{}{0:N4}'}" Width="130"/>
+                                    <DataGridTextColumn Header="Trạng thái phân loại" Binding="{Binding IssueType}" Width="180"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <!-- 4. Footer & Progress -->
+        <Grid Grid.Row="3" Margin="0,12,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,16,0">
+                <TextBlock Text="{Binding StatusMessage}" Foreground="#475569" Margin="0,0,0,4"/>
+                <ProgressBar Height="10" Value="{Binding ProgressPercentage}" Maximum="100" BorderThickness="0" Background="#E2E8F0" Foreground="#2563EB"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Content="🔍 Quét mô hình (QTO)" Command="{Binding ScanModelCommand}" 
+                        Padding="16,8" Margin="0,0,8,0" Background="#0284C7" Foreground="White" FontWeight="SemiBold" BorderThickness="0"/>
+                <Button Content="📊 Xuất Excel (BOQ)" Command="{Binding ExportExcelCommand}" 
+                        Padding="18,8" Background="#16A34A" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,63 @@
+/**************************************/
+/* Tekla Structures hatch schema file */
+/**************************************/
+
+/************************************************************************************************************
+
+	Purpose
+	-------
+	This file is used to define the hatch patterns for different materials for
+	Tekla Structures automatic hatching functionality. These settings will be used
+	when the hatching option is set to "Automatic" in the drawing.
+
+	Syntax
+	-------
+	Surfacing Type, Surfacing Code, Hatch name, Scale, [Colour], [Automatic Scaling and Rotation]
+
+	Available options
+	-----------------
+	Surfacing Type (see file product_finishes.dat):
+	1 = concrete finish
+	2 = special mix
+	3 = tile surface
+	4 = steel finish
+
+	Surfacing Code:
+	See file product_finishes.dat for available surfacing codes.
+
+	Colors:
+	BLACK      0 (default)
+	WHITE      1 
+	RED        2
+	GREEN      3 
+	BLUE       4 
+	CYAN       5 
+	YELLOW     6
+	MAGENTA    7
+	Special    120 (use this color for gray shade)
+
+	Automatic scaling and rotation:
+	TRUE	   1
+	FALSE	   0 (default)
+
+	Instructions for use
+	--------------------
+	- surfacing codes and hatch names are case sensitive
+	- automatic scaling and rotation option requires additional processing, so use it only when necessary
+	- to adjust the gray shade for Special color 120, use the variables
+	  XS_HATCH_SPECIAL_COLOR_R
+	  XS_HATCH_SPECIAL_COLOR_G
+	  XS_HATCH_SPECIAL_COLOR_B
+
+************************************************************************************************************/
+
+1,MF,ANSI31,0.7,1
+1,SMF,ANSI32,0.7,1
+1,WT,ANSI33,0.7,1
+1,HT,ANSI34,0.7,1
+1,LSB,AR-SAND,0.7,1
+2,SM1,CROSS,1.0,1
+2,SM2,CHECKERED,1.0,1
+3,TS3,FBBRICKC,1,1
+4,FP,ANSI31,1,1
+4,UP,ANSI32,1,1

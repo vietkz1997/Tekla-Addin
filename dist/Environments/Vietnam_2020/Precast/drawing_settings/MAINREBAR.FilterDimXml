@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rule name="MAINREBAR" xsi:noNamespaceSchemaLocation="DimRule.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <selection type="Filter">
+    <filterName>MAINREBAR</filterName>
+  </selection>
+  <position>
+    <selectionArea>Whole</selectionArea>
+    <placing>Right</placing>
+    <placing>Below</placing>
+    <linkingTopLeft>false</linkingTopLeft>
+    <linkingTopRight>false</linkingTopRight>
+    <linkingBottomLeft>false</linkingBottomLeft>
+    <linkingBottomRight>false</linkingBottomRight>
+    <orientation>Global</orientation>
+  </position>
+  <settings>
+    <startPointHorizontal>Left</startPointHorizontal>
+    <startPointVertical>Bottom</startPointVertical>
+    <verticalEqualsHorizontal>true</verticalEqualsHorizontal>
+    <closeLinesHorizontal>true</closeLinesHorizontal>
+    <dimensionToHorizontal>Middle</dimensionToHorizontal>
+    <dimPropertiesHorizontal>standard</dimPropertiesHorizontal>
+    <dimensionType>Straight</dimensionType>
+    <measureFrom>CastUnitAssembly</measureFrom>
+    <castUnitAssemblyOption>OnlyConcreteSteelParts</castUnitAssemblyOption>
+    <combine>ObjectsAll</combine>
+    <combineXY>false</combineXY>
+    <minDistanceToCreate>0.00</minDistanceToCreate>
+    <componentObjects>ByReferencePoint</componentObjects>
+  </settings>
+</rule>

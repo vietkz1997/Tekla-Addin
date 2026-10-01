@@ -1,0 +1,2067 @@
+
+template _tmp_828
+{
+    name = "template2";
+    type = TEXTUAL;
+    width = 160;
+    maxheight = 1000;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    fillstartfrom = TOPLEFT;
+    margins = (2, 1, 2, 1);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 4;
+    created = "29.06.2005 12:14";
+    modified = "17.02.2020 14:38";
+    notes = "";
+
+    header _tmp_829
+    {
+        name = "Header";
+        height = 4;
+
+        text _tmp_355
+        {
+            name = "Text_8";
+            x1 = 0;
+            y1 = 3;
+            x2 = 0;
+            y2 = 3;
+            string = "--------------------------------------------------------------------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 0;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_400
+        {
+            name = "RebarBendingList";
+            location = (0, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_REBAR_BENDING_LIST\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 138;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_451
+        {
+            name = "\"ProjectName\"";
+            location = (21, 1);
+            formula = "GetValue(\"PROJECT.NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_452
+        {
+            name = "\"Date\"";
+            location = (136, 1);
+            formula = "GetValue(\"DATE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_453
+        {
+            name = "Date";
+            location = (125, 1);
+            formula = "GetValue(\"TranslatedText(\"albl_Date\")\") + \":\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_454
+        {
+            name = "ProjectName";
+            location = (0, 1);
+            formula = "GetValue(\"TranslatedText(\"j_d_j_project_name\")\") +\":\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_455
+        {
+            name = "ProjectNr";
+            location = (0, 0);
+            formula = "GetValue(\"TranslatedText(\"j_d_j_project_nr\")\") +\":\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_456
+        {
+            name = "\"ProjectNr\"";
+            location = (21, 0);
+            formula = "GetValue(\"PROJECT.NUMBER\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_457
+        {
+            name = "Time";
+            location = (125, 0);
+            formula = "GetValue(\"TranslatedText(\"albl_Time\")\") + \":\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_458
+        {
+            name = "\"Time\"";
+            location = (136, 0);
+            formula = "GetValue(\"TIME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+    };
+
+    pageheader _tmp_830
+    {
+        name = "PageHeader";
+        height = 4;
+        outputpolicy = NONE;
+
+        text _tmp_903
+        {
+            name = "text_27";
+            x1 = 74;
+            y1 = 2;
+            x2 = 74;
+            y2 = 2;
+            string = "A";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_904
+        {
+            name = "text_28";
+            x1 = 80;
+            y1 = 2;
+            x2 = 80;
+            y2 = 2;
+            string = "B";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_905
+        {
+            name = "text_32";
+            x1 = 86;
+            y1 = 2;
+            x2 = 86;
+            y2 = 2;
+            string = "C";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_906
+        {
+            name = "text_31";
+            x1 = 92;
+            y1 = 2;
+            x2 = 92;
+            y2 = 2;
+            string = "D";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_924
+        {
+            name = "text_34";
+            x1 = 98;
+            y1 = 2;
+            x2 = 98;
+            y2 = 2;
+            string = "E";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_925
+        {
+            name = "text_33";
+            x1 = 110;
+            y1 = 2;
+            x2 = 110;
+            y2 = 2;
+            string = "u";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_926
+        {
+            name = "text_36";
+            x1 = 114;
+            y1 = 2;
+            x2 = 114;
+            y2 = 2;
+            string = "v";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_932
+        {
+            name = "text_37";
+            x1 = 118;
+            y1 = 2;
+            x2 = 118;
+            y2 = 2;
+            string = "R";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_310
+        {
+            name = "Total_Weight";
+            location = (65, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Total\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_312
+        {
+            name = "Length";
+            location = (46, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Length\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_314
+        {
+            name = "Qty";
+            location = (39, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Qty\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_316
+        {
+            name = "Shape";
+            location = (31, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Shape\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 7;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_318
+        {
+            name = "Mark";
+            location = (0, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Mark\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_328
+        {
+            name = "Size";
+            location = (23, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Size\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 7;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_332
+        {
+            name = "Grade";
+            location = (13, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Grade\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_349
+        {
+            name = "Text_2";
+            x1 = 104;
+            y1 = 2;
+            x2 = 104;
+            y2 = 2;
+            string = "F";
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_368
+        {
+            name = "mmORinch";
+            location = (46, 1);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"inch\"\nelse\n\"mm\"\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_370
+        {
+            name = "kgORlb";
+            location = (65, 1);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"lb\"\nelse\n\"kg\"\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_28
+        {
+            name = "Weigth";
+            location = (56, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Weight\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_52
+        {
+            name = "Threaded";
+            location = (125, 2);
+            formula = "GetValue(\"TranslatedText(\"j_d_j_Threaded\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_76
+        {
+            name = "Coupler";
+            location = (138, 2);
+            formula = "GetValue(\"TranslatedText(\"albl_Coupler\")\") + \"/\"";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_78
+        {
+            name = "Anchor";
+            location = (138, 1);
+            formula = "GetValue(\"TranslatedText(\"j_d_j_Anchor\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_197
+        {
+            name = "Text_1";
+            x1 = 0;
+            y1 = 3;
+            x2 = 0;
+            y2 = 3;
+            string = "--------------------------------------------------------------------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 0;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+
+        text _tmp_198
+        {
+            name = "Text";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "--------------------------------------------------------------------------------------------------------------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 0;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+    };
+
+    row _tmp_156
+    {
+        name = "NonTaperedBars";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if GetValue(\"REBAR.GROUP_TYPE\") == 0 || GetValue(\"REBAR.GROUP_TYPE\") == 5  then\n  Output()\nelse\n  StepOver()\nendif";
+        contenttype = "SINGLE_REBAR";
+        sorttype = COMBINE;
+
+        valuefield _tmp_168
+        {
+            name = "posNT";
+            location = (0, 0);
+            formula = "GetValue(\"REBAR_POS\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_337
+        {
+            name = "gradeNT";
+            location = (13, 0);
+            formula = "GetValue(\"REBAR.GRADE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_175
+        {
+            name = "sizeNT";
+            location = (23, 0);
+            formula = "GetValue(\"REBAR.SIZE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 7;
+            decimals = 0;
+            sortdirection = DESCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_173
+        {
+            name = "shapeNT";
+            location = (31, 0);
+            formula = "GetValue(\"REBAR.SHAPE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 7;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_171
+        {
+            name = "numberNT";
+            location = (39, 0);
+            formula = "GetValue(\"NUMBER\")";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_250
+        {
+            name = "lengthNT";
+            location = (46, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"LENGTH\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"LENGTH\"), 5),\"Length\",\"mm\", 0)\r\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_34
+        {
+            name = "WeightNT";
+            location = (56, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WEIGHT\"),\"Weight\",\"lbf\",2 )\nelse\nformat(GetValue(\"WEIGHT\"),\"Weight\",\"kg\",3 )\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_177
+        {
+            name = "WeightTotalNT";
+            location = (65, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat((GetValue(\"REBAR.WEIGHT\")*GetValue(\"REBAR.NUMBER\")),\"Weight\",\"lbf\",2 )\nelse\nformat((GetValue(\"REBAR.WEIGHT\")*GetValue(\"REBAR.NUMBER\")),\"Weight\",\"kg\",1 )\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            fontlinewidth = 1;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_504
+        {
+            name = "dimaNT";
+            location = (74, 0);
+            formula = "if GetValue(\"DIM_A\") == 0 then \"\" \nelse\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"DIM_A\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(round(GetValue(\"DIM_A\"), 5),\"Length\",\"mm\", 0)\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_505
+        {
+            name = "dimbNT";
+            location = (80, 0);
+            formula = "if GetValue(\"DIM_B\") == 0 then \"\" \nelse\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"DIM_B\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(round(GetValue(\"DIM_B\"), 5),\"Length\",\"mm\", 0)\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_506
+        {
+            name = "dimcNT";
+            location = (86, 0);
+            formula = "if GetValue(\"DIM_C\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_C\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_C\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_507
+        {
+            name = "dimdNT";
+            location = (92, 0);
+            formula = "if GetValue(\"DIM_D\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_D\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_D\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif\r\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_508
+        {
+            name = "dimeNT";
+            location = (98, 0);
+            formula = "if GetValue(\"DIM_E\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_E\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_E\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_502
+        {
+            name = "dimfNT";
+            location = (104, 0);
+            formula = "if GetValue(\"DIM_F\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_F\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_F\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_500
+        {
+            name = "anguNT";
+            location = (110, 0);
+            formula = "GetValue(\"ANG_U\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "Degrees";
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_501
+        {
+            name = "angvNT";
+            location = (114, 0);
+            formula = "GetValue(\"ANG_V\")";
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "Degrees";
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_414
+        {
+            name = "dimrNT";
+            location = (118, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"DIM_R\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(GetValue(\"DIM_R\"),\"Length\",\"mm\", 0)\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_16
+        {
+            name = "ThreadedNT";
+            location = (125, 0);
+            formula = "if (IsSet(\"THREAD_TYPE_START\") || IsSet(\"THREAD_TYPE_END\") || IsSet(\"THREAD_LENGTH_START\") || IsSet(\"THREAD_LENGTH_END\") || IsSet(\"EXTRA_LENGTH_START\") || IsSet(\"EXTRA_LENGTH_END\")) then\nGetValue(\"TranslatedText(\"albl_Yes\")\")\nelse\nGetValue(\"TranslatedText(\"albl_No\")\")\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_17
+        {
+            name = "CouplerNT";
+            location = (138, 0);
+            formula = "if (IsSet(\"METHOD_START\") || IsSet(\"METHOD_END\")) then \nGetValue(\"TranslatedText(\"albl_Yes\")\")  \nelse \nGetValue(\"TranslatedText(\"albl_No\")\") \nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+    };
+
+    row _tmp_20
+    {
+        name = "TaperedBars";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if GetValue(\"REBAR.GROUP_TYPE\") == 1 || GetValue(\"REBAR.GROUP_TYPE\") == 2 || GetValue(\"REBAR.GROUP_TYPE\") == 3 || GetValue(\"REBAR.GROUP_TYPE\") == 4 then\n  Output()\nelse\n  StepOver()\nendif";
+        contenttype = "SINGLE_REBAR";
+        sorttype = COMBINE;
+
+        valuefield _tmp_21
+        {
+            name = "ValueField";
+            location = (0, 0);
+            formula = "if GetValue(\"REBAR_POS\") != GetValue(\"REBAR.GROUP_POS\") then\n  GetValue(\"REBAR_POS\")\nelse\n  GetValue(\"REBAR.GROUP_POS\") + \"(\" + \".\" + GetValue(\"SUB_ID\") + \")\"\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_22
+        {
+            name = "ValueField_1";
+            location = (13, 0);
+            formula = "GetValue(\"REBAR.GRADE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_23
+        {
+            name = "ValueField_2";
+            location = (23, 0);
+            formula = "GetValue(\"REBAR.SIZE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 7;
+            decimals = 0;
+            sortdirection = DESCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_24
+        {
+            name = "ValueField_3";
+            location = (31, 0);
+            formula = "GetValue(\"REBAR.SHAPE\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 7;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_25
+        {
+            name = "ValueField_4";
+            location = (39, 0);
+            formula = "GetValue(\"NUMBER\")";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_26
+        {
+            name = "ValueField_5";
+            location = (46, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"LENGTH\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"LENGTH\"), 5),\"Length\",\"mm\", 0)\r\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 9;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_27
+        {
+            name = "ValueField_6";
+            location = (56, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"WEIGHT\"),\"Weight\",\"lbf\",2 )\nelse\nformat(GetValue(\"WEIGHT\"),\"Weight\",\"kg\",3 )\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_28
+        {
+            name = "ValueField_7";
+            location = (65, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat((GetValue(\"REBAR.WEIGHT\")*GetValue(\"REBAR.NUMBER\")),\"Weight\",\"lbf\",2 )\nelse\nformat((GetValue(\"REBAR.WEIGHT\")*GetValue(\"REBAR.NUMBER\")),\"Weight\",\"kg\",1 )\nendif";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            fontlinewidth = 1;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_29
+        {
+            name = "ValueField_8";
+            location = (74, 0);
+            formula = "if GetValue(\"DIM_A\") == 0 then \"\" \nelse\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"DIM_A\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(round(GetValue(\"DIM_A\"), 5),\"Length\",\"mm\", 0)\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_30
+        {
+            name = "ValueField_9";
+            location = (80, 0);
+            formula = "if GetValue(\"DIM_B\") == 0 then \"\" \nelse\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"DIM_B\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(round(GetValue(\"DIM_B\"), 5),\"Length\",\"mm\", 0)\nendif\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_31
+        {
+            name = "ValueField_10";
+            location = (86, 0);
+            formula = "if GetValue(\"DIM_C\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_C\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_C\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_32
+        {
+            name = "ValueField_11";
+            location = (92, 0);
+            formula = "if GetValue(\"DIM_D\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_D\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_D\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif\r\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_33
+        {
+            name = "ValueField_12";
+            location = (98, 0);
+            formula = "if GetValue(\"DIM_E\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_E\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_E\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_34
+        {
+            name = "ValueField_13";
+            location = (104, 0);
+            formula = "if GetValue(\"DIM_F\") == 0 then \"\" \r\nelse\r\nif GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\nformat(GetValue(\"DIM_F\"),\"Length\",\"inch-frac\", 1/16)\r\nelse\r\nformat(round(GetValue(\"DIM_F\"), 5),\"Length\",\"mm\", 0)\r\nendif\r\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_35
+        {
+            name = "ValueField_14";
+            location = (110, 0);
+            formula = "GetValue(\"ANG_U\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "Degrees";
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_36
+        {
+            name = "ValueField_15";
+            location = (114, 0);
+            formula = "GetValue(\"ANG_V\")";
+            datatype = DOUBLE;
+            class = "Angle";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 3;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            unit = "Degrees";
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_37
+        {
+            name = "ValueField_16";
+            location = (118, 0);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nformat(GetValue(\"DIM_R\"),\"Length\",\"inch-frac\", 1/16)\nelse\nformat(GetValue(\"DIM_R\"),\"Length\",\"mm\", 0)\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_38
+        {
+            name = "ValueField_17";
+            location = (125, 0);
+            formula = "if (IsSet(\"THREAD_TYPE_START\") || IsSet(\"THREAD_TYPE_END\") || IsSet(\"THREAD_LENGTH_START\") || IsSet(\"THREAD_LENGTH_END\") || IsSet(\"EXTRA_LENGTH_START\") || IsSet(\"EXTRA_LENGTH_END\")) then\nGetValue(\"TranslatedText(\"albl_Yes\")\")\nelse\nGetValue(\"TranslatedText(\"albl_No\")\")\nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_39
+        {
+            name = "ValueField_18";
+            location = (138, 0);
+            formula = "if (IsSet(\"METHOD_START\") || IsSet(\"METHOD_END\")) then \nGetValue(\"TranslatedText(\"albl_Yes\")\")  \nelse \nGetValue(\"TranslatedText(\"albl_No\")\") \nendif";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+    };
+
+    row _tmp_191
+    {
+        name = "SUMMARY";
+        height = 2;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "REBAR";
+        sorttype = COMBINE;
+
+        valuefield _tmp_193
+        {
+            name = "TotalWeight";
+            location = (65, 0);
+            formula = "Total(\"WeightTotalNT\")+Total(\"ValueField_7\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            fontlinewidth = 1;
+            aligncontenttotop = FALSE;
+        };
+
+        valuefield _tmp_330
+        {
+            name = "Sum";
+            location = (0, 0);
+            formula = "GetValue(\"TranslatedText(\"albl_Sum\")\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+            fontlinewidth = 1;
+        };
+
+        valuefield _tmp_15
+        {
+            name = "TotalNumber";
+            location = (39, 0);
+            formula = "Total(\"numberNT\")+Total(\"ValueField_4\")";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Arial Narrow";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 0.950252;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = SUM;
+            fontlinewidth = 1;
+            aligncontenttotop = FALSE;
+        };
+
+        text _tmp_195
+        {
+            name = "Text_4";
+            x1 = 0;
+            y1 = 1;
+            x2 = 0;
+            y2 = 1;
+            string = "==================================================================================================================================================";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 0;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+            fontlinewidth = 1;
+        };
+    };
+};

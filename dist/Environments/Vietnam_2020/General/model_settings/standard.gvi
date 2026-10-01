@@ -1,0 +1,12 @@
+encoding 949
+XDir 3
+YDir 3
+ZDir 3
+XText "GRID "
+YText "GRID "
+ZText "PLAN "
+XInFile "2D_VIEW"
+YInFile "2D_VIEW"
+ZInFile "2D_VIEW"
+aInFile "standard"
+aOutFile ""

@@ -1,0 +1,15 @@
+# Example unfolding corner ratio configuration file
+# Lines beginning with '#' are comments
+#
+#
+# [type = 1] [profile] [material] [rotation min] [rotation max] [flag: 1 = sharp, 2 = curved] [angle/radius min] [angle/radius max] [ratio]
+
+1 HE300A S235JR 0 180 1 0 90 .7
+1 HE300A S235JR 0 180 2 0 1000 .7
+
+#
+# PLATE
+#
+# [type = 2] [profile] [material] [thickness min] [thickness max] [flag: 1 = sharp, 2 = curved] [angle/radius min] [angle/radius max] [ratio]
+
+2 PL* S235JR 0 200 1 0 90 .6

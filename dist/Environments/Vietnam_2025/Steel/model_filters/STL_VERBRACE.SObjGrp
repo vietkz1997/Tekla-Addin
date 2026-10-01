@@ -1,0 +1,44 @@
+TITLE_OBJECT_GROUP 
+{
+    Version= 1.05 
+    Count= 3 
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        co_part 
+        proNAME 
+        albl_Name 
+        == 
+        albl_Equals 
+        VERBRACE 
+        0 
+        Empty 
+        }
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        co_part 
+        proPrimaryPart 
+        albl_Primary_part 
+        == 
+        albl_Equals 
+        1 
+        0 
+        Empty 
+        }
+    SECTION_OBJECT_GROUP 
+    {
+        0 
+        1 
+        co_object 
+        proOBJECT_TYPE 
+        albl_ObjectType 
+        == 
+        albl_Equals 
+        albl_Part 
+        0 
+        Empty 
+        }
+    }

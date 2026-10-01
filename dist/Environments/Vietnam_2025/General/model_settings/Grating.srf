@@ -1,0 +1,24 @@
+encoding 949
+out_file "Grating"
+in_file "Grating"
+name_enable 1
+name "GRATING"
+TypeEnable 1
+Type 3
+finish_enable 1
+finish "GRT - Grating"
+material_enable 1
+material "DUMMY"
+LastUsedMaterial "3000"
+profile_enable 1
+profile "0.500000"
+group_enable 1
+part_group "5"
+CutPartByFatherCutsEnable 1
+CutPartByFatherCuts 1
+more_enable 1
+position_depth_enable 1
+position_depth 1
+value_position_depth 0.000000
+PatternTypeEnable 1
+PatternType "Grating"

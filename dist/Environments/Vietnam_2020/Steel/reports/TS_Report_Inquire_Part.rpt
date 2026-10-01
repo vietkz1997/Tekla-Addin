@@ -1,0 +1,2597 @@
+
+template 
+{
+    name = "template_213";
+    type = TEXTUAL;
+    width = 100;
+    maxheight = 150;
+    columns = (1, 1);
+    gap = 1;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "29.10.2004 12:13";
+    modified = "12.02.2014 17:37";
+    notes = "Converted template";
+
+    pageheader 
+    {
+        name = "PAGEHEADER";
+        height = 4;
+        outputpolicy = NONE;
+
+        text 
+        {
+            name = "text_258";
+            x1 = 16;
+            y1 = 3;
+            x2 = 16;
+            y2 = 3;
+            string = "------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_257";
+            x1 = 34;
+            y1 = 3;
+            x2 = 34;
+            y2 = 3;
+            string = "------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_256";
+            x1 = 52;
+            y1 = 3;
+            x2 = 52;
+            y2 = 3;
+            string = "-----------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_255";
+            x1 = 52;
+            y1 = 0;
+            x2 = 52;
+            y2 = 0;
+            string = "-----------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_254";
+            x1 = 34;
+            y1 = 0;
+            x2 = 34;
+            y2 = 0;
+            string = "------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_253";
+            x1 = 16;
+            y1 = 0;
+            x2 = 16;
+            y2 = 0;
+            string = "------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_2543";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "----------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text 
+        {
+            name = "text_2545";
+            x1 = 0;
+            y1 = 3;
+            x2 = 0;
+            y2 = 3;
+            string = "----------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_7
+        {
+            name = "Text_8";
+            x1 = 0;
+            y1 = 1;
+            x2 = 0;
+            y2 = 1;
+            string = "Ass.Pos";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_8
+        {
+            name = "text_298";
+            x1 = 13;
+            y1 = 1;
+            x2 = 13;
+            y2 = 1;
+            string = "Part.Pos";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_9
+        {
+            name = "Text_14";
+            x1 = 28;
+            y1 = 1;
+            x2 = 28;
+            y2 = 1;
+            string = "Name";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_10
+        {
+            name = "text_251";
+            x1 = 41;
+            y1 = 1;
+            x2 = 41;
+            y2 = 1;
+            string = "Profile";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_11
+        {
+            name = "Gridposition";
+            x1 = 59;
+            y1 = 1;
+            x2 = 59;
+            y2 = 1;
+            string = "Grid pos";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_12
+        {
+            name = "Top level";
+            x1 = 74;
+            y1 = 1;
+            x2 = 74;
+            y2 = 1;
+            string = "Top level";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_13
+        {
+            name = "Bottomlevel";
+            x1 = 87;
+            y1 = 1;
+            x2 = 87;
+            y2 = 1;
+            string = "Bottom level";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 2.5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row 
+    {
+        name = "PART";
+        height = 48;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "PART";
+        sorttype = COMBINE;
+
+        text _tmp_3143
+        {
+            name = "Text";
+            x1 = 0;
+            y1 = 46;
+            x2 = 0;
+            y2 = 46;
+            string = "----------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_3144
+        {
+            name = "Text_1";
+            x1 = 16;
+            y1 = 46;
+            x2 = 16;
+            y2 = 46;
+            string = "------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_3145
+        {
+            name = "Text_2";
+            x1 = 34;
+            y1 = 46;
+            x2 = 34;
+            y2 = 46;
+            string = "------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_3146
+        {
+            name = "Text_3";
+            x1 = 52;
+            y1 = 46;
+            x2 = 52;
+            y2 = 46;
+            string = "-----------------------------------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_10354
+        {
+            name = "Totals";
+            location = (2, 45);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\nif GetValue(\"MATERIAL_TYPE\")==\"STEEL\" then\nGetValue(\"TranslatedText(\"albl_Total\")\") +\" \"+GetValue(\"MODEL_TOTAL\")+\" \"+ GetValue(\"TranslatedText(\"albl_parts\")\")+ \": \"+\nformat((GetValue(\"WEIGHT_NET\")*GetValue(\"MODEL_TOTAL\")),\"Weight\",\"lbf\",2)+\" lbf, \"+\nformat((GetValue(\"LENGTH\")*GetValue(\"MODEL_TOTAL\")),\"Length\",\"inch-frac\", 1/16) + \" in\"\n\nelse\nGetValue(\"TranslatedText(\"albl_Total\")\") +\" \"+GetValue(\"MODEL_TOTAL\")+\" \"+ GetValue(\"TranslatedText(\"albl_parts\")\")+ \": \"+\nformat((GetValue(\"WEIGHT_NET\")*GetValue(\"MODEL_TOTAL\")),\"Weight\",\"lbf\",2)+\" lbf, \"+\nformat((GetValue(\"LENGTH\")*GetValue(\"MODEL_TOTAL\")),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nendif\n\nelse\n\nGetValue(\"TranslatedText(\"albl_Total\")\") +\" \"+GetValue(\"MODEL_TOTAL\")+\" \"+ GetValue(\"TranslatedText(\"albl_parts\")\")+ \": \"+\nformat((GetValue(\"WEIGHT_NET\")*GetValue(\"MODEL_TOTAL\")),\"Weight\",\"T\",2)+\" T, \"+\nformat((GetValue(\"LENGTH\")*GetValue(\"MODEL_TOTAL\")),\"Length\",\"m\",2)+\" m\"\n\nendif\n\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 60;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_12422
+        {
+            name = "Text_4";
+            x1 = 0;
+            y1 = 44;
+            x2 = 0;
+            y2 = 44;
+            string = "===================================================================================================";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_903
+        {
+            name = "Part_text";
+            location = (1, 42);
+            formula = "GetValue(\"TranslatedText(\"albl_Part\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 16;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_325463
+        {
+            name = "StartPoint";
+            location = (2, 38);
+            formula = "GetValue(\"TranslatedText(\"albl_Start_point\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_325465
+        {
+            name = "START_X_global";
+            location = (32, 38);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  X= \"+format(GetValue(\"START_X\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\":  X= \"+format(GetValue(\"START_X\"),\"Length\",\"mm\", 1)+\" mm \"\nendif\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_325466
+        {
+            name = "START_Z_global";
+            location = (78, 38);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Z= \"+format(GetValue(\"START_Z\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Z= \"+format(GetValue(\"START_Z\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 21;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_325471
+        {
+            name = "START_Y_global";
+            location = (55, 38);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Y= \"+format(GetValue(\"START_Y\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Y= \"+format(GetValue(\"START_Y\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_325476
+        {
+            name = "Text_6";
+            x1 = 1;
+            y1 = 34;
+            x2 = 1;
+            y2 = 34;
+            string = " ";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_325479
+        {
+            name = "Text_7";
+            x1 = 1;
+            y1 = 21;
+            x2 = 1;
+            y2 = 21;
+            string = " ";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_333624
+        {
+            name = "GUID";
+            location = (28, 42);
+            formula = "\"GUID: \"+GetValue(\"GUID\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 50;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_339930
+        {
+            name = "Text_9";
+            x1 = 1;
+            y1 = 43;
+            x2 = 1;
+            y2 = 43;
+            string = " ";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_370898
+        {
+            name = "Text_11";
+            x1 = 1;
+            y1 = 9;
+            x2 = 1;
+            y2 = 9;
+            string = " ";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_61126
+        {
+            name = "Text_5";
+            x1 = 1;
+            y1 = 41;
+            x2 = 1;
+            y2 = 41;
+            string = "-------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_62359
+        {
+            name = "EndPoint";
+            location = (2, 37);
+            formula = "GetValue(\"TranslatedText(\"albl_End_point\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62360
+        {
+            name = "END_X_global";
+            location = (32, 37);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  X= \"+format(GetValue(\"END_X\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\":  X= \"+format(GetValue(\"END_X\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62361
+        {
+            name = "END_Y_global";
+            location = (55, 37);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Y= \"+format(GetValue(\"END_Y\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Y= \"+format(GetValue(\"END_Y\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62362
+        {
+            name = "END_Z_global";
+            location = (78, 37);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Z= \"+format(GetValue(\"END_Z\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Z= \"+format(GetValue(\"END_Z\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 21;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62367
+        {
+            name = "COG";
+            location = (2, 36);
+            formula = "GetValue(\"TranslatedText(\"albl_Center_of_gravity\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62368
+        {
+            name = "COG_X_global";
+            location = (32, 36);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  X= \"+format(GetValue(\"COG_X\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\":  X= \"+format(GetValue(\"COG_X\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62369
+        {
+            name = "COG_Y_global";
+            location = (55, 36);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Y= \"+format(GetValue(\"COG_Y\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Y= \"+format(GetValue(\"COG_Y\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62370
+        {
+            name = "COG_Z_global";
+            location = (78, 36);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Z= \"+format(GetValue(\"COG_Z\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Z= \"+format(GetValue(\"COG_Z\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 21;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62375
+        {
+            name = "BottomLevel";
+            location = (2, 34);
+            formula = "GetValue(\"TranslatedText(\"albl_Bottom_level\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62376
+        {
+            name = "TopLevel";
+            location = (2, 35);
+            formula = "GetValue(\"TranslatedText(\"albl_Top_level\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62377
+        {
+            name = "BOTTOM_LEVEL_GLOBAL_Field";
+            location = (32, 34);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\": \"+format(double(GetValue(\"BOTTOM_LEVEL_GLOBAL\")),\"Length\",\"ft-inc\", 1/16)\nelse\n\": \"+GetValue(\"BOTTOM_LEVEL_GLOBAL\")\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_62378
+        {
+            name = "TOP_LEVEL_GLOBAL_Field";
+            location = (32, 35);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\": \"+format(double(GetValue(\"TOP_LEVEL_GLOBAL\")*1000),\"Length\",\"ft-inch\", 1/16)\nelse\n\": \"+GetValue(\"TOP_LEVEL_GLOBAL\")\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_64441
+        {
+            name = "Text_12";
+            x1 = 1;
+            y1 = 32;
+            x2 = 1;
+            y2 = 32;
+            string = "-------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_71954
+        {
+            name = "GlobalCoordinates:";
+            location = (1, 40);
+            formula = "GetValue(\"TranslatedText(\"albl_Global_coordinates\")\")+\":\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74032
+        {
+            name = "START_Z_IN_WORKPLANE_Field";
+            location = (78, 29);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Z= \"+format(GetValue(\"START_Z_IN_WORK_PLANE\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Z= \"+format(GetValue(\"START_Z_IN_WORK_PLANE\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 21;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74033
+        {
+            name = "END_Y_IN_WORKPLANE_Field";
+            location = (55, 28);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Y= \"+format(GetValue(\"END_Y_IN_WORK_PLANE\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Y= \"+format(GetValue(\"END_Y_IN_WORK_PLANE\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74034
+        {
+            name = "END_Z_IN_WORKPLANE_Field";
+            location = (78, 28);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Z= \"+format(GetValue(\"END_Z_IN_WORK_PLANE\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Z= \"+format(GetValue(\"END_Z_IN_WORK_PLANE\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 21;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74035
+        {
+            name = "StartPointLoc";
+            location = (2, 29);
+            formula = "GetValue(\"TranslatedText(\"albl_Start_point\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74036
+        {
+            name = "EndPointLoc";
+            location = (2, 28);
+            formula = "GetValue(\"TranslatedText(\"albl_End_point\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74037
+        {
+            name = "TOP_LEVEL_Loc";
+            location = (2, 27);
+            formula = "GetValue(\"TranslatedText(\"albl_Top_level\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74038
+        {
+            name = "BOTTOM_LEVEL_Loc";
+            location = (2, 26);
+            formula = "GetValue(\"TranslatedText(\"albl_Bottom_level\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74039
+        {
+            name = "LocalCoordinates:";
+            location = (1, 31);
+            formula = "GetValue(\"TranslatedText(\"albl_Local_coordinates\")\")+\", \"+GetValue(\"TranslatedText(\"lbl_UCS\")\")+\":\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74040
+        {
+            name = "START_Y_IN_WORKPLANE_Field";
+            location = (55, 29);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\"Y= \"+format(GetValue(\"START_Y_IN_WORK_PLANE\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\"Y= \"+format(GetValue(\"START_Y_IN_WORK_PLANE\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74041
+        {
+            name = "START_X_IN_WORKPLANE_Field";
+            location = (32, 29);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  X= \"+format(GetValue(\"START_X_IN_WORK_PLANE\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\":  X= \"+format(GetValue(\"START_X_IN_WORK_PLANE\"),\"Length\",\"mm\", 1)+\" mm \"\nendif\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74042
+        {
+            name = "END_X_IN_WORKPLANE_Field";
+            location = (32, 28);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  X= \"+format(GetValue(\"END_X_IN_WORK_PLANE\"),\"Length\",\"ft-frac\", 1/16) + \" ft-in\"\nelse\n\":  X= \"+format(GetValue(\"END_X_IN_WORK_PLANE\"),\"Length\",\"mm\", 1)+\" mm \"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74043
+        {
+            name = "Local_TOP_LEVEL";
+            location = (32, 27);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\": \"+format(double(GetValue(\"TOP_LEVEL\")*1000),\"Length\",\"ft-inch\", 1/16)\nelse\n\": \"+GetValue(\"TOP_LEVEL\")\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74044
+        {
+            name = "Local_BOTTOM_LEVEL";
+            location = (32, 26);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\": \"+format(double(GetValue(\"BOTTOM_LEVEL\")),\"Length\",\"ft-inc\", 1/16)\nelse\n\": \"+GetValue(\"BOTTOM_LEVEL\")\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 22;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74087
+        {
+            name = "RoundingRadius2";
+            location = (2, 8);
+            formula = "GetValue(\"TranslatedText(\"albl_Rounding_radius_2\")\")+\" (r2)\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74088
+        {
+            name = "RoundingRadius1";
+            location = (2, 7);
+            formula = "GetValue(\"TranslatedText(\"albl_Rounding_radius_1\")\")+\" (r1)\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74089
+        {
+            name = "FlangeThickness";
+            location = (2, 6);
+            formula = "if GetValue(\"PROFILE.FLANGE_THICKNESS\")>0 then\nGetValue(\"TranslatedText(\"albl_Flange_thickness\")\")+\" (t)\"\nelse\nGetValue(\"TranslatedText(\"albl_Plate_thickness\")\")+\" (t)\"\nendif\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74090
+        {
+            name = "WebThickness";
+            location = (2, 5);
+            formula = "if GetValue(\"PROFILE.WEB_THICKNESS\")>0 then\nGetValue(\"TranslatedText(\"albl_Web_thickness\")\")+\" (s)\"\nelse\n\"\"\nendif\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74091
+        {
+            name = "Width";
+            location = (2, 4);
+            formula = "GetValue(\"TranslatedText(\"albl_Width\")\")+\" (b)\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74092
+        {
+            name = "Height";
+            location = (2, 3);
+            formula = "GetValue(\"TranslatedText(\"albl_Height\")\")+\" (h)\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74093
+        {
+            name = "PartPos";
+            location = (2, 23);
+            formula = "GetValue(\"TranslatedText(\"albl_Part_position\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74094
+        {
+            name = "AssemblyPos";
+            location = (2, 22);
+            formula = "GetValue(\"TranslatedText(\"albl_Assembly_position\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74095
+        {
+            name = "LengthNet";
+            location = (2, 21);
+            formula = "GetValue(\"TranslatedText(\"albl_Net_length\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74096
+        {
+            name = "LengthGross";
+            location = (2, 20);
+            formula = "GetValue(\"TranslatedText(\"albl_Gross_length\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74097
+        {
+            name = "Weight";
+            location = (2, 19);
+            formula = "GetValue(\"TranslatedText(\"albl_Weight\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74098
+        {
+            name = "WeightNet";
+            location = (2, 18);
+            formula = "GetValue(\"TranslatedText(\"albl_Net_weight\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74099
+        {
+            name = "WeightGross";
+            location = (2, 17);
+            formula = "GetValue(\"TranslatedText(\"albl_Gross_weight\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74100
+        {
+            name = "Volume";
+            location = (2, 16);
+            formula = "GetValue(\"TranslatedText(\"albl_Volume\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74101
+        {
+            name = "Area";
+            location = (2, 15);
+            formula = "GetValue(\"TranslatedText(\"albl_Area\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74102
+        {
+            name = "Name";
+            location = (2, 13);
+            formula = "GetValue(\"TranslatedText(\"albl_Name\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74103
+        {
+            name = "Material";
+            location = (2, 12);
+            formula = "GetValue(\"TranslatedText(\"albl_Material\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74104
+        {
+            name = "Finish";
+            location = (2, 11);
+            formula = "GetValue(\"TranslatedText(\"albl_Finish\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74105
+        {
+            name = "Profile";
+            location = (2, 10);
+            formula = "GetValue(\"TranslatedText(\"albl_Profile\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74106
+        {
+            name = "FlangeSlopeRatio";
+            location = (2, 9);
+            formula = "GetValue(\"TranslatedText(\"albl_Flange_slope_ratio\")\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_74107
+        {
+            name = "Text_10";
+            x1 = 1;
+            y1 = 1;
+            x2 = 1;
+            y2 = 1;
+            string = "-------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        text _tmp_74108
+        {
+            name = "Text_13";
+            x1 = 1;
+            y1 = 25;
+            x2 = 1;
+            y2 = 25;
+            string = "-------------------";
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = 0;
+        };
+
+        valuefield _tmp_74109
+        {
+            name = "ValueField_31";
+            location = (32, 20);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  \"+format(GetValue(\"LENGTH_GROSS\"),\"Length\",\"inch-frac\", 1/16)+\" in\"\nelse\n\":  \"+format(GetValue(\"LENGTH_GROSS\"),\"Length\",\"mm\", 1)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74110
+        {
+            name = "ValueField_33";
+            location = (32, 19);
+            formula = "\":  \"+round(GetValue(\"WEIGHT\"),0.1)+\" kg\"\r\n";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74111
+        {
+            name = "ValueField_35";
+            location = (32, 18);
+            formula = "\":  \" + round(GetValue(\"WEIGHT_NET\"), 0.1) + \" kg\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74112
+        {
+            name = "ValueField_37";
+            location = (32, 17);
+            formula = "\":  \"+round(GetValue(\"WEIGHT_GROSS\"),0.1)+\" kg\"";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74113
+        {
+            name = "ValueField_39";
+            location = (32, 16);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\r\n\":  \"+format(GetValue(\"VOLUME_NET\"),\"Volume\",\"cu.in\",0)+\" cu.in\"\r\nelse\r\n\":  \"+format(GetValue(\"VOLUME_NET\"),\"Volume\",\"m3\",5)+\" m?\"\r\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74114
+        {
+            name = "ValueField_41";
+            location = (32, 15);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  \"+format(GetValue(\"AREA_NET\"),\"Area\",\"sq.inch\",2)+\" sq.inch\"\nelse\n\":  \"+format(GetValue(\"AREA_NET\"),\"Area\",\"cm2\",2)+\" cm²\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74115
+        {
+            name = "ValueField_43";
+            location = (32, 13);
+            formula = "\":  \"+GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74116
+        {
+            name = "ValueField_45";
+            location = (32, 12);
+            formula = "\":  \"+GetValue(\"MATERIAL\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74117
+        {
+            name = "ValueField_47";
+            location = (32, 11);
+            formula = "\":  \"+GetValue(\"FINISH\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74118
+        {
+            name = "ValueField_49";
+            location = (32, 10);
+            formula = "\":  \"+GetValue(\"PROFILE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 40;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74119
+        {
+            name = "ValueField_51";
+            location = (32, 9);
+            formula = "\":  \"+GetValue(\"PROFILE.FLANGE_SLOPE_RATIO\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74120
+        {
+            name = "ValueField_53";
+            location = (32, 8);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  \"+format(GetValue(\"PROFILE.ROUNDING_RADIUS_2\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\nelse\n\":  \"+format(GetValue(\"PROFILE.ROUNDING_RADIUS_2\"),\"Length\",\"mm\", 1)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74121
+        {
+            name = "ValueField_55";
+            location = (32, 7);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n   if GetValue(\"PROFILE.ROUNDING_RADIUS_1\")>0 then\n   \":  \"+format(GetValue(\"PROFILE.ROUNDING_RADIUS_1\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\n   else\n   \":  \"+format(GetValue(\"PROFILE.ROUNDING_RADIUS\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\n   endif\nelse\n   if GetValue(\"PROFILE.ROUNDING_RADIUS_1\")>0 then\n   \":  \"+format(GetValue(\"PROFILE.ROUNDING_RADIUS_1\"),\"Length\",\"mm\", 1)+\" mm\"\n   else\n   \":  \"+format(GetValue(\"PROFILE.ROUNDING_RADIUS\"),\"Length\",\"mm\", 1)+\" mm\"\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74122
+        {
+            name = "ValueField_57";
+            location = (32, 6);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n   if GetValue(\"PROFILE.FLANGE_THICKNESS\")>0 then\n   \":  \"+format(GetValue(\"PROFILE.FLANGE_THICKNESS\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\n   else\n   \":  \"+format(GetValue(\"PROFILE.PLATE_RADIUS\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\n   endif\nelse\n   if GetValue(\"PROFILE.FLANGE_THICKNESS\")>0 then\n   \":  \"+format(GetValue(\"PROFILE.FLANGE_THICKNESS\"),\"Length\",\"mm\", 1)+\" mm\"\n   else\n   \":  \"+format(GetValue(\"PROFILE.PLATE_THICKNESS\"),\"Length\",\"mm\", 1)+\" mm\"\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74123
+        {
+            name = "ValueField_59";
+            location = (32, 5);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n   if GetValue(\"PROFILE.WEB_THICKNESS\")>0 then\n   \":  \"+format(GetValue(\"PROFILE.WEB_THICKNESS\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\n   else\n   \"\"\n   endif\nelse\n   if GetValue(\"PROFILE.WEB_THICKNESS\")>0 then\n   \":  \"+format(GetValue(\"PROFILE.WEB_THICKNESS\"),\"Length\",\"mm\", 1)+\" mm\"\n   else\n   \"\"\nendif\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74124
+        {
+            name = "ValueField_61";
+            location = (32, 4);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  \"+format(GetValue(\"PROFILE.WIDTH\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\nelse\n\":  \"+format(GetValue(\"PROFILE.WIDTH\"),\"Length\",\"mm\", 1)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74125
+        {
+            name = "ValueField_63";
+            location = (32, 3);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  \"+format(GetValue(\"PROFILE.HEIGHT\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\nelse\n\":  \"+format(GetValue(\"PROFILE.HEIGHT\"),\"Length\",\"mm\", 1)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74126
+        {
+            name = "ValueField_25";
+            location = (32, 23);
+            formula = "\":  \"+GetValue(\"PART_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74127
+        {
+            name = "ValueField_27";
+            location = (32, 22);
+            formula = "\":  \"+GetValue(\"ASSEMBLY_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_74128
+        {
+            name = "ValueField_29";
+            location = (32, 21);
+            formula = "if GetValue(\"ADVANCED_OPTION.XS_IMPERIAL\")==\"TRUE\" then\n\":  \"+format(GetValue(\"LENGTH\"),\"Length\",\"inch-frac\", 1/16) + \" in\"\nelse\n\":  \"+format(GetValue(\"LENGTH\"),\"Length\",\"mm\", 1)+\" mm\"\nendif";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 20;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_21
+        {
+            name = "BOTTOM_LEVEL_field";
+            location = (88, 47);
+            formula = "setat(format(GetValue(\"BOTTOM_LEVEL\"), \"Length\", \"mm\", 0),find(format(GetValue(\"BOTTOM_LEVEL\"), \"Length\", \"mm\", 0),\".\"),\",\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_22
+        {
+            name = "TOP_LEVEL_field";
+            location = (74, 47);
+            formula = "setat(format(GetValue(\"TOP_LEVEL\"), \"Length\", \"mm\", 0),find(format(GetValue(\"TOP_LEVEL\"), \"Length\", \"mm\", 0),\".\"),\",\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_23
+        {
+            name = "ASSEMBLY_POSITION_CODE";
+            location = (57, 47);
+            formula = "GetValue(\"ASSEMBLY.ASSEMBLY_POSITION_CODE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_24
+        {
+            name = "PROFILE";
+            location = (38, 47);
+            formula = "GetValue(\"PROFILE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 18;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_25
+        {
+            name = "NAME";
+            location = (24, 47);
+            formula = "GetValue(\"NAME\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_26
+        {
+            name = "PART_POS";
+            location = (13, 47);
+            formula = "GetValue(\"PART_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 0.8;
+            fontratio = 0.75;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = 0;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_27
+        {
+            name = "ASSEMBLY_POS_field_1";
+            location = (0, 47);
+            formula = "GetValue(\"ASSEMBLY_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 0;
+            sortdirection = NONE;
+            fontname = "Courier New";
+            fontcolor = 153;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+    };
+};

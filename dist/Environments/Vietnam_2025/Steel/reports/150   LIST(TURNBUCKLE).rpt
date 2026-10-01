@@ -1,0 +1,680 @@
+
+template _tmp_0
+{
+    name = "tpled_template";
+    type = TEXTUAL;
+    width = 65;
+    maxheight = 40;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    fillstartfrom = TOPLEFT;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.6;
+    created = "15.11.2021 20:29";
+    modified = "15.11.2021 20:42";
+    notes = "";
+
+    header _tmp_1
+    {
+        name = "Header";
+        height = 2;
+
+        text _tmp_2
+        {
+            name = "턴버클 물량표";
+            x1 = 1;
+            y1 = 1;
+            x2 = 1;
+            y2 = 1;
+            string = "턴버클 물량표";
+            fontname = "romsim";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_3
+        {
+            name = "프로젝트 명:";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "프로젝트 명:";
+            fontname = "romsim";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_15
+        {
+            name = "PROJECT_NAME";
+            location = (12, 0);
+            formula = "GetValue(\"PROJECT.NAME\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 30;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "romsim";
+            fontcolor = 161;
+            fonttype = 4;
+            fontsize = 3;
+            fontratio = 0.8;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+    };
+
+    pageheader _tmp_4
+    {
+        name = "PageHeader";
+        height = 1;
+        outputpolicy = NONE;
+
+        text _tmp_5
+        {
+            name = "텍스트_1";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "ASSEMBLY_POS";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_6
+        {
+            name = "텍스트";
+            x1 = 13;
+            y1 = 0;
+            x2 = 13;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_7
+        {
+            name = "PART_POS";
+            x1 = 16;
+            y1 = 0;
+            x2 = 16;
+            y2 = 0;
+            string = "PART_POS";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8
+        {
+            name = "텍스트_9";
+            x1 = 25;
+            y1 = 0;
+            x2 = 25;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_9
+        {
+            name = "NAME";
+            x1 = 29;
+            y1 = 0;
+            x2 = 29;
+            y2 = 0;
+            string = "NAME";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_10
+        {
+            name = "텍스트_10";
+            x1 = 42;
+            y1 = 0;
+            x2 = 42;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_11
+        {
+            name = "QTY_1";
+            x1 = 46;
+            y1 = 0;
+            x2 = 46;
+            y2 = 0;
+            string = "QTY";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_12
+        {
+            name = "텍스트_11";
+            x1 = 49;
+            y1 = 0;
+            x2 = 49;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_13
+        {
+            name = "LENGTH";
+            x1 = 53;
+            y1 = 0;
+            x2 = 53;
+            y2 = 0;
+            string = "LENGTH";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_14
+        {
+            name = "텍스트_12";
+            x1 = 60;
+            y1 = 0;
+            x2 = 60;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_16
+    {
+        name = "ASSEMBLY";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if (GetValue(\"ASSEMBLY_NAME\") == \"TURNBUCKLE\") then\r\n  Output()\r\nelse\r\n  StepOver()\r\nendif";
+        contenttype = "ASSEMBLY";
+        sorttype = COMBINE;
+
+        valuefield _tmp_17
+        {
+            name = "ASSEMBLY_POS_field";
+            location = (0, 0);
+            formula = "GetValue(\"ASSEMBLY_POS\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "romsim";
+            fontcolor = 161;
+            fonttype = 4;
+            fontsize = 3;
+            fontratio = 0.8;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_18
+        {
+            name = "텍스트_4";
+            x1 = 13;
+            y1 = 0;
+            x2 = 13;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_19
+        {
+            name = "텍스트_14";
+            x1 = 25;
+            y1 = 0;
+            x2 = 25;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_20
+        {
+            name = "텍스트_3";
+            x1 = 42;
+            y1 = 0;
+            x2 = 42;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_21
+        {
+            name = "텍스트_5";
+            x1 = 49;
+            y1 = 0;
+            x2 = 49;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_22
+        {
+            name = "텍스트_13";
+            x1 = 60;
+            y1 = 0;
+            x2 = 60;
+            y2 = 0;
+            string = "\\t";
+            fontname = "romsim";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        row _tmp_23
+        {
+            name = "SUMMARY";
+            height = 1;
+            visibility = FALSE;
+            usecolumns = FALSE;
+            rule = "";
+            contenttype = "SUMMARY";
+            sorttype = COMBINE;
+
+            row _tmp_24
+            {
+                name = "ASSEMBLY_1";
+                height = 1;
+                visibility = FALSE;
+                usecolumns = FALSE;
+                rule = "";
+                contenttype = "ASSEMBLY";
+                sorttype = COMBINE;
+
+                row _tmp_25
+                {
+                    name = "PART";
+                    height = 1;
+                    visibility = TRUE;
+                    usecolumns = FALSE;
+                    rule = "";
+                    contenttype = "PART";
+                    sorttype = COMBINE;
+
+                    text _tmp_26
+                    {
+                        name = "Text";
+                        x1 = 13;
+                        y1 = 0;
+                        x2 = 13;
+                        y2 = 0;
+                        string = "\\t";
+                        fontname = "romsim";
+                        fontcolor = 160;
+                        fonttype = 4;
+                        fontsize = 1;
+                        fontratio = 1;
+                        fontslant = 0;
+                        fontstyle = 0;
+                        angle = 0;
+                        justify = LEFT;
+                        pen = -1;
+                    };
+
+                    text _tmp_27
+                    {
+                        name = "텍스트_2";
+                        x1 = 25;
+                        y1 = 0;
+                        x2 = 25;
+                        y2 = 0;
+                        string = "\\t";
+                        fontname = "romsim";
+                        fontcolor = 160;
+                        fonttype = 4;
+                        fontsize = 1;
+                        fontratio = 1;
+                        fontslant = 0;
+                        fontstyle = 0;
+                        angle = 0;
+                        justify = LEFT;
+                        pen = -1;
+                    };
+
+                    text _tmp_28
+                    {
+                        name = "텍스트_8";
+                        x1 = 42;
+                        y1 = 0;
+                        x2 = 42;
+                        y2 = 0;
+                        string = "\\t";
+                        fontname = "romsim";
+                        fontcolor = 160;
+                        fonttype = 4;
+                        fontsize = 5;
+                        fontratio = 1;
+                        fontslant = 0;
+                        fontstyle = 0;
+                        angle = 0;
+                        justify = LEFT;
+                        pen = -1;
+                    };
+
+                    text _tmp_29
+                    {
+                        name = "텍스트_6";
+                        x1 = 49;
+                        y1 = 0;
+                        x2 = 49;
+                        y2 = 0;
+                        string = "\\t";
+                        fontname = "romsim";
+                        fontcolor = 160;
+                        fonttype = 4;
+                        fontsize = 5;
+                        fontratio = 1;
+                        fontslant = 0;
+                        fontstyle = 0;
+                        angle = 0;
+                        justify = LEFT;
+                        pen = -1;
+                    };
+
+                    text _tmp_30
+                    {
+                        name = "텍스트_7";
+                        x1 = 60;
+                        y1 = 0;
+                        x2 = 60;
+                        y2 = 0;
+                        string = "\\t";
+                        fontname = "romsim";
+                        fontcolor = 160;
+                        fonttype = 4;
+                        fontsize = 5;
+                        fontratio = 1;
+                        fontslant = 0;
+                        fontstyle = 0;
+                        angle = 0;
+                        justify = LEFT;
+                        pen = -1;
+                    };
+
+                    valuefield _tmp_31
+                    {
+                        name = "PART_POS_field";
+                        location = (15, 0);
+                        formula = "GetValue(\"PART_POS\")";
+                        maxnumoflines = 1;
+                        datatype = STRING;
+                        class = "";
+                        cacheable = TRUE;
+                        formatzeroasempty = FALSE;
+                        justify = LEFT;
+                        visibility = TRUE;
+                        angle = 0;
+                        length = 10;
+                        decimals = 2;
+                        sortdirection = ASCENDING;
+                        fontname = "romsim";
+                        fontcolor = 161;
+                        fonttype = 4;
+                        fontsize = 3;
+                        fontratio = 0.8;
+                        fontstyle = 0;
+                        fontslant = 0;
+                        pen = -1;
+                        oncombine = NONE;
+                    };
+
+                    valuefield _tmp_33
+                    {
+                        name = "NAME_field";
+                        location = (27, 0);
+                        formula = "GetValue(\"NAME\")";
+                        maxnumoflines = 1;
+                        datatype = STRING;
+                        class = "";
+                        cacheable = TRUE;
+                        formatzeroasempty = FALSE;
+                        justify = LEFT;
+                        visibility = TRUE;
+                        angle = 0;
+                        length = 15;
+                        decimals = 2;
+                        sortdirection = NONE;
+                        fontname = "romsim";
+                        fontcolor = 161;
+                        fonttype = 4;
+                        fontsize = 3;
+                        fontratio = 0.8;
+                        fontstyle = 0;
+                        fontslant = 0;
+                        pen = -1;
+                        oncombine = NONE;
+                    };
+
+                    valuefield _tmp_34
+                    {
+                        name = "NUMBER_field";
+                        location = (44, 0);
+                        formula = "GetValue(\"NUMBER\")";
+                        maxnumoflines = 1;
+                        datatype = INTEGER;
+                        class = "";
+                        cacheable = TRUE;
+                        formatzeroasempty = FALSE;
+                        justify = RIGHT;
+                        visibility = TRUE;
+                        angle = 0;
+                        length = 3;
+                        decimals = 2;
+                        sortdirection = NONE;
+                        fontname = "romsim";
+                        fontcolor = 161;
+                        fonttype = 4;
+                        fontsize = 3;
+                        fontratio = 0.8;
+                        fontstyle = 0;
+                        fontslant = 0;
+                        pen = -1;
+                        oncombine = SUM;
+                    };
+
+                    valuefield _tmp_35
+                    {
+                        name = "LENGTH_field";
+                        location = (52, 0);
+                        formula = "GetValue(\"LENGTH\")";
+                        maxnumoflines = 1;
+                        datatype = DOUBLE;
+                        class = "Length";
+                        cacheable = TRUE;
+                        formatzeroasempty = FALSE;
+                        justify = RIGHT;
+                        visibility = TRUE;
+                        angle = 0;
+                        length = 8;
+                        decimals = 1;
+                        sortdirection = ASCENDING;
+                        fontname = "romsim";
+                        fontcolor = 161;
+                        fonttype = 4;
+                        fontsize = 3;
+                        fontratio = 0.8;
+                        fontstyle = 0;
+                        fontslant = 0;
+                        pen = -1;
+                        oncombine = NONE;
+                        unit = "mm";
+                    };
+                };
+            };
+        };
+    };
+};

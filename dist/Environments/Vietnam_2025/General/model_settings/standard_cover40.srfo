@@ -1,0 +1,12 @@
+encoding 949
+aOutFile "standard"
+aInFile "standard"
+NameEnable 1
+Name "能农府飘 乔汗"
+TypeEnable 1
+Type "能农府飘 乔汗"
+ClassEnable 1
+Class "13"
+CreateHolesEnable 1
+CreateHoles 1
+MoreEnable 1

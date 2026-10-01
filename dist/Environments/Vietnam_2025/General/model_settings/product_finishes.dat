@@ -1,0 +1,87 @@
+// Product finishes
+// -------------------------
+//
+// Type         : Type of surfacing
+//                  1 = concrete finish
+//                  2 = special mix
+//                  3 = tile surface
+//                  4 = steel finish
+// Code         : Abbreviation code used in drawings and reports
+// Name         : This is the name used in reports
+
+
+// =========================================
+// *** Concrete Finish
+// =========================================
+//
+// WATERPROOFING
+// ----------
+1		AW	"Acrylic Waterproofing"
+1		RW	"Rubber Waterproofing"
+1		MW	"Membrane Waterproofing"
+1		IW	"Integral Waterproofing"
+1		CW	"Cementitious Waterproofing"
+1		BW	"Bentonite Waterproofing"
+1		SW	"Self-adhering Waterproofing"
+1		DW	"Drainage Panel Waterproofing"
+1		EW	"Elastomeric Waterproofing"
+1		BW	"Bitumi Waterproofing"
+//
+// WET FINISH
+// ----------
+1            MF       "Magnesium Float"
+1            SMF      "Smooth Magnesium Float"
+1            WT       "Wet Trowel"
+1            HT       "Hard Trowel"
+1            LB       "Light Broom"
+1            SUF      "Standard Untopped Finish"
+1            RF       "Raked Finish"
+//
+// FORM FINISH
+// -----------
+1            CG       "Commercial Grade"
+1            SG       "Standard Grade"
+1            FC       "Finish Grade C"
+1            FB       "Finish Grade B"
+1            FA       "Finish Grade A"
+1            AF       "Architectural Finish"
+//
+// FINAL FINISH
+// ------------
+1            LSB      "Light Sand Blast"
+1            MSB      "Medium Sand Blast"
+1            HSB      "Heavy Sand Blast"
+1            RW       "Retarder Wash"
+1            RB       "Retarder Blast"
+1            A        "Acid Etch"
+
+// =========================================
+// *** Special concrete mix and/or aggregate
+// =========================================
+2            SM1      "Special mix 1"
+2            SM2      "Special mix 2"
+2            SM3      "Special mix 3"
+
+// =========================================
+// *** Tile surface
+// =========================================
+3            TS1      "Tile surface 1"
+3            TS2      "Tile surface 2"
+3            TS3      "Tile surface 3"
+3            TS4      "Tile surface 4"
+3            TS5      "Tile surface 5"
+3            TS6      "Tile surface 6"
+3            BRK      "Brick"
+3            CHP      "Checkered Plate"
+3            XPM      "Expanded Metal"
+3            GRT      "Grating"
+3            GS       "Grip Strut"
+3            WM       "Wire Mesh"
+
+// =========================================
+// *** Steel Finish
+// =========================================
+4            FP       "Fire proofing"
+4            UP       "Unpainted"
+4            SB       "Sand Blast"
+4            PB       "Paint Bitumastic"

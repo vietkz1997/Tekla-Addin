@@ -1,0 +1,20 @@
+﻿// This file defines the directories to scan for files that should be displayed in Document Manager.
+// Note: The file should be Unicode and not ASCII format.
+// The format of each line is <DirectoryPathAndFileNamePattern>|<IncludeSubdirectories>
+// <DirectoryPathAndFileNamePattern> = A relative or absolute path and file name pattern.
+//   A relative model subdirectory would be specified using a leading full stop.
+//   The file name pattern supports the standard ? and * wildcards.
+// <IncludeSubdirectories> = true to include subdirectories and false to not include subdirectories.
+// For example: .\Plotfiles\*.pdf|false
+  
+.\Plotfiles\*.pdf|false
+.\CAD\*.dxf|false
+.\CAD\*.dwg|false
+.\Reports\*.pdf|false
+.\Reports\*.xsr|false
+.\Reports\*.html|false
+.\Reports\*.xls|false
+.\Reports\*.Excel|false
+.\DSTV_Plates\*.nc1|false
+.\DSTV_Profiles\*.nc1|false
+.\NC_dxf\*.dxf|false

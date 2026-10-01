@@ -608,14 +608,16 @@ namespace BimCommands.Tekla.ClashCheck
             dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColIndex", HeaderText = "#", Width = 45 });
             dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarId", HeaderText = "Rebar ID", Width = 95 });
             dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarName", HeaderText = "Rebar Name", Width = 110 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarSize", HeaderText = "Size", Width = 85 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarGrade", HeaderText = "Grade", Width = 85 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarPos", HeaderText = "Pos (Mark)", Width = 100 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColHostPart", HeaderText = "Host Part", Width = 120 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColIfcName", HeaderText = "IFC Entity", Width = 140 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColLength", HeaderText = "Length (mm)", Width = 100 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColOverlap", HeaderText = "Overlap (mm)", Width = 95 });
-            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColSeverity", HeaderText = "Severity", Width = 90 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarSize", HeaderText = "Size", Width = 80 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarGrade", HeaderText = "Grade", Width = 80 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColRebarPos", HeaderText = "Pos (Mark)", Width = 95 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColHostPart", HeaderText = "Host Part", Width = 115 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColIfcName", HeaderText = "IFC Entity", Width = 135 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColType", HeaderText = "Type", Width = 80 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColOverlap", HeaderText = "Overlap (mm)", Width = 90 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColLengthInside", HeaderText = "Inside (mm)", Width = 85 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColVolume", HeaderText = "Volume (mm³)", Width = 95 });
+            dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColSeverity", HeaderText = "Severity", Width = 85 });
             dgvClashes.Columns.Add(new DataGridViewTextBoxColumn { Name = "ColCoord", HeaderText = "Clash Point (X, Y, Z)", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
 
             foreach (DataGridViewColumn col in dgvClashes.Columns)
@@ -1184,13 +1186,25 @@ namespace BimCommands.Tekla.ClashCheck
                             {
                                 addRebar(rebar);
                             }
+                            else if (obj is RebarSet rebarSet)
+                            {
+                                try
+                                {
+                                    var setRebars = rebarSet.GetReinforcements();
+                                    while (setRebars != null && setRebars.MoveNext())
+                                    {
+                                        if (setRebars.Current is Reinforcement sr) addRebar(sr);
+                                    }
+                                }
+                                catch { }
+                            }
                             else if (obj is Part part)
                             {
                                 try
                                 {
                                     var partRebars = part.GetReinforcements();
                                     bool hasPartRebar = false;
-                                    while (partRebars.MoveNext())
+                                    while (partRebars != null && partRebars.MoveNext())
                                     {
                                         if (partRebars.Current is Reinforcement pr)
                                         {
@@ -1216,10 +1230,18 @@ namespace BimCommands.Tekla.ClashCheck
                                     {
                                         addRebar(mainRebar);
                                     }
+                                    else if (mpObj is RebarSet mainRebarSet)
+                                    {
+                                        var msr = mainRebarSet.GetReinforcements();
+                                        while (msr != null && msr.MoveNext())
+                                        {
+                                            if (msr.Current is Reinforcement r) addRebar(r);
+                                        }
+                                    }
                                     else if (mpObj is Part mainPart)
                                     {
                                         var mainRebars = mainPart.GetReinforcements();
-                                        while (mainRebars.MoveNext())
+                                        while (mainRebars != null && mainRebars.MoveNext())
                                         {
                                             if (mainRebars.Current is Reinforcement mpr) addRebar(mpr);
                                         }
@@ -1231,10 +1253,18 @@ namespace BimCommands.Tekla.ClashCheck
                                         foreach (object item in sec)
                                         {
                                             if (item is Reinforcement ar) addRebar(ar);
+                                            else if (item is RebarSet ars)
+                                            {
+                                                var asr = ars.GetReinforcements();
+                                                while (asr != null && asr.MoveNext())
+                                                {
+                                                    if (asr.Current is Reinforcement r) addRebar(r);
+                                                }
+                                            }
                                             else if (item is Part ap)
                                             {
                                                 var apr = ap.GetReinforcements();
-                                                while (apr.MoveNext())
+                                                while (apr != null && apr.MoveNext())
                                                 {
                                                     if (apr.Current is Reinforcement pr) addRebar(pr);
                                                 }
@@ -1275,6 +1305,24 @@ namespace BimCommands.Tekla.ClashCheck
                                 }
                             }
                         }
+
+                        // Quét bổ sung RebarSet
+                        try
+                        {
+                            var setEnum = _model.GetModelObjectSelector().GetAllObjectsWithType(ModelObject.ModelObjectEnum.REBAR_SET);
+                            while (setEnum.MoveNext())
+                            {
+                                if (setEnum.Current is RebarSet rs)
+                                {
+                                    var rsRebars = rs.GetReinforcements();
+                                    while (rsRebars != null && rsRebars.MoveNext())
+                                    {
+                                        if (rsRebars.Current is Reinforcement sr) addRebar(sr);
+                                    }
+                                }
+                            }
+                        }
+                        catch { }
                     }
 
                     if (targetRebars.Count == 0)
@@ -1395,8 +1443,10 @@ namespace BimCommands.Tekla.ClashCheck
                     c.RebarPos,
                     c.HostPartName,
                     !string.IsNullOrEmpty(c.IfcEntityName) ? c.IfcEntityName : c.IfcFileName,
-                    c.RebarLength > 0 ? c.RebarLength.ToString("F0") : "-",
+                    c.ClashType,
                     c.OverlapMm.ToString("F1"),
+                    c.LengthInsideMm > 0 ? c.LengthInsideMm.ToString("F1") : "-",
+                    c.VolumeMm3 > 0 ? c.VolumeMm3.ToString("N0") : "-",
                     c.Severity.ToString(),
                     c.ClashPointDisplay
                 );
@@ -1928,6 +1978,25 @@ namespace BimCommands.Tekla.ClashCheck
                     default:
                         fg = DrawColor.FromArgb(234, 179, 8); // Yellow: minor clash / clearance
                         break;
+                }
+                e.CellStyle.ForeColor = fg;
+                e.CellStyle.Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold);
+            }
+            else if (dgvClashes.Columns[e.ColumnIndex].Name == "ColType")
+            {
+                DrawColor fg;
+                string type = item.ClashType ?? string.Empty;
+                if (type.Equals("Hard", StringComparison.OrdinalIgnoreCase))
+                {
+                    fg = DrawColor.FromArgb(239, 68, 68); // Red
+                }
+                else if (type.Equals("Clearance", StringComparison.OrdinalIgnoreCase))
+                {
+                    fg = DrawColor.FromArgb(249, 115, 22); // Orange
+                }
+                else
+                {
+                    fg = DrawColor.FromArgb(234, 179, 8); // Yellow (Touch/Touching)
                 }
                 e.CellStyle.ForeColor = fg;
                 e.CellStyle.Font = new DrawFont("Segoe UI", 9F, FontStyle.Bold);
@@ -2494,7 +2563,7 @@ namespace BimCommands.Tekla.ClashCheck
                     try
                     {
                         var sb = new StringBuilder();
-                        sb.AppendLine("No,Rebar_ID,Rebar_Name,Size,Grade,Pos_Mark,Host_Part,IFC_Entity,Length_mm,Overlap_mm,Severity,Coord_X,Coord_Y,Coord_Z");
+                        sb.AppendLine("No,Rebar_ID,Rebar_Name,Size,Grade,Pos_Mark,Host_Part,IFC_Entity,Type,Overlap_mm,Length_Inside_mm,Volume_mm3,Severity,Coord_X,Coord_Y,Coord_Z");
 
                         for (int i = 0; i < exportList.Count; i++)
                         {
@@ -2503,17 +2572,19 @@ namespace BimCommands.Tekla.ClashCheck
                             string cy = c.ClashPoint != null ? c.ClashPoint.Y.ToString("F1") : "";
                             string cz = c.ClashPoint != null ? c.ClashPoint.Z.ToString("F1") : "";
 
-                            sb.AppendLine(string.Format("{0},{1},\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",{8},{9},{10},{11},{12},{13}",
+                            sb.AppendLine(string.Format("{0},{1},\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",{9},{10},{11},{12},{13},{14},{15}",
                                 i + 1,
                                 c.RebarId,
-                                c.RebarName,
-                                c.RebarSize,
-                                c.RebarGrade,
-                                c.RebarPos,
-                                c.HostPartName,
-                                !string.IsNullOrEmpty(c.IfcEntityName) ? c.IfcEntityName : c.IfcFileName,
-                                c.RebarLength,
+                                (c.RebarName ?? string.Empty).Replace("\"", "\"\""),
+                                (c.RebarSize ?? string.Empty).Replace("\"", "\"\""),
+                                (c.RebarGrade ?? string.Empty).Replace("\"", "\"\""),
+                                (c.RebarPos ?? string.Empty).Replace("\"", "\"\""),
+                                (c.HostPartName ?? string.Empty).Replace("\"", "\"\""),
+                                (!string.IsNullOrEmpty(c.IfcEntityName) ? c.IfcEntityName : c.IfcFileName ?? string.Empty).Replace("\"", "\"\""),
+                                (c.ClashType ?? string.Empty).Replace("\"", "\"\""),
                                 c.OverlapMm.ToString("F1"),
+                                c.LengthInsideMm.ToString("F1"),
+                                c.VolumeMm3.ToString("F1"),
                                 c.Severity,
                                 cx, cy, cz
                             ));

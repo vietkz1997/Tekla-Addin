@@ -1,0 +1,3 @@
+in_file "PC_COLUMN_EL1"
+out_file "standard"
+aDimensioningPlugins ",albl_AddShapeDimensions,standard,,albl_AddFilterDimensions,ANCHOR,,albl_AddOverallDimensions,standard,"

@@ -1,0 +1,2339 @@
+(* DEP1 Express Schema (Long Form) *)
+(* Version 1.1 - dated 8th November 1996 *)
+(* Schema Declaration *)
+
+SCHEMA LPM4DEP1;  
+(* 
+Schema to support file exchange via the CIMsteel Integration Standards in accordance with Data Exchange Protocol 1 
+*)
+(* 1.  LPM_Decomposition_schema *)
+
+ENTITY ASBLY_CONNECTION
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ ac_id : identifier;
+ ac_desc : OPTIONAL DESCRIPTION;
+ ac_forms_part_of : OPTIONAL ASBLY_CONNECTION;
+ required_part_joints : OPTIONAL SET [1:?] OF PART_JOINT;
+INVERSE
+ decomposes_into_ac : SET [0:?] OF ASBLY_CONNECTION
+   FOR ac_forms_part_of;
+ connected_asblies : SET [2:?] OF ASSEMBLY
+  FOR connections;
+UNIQUE
+   UR1 : ac_id;
+END_ENTITY;
+
+ENTITY ASSEMBLY
+ABSTRACT SUPERTYPE OF (ONEOF
+   (MANUFACT_ASBLY, DESIGN_ASSEMBLY))
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ assembly_id : identifier;
+ assembly_type : ASSEMBLY_USAGE;  -- discriminator
+ asbly_coord_sys : OPTIONAL COORD_SYSTEM;
+ construction_stage : OPTIONAL DESCRIPTION;
+ complexity : OPTIONAL complexity_level;
+ represented_structure : OPTIONAL STRUCTURE;
+ asbly_grp : OPTIONAL ASSEMBLY_GROUP;
+ connections : OPTIONAL SET [1:?] OF ASBLY_CONNECTION;
+UNIQUE
+   UR1 : assembly_id;
+END_ENTITY;
+
+TYPE ASSEMBLY_USAGE = ENUMERATION OF (MANUFACTURING, DESIGN);
+END_TYPE;
+
+TYPE complexity_level  =  ENUMERATION OF (low, medium, high);
+END_TYPE;
+
+ENTITY DESIGN_ASSEMBLY
+SUPERTYPE OF (ONEOF(
+  STRUC_FRAME,
+  STRUC_MEMBER,
+  STRUC_CONNECTION))
+SUBTYPE OF (ASSEMBLY);
+ da_description : OPTIONAL DESCRIPTION;
+ da_type :  DESIGN_ASSEMBLY_USE; -- discriminator
+ modelling_am : OPTIONAL SET [1:?] OF ANALYSIS_MODEL;
+ no_same_da_type : OPTIONAL INTEGER;
+ component_connectors : OPTIONAL SET [1:?] OF CONNECTOR;
+ component_parts : OPTIONAL SET [1:?] OF DESIGN_PART;
+ decomposes_into_da : OPTIONAL SET [1:?] OF DESIGN_ASSEMBLY;
+ governing_criteria : OPTIONAL SET [0:?] OF DESIGN_CRITERIA;
+ designed : BOOLEAN;
+ checked : BOOLEAN;
+DERIVE
+ da_id : identifier := SELF\ASSEMBLY.assembly_id;
+INVERSE
+ da_forms_part_of : SET [0:?] OF DESIGN_ASSEMBLY
+   FOR decomposes_into_da;
+ roles : SET [1:?] OF FUNCTIONAL_ROLE
+   FOR role_for_da;
+WHERE
+   WR1 : SELF\ASSEMBLY.assembly_type = DESIGN;
+END_ENTITY;
+
+TYPE DESIGN_ASSEMBLY_USE = ENUMERATION OF
+   (STRUCT_FRAME, STRUCT_CONNECTION, STRUCT_MEMBER, UNDEFINED);
+END_TYPE;
+
+ENTITY STRUC_CONNECTION
+SUBTYPE OF (DESIGN_ASSEMBLY);
+ struc_connection_number : OPTIONAL INTEGER;
+ struc_connection_label : OPTIONAL label;
+ struc_connection_type : OPTIONAL anlsys_connctn_type;
+ connctn_grp : OPTIONAL STR_CONN_GROUP;
+INVERSE
+ connected_mbrs : SET [2:?] OF STRUC_MEMBER
+   FOR mbr_connections;
+WHERE
+   WR1 : SELF\DESIGN_ASSEMBLY.da_type = STRUCT_CONNECTION;
+END_ENTITY;
+
+ENTITY STRUC_FRAME
+SUBTYPE OF (DESIGN_ASSEMBLY);
+ frame_type : OPTIONAL two_or_three_d;
+ frame_continuity : OPTIONAL frm_continuity;
+ sway_frame : OPTIONAL BOOLEAN;
+ braced_frame : OPTIONAL BOOLEAN;
+ bracing_frame : OPTIONAL BOOLEAN;
+ frame_grp : OPTIONAL FRAME_GROUP;
+WHERE
+   WR1 : SELF\DESIGN_ASSEMBLY.da_type = STRUCT_FRAME;
+END_ENTITY;
+
+TYPE two_or_three_d  =  ENUMERATION OF (two_d, three_d);
+END_TYPE;
+
+TYPE frm_continuity  =  ENUMERATION OF (simple, continuous, semi_continuous);
+END_TYPE;
+
+ENTITY STRUC_MEMBER
+SUBTYPE OF (DESIGN_ASSEMBLY);
+ struc_member_number : OPTIONAL INTEGER;
+ struc_member_type : OPTIONAL DESCRIPTION;
+ struc_member_label : OPTIONAL label;
+ key_member : OPTIONAL BOOLEAN;
+ struc_member_use : OPTIONAL member_role;
+ mbr_connections : OPTIONAL SET [1:?] OF STRUC_CONNECTION;
+ mbr_grp : OPTIONAL STR_MEMBER_GROUP;
+INVERSE
+ effective_lgths : SET [0:?] OF EFFECTIVE_BUCKLING_LENGTH
+   FOR eff_lgth_for_mbr;
+ restraints : SET [0:?] OF RESTRAINT
+   FOR restrained_mbr;
+WHERE
+   WR1 : SELF\DESIGN_ASSEMBLY.da_type = STRUCT_MEMBER;
+END_ENTITY;
+
+TYPE member_role = ENUMERATION OF
+   (COMPRESSN_MBR, TENSION_MBR, BENDING_MBR, COMBINED_MBR);
+END_TYPE;
+
+ENTITY EFFECTIVE_BUCKLING_LENGTH
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ effective_length_id : identifier;
+ effective_length_factor : OPTIONAL REAL;
+ effective_length_use : OPTIONAL DESCRIPTION;
+ effective_length_directn : OPTIONAL buckling_direction;
+ eff_lgth_for_mbr : STRUC_MEMBER;
+UNIQUE
+   UR1 : effective_length_id;
+END_ENTITY;
+
+TYPE buckling_direction  =  ENUMERATION OF (x_dir, y_dir, z_dir);
+END_TYPE;
+
+ENTITY RESTRAINT
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ restraint_id : identifier;
+ restraint_location : OPTIONAL length_measure;
+ restraint_x_rotation : ROTATIONAL_STIFFNESS_MEASURE;
+ restraint_y_rotation : ROTATIONAL_STIFFNESS_MEASURE;
+ restraint_z_rotation : ROTATIONAL_STIFFNESS_MEASURE;
+ restraint_x_displacement : LINEAR_STIFFNESS_MEASURE;
+ restraint_y_displacement : LINEAR_STIFFNESS_MEASURE;
+ restraint_z_displacement : LINEAR_STIFFNESS_MEASURE;
+ restraint_description : OPTIONAL DESCRIPTION;
+ restrained_mbr : STRUC_MEMBER;
+UNIQUE
+   UR1 : restraint_id;
+END_ENTITY;
+
+ENTITY DESIGN_CRITERIA
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ criteria_reference : label;
+ criteria_description : OPTIONAL DESCRIPTION;
+ design_assumptions : OPTIONAL DESCRIPTION;
+INVERSE
+ governed_assemblies : SET [0:?] OF DESIGN_ASSEMBLY
+   FOR governing_criteria;
+UNIQUE
+   UR1 : criteria_reference;
+END_ENTITY;
+
+ENTITY FUNCTIONAL_ROLE;
+ functional_role_id : identifier;
+ functional_role_descrptn : DESCRIPTION;
+ role_for_da :  DESIGN_ASSEMBLY;
+UNIQUE
+  UR1 : functional_role_id, role_for_da;
+END_ENTITY;
+
+ENTITY DESIGN_PART
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ design_part_number : INTEGER;
+ design_part_label : OPTIONAL label;
+ design_part_spec : OPTIONAL S_PART;
+ modelling_elements : OPTIONAL SET [1:?] OF ELEMENT;
+ connectors : OPTIONAL SET [1:?] OF CONNECTOR;
+INVERSE
+ parent_asblies : SET [0:?] OF DESIGN_ASSEMBLY
+   FOR component_parts;
+UNIQUE
+   UR1 : design_part_number;
+END_ENTITY;
+
+ENTITY CONNECTOR
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ connector_number : INTEGER;
+ connector_label : OPTIONAL label;
+ connector_spec : OPTIONAL S_JOINT_SYSTEM;
+ connector_type : OPTIONAL anlsys_connctn_type;
+INVERSE
+ parent_assemblies : SET [0:?] OF DESIGN_ASSEMBLY
+   FOR component_connectors;
+ connected_parts : SET [0:?] OF DESIGN_PART
+   FOR connectors;
+UNIQUE
+   UR1 : connector_number;
+END_ENTITY;
+
+ENTITY MANUFACT_ASBLY
+SUBTYPE OF (ASSEMBLY);
+ ma_description : OPTIONAL DESCRIPTION;
+ ma_surface_treatment : OPTIONAL DESCRIPTION;
+ ma_sequence : OPTIONAL DESCRIPTION;
+ ma_use : OPTIONAL DESCRIPTION;
+ no_same_ma_type : OPTIONAL INTEGER;
+ ma_forms_part_of : OPTIONAL MANUFACT_ASBLY;
+DERIVE
+ ma_id : identifier := SELF\ASSEMBLY.assembly_id;
+INVERSE
+ decomposes_into_ma : SET [0:?] OF MANUFACT_ASBLY
+   FOR ma_forms_part_of;
+ required_joints : SET [0:?] OF LOCATED_JOINT_SYSTEM
+   FOR parent_ma;
+ required_parts : SET [0:?] OF LOCATED_PART
+   FOR parent_ma;
+WHERE
+   WR1 : SELF\ASSEMBLY.assembly_type = MANUFACTURING;
+END_ENTITY;
+
+ENTITY LOCATED_JOINT_SYSTEM;
+ loc_joint_sys_id : identifier;
+ loc_jnt_sys_coord_sys : OPTIONAL COORD_SYSTEM;
+ descriptive_jt_sys : S_JOINT_SYSTEM;
+ place_of_assembly : OPTIONAL place_of_asbly;
+ parent_ma : MANUFACT_ASBLY;
+ joints_grp : OPTIONAL L_JOINT_SYSTEMS_GROUP;
+INVERSE
+ required_features : SET [0:?] OF JOINT_DEP_FEATURE
+   FOR feature_for_joint;
+ physically_fulfilled_pjs : SET [0:?] OF PART_JOINT
+   FOR required_joints;
+UNIQUE
+   UR1 : loc_joint_sys_id, parent_ma;
+END_ENTITY;
+
+TYPE place_of_asbly  =  ENUMERATION OF (shop_asbly, site_asbly);
+END_TYPE;
+
+ENTITY LOCATED_PART;
+ located_part_id : identifier;
+ loc_part_coord_sys : OPTIONAL COORD_SYSTEM;
+ descriptive_part : S_PART;
+ loc_part_nature : OPTIONAL DESCRIPTION;
+ loc_part_description : OPTIONAL DESCRIPTION;
+ shipping_ref : OPTIONAL identifier;
+ design_ref : OPTIONAL identifier;
+ workshop_ref : OPTIONAL identifier;
+ total_mass : OPTIONAL mass_measure;
+ parent_ma : MANUFACT_ASBLY;
+ parts_grp : OPTIONAL L_PARTS_GROUP;
+INVERSE
+ modifying_features : SET [0:?] OF LOCATED_FEATURE
+   FOR modified_part;
+ logical_joints : SET [0:?] OF PART_JOINT
+   FOR logically_joined_parts;
+UNIQUE
+   UR1 : located_part_id, parent_ma;
+END_ENTITY;
+
+ENTITY LOCATED_FEATURE
+SUPERTYPE OF (ONEOF (JOINT_DEP_FEATURE) );
+ loc_feat_id : identifier;
+ loc_feat_coord_sys : OPTIONAL COORD_SYSTEM;
+ descriptive_feature : S_FEATURE;
+ loc_feat_description : OPTIONAL DESCRIPTION;
+ loc_feat_use : feature_role;  --  discriminator 
+ modified_part :  LOCATED_PART;
+UNIQUE
+   UR1 : loc_feat_id, modified_part;
+END_ENTITY;
+
+TYPE feature_role = ENUMERATION OF (JOINT_FEATURE, UNDEFINED);
+END_TYPE;
+
+ENTITY JOINT_DEP_FEATURE
+SUBTYPE OF (LOCATED_FEATURE);
+ jt_dep_feat_descr : OPTIONAL DESCRIPTION;
+ feature_for_joint : LOCATED_JOINT_SYSTEM;
+WHERE
+   WR1 : SELF\LOCATED_FEATURE.loc_feat_use =
+   JOINT_FEATURE;
+END_ENTITY;
+
+ENTITY PART_JOINT;
+ part_joint_id : identifier;
+ pj_nature : OPTIONAL DESCRIPTION;
+ logically_joined_parts : SET [2:2] OF LOCATED_PART;
+ required_joints : SET [1:?] OF LOCATED_JOINT_SYSTEM;
+INVERSE
+ involved_asbly_conns : SET [1:?] OF ASBLY_CONNECTION
+   FOR required_part_joints;
+UNIQUE
+   UR1 : part_joint_id;
+END_ENTITY;
+
+
+
+ (* 2.  LPM_Configuration_schema *)
+
+TYPE DESCRIPTION  =  STRING;
+END_TYPE;
+
+TYPE NAME  =  STRING;
+END_TYPE;
+
+TYPE identifier  =  STRING;  -- Mandatory to support
+END_TYPE;
+
+TYPE label  =  STRING;  -- Mandatory to support
+END_TYPE;
+
+TYPE text  =  STRING;  -- Mandatory to support
+END_TYPE;
+
+ENTITY CIS_FILE;  -- MANDATORY TO INSTANCE
+ file_name_as_created : identifier;  
+   (* Mandatory to support and instance with a user-defined value *)
+ CIS_release : release_number; 
+   (* Mandatory to support and instance with a CIS-defined value *)
+ originating_application : label; 
+   (* Mandatory to support and instance with a vendor-defined value *)
+ application_version : identifier;  
+   (* Mandatory to support and instance with a vendor-defined value *)
+ exchange_protocols : SET [1:5] OF CIS_DEP;
+   (* Mandatory to support and instance with a CIS-defined value *)
+ unit_system_id : units; 
+   (* Mandatory to support and instance with a CIS-defined value *)
+ international_flavours : SET [0:10] OF CIS_flavour;  -- modified for CIS/1.1
+   (* Mandatory to support and instance with a CIS-defined value *)
+ date_time_file_created : date_and_time;
+   (* Mandatory to support and instance with a machine-defined value *)
+ originator : OPTIONAL person_and_organization; 
+   (* Mandatory to support (value defined by user) *)
+ date_time_file_approved : date_and_time;
+   (* Mandatory to support and instance with value defined by user/machine *)
+ file_approved : BOOLEAN;
+   (* Mandatory to support and instance with a user-defined value (default = FALSE) *)
+ file_approved_by : OPTIONAL person_and_organization;  
+   (* Mandatory to support (value defined by user) *)
+ date_time_file_modified : OPTIONAL date_and_time;
+   (*  Mandatory to support (value defined by user/machine) *)
+ file_modified_by : OPTIONAL person_and_organization;  
+   (* Mandatory to support (value defined by user) *)
+INVERSE
+ instances : SET [1:?] OF INSTANCE_GROUP
+   FOR parent_physical_file;
+END_ENTITY;
+
+TYPE release_number = ENUMERATION OF (one);  -- Mandatory to support
+END_TYPE;
+
+TYPE CIS_DEP = ENUMERATION OF  -- Mandatory to support
+     (DEP1_Analysis, DEP2_Member_Design, DEP3_Connection_Design, DEP4_Detailing, DEP5_Grouping);
+END_TYPE;
+
+TYPE CIS_flavour = ENUMERATION OF (European, US, UK, Australian, flavour5, flavour6, flavour7, flavour8, flavour9, flavour10);  -- modified for CIS/1.1
+(* Mandatory to support *)
+END_TYPE;
+
+TYPE units = ENUMERATION OF (SI, US_Imperial);  -- Mandatory to support
+END_TYPE;
+
+ENTITY INSTANCE_GROUP; -- MANDATORY TO INSTANCE
+ parent_physical_file : CIS_FILE;  
+   (* Mandatory to support and instance with a user-defined value *)
+ date_time_inst_grp_created : date_and_time;
+   (* Mandatory to support and instance with a machine-defined value *)
+ originating_applictn : label;
+   (* Mandatory to support and instance with a vendor-defined value *)
+ originator : OPTIONAL person_and_organization;
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ approved : BOOLEAN;
+   (* Mandatory to support and instanced with a user-defined value (default = FALSE) *)
+ date_and_time_approved : OPTIONAL date_and_time;
+   (* Mandatory to support - if instanced, use a user/machine-defined value *)
+ approved_by : OPTIONAL person_and_organization;  -- Mandatory to support
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ date_and_time_modified : OPTIONAL date_and_time;
+   (* Mandatory to support - if instanced, use a user/machine-defined value *)
+ modified_by : OPTIONAL person_and_organization;
+   (* Mandatory to support - if instanced, use a user-defined value *)
+INVERSE
+ entity_instances : SET [1:?] OF CIMSTEEL_ENTITY
+   FOR parent_group;
+END_ENTITY;
+
+ENTITY CIMSTEEL_ENTITY;  -- MANDATORY TO INSTANCE (The subtypes)
+ parent_group : INSTANCE_GROUP;  
+   (*  Mandatory to support and instance with a user-defined value *)
+END_ENTITY;
+(*
+As CIMSTEEL_ENTITY is the supertype of many important entities (containing useful
+engineering information), it becomes MANDATORY TO INSTANCE by way of its subtypes. In
+other words, there must be at least one instance of its subtypes. This then forces the
+relationship to the entity INSTANCE_GROUP to be mandatory to support.
+*)
+
+ENTITY date_and_time;  -- MANDATORY TO INSTANCE
+ date_component : calendar_date;  -- Mandatory to support and instance
+ time_component : local_time;  -- Mandatory to support and instance
+END_ENTITY;
+(*
+As date_and_time is used as a datatype in many important entities, there must be at least one
+instance of this. In other words, it is not mandatory for it to exist for its own purpose, but by
+virtue of its relationships with other entities.
+*)
+
+ENTITY calendar_date;  -- MANDATORY TO INSTANCE (due to relationships)
+ day_component : day_in_month_number;  -- Mandatory to support and instance
+ month_component : month_in_year_number;  -- Mandatory to support and instance
+ year_component : year_number;  -- Mandatory to support and instance
+END_ENTITY;
+(*
+There must be at least one instance of calendar_date, by virtue of its relationships with other entities.
+ - attribute values supplied by user/machine.
+*)
+
+TYPE day_in_month_number  =  INTEGER;  -- Mandatory to support
+WHERE
+  WR1 : { 1 <= SELF <= 31 };
+END_TYPE;
+
+TYPE month_in_year_number  =  INTEGER;  -- Mandatory to support
+WHERE
+  WR1 : { 1 <= SELF <= 12 };
+END_TYPE;
+
+TYPE year_number  =  INTEGER;  -- Mandatory to support
+WHERE
+  WR1 : SELF > 1994;
+END_TYPE;
+
+ENTITY local_time;  -- MANDATORY TO INSTANCE (due to relationships)
+ hour_component : hour_in_day;
+   (* Mandatory to support and instance with a value supplied by user/machine *)
+ minute_component : minute_in_hour;
+   (* Mandatory to support and instance with a value supplied by user/machine *)
+ second_component : second_in_minute;
+   (* Mandatory to support and instance with a value supplied by user/machine *)
+END_ENTITY;
+
+TYPE hour_in_day = INTEGER;  -- Mandatory to support
+WHERE
+   WR1 : { 0 <= SELF < 24 };
+END_TYPE;
+
+TYPE minute_in_hour = INTEGER;  -- Mandatory to support
+WHERE
+   WR1 : { 0 <= SELF <= 59 };
+END_TYPE;
+
+TYPE second_in_minute= INTEGER;  -- Mandatory to support
+WHERE
+   WR1 : { 0 <= SELF < 60 };
+END_TYPE;
+
+ENTITY person_and_organization;  -- Mandatory to support
+ the_person : OPTIONAL person;  -- Mandatory to support
+ the_organization : OPTIONAL organization;  -- Mandatory to support
+INVERSE
+ projects : SET [0:?] OF PROJECT
+   FOR client;
+WHERE
+   WR1 : EXISTS (the_person) OR EXISTS (the_organization);
+END_ENTITY;
+
+ENTITY person;  -- Mandatory to support
+ id : identifier;  -- Mandatory to support
+ last_name : OPTIONAL NAME;
+ first_name : OPTIONAL NAME;
+ middle_name : OPTIONAL NAME;
+ prefix_titles : OPTIONAL label;
+ suffix_titles : OPTIONAL label;
+ former_name : OPTIONAL NAME;
+ personal_address : OPTIONAL SET [1:?] OF address;
+UNIQUE
+   UR1 : id;
+END_ENTITY;
+
+ENTITY organization;  -- Mandatory to support
+ id : identifier;  -- Mandatory to support
+ name : OPTIONAL label;
+ description : OPTIONAL text;
+ organizational_address : OPTIONAL SET [1:?] OF address;
+UNIQUE
+   UR1 : id;
+END_ENTITY;
+
+ENTITY address;
+ mail_stop : OPTIONAL label;
+ street_number : OPTIONAL label;
+ street : OPTIONAL label;
+ postal_box : OPTIONAL label;
+ town : OPTIONAL label;
+ region : OPTIONAL label;
+ postal_code : OPTIONAL label;
+ country : OPTIONAL label;
+ facsimile_number : OPTIONAL label;
+ telephone_number : OPTIONAL label;
+ electronic_mail_address : OPTIONAL label;
+ telex_number : OPTIONAL label;
+INVERSE
+ people : SET [0:?] OF person
+   FOR personal_address;
+ organizations : SET [0:?] OF organization
+   FOR organizational_address;
+WHERE
+   WR1 : EXISTS (mail_stop) OR
+ EXISTS (street_number) OR
+ EXISTS (postal_box) OR
+ EXISTS (town) OR
+ EXISTS (region) OR
+ EXISTS (postal_code) OR
+ EXISTS (country ) OR
+ EXISTS (facsimile_number) OR
+ EXISTS (telephone_number) OR
+ EXISTS (electronic_mail_address) OR
+ EXISTS (telex_number);
+END_ENTITY;
+
+ENTITY PROJECT -- Mandatory to support
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ project_id : identifier; 
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ project_description : OPTIONAL DESCRIPTION;
+ client : OPTIONAL person_and_organization;
+INVERSE
+ involved_structures : SET [1:?] OF STRUCTURE
+   FOR parent_project;
+UNIQUE
+   UR1 : project_id;
+END_ENTITY;
+
+ENTITY STRUCTURE  --  Mandatory to support
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ structure_id : identifier;
+(* Mandatory to support - if instanced, use a user-defined value *)
+ altitude : OPTIONAL length_measure;
+ structure_description : OPTIONAL DESCRIPTION;
+ struct_coord_sys : OPTIONAL COORD_SYSTEM;  -- Mandatory to support
+ parent_project : PROJECT;  --  Mandatory to support
+ locations : OPTIONAL SET [1:?] OF SITE;
+INVERSE
+ representing_assemblies : SET [0:?] OF ASSEMBLY
+   FOR represented_structure;
+UNIQUE
+   UR1 : structure_id, parent_project;
+END_ENTITY;
+
+ENTITY SITE
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ site_id : identifier;
+ site_adr : OPTIONAL address;
+ site_description : OPTIONAL DESCRIPTION;
+ site_altitude : OPTIONAL length_measure;
+ grid_ref : OPTIONAL identifier;
+ site_coord_sys : OPTIONAL COORD_SYSTEM;
+INVERSE
+ contained_structures : SET [0:?] OF STRUCTURE
+   FOR locations;
+UNIQUE
+ site_id;
+END_ENTITY;
+
+ (* 3.  LPM_Structural_modelling_schema *)
+
+ENTITY ANALYSIS  -- Mandatory to support
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ analysis_id : identifier;  
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ analysis_assumptions : OPTIONAL DESCRIPTION;
+ static_or_dynamic : ANALYSIS_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ static_analysis_type : OPTIONAL anlsys_type;
+ connection_type : OPTIONAL anlsys_connctn_type;
+ element_sub_division : OPTIONAL INTEGER;
+INVERSE
+ models : SET [0:?] OF ANALYSIS_MODEL
+   FOR analysis_method;
+ required_ld_cases : SET [0:?] OF BASIC_LOAD_CASE
+   FOR governing_analyses;
+ results : SET [0:?] OF ANALYSIS_RESULT
+   FOR results_for_analysis;
+UNIQUE
+   UR1 : analysis_id;
+END_ENTITY;
+
+TYPE ANALYSIS_TYPE = ENUMERATION OF (STATIC);  -- Mandatory to support
+END_TYPE;
+
+TYPE anlsys_type  =  ENUMERATION OF
+  (Elastic_1st_Order, Elastic_2nd_Order, Rigid_Plastic, Elasto_Plastic, Elastic_Perfectly_Plastic);
+END_TYPE;
+
+TYPE anlsys_connctn_type  =  ENUMERATION OF
+  (Pinned, Semi_Rigid_Full_Str, Semi_Rigid_Partial_Str, Rigid_Full_Str, Rigid_Partial_Str);
+END_TYPE;
+
+ENTITY ANALYSIS_MODEL  -- MANDATORY TO SUPPORT AND INSTANCE
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ analysis_model_id : identifier;
+   (* Mandatory to support & instanced with a user-defined value *)
+ model_description : OPTIONAL DESCRIPTION;
+ model_number : OPTIONAL INTEGER;
+ model_type : OPTIONAL anlsys_model_type;
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ model_coord_sys : OPTIONAL COORD_SYSTEM;
+ total_no_nodes : OPTIONAL INTEGER;
+ total_no_elements : OPTIONAL INTEGER;
+ restraining_am : OPTIONAL SET [1:?] OF ANALYSIS_MODEL;
+ analysis_method : OPTIONAL ANALYSIS;
+   (* Mandatory to support & instance with a user-defined value *)
+INVERSE
+ modelled_assembly : SET [0:?] OF DESIGN_ASSEMBLY
+   FOR modelling_am;
+ restrained_am : SET [0:?] OF ANALYSIS_MODEL
+   FOR restraining_am;
+ component_elements : SET [1:?] OF ELEMENT
+   FOR parent_model;
+ component_nodes : SET [1:?] OF NODE
+   FOR parent_model;
+ loading_combs : SET [0:?] OF LOADING_COMBINATION
+   FOR loaded_am;
+UNIQUE
+   UR1 : analysis_model_id;
+END_ENTITY;
+(*
+There must be at least 1 instance of ANALYSIS_MODEL in a CIS file. This follows from the requirement that there must be at least 1 instance of ELEMENT.
+*)
+
+TYPE anlsys_model_type  =  ENUMERATION OF -- Mandatory to support
+   (Space_Frame, Space_Truss, Plane_Frame, Plane_Truss, Grillage);
+END_TYPE;
+
+ENTITY ELT_NODE_CONNECTIVITY;    --  MANDATORY TO SUPPORT AND INSTANCE
+ elt_node_con_number : INTEGER;  -- Mandatory to support and instance, value defined by CIS
+ connecting_elt : ELEMENT;  -- Mandatory to support and instance
+ connecting_node : NODE;  -- Mandatory to support and instance
+ eccentricity : OPTIONAL ELEMENT_ECCENTRICITY;
+ fixity : OPTIONAL RELEASE;  -- Mandatory to support 
+INVERSE
+ elt_node_results : SET [0:?] OF ELMNT_NODE_RESULT
+   FOR result_for_elmnt_node;
+UNIQUE
+   UR1 : elt_node_con_number, connecting_node, connecting_elt;
+END_ENTITY;
+(*
+There must be at least 2 instances of ELT_NODE_CONNECTIVITY in a CIS file, representing 2 ends of a linear Element. This follows from the requirement that there must be at least 1 instance of ELEMENT.
+*)
+
+ENTITY ELEMENT;  -- MANDATORY TO SUPPORT AND INSTANCE
+ element_number : INTEGER;  -- Mandatory to support and instance with a user-defined value
+ element_label : OPTIONAL label;  
+ dimensional_type : OPTIONAL elmnt_dimalty;
+ element_material : OPTIONAL MATERIAL;  -- Mandatory to support
+ element_geometry : OPTIONAL GEOMETRIC_REPRESENTATION;  -- Mandatory to support
+ element_orientation : OPTIONAL plane_angle_measure;
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ parent_model :  ANALYSIS_MODEL;  -- Mandatory to support and instance
+ element_grp : OPTIONAL ELEMENT_GROUP;
+INVERSE
+ connectivity : SET [1:?] OF ELT_NODE_CONNECTIVITY
+   FOR connecting_elt;
+ elt_loads : SET [0:?] OF ELEMENT_LOAD
+   FOR supporting_elt;
+ element_results : SET [0:?] OF ELEMENT_RESULT
+   FOR result_for_element;
+ modelled_parts : SET [0:?] OF DESIGN_PART
+   FOR modelling_elements;
+UNIQUE
+  UR1 : element_number, parent_model;
+END_ENTITY;
+(*
+There must be at least one instance of ELEMENT 
+*)
+
+TYPE elmnt_dimalty  =  ENUMERATION OF (zero_dim, one_dim, two_dim, three_dim);
+END_TYPE;
+
+ENTITY NODE;  -- MANDATORY TO SUPPORT AND INSTANCE
+ node_number : INTEGER;  -- Mandatory to support and instance with a user-defined value
+ node_label : OPTIONAL label;
+ node_coords : OPTIONAL POINT;  -- Mandatory to support
+ restraints : OPTIONAL BOUNDARY_CONDITION;  -- Mandatory to support
+ parent_model :  ANALYSIS_MODEL;  -- Mandatory to support and instance
+ node_grp : OPTIONAL NODE_GROUP;
+INVERSE
+ connecting_ends : SET [0:?] OF ELT_NODE_CONNECTIVITY
+   FOR connecting_node;
+ node_loads : SET [0:?] OF CONC_NODE_LOAD
+   FOR supporting_node;
+ node_results : SET [0:?] OF NODE_RESULT
+   FOR result_for_node;
+UNIQUE
+   UR1 : node_number, parent_model;
+END_ENTITY;
+(*
+There must be at least 2 instances of NODE to define the ELEMENT
+*)
+
+ENTITY BOUNDARY_CONDITION   --  Mandatory to support 
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ boundary_cond_number : INTEGER;  -- Mandatory to support - if instanced, use a user-defined value
+ boundary_condition_label : OPTIONAL label;
+ bc_x_rotation : ROTATIONAL_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ bc_y_rotation : ROTATIONAL_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ bc_z_rotation : ROTATIONAL_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ bc_x_displacement : LINEAR_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ bc_y_displacement : LINEAR_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ bc_z_displacement : LINEAR_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ x_skew_angle : OPTIONAL plane_angle_measure;
+ y_skew_angle : OPTIONAL plane_angle_measure;
+ z_skew_angle : OPTIONAL plane_angle_measure;
+ boundary_cond_description : OPTIONAL DESCRIPTION;
+INVERSE
+ restrained_nodes : SET [0:?] OF NODE
+   FOR restraints;
+UNIQUE
+   UR1 : boundary_cond_number;
+END_ENTITY;
+
+ENTITY ELEMENT_ECCENTRICITY
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ element_eccentricity_number : INTEGER;
+ x_eccentricity : OPTIONAL length_measure;
+ y_eccentricity : OPTIONAL length_measure;
+ z_eccentricity : OPTIONAL length_measure;
+INVERSE
+ applied_to_elt_nodes : SET [0:?] OF ELT_NODE_CONNECTIVITY
+   FOR eccentricity;
+UNIQUE
+   UR1 : element_eccentricity_number;
+WHERE
+   WR1 : EXISTS (x_eccentricity) OR EXISTS (y_eccentricity) OR EXISTS (z_eccentricity);
+END_ENTITY;
+
+ENTITY RELEASE  -- Mandatory to support
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ release_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ release_label : OPTIONAL label;
+ release_axial_force : LINEAR_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ release_y_force : LINEAR_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ release_z_force : LINEAR_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ release_torsional_moment : ROTATIONAL_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ release_y_bending_moment : ROTATIONAL_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ release_z_bending_moment : ROTATIONAL_STIFFNESS_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ release_description : OPTIONAL DESCRIPTION;
+INVERSE
+ applied_to_elt_nodes : SET [0:?] OF ELT_NODE_CONNECTIVITY
+   FOR fixity;
+UNIQUE
+   UR1 : release_number;
+END_ENTITY;
+ (* 4.  LPM_Loadings_schema *)
+
+ENTITY LOADING_COMBINATION  -- Mandatory to support
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ loading_comb_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ loading_comb_label : OPTIONAL label;
+ loading_comb_description : OPTIONAL DESCRIPTION;
+ loaded_am : OPTIONAL ANALYSIS_MODEL;
+INVERSE
+ component_ld_cases : SET [0:?] OF LOAD_COMBINATION_OCCURRENCE
+   FOR parent_ld_comb;
+UNIQUE
+   UR1 : loading_comb_number;
+END_ENTITY;
+
+ENTITY LOAD_COMBINATION_OCCURRENCE;  -- Mandatory to support
+ load_combination_factor : OPTIONAL REAL;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ parent_ld_comb :  LOADING_COMBINATION;  -- Mandatory to support
+ component_ld_case :  BASIC_LOAD_CASE;  -- Mandatory to support
+UNIQUE
+   UR1 : parent_ld_comb, component_ld_case;
+END_ENTITY;
+
+ENTITY BASIC_LOAD_CASE  -- Mandatory to support
+SUPERTYPE OF (ONEOF
+   ( DEAD_LOAD, ENVIRONMENTAL_LOAD, IMPOSED_LOAD))
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ basic_load_case_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ basic_load_label : OPTIONAL label;
+ basic_load_case_type : BLC_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ basic_load_case_factor : OPTIONAL REAL;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ code_ref : OPTIONAL label;
+ governing_analyses : SET [0:?] OF ANALYSIS;
+INVERSE
+ component_elt_loads : SET [0:?] OF ELEMENT_LOAD
+   FOR parent_ld_case;
+ component_node_lds : SET [0:?] OF CONC_NODE_LOAD
+   FOR parent_ld_case;
+ parent_ld_combs : SET [0:?] OF LOAD_COMBINATION_OCCURRENCE
+   FOR component_ld_case;
+UNIQUE
+   UR1 : basic_load_case_number;
+END_ENTITY;
+
+TYPE BLC_TYPE = ENUMERATION OF  -- Mandatory to support
+   (DEAD, ENVIRONMENTAL, IMPOSED, UNDEFINED);
+END_TYPE;
+
+ENTITY DEAD_LOAD
+SUBTYPE OF (BASIC_LOAD_CASE);
+ dead_load_select : DEAD_LOAD_TYPE;  -- discriminator
+ gravity_constant : ACCELERATION_MEASURE;
+WHERE
+   WR1 : SELF\BASIC_LOAD_CASE.basic_load_case_type = DEAD;
+END_ENTITY;
+
+TYPE DEAD_LOAD_TYPE = ENUMERATION OF (SELF_WT, UNDEFINED);
+END_TYPE;
+
+ENTITY ENVIRONMENTAL_LOAD
+ABSTRACT SUPERTYPE OF (ONEOF (SNOW_LOAD, WIND_LOAD))
+SUBTYPE OF (BASIC_LOAD_CASE);
+ envirnmntl_load_type : ENV_LOAD_TYPE;  -- discriminator
+ exposure : OPTIONAL STRING;
+ protection_factor : OPTIONAL REAL;
+WHERE
+   WR1 : SELF\BASIC_LOAD_CASE.basic_load_case_type =
+   ENVIRONMENTAL;
+END_ENTITY;
+
+TYPE ENV_LOAD_TYPE = ENUMERATION OF (SNOW, WIND, UNDEFINED);
+END_TYPE;
+
+ENTITY SNOW_LOAD
+SUBTYPE OF (ENVIRONMENTAL_LOAD);
+ basic_snow_load : OPTIONAL PRESSURE_MEASURE;
+ site_snow_load : PRESSURE_MEASURE;
+ shape_coefficent : OPTIONAL REAL;
+ shape_coeff_use : OPTIONAL label;
+WHERE
+   WR1 : SELF\ENVIRONMENTAL_LOAD.envirnmntl_load_type = SNOW;
+END_ENTITY;
+
+ENTITY WIND_LOAD
+SUBTYPE OF (ENVIRONMENTAL_LOAD);
+ building_class : OPTIONAL INTEGER;
+ basic_wind_speed : OPTIONAL VELOCITY_MEASURE;
+ dynamic_wind_pressure : OPTIONAL PRESSURE_MEASURE;
+ wind_direction : plane_angle_measure;
+ factor_S1 : OPTIONAL REAL;
+ factor_S2 : OPTIONAL REAL;
+ factor_S3 : OPTIONAL REAL;
+ factor_S4 : OPTIONAL REAL;
+WHERE
+   WR1 : SELF\ENVIRONMENTAL_LOAD.envirnmntl_load_type = WIND;
+END_ENTITY;
+
+ENTITY IMPOSED_LOAD
+SUBTYPE OF (BASIC_LOAD_CASE);
+ imposed_load_select : IMPOSED_LOAD_TYPE;
+WHERE
+   WR1 : SELF\BASIC_LOAD_CASE.basic_load_case_type = IMPOSED;
+END_ENTITY;
+
+TYPE IMPOSED_LOAD_TYPE = ENUMERATION OF
+   (ACCELERATION, CYCLICAL, IMPACT, ROTATION,
+    TEMPERATURE, TRANSPORT, UNDEFINED);
+END_TYPE;
+
+ENTITY ELEMENT_LOAD   -- Mandatory to support
+SUPERTYPE OF (ONEOF
+   (CONC_1D_ELMNT_LOAD, DISTRIBUTED_1D_ELMNT_LOAD) );
+ element_load_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ element_load_select : ELEMENT_LOAD_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ elt_ld_reference_system : OPTIONAL DESCRIPTION;
+ elt_ld_description : OPTIONAL DESCRIPTION;
+ elt_ld_gl_or_lo : OPTIONAL global_or_local;
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ destabilizing_load : OPTIONAL BOOLEAN;
+ parent_ld_case : BASIC_LOAD_CASE;  -- Mandatory to support
+ supporting_elt : ELEMENT;  -- Mandatory to support
+UNIQUE
+   UR1 : element_load_number, parent_ld_case, supporting_elt;
+END_ENTITY;
+
+TYPE ELEMENT_LOAD_TYPE = ENUMERATION OF   -- Mandatory to support
+   (CONC_1D_ELMNT_LD, DISTRIB_1D_ELMNT_LD, UNDEFINED);
+END_TYPE;
+
+TYPE global_or_local  =  ENUMERATION OF (Global_Load, Local_Load);  -- Mandatory to support
+END_TYPE;
+
+ENTITY CONC_1D_ELMNT_LOAD  -- Mandatory to support
+SUBTYPE OF (ELEMENT_LOAD);
+ conc_elt_ld_x_coord : length_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_elt_ld_Fx : FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_elt_ld_Fy : FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_elt_ld_Fz : FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_elt_ld_Mx : MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_elt_ld_My : MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_elt_ld_Mz : MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+WHERE
+   WR1 : SELF\ELEMENT_LOAD.element_load_select =
+   CONC_1D_ELMNT_LD;
+END_ENTITY;
+
+ENTITY DISTRIBUTED_1D_ELMNT_LOAD  -- Mandatory to support 
+SUBTYPE OF (ELEMENT_LOAD);
+ distrib_el_ld_proj_or_true : projected_or_true;
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ distrib_load_length : length_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_x_coord : length_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_start_Fx : FORCE_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_start_Fy : FORCE_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_start_Fz : FORCE_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_start_Mx : MOMENT_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_start_My : MOMENT_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_start_Mz : MOMENT_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_end_Fx : FORCE_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_end_Fy : FORCE_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_end_Fz : FORCE_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_end_Mx : MOMENT_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_end_My : MOMENT_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ distrib_el_ld_end_Mz : MOMENT_PER_LENGTH_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+WHERE
+   WR1 : SELF\ELEMENT_LOAD.element_load_select =
+   DISTRIB_1D_ELMNT_LD;
+END_ENTITY;
+
+TYPE projected_or_true  =  ENUMERATION OF (Projected, True_Length);  -- Mandatory to support
+END_TYPE;
+
+ENTITY CONC_NODE_LOAD;  -- Mandatory to support
+ node_load_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ node_load_select : NODE_LOAD_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ node_load_description : OPTIONAL DESCRIPTION;
+ conc_node_load_Fx : FORCE_MEASURE;
+    (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_node_load_Fy : FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_node_load_Fz : FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_node_load_Mx : MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_node_load_My : MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ conc_node_load_Mz : MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ parent_ld_case :  BASIC_LOAD_CASE;   -- Mandatory to support
+ supporting_node :  NODE;   -- Mandatory to support
+UNIQUE
+   UR1 : node_load_number, parent_ld_case, supporting_node;
+END_ENTITY;
+
+TYPE NODE_LOAD_TYPE = ENUMERATION OF (CONC_NODE_LD);   -- Mandatory to support
+END_TYPE;
+
+
+ (* 5.  LPM_Structural_response_schema *)
+
+ENTITY ANALYSIS_RESULTS_SET
+SUPERTYPE OF (ONEOF (
+  BASIC_RESULTS,
+  ENVELOPE_RESULTS,
+  COMBINED_RESULTS))
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ results_set_number : INTEGER;
+ result_set_type : ANALYSIS_RESULTS_SET_TYPE;  -- discriminator
+INVERSE
+ component_results : SET [1:?] OF ANALYSIS_RESULT
+   FOR parent_set;
+UNIQUE
+   UR1 : results_set_number;
+END_ENTITY;
+
+TYPE ANALYSIS_RESULTS_SET_TYPE = ENUMERATION OF
+   (BASIC, COMBINED, ENVELOPE, UNDEFINED);
+END_TYPE;
+
+ENTITY BASIC_RESULTS
+SUBTYPE OF (ANALYSIS_RESULTS_SET);
+ basic_ld_case : BASIC_LOAD_CASE;
+WHERE
+  WR1 : SELF\ANALYSIS_RESULTS_SET.result_set_type = BASIC;
+END_ENTITY;
+
+ENTITY COMBINED_RESULTS
+SUBTYPE OF (ANALYSIS_RESULTS_SET);
+ loading_comb : LOADING_COMBINATION;
+ parent_envelope : OPTIONAL ENVELOPE_RESULTS;
+WHERE
+   WR1 : SELF\ANALYSIS_RESULTS_SET.result_set_type = COMBINED;
+END_ENTITY;
+
+ENTITY ENVELOPE_RESULTS
+SUBTYPE OF (ANALYSIS_RESULTS_SET);
+ max_or_min : OPTIONAL maximum_or_minimum;
+INVERSE
+ component_combs : SET [0:?] OF COMBINED_RESULTS
+   FOR parent_envelope;
+WHERE
+   WR1 : SELF\ANALYSIS_RESULTS_SET.result_set_type = ENVELOPE;
+END_ENTITY;
+
+TYPE maximum_or_minimum  =  ENUMERATION OF (Maximum, Minimum);
+END_TYPE;
+
+ENTITY ANALYSIS_RESULT  -- Mandatory to support
+ABSTRACT SUPERTYPE OF (ONEOF (
+  ELEMENT_RESULT,
+  ELMNT_NODE_RESULT,
+  NODE_RESULT));
+ result_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ results_for_analysis : OPTIONAL ANALYSIS;  -- Mandatory to support
+ analysis_result_type : ANALYSIS_RES_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ ar_sign_convention : OPTIONAL DESCRIPTION;
+ parent_set : OPTIONAL ANALYSIS_RESULTS_SET;
+UNIQUE
+   UR1 : result_number;
+END_ENTITY;
+
+TYPE ANALYSIS_RES_TYPE =  -- Mandatory to support
+   ENUMERATION OF (ELEMENT_RES, ELMNT_NODE_RES, NODE_RES);
+END_TYPE;
+
+ENTITY ELEMENT_RESULT  
+ABSTRACT SUPERTYPE OF (ONEOF
+   (ELEMENT_DISPLACEMENT, ELEMENT_FORCE))
+SUBTYPE OF (ANALYSIS_RESULT);
+ result_for_element : ELEMENT;
+ element_result_type : ELEMENT_RES_TYPE;  -- discriminator
+ result_position : POINT;
+ position_label : OPTIONAL label;
+ x_increasing : OPTIONAL BOOLEAN;
+DERIVE
+ element_result_no : INTEGER := SELF\ANALYSIS_RESULT.result_number;
+WHERE
+   WR1 : SELF\ANALYSIS_RESULT.analysis_result_type = ELEMENT_RES;
+END_ENTITY;
+
+TYPE ELEMENT_RES_TYPE = ENUMERATION OF
+   (ELMNT_DISPLACEMENT, ELMNT_FORCE);
+END_TYPE;
+
+ENTITY ELEMENT_DISPLACEMENT
+SUBTYPE OF (ELEMENT_RESULT);
+ element_displ_Dx : OPTIONAL length_measure;
+ element_displ_Dy : OPTIONAL length_measure;
+ element_displ_Dz : OPTIONAL length_measure;
+ element_displ_Rx : OPTIONAL plane_angle_measure;
+ element_displ_Ry : OPTIONAL plane_angle_measure;
+ element_displ_Rz : OPTIONAL plane_angle_measure;
+WHERE
+   WR1 : SELF\ELEMENT_RESULT.element_result_type = ELMNT_DISPLACEMENT;
+   WR2 : EXISTS (element_displ_Dx) OR
+	EXISTS (element_displ_Dy) OR
+	EXISTS (element_displ_Dz) OR
+	EXISTS (element_displ_Rx) OR
+	EXISTS (element_displ_Ry) OR
+	EXISTS (element_displ_Rz);
+END_ENTITY;
+
+ENTITY ELEMENT_FORCE
+SUBTYPE OF (ELEMENT_RESULT);
+ element_force_Fx : OPTIONAL FORCE_MEASURE;
+ element_force_Fy : OPTIONAL FORCE_MEASURE;
+ element_force_Fz : OPTIONAL FORCE_MEASURE;
+ element_force_Mx : OPTIONAL MOMENT_MEASURE;
+ element_force_My : OPTIONAL MOMENT_MEASURE;
+ element_force_Mz : OPTIONAL MOMENT_MEASURE;
+WHERE
+   WR1 : SELF\ELEMENT_RESULT.element_result_type = ELMNT_FORCE;
+   WR2 : EXISTS (element_force_Fx) OR
+	EXISTS (element_force_Fy) OR
+	EXISTS (element_force_Fz) OR
+	EXISTS (element_force_Mx) OR
+	EXISTS (element_force_My) OR
+	EXISTS (element_force_Mz);
+END_ENTITY;
+
+ENTITY ELMNT_NODE_RESULT  -- Mandatory to support
+ABSTRACT SUPERTYPE OF (ONEOF
+   (ELMNT_DISPLMT_AT_NODE, END_FORCE))
+SUBTYPE OF (ANALYSIS_RESULT);
+ result_for_elmnt_node : ELT_NODE_CONNECTIVITY;  -- Mandatory to support
+ element_end_result_type : ELMNT_NODE_RES_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+DERIVE
+ element_end_result_no : INTEGER := SELF\ANALYSIS_RESULT.result_number;
+WHERE
+   WR1 : SELF\ANALYSIS_RESULT.analysis_result_type = ELMNT_NODE_RES;
+END_ENTITY;
+
+TYPE ELMNT_NODE_RES_TYPE = ENUMERATION OF  -- Mandatory to support
+   (ELEMENT_DISPLMT_AT_NODE, END_FORCE_AT_NODE);
+END_TYPE;
+
+ENTITY ELMNT_DISPLMT_AT_NODE  -- Mandatory to support
+SUBTYPE OF (ELMNT_NODE_RESULT);
+ elmnt_displ_Dx : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ elmnt_displ_Dy : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ elmnt_displ_Dz : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ elmnt_displ_Rx : OPTIONAL plane_angle_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ elmnt_displ_Ry : OPTIONAL plane_angle_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ elmnt_displ_Rz : OPTIONAL plane_angle_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+WHERE
+   WR1 : SELF\ELMNT_NODE_RESULT.element_end_result_type =
+   ELEMENT_DISPLMT_AT_NODE;
+   WR2 : EXISTS (elmnt_displ_Dx) OR
+	EXISTS (elmnt_displ_Dy) OR
+	EXISTS (elmnt_displ_Dz) OR
+	EXISTS (elmnt_displ_Rx) OR
+	EXISTS (elmnt_displ_Ry) OR
+	EXISTS (elmnt_displ_Rz);
+END_ENTITY;
+
+ENTITY END_FORCE  -- Mandatory to support
+SUBTYPE OF (ELMNT_NODE_RESULT);
+ end_force_Fx : OPTIONAL FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ end_force_Fy : OPTIONAL FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ end_force_Fz : OPTIONAL FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ end_force_Mx : OPTIONAL MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ end_force_My : OPTIONAL MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ end_force_Mz : OPTIONAL MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+WHERE
+   WR1 : SELF\ELMNT_NODE_RESULT.element_end_result_type =
+   END_FORCE_AT_NODE;
+   WR2 : EXISTS (end_force_Fx) OR
+	EXISTS (end_force_Fy) OR
+	EXISTS (end_force_Fz) OR
+	EXISTS (end_force_Mx) OR
+	EXISTS (end_force_My) OR
+	EXISTS (end_force_Mz);
+END_ENTITY;
+
+ENTITY NODE_RESULT  -- Mandatory to support
+ABSTRACT SUPERTYPE OF (ONEOF
+   (NODE_DISPLACEMENT, SUPPORT_REACTION))
+SUBTYPE OF (ANALYSIS_RESULT);
+ result_for_node : NODE;  -- Mandatory to support
+ node_result_type : NODE_RES_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+DERIVE
+ node_result_no : INTEGER := SELF\ANALYSIS_RESULT.result_number;
+WHERE
+   WR1 : SELF\ANALYSIS_RESULT.analysis_result_type = NODE_RES;
+END_ENTITY;
+
+TYPE NODE_RES_TYPE = ENUMERATION OF  -- Mandatory to support
+   (NODE_DISP, SUPPORT_REACTN);
+END_TYPE;
+
+ENTITY NODE_DISPLACEMENT
+SUBTYPE OF (NODE_RESULT);
+ node_displ_Dx : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ node_displ_Dy : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ node_displ_Dz : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ node_displ_Rx : OPTIONAL plane_angle_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ node_displ_Ry : OPTIONAL plane_angle_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ node_displ_Rz : OPTIONAL plane_angle_measure;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+WHERE
+   WR1 : SELF\NODE_RESULT.node_result_type = NODE_DISP;
+   WR2 : EXISTS (node_displ_Dx) OR
+	EXISTS (node_displ_Dy) OR
+	EXISTS (node_displ_Dz) OR
+	EXISTS (node_displ_Rx) OR
+	EXISTS (node_displ_Ry) OR
+	EXISTS (node_displ_Rz);
+END_ENTITY;
+
+ENTITY SUPPORT_REACTION  -- Mnadatory to support
+SUBTYPE OF (NODE_RESULT);
+ support_reaction_Fx : OPTIONAL FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ support_reaction_Fy : OPTIONAL FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ support_reaction_Fz : OPTIONAL FORCE_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ support_reaction_Mx : OPTIONAL MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ support_reaction_My : OPTIONAL MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+ support_reaction_Mz : OPTIONAL MOMENT_MEASURE;
+   (* Mandatory to support - if instanced, use an application-defined value *)
+WHERE
+   WR1 : SELF\NODE_RESULT.node_result_type = SUPPORT_REACTN;
+   WR2 : EXISTS (support_reaction_Fx) OR
+	EXISTS (support_reaction_Fy) OR
+	EXISTS (support_reaction_Fz) OR
+	EXISTS (support_reaction_Mx) OR
+	EXISTS (support_reaction_My) OR
+	EXISTS (support_reaction_Mz);
+END_ENTITY;
+
+
+ (* 6.  LPM_Parts_schema *)
+
+ENTITY S_PART
+ABSTRACT SUPERTYPE OF (ONEOF(
+  PRISMATIC_PART,
+  PSEUDO_PRISMATIC_PART,
+  SHEET_PART))
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ s_part_id : identifier;
+ s_part_type : SPECIFIC_PART_TYPE;  -- discriminator
+ fabrication_method : OPTIONAL fab_type;
+ manufacturers_ref : OPTIONAL DESCRIPTION;
+ code_ref : OPTIONAL identifier;
+ s_part_material : OPTIONAL MATERIAL;
+INVERSE
+ specified_parts : SET [0:?] OF DESIGN_PART
+   FOR design_part_spec;
+ described_parts : SET [0:?] OF LOCATED_PART
+   FOR descriptive_part;
+UNIQUE
+   UR1 : s_part_id;
+END_ENTITY;
+
+TYPE SPECIFIC_PART_TYPE = ENUMERATION OF
+   (PRISMATIC, PSEUDO_PRISMATIC, SHEET);
+END_TYPE;
+
+TYPE fab_type  =  ENUMERATION OF (Rolled, Welded, Cold_Formed, Cast);
+END_TYPE;
+
+ENTITY PRISMATIC_PART
+SUBTYPE OF (S_PART);
+ pp_source_ref : OPTIONAL DESCRIPTION;
+ pp_length : OPTIONAL length_measure;
+ pp_length_relative : OPTIONAL BOOLEAN;
+ pp_length_offset : OPTIONAL length_measure;
+ mass_per_length : OPTIONAL MASS_PER_LENGTH_MEASURE;
+ section_classification : OPTIONAL INTEGER;
+ pp_geometry : OPTIONAL PRISMATIC_PART_GEOMETRY;
+WHERE
+   WR1 : SELF\S_PART.s_part_type = PRISMATIC;
+END_ENTITY;
+
+ENTITY PSEUDO_PRISMATIC_PART
+ABSTRACT SUPERTYPE OF (ONEOF (TAPERED_PP))
+SUBTYPE OF (S_PART);
+ ppp_source_ref : OPTIONAL DESCRIPTION;
+ ppp_length : OPTIONAL length_measure;
+ ppp_length_relative : OPTIONAL BOOLEAN;
+ ppp_length_offset : OPTIONAL length_measure;
+ mass_per_length : OPTIONAL MASS_PER_LENGTH_MEASURE;
+ section_classification : OPTIONAL INTEGER;
+ pseudo_pris_part_select : PPP_TYPE;  -- discriminator
+ ppp_geom_at_pt_x : SET [0:?] OF PRISMATIC_PART_GEOMETRY;
+WHERE
+   WR1 : SELF\S_PART.s_part_type = PSEUDO_PRISMATIC;
+END_ENTITY;
+
+TYPE PPP_TYPE = ENUMERATION OF (TAPERED);
+END_TYPE;
+
+ENTITY TAPERED_PP
+SUBTYPE OF (PSEUDO_PRISMATIC_PART);
+ welding_size : OPTIONAL length_measure;
+ web_slope : OPTIONAL ratio_measure;
+ start_depth : OPTIONAL length_measure;
+ end_depth : OPTIONAL length_measure;
+WHERE
+   WR1 : SELF\PSEUDO_PRISMATIC_PART.pseudo_pris_part_select =
+   TAPERED;
+END_ENTITY;
+
+ENTITY SHEET_PART
+SUBTYPE OF (S_PART);
+ sp_part_ref : OPTIONAL DESCRIPTION;
+ mass_per_area : OPTIONAL AREA_DENSITY_MEASURE;
+ sp_geometry : OPTIONAL SHEET_PART_GEOM;
+ y_dimension : OPTIONAL length_measure;
+ z_dimension : OPTIONAL length_measure;
+ relative_y : OPTIONAL BOOLEAN;
+ relative_z : OPTIONAL BOOLEAN;
+ y_offset : OPTIONAL length_measure;
+ z_offset : OPTIONAL length_measure;
+WHERE
+   WR1 : SELF\S_PART.s_part_type = SHEET;
+END_ENTITY;
+
+
+ (* 7.  LPM_Features_schema *)
+
+ENTITY S_FEATURE
+ABSTRACT SUPERTYPE OF (ONEOF (
+  CUTTING_PLANE,
+  EDGE_CHAMFER,
+  PRISMATIC_END_FEATURE,
+  PROCEDURAL_FEAT ))
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ s_feature_id : identifier;
+ s_feature_type : SPECIFIC_FEATURE_TYPE;  -- discriminator
+INVERSE
+ described_features : SET [0:?] OF LOCATED_FEATURE
+   FOR descriptive_feature;
+UNIQUE
+   UR1 : s_feature_id;
+END_ENTITY;
+
+TYPE SPECIFIC_FEATURE_TYPE = ENUMERATION OF
+   (CUTTING_PLN, EDGE_CHAMF,
+   PRISMATIC_END_FEAT, PROCEDURAL);
+END_TYPE;
+
+ENTITY CUTTING_PLANE
+SUBTYPE OF ( S_FEATURE );
+WHERE
+   WR1 : SELF\S_FEATURE.s_feature_type=CUTTING_PLN;
+END_ENTITY;
+
+ENTITY EDGE_CHAMFER
+SUBTYPE OF ( S_FEATURE );
+  edge_chamf_width : OPTIONAL length_measure;
+  edge_chamf_depth : OPTIONAL length_measure;
+  edge_chamfer_radius : OPTIONAL length_measure;
+  edge_rounding_radius : OPTIONAL length_measure;
+  follow_round : BOOLEAN;
+WHERE
+   WR1 : SELF\S_FEATURE.s_feature_type=EDGE_CHAMF;
+   WR2 : NOT ( (edge_chamf_width = 0.0) AND
+     (edge_chamf_depth = 0.0) AND
+     (edge_chamfer_radius = 0.0) AND
+     (edge_rounding_radius = 0.0) );
+   WR3 : NOT ( (edge_chamf_width <> 0.0) AND
+     (edge_chamf_depth <> 0.0) AND
+     (edge_chamfer_radius <> 0.0) AND
+     (edge_rounding_radius <> 0.0) );
+   WR4 : NOT ( (edge_chamf_width <> 0.0) AND
+     (edge_chamf_depth = 0.0 ) );
+   WR5 : NOT ( (edge_chamf_width = 0.0) AND
+     (edge_chamf_depth <> 0.0 ) );
+   WR6 : NOT ( (edge_chamfer_radius <> 0.0) AND
+     (edge_rounding_radius <> 0.0)  );
+END_ENTITY;
+
+ENTITY PRISMATIC_END_FEATURE
+ABSTRACT SUPERTYPE OF (ONEOF
+   (CHAMFER, NOTCH, SKEWED_END))
+SUBTYPE OF (S_FEATURE);
+  prismatic_end_feature_type : PRIS_END_FEAT_TYPE;  -- discriminator
+  cutting_method : OPTIONAL cutting_type;
+  top_or_btm_edge : OPTIONAL top_or_bottom;
+  start_or_end : st_or_end_face;
+WHERE
+   WR1 :  SELF\S_FEATURE.s_feature_type = PRISMATIC_END_FEAT;
+END_ENTITY;
+
+TYPE PRIS_END_FEAT_TYPE = ENUMERATION OF
+   (END_CHAMFER, END_NOTCH, SKEWED);
+END_TYPE;
+
+TYPE cutting_type  =  ENUMERATION OF
+   (sawn, flame_cut, sheared, punched, drilled);
+END_TYPE;
+
+TYPE top_or_bottom = ENUMERATION OF (top_edge, bottom_edge);
+END_TYPE;
+
+TYPE st_or_end_face = ENUMERATION OF (start_face, end_face);
+END_TYPE;
+
+ENTITY CHAMFER
+SUBTYPE OF (PRISMATIC_END_FEATURE);
+ chamf_length : length_measure;
+ chamf_depth : length_measure;
+ original_face : BOOLEAN;
+WHERE
+  WR1 : SELF\PRISMATIC_END_FEATURE.prismatic_end_feature_type = END_CHAMFER;
+  WR2 : chamf_length > 0.0;
+  WR3 : chamf_depth > 0.0;
+END_ENTITY;
+
+ENTITY NOTCH
+SUBTYPE OF (PRISMATIC_END_FEATURE);
+  notch_length : length_measure;
+  notch_depth : length_measure;
+  notch_radius : OPTIONAL plane_angle_measure;
+  original_face : BOOLEAN;
+WHERE
+  WR1 : SELF\PRISMATIC_END_FEATURE.prismatic_end_feature_type = END_NOTCH;
+  WR2 : notch_length > 0.0;
+  WR3 : notch_depth > 0.0;
+END_ENTITY;
+
+ENTITY SKEWED_END
+SUBTYPE OF (PRISMATIC_END_FEATURE);
+  y_skew_angle: OPTIONAL plane_angle_measure;
+  z_skew_angle: OPTIONAL plane_angle_measure;
+WHERE
+   WR1 :  SELF\PRISMATIC_END_FEATURE.prismatic_end_feature_type =
+     SKEWED;
+   WR2 : NOT ( (y_skew_angle = 0.0) AND (z_skew_angle = 0.0) );
+END_ENTITY;
+
+ENTITY PROCEDURAL_FEAT
+SUBTYPE OF ( S_FEATURE );
+  pf_use : OPTIONAL DESCRIPTION;
+  pf_arrangement :  OPTIONAL LAYOUT;
+  holes : OPTIONAL HOLE;
+WHERE
+  WR1 : SELF\S_FEATURE.s_feature_type=PROCEDURAL;
+END_ENTITY;
+
+ENTITY HOLE;
+  hole_type : HOLE_SELECT;  -- discriminator
+  hole_radius : length_measure;
+  slot_length : OPTIONAL length_measure;
+INVERSE
+  defining_layout : SET [0:?] OF PROCEDURAL_FEAT
+   FOR holes;
+WHERE
+   WR1 : hole_radius > 0.0;
+END_ENTITY;
+
+TYPE HOLE_SELECT = ENUMERATION OF
+   (CIRCULAR, SLOTTED, UNDEFINED);
+END_TYPE;
+
+ (* 8.  LPM_Joint_systems_schema *)
+
+ENTITY S_JOINT_SYSTEM
+ABSTRACT SUPERTYPE OF (ONEOF (WELD_SYSTEM, BOLT_SYSTEM) )
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ s_joint_system_id : identifier;
+ s_joint_system_type : SPECIFIC_JOINT_SYSTEM_TYPE;  -- discriminator
+INVERSE
+ specified_conns : SET [0:?] OF CONNECTOR
+   FOR connector_spec;
+ described_joints : SET [0:?] OF LOCATED_JOINT_SYSTEM
+   FOR descriptive_jt_sys;
+UNIQUE
+   UR1 : s_joint_system_id;
+END_ENTITY;
+
+TYPE SPECIFIC_JOINT_SYSTEM_TYPE = ENUMERATION OF
+   (WELDING_SYSTEM, BOLTING_SYSTEM);
+END_TYPE;
+
+ENTITY BOLT_SYSTEM
+SUBTYPE OF (S_JOINT_SYSTEM);
+ bs_number : OPTIONAL INTEGER;
+ bs_layout : OPTIONAL LAYOUT;
+ bm_spec : OPTIONAL BOLT_MECHANISM;
+WHERE
+   WR1 : SELF\S_JOINT_SYSTEM.s_joint_system_type = BOLTING_SYSTEM;
+END_ENTITY;
+
+ENTITY LAYOUT
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ layout_points :  SET [1:?] OF POINT;
+ layout_description : OPTIONAL DESCRIPTION;
+ layout_origin : OPTIONAL POINT;
+INVERSE
+ bolt_systems : SET [0:?] OF BOLT_SYSTEM
+   FOR bs_layout;
+ features : SET [0:?] OF PROCEDURAL_FEAT
+   FOR pf_arrangement;
+UNIQUE
+   UR1 : layout_points;
+END_ENTITY;
+
+ENTITY BOLT_MECHANISM;
+ bm_id : identifier;
+ bm_sequence : DESCRIPTION;
+ bolt_spec :  BOLT;
+ nuts : OPTIONAL SET [1:?] OF NUT;
+ washers : OPTIONAL SET [1:?] OF WASHER;
+INVERSE
+ specified_bolt_systems : SET [1:?] OF BOLT_SYSTEM
+   FOR bm_spec;
+UNIQUE
+   UR1 : bm_id, bolt_spec;
+END_ENTITY;
+
+ENTITY BOLT
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ bolt_id : identifier;
+ standard_bolt : item_type;
+ bolt_head_shape : OPTIONAL DESCRIPTION;
+ bolt_type : OPTIONAL bolt_typ;
+ nominal_length : OPTIONAL length_measure;
+ length_of_shank : OPTIONAL length_measure;
+ bolt_diameter : OPTIONAL length_measure;
+ bolt_grade : OPTIONAL label;
+ bolt_preload : OPTIONAL FORCE_MEASURE;
+ bolt_strength : OPTIONAL strength;
+ bolt_material : OPTIONAL label;
+ dist_acr_vertices : OPTIONAL length_measure;
+ dist_acr_flats : OPTIONAL  length_measure;
+ full_section_area : OPTIONAL area_measure;
+ reduced_section_area : OPTIONAL area_measure;
+INVERSE
+ used_in_bms : SET [0:?] OF BOLT_MECHANISM
+   FOR bolt_spec;
+UNIQUE
+   UR1 : bolt_id;
+END_ENTITY;
+
+TYPE item_type = ENUMERATION OF 
+    (Standard_item, Manufacturers_item, Non_standard_item);
+END_TYPE;
+
+TYPE bolt_typ  =  ENUMERATION OF (Slip, Friction_Grip);
+END_TYPE;
+
+TYPE strength  =  ENUMERATION OF (Normal, High_Strength, Special);
+END_TYPE;
+
+ENTITY NUT
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ nut_id : identifier;
+ standard_nut : item_type;
+ bolt_diameter : length_measure;
+ nut_shape : OPTIONAL DESCRIPTION;
+ nut_depth : OPTIONAL length_measure;
+ nut_grade : OPTIONAL label;
+ nut_strength : OPTIONAL strength;
+ nut_material : OPTIONAL label;
+ dist_acr_vertices : OPTIONAL length_measure;
+ dist_acr_flats : OPTIONAL length_measure;
+INVERSE
+ used_in_bms : SET [0:?] OF BOLT_MECHANISM
+   FOR nuts;
+UNIQUE
+   UR1 : nut_id;
+END_ENTITY;
+
+ENTITY WASHER
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ washer_id : identifier;
+ standard_washer : item_type;
+ washer_shape : OPTIONAL DESCRIPTION;
+ bolt_diameter : length_measure;
+ inside_diameter : OPTIONAL length_measure;
+ external_diameter : length_measure;
+ washer_thickness : OPTIONAL length_measure;
+ washer_grade : OPTIONAL label;
+ washer_strength : OPTIONAL strength;
+ washer_material : OPTIONAL label;
+INVERSE
+ used_in_bms : SET [0:?] OF BOLT_MECHANISM
+   FOR washers;
+UNIQUE
+   UR1 : washer_id;
+END_ENTITY;
+
+ENTITY WELD_SYSTEM
+SUBTYPE OF (S_JOINT_SYSTEM);
+ ws_number : OPTIONAL INTEGER;
+ weld_path : OPTIONAL TRACE;
+ wm_spec : OPTIONAL WELD_MECHANISM;
+WHERE
+   WR1 : SELF\S_JOINT_SYSTEM.s_joint_system_type = WELDING_SYSTEM;
+END_ENTITY;
+
+ENTITY WELD_MECHANISM
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ wm_id : identifier;
+ standard_weld : item_type;
+ weld_throat_thickness : OPTIONAL length_measure;
+ weld_material : OPTIONAL label;
+ electrode_type : OPTIONAL label;
+ weld_design_strength : OPTIONAL STRESS_MEASURE;
+ weld_type : OPTIONAL weld_typ;
+ weld_penetration : OPTIONAL weld_penetrn;
+INVERSE
+ specified_weld_systems : SET [0:?] OF WELD_SYSTEM
+   FOR wm_spec;
+UNIQUE
+   UR1 : wm_id;
+END_ENTITY;
+
+TYPE weld_penetrn  =  ENUMERATION OF
+   (FULL_PENETRATION, PARTIAL_PENETRATION);
+END_TYPE;
+
+TYPE weld_typ  =  ENUMERATION OF (FILLET, BUTT);
+END_TYPE;
+
+ENTITY TRACE;
+ trace_id : identifier;
+ trace_description : OPTIONAL DESCRIPTION;
+ trace_closed : BOOLEAN;
+ trace_coord_sys : COORD_SYSTEM;
+INVERSE
+ constituent_segments : SET [1:?] OF TRACE_SEGMENT
+   FOR parent_trace;
+ weld_systems : SET [0:?] OF WELD_SYSTEM
+   FOR weld_path;
+UNIQUE
+  UR1 : trace_id;
+END_ENTITY;
+
+ENTITY TRACE_SEGMENT;
+ ts_number : INTEGER;
+ ts_start_point : POINT;
+ ts_end_point : POINT;
+ ts_coord_sys : COORD_SYSTEM;
+ continuity : BOOLEAN;
+ preceding_ts : OPTIONAL SET [1:?] OF TRACE_SEGMENT;
+ parent_trace :  TRACE;
+INVERSE
+ succeeding_ts : SET [0:1] OF TRACE_SEGMENT
+   FOR preceding_ts;
+UNIQUE
+   UR1 : ts_number, parent_trace;
+END_ENTITY;
+
+
+ (* 9.  LPM_Materials_schema *)
+
+ENTITY MATERIAL  -- Mandatory to support
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ material_id : identifier;
+   (* mandatory to support - if instanced, use a CIS-defined value if standard, or user-defined if non-standard *)
+ standard_material : item_type;
+   (* mandatory to support - if instanced, use a CIS-defined value *)
+ material_description : OPTIONAL DESCRIPTION;
+INVERSE
+ properties : SET [0:?] OF MATERIAL_PROPERTIES
+   FOR described_material;
+ elasticities : SET [0:?] OF ELASTICITY
+   FOR applicable_material;
+ strengths : SET [0:?] OF MATERIAL_STRENGTH
+   FOR applicable_material;
+ specified_elements : SET [0:?] OF ELEMENT
+   FOR element_material;
+ specified_parts : SET [0:?] OF S_PART
+   FOR s_part_material;
+UNIQUE
+   UR1 : material_id;
+END_ENTITY;
+
+ENTITY MATERIAL_PROPERTIES;  
+ material_properties_number : INTEGER;
+ material_properties_label : OPTIONAL label;
+ material_properties_type : MATERIAL_PROPS_TYPE;
+ mass_density : MASS_DENSITY_MEASURE;
+ thermal_expansion_coeff : OPTIONAL LIN_THERM_EXP_MEASURE;
+ temperature_lower_bound : OPTIONAL temperature_measure;
+ temperature_upper_bound : OPTIONAL temperature_measure;
+ described_material :  MATERIAL;
+UNIQUE
+   UR1 : material_properties_number, described_material;
+END_ENTITY;
+
+TYPE MATERIAL_PROPS_TYPE = ENUMERATION OF
+   (ISOTROPIC);
+END_TYPE;
+
+ENTITY MATERIAL_STRENGTH;
+ material_strength_number : INTEGER;
+ ultimate_strength : OPTIONAL STRESS_MEASURE;
+ yield_strength : OPTIONAL STRESS_MEASURE;
+ lower_value_for_thickness : OPTIONAL length_measure;
+ upper_value_for_thickness : OPTIONAL length_measure;
+ applicable_material : MATERIAL;
+UNIQUE
+   UR1 : material_strength_number, applicable_material;
+END_ENTITY;
+
+ENTITY ELASTICITY;  -- Mandatory to support
+ elasticity_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ poisson_ratio : OPTIONAL REAL;
+ young_modulus : OPTIONAL ELASTICITY_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ shear_modulus : OPTIONAL ELASTICITY_MEASURE;
+ strain_lower_bound : OPTIONAL STRAIN_MEASURE;
+ strain_upper_bound : OPTIONAL STRAIN_MEASURE;
+ applicable_material : MATERIAL;  -- Mandatory to support
+UNIQUE
+   UR1 : elasticity_number, applicable_material;
+END_ENTITY;
+
+
+ (* 10.  LPM_Location_schema *)
+
+ENTITY COORD_SYSTEM
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ cs_id : identifier;
+ origin : OPTIONAL POINT;
+ coord_sys_type : coord_system_select;  -- discriminator
+ coord_sys_use : coord_system_use;  -- discriminator
+ locating_coord_sys : OPTIONAL COORD_SYSTEM;
+ axis_rotation : OPTIONAL TRANSFORMATION;
+ cs_sign_convention : OPTIONAL DESCRIPTION;
+INVERSE
+ located_coord_systems : SET [0:?] OF COORD_SYSTEM
+   FOR locating_coord_sys;
+ located_sites : SET [0:1] OF SITE
+   FOR site_coord_sys;
+ located_structures : SET [0:1] OF STRUCTURE
+   FOR struct_coord_sys;
+ located_assemblies : SET [0:?] OF ASSEMBLY
+   FOR asbly_coord_sys;
+ located_joints : SET [0:?] OF LOCATED_JOINT_SYSTEM
+   FOR  loc_jnt_sys_coord_sys;
+ located_parts : SET [0:?] OF LOCATED_PART
+   FOR loc_part_coord_sys;
+ located_features : SET [0:?] OF LOCATED_FEATURE
+   FOR loc_feat_coord_sys;
+ located_analysis_models : SET [0:?] OF ANALYSIS_MODEL
+   FOR model_coord_sys;
+ located_traces : SET [0:?] OF TRACE
+   FOR trace_coord_sys;
+ located_trace_segments : SET [0:?] OF TRACE_SEGMENT
+   FOR ts_coord_sys;
+ located_gridlines : SET [0:?] OF GRIDLINE
+   FOR parent_coord_sys;
+UNIQUE
+   UR1 : cs_id;
+END_ENTITY;
+
+TYPE coord_system_select = ENUMERATION OF (CARTESIAN_COORD_SYS);
+END_TYPE;
+
+TYPE coord_system_use = ENUMERATION OF
+   (JOINT_SYS_COORD_SYS, PART_COORD_SYS, FEATURE_COORD_SYS,
+   ASSEMBLY_COORD_SYS, STRUCTURE_COORD_SYS, SITE_COORD_SYS, UNDEFINED);
+END_TYPE;
+
+ENTITY TRANSFORMATION
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ transformation_id : identifier;
+ transformation_type : TRANSF_TYPE;  -- discriminator
+ coeff_x1 : REAL;
+ coeff_x2 : REAL;
+ coeff_x3 : REAL;
+ coeff_y1 : REAL;
+ coeff_y2 : REAL;
+ coeff_y3 : REAL;
+ coeff_z1 : REAL;
+ coeff_z2 : REAL;
+ coeff_z3 : REAL;
+INVERSE
+ rotated_axis_systems : SET [0:?] OF COORD_SYSTEM
+   FOR axis_rotation;
+UNIQUE
+   UR1 : transformation_id;
+END_ENTITY;
+
+TYPE TRANSF_TYPE = ENUMERATION OF (CARTESIAN);
+END_TYPE;
+
+ENTITY GRIDLINE
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ gridline_ref : identifier;
+ ref_point_1 : POINT;
+ ref_point_2 : POINT;
+ dist_from_preceding_gl : length_measure;
+ preceding_gl : OPTIONAL GRIDLINE;
+ parent_set : OPTIONAL GRIDLINE_SET;
+ parent_coord_sys : OPTIONAL COORD_SYSTEM;
+INVERSE
+ succeeding_gl : SET [0:1] OF GRIDLINE
+   FOR preceding_gl;
+UNIQUE
+   UR1 : gridline_ref, parent_set;
+END_ENTITY;
+
+ENTITY GRIDLINE_SET
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ grid_id : identifier;
+ grid_sequence : OPTIONAL DESCRIPTION;
+ grid_use : OPTIONAL DESCRIPTION;
+INVERSE
+ constituent_grids : SET [1:?] OF GRIDLINE
+   FOR parent_set;
+UNIQUE
+   UR1 : grid_id;
+END_ENTITY;
+
+
+ (* 11.  LPM_Grouping_schema *)
+
+ENTITY group
+SUPERTYPE OF (ONEOF
+   (DRAWING, SCHEDULE, ANALYSIS_GROUP, ASSEMBLY_GROUP) )
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ group_id : identifier;
+ name :  OPTIONAL label;
+ group_of_groups : OPTIONAL group;
+ group_relationship_desc : OPTIONAL DESCRIPTION;
+ group_type : group_select;  -- discriminator
+INVERSE
+ related_groups : SET [0:?] OF group
+   FOR group_of_groups;
+UNIQUE
+   UR1 : group_id;
+END_ENTITY;
+
+TYPE group_select = ENUMERATION OF
+   (DRAWING_INFO, SCHEDULE_INFO, ANALYSIS_GRP, ASSEMBLY_GRP, UNDEFINED);
+END_TYPE;
+
+ENTITY DRAWING
+SUBTYPE OF (group);
+ drg_number :  identifier;
+ drg_version :  OPTIONAL identifier;
+ drg_status :  OPTIONAL DESCRIPTION;
+WHERE
+   WR1 : SELF\group.group_type = DRAWING_INFO;
+END_ENTITY;
+
+ENTITY SCHEDULE
+SUBTYPE OF (group);
+ schedule_number :  identifier;
+ schedule_version :  OPTIONAL identifier;
+ schedule_status :  OPTIONAL DESCRIPTION;
+WHERE
+   WR1 : SELF\group.group_type =SCHEDULE_INFO;
+END_ENTITY;
+
+ENTITY ANALYSIS_GROUP
+SUBTYPE OF (group);
+INVERSE
+ element_groups : SET [1:?] OF ELEMENT_GROUP
+  FOR parent_analysis_grp;
+ node_groups : SET [1:?] OF NODE_GROUP
+  FOR parent_analysis_group;
+WHERE
+   WR1 : SELF\group.group_type = ANALYSIS_GRP;
+   WR2 : EXISTS (element_groups) OR EXISTS (node_groups);
+END_ENTITY;
+
+ENTITY ELEMENT_GROUP;
+ parent_analysis_grp : ANALYSIS_GROUP;
+INVERSE
+ element_list : SET [1:?] OF ELEMENT
+   FOR element_grp;
+END_ENTITY;
+
+ENTITY NODE_GROUP;
+ parent_analysis_group : ANALYSIS_GROUP;
+INVERSE
+ node_list : SET [1:?] OF NODE
+   FOR node_grp;
+END_ENTITY;
+
+ENTITY ASSEMBLY_GROUP
+SUPERTYPE OF ( ONEOF
+   (FRAME_GROUP, STR_CONN_GROUP, STR_MEMBER_GROUP) )
+SUBTYPE OF (group);
+ assembly_group_type :  ASBLY_GRP_SELECT;  -- discriminator
+ total_no_asblies_in_group :  OPTIONAL INTEGER;
+ no_asbly_types_in_group :  OPTIONAL INTEGER;
+INVERSE
+ assembly_list : SET [0:?] OF ASSEMBLY
+   FOR asbly_grp;
+ l_joints_groups : SET [0:?] OF L_JOINT_SYSTEMS_GROUP
+   FOR parent_asbly_grp;
+ l_parts_groups : SET [0:?] OF L_PARTS_GROUP
+   FOR parent_asbly_grp;
+WHERE
+   WR1 : SELF\group.group_type = ASSEMBLY_GRP;
+   WR2 : EXISTS (assembly_list) OR EXISTS (l_joints_groups) OR EXISTS (l_parts_groups);
+END_ENTITY;
+
+TYPE ASBLY_GRP_SELECT = ENUMERATION OF
+   (FRAME_GRP, STR_CONN_GRP, STR_MEMBER_GRP, UNDEFINED);
+END_TYPE;
+
+ENTITY L_JOINT_SYSTEMS_GROUP;
+ parent_asbly_grp : ASSEMBLY_GROUP;
+INVERSE
+ located_joint_systems_list : SET [1:?] OF LOCATED_JOINT_SYSTEM
+   FOR joints_grp;
+END_ENTITY;
+
+ENTITY L_PARTS_GROUP;
+ parent_asbly_grp : ASSEMBLY_GROUP;
+INVERSE
+ located_parts_list : SET [1:?] OF LOCATED_PART
+   FOR parts_grp;
+END_ENTITY;
+
+ENTITY FRAME_GROUP
+SUBTYPE OF (ASSEMBLY_GROUP);
+INVERSE
+ frame_list : SET [1:?] OF STRUC_FRAME
+   FOR frame_grp;
+WHERE
+   WR1 : SELF\ASSEMBLY_GROUP.assembly_group_type = FRAME_GRP;
+END_ENTITY;
+
+ENTITY STR_CONN_GROUP
+SUBTYPE OF (ASSEMBLY_GROUP);
+INVERSE
+ connection_list : SET [1:?] OF STRUC_CONNECTION
+   FOR connctn_grp;
+WHERE
+   WR1 : SELF\ASSEMBLY_GROUP.assembly_group_type = STR_CONN_GRP;
+END_ENTITY;
+
+ENTITY STR_MEMBER_GROUP
+SUBTYPE OF (ASSEMBLY_GROUP);
+INVERSE
+ member_list : SET [1:?] OF STRUC_MEMBER
+   FOR mbr_grp;
+WHERE
+   WR1 : SELF\ASSEMBLY_GROUP.assembly_group_type = STR_MEMBER_GRP;
+END_ENTITY;
+
+
+ (* 12.  LPM_Geometry_schema *)
+
+ENTITY GEOMETRIC_REPRESENTATION  -- Mandatory to support
+ABSTRACT SUPERTYPE OF (ONEOF(
+  PRISMATIC_PART_GEOMETRY,
+  SHEET_PART_GEOM))
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ geometric_rep_number : INTEGER;
+   (* Mandatory to support - if instanced, use a user-defined value *)
+ geometric_rep_label : OPTIONAL label;
+ geometry_source : OPTIONAL DESCRIPTION;
+ geometry_type : GEOMETRIC_REP_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ parametric_geom_type : PARAMETRIC_GEOMETRY_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+INVERSE
+ geometry_for_elmnts : SET [0:?] OF ELEMENT
+   FOR element_geometry;
+UNIQUE
+   UR1 : geometric_rep_number;
+END_ENTITY;
+
+TYPE GEOMETRIC_REP_TYPE = ENUMERATION OF (PARAMETRIC);  -- Mandatory to support
+END_TYPE;
+
+TYPE PARAMETRIC_GEOMETRY_TYPE = ENUMERATION OF  -- Mandatory to support
+   (SHEET_GEOM, PRISMATIC_GEOM);
+END_TYPE;
+
+ENTITY PRISMATIC_PART_GEOMETRY  -- Mandatory to support
+SUBTYPE OF (GEOMETRIC_REPRESENTATION);
+ pris_part_geom_label : OPTIONAL label;
+ pp_profile : OPTIONAL SECTION_PROFILE;  -- Mandatory to support
+ ref_pt_x_dim : OPTIONAL length_measure;
+ cardinal_point : OPTIONAL INTEGER;
+INVERSE
+ described_p_parts : SET [0:?] OF PRISMATIC_PART
+   FOR pp_geometry;
+ described_pp_parts : SET [0:?] OF PSEUDO_PRISMATIC_PART
+   FOR ppp_geom_at_pt_x;
+WHERE
+   WR1 : SELF\GEOMETRIC_REPRESENTATION.parametric_geom_type =
+   PRISMATIC_GEOM;
+END_ENTITY;
+
+ENTITY SHEET_PART_GEOM
+SUBTYPE OF (GEOMETRIC_REPRESENTATION);
+ sheet_part_geom_label : OPTIONAL label;
+ sp_geometry_source_ref : OPTIONAL DESCRIPTION;
+ sp_thickness : OPTIONAL length_measure;
+ sp_inertia_moment_Iy : OPTIONAL INERTIA_PER_LENGTH_MEASURE;
+ sp_area_Axy : OPTIONAL area_measure;
+ plastic_modulus_Sy : OPTIONAL MODULUS_PER_LENGTH_MEASURE;
+INVERSE
+ described_sheet_parts : SET [0:?] OF SHEET_PART
+   FOR sp_geometry;
+WHERE
+   WR1 : SELF\GEOMETRIC_REPRESENTATION.parametric_geom_type = SHEET_GEOM;
+END_ENTITY;
+
+ENTITY SECTION_PROFILE  -- Mandatory to support
+SUPERTYPE OF (ONEOF(
+  ANGLE_SECT,
+  CIRCLE_SECT,
+  I_TYPE_SECT,
+  RECTANGLE_SECT,
+  T_TYPE_SECT))
+SUBTYPE OF (CIMSTEEL_ENTITY);
+ section_id : identifier;   
+   (* Mandatory to support - if instanced, use a CIS-defined value or user-defined if non-standard *)
+ standard_profile : item_type;
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ profile_shape : OPTIONAL SECTION_PROFILE_TYPE;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+INVERSE
+ properties : SET [0:1] OF SECTION_PROPERTIES
+   FOR profile;
+ profile_for_pp_geoms : SET [0:?] OF PRISMATIC_PART_GEOMETRY
+   FOR pp_profile;
+UNIQUE
+   UR1 : section_id;
+END_ENTITY;
+
+TYPE SECTION_PROFILE_TYPE = ENUMERATION OF (  -- Mandatory to support
+  ASYMMETRIC, ANGLE, SOLID_CIRCLE, HOLLOW_CIRCLE,
+  HOLLOW_RECTANGLE, I_TYPE, CHANNEL, SOLID_RECTANGLE,
+  T_TYPE, UNDEFINED);
+END_TYPE;
+
+ENTITY I_TYPE_SECT
+SUBTYPE OF (SECTION_PROFILE);
+ overall_depth : length_measure;
+ top_flange_width : length_measure;
+ btm_flange_width : OPTIONAL length_measure;
+ top_flange_thickness : length_measure;
+ btm_flange_thickness : OPTIONAL length_measure;
+ web_thickness : length_measure;
+ root_radius_top : OPTIONAL length_measure;
+ root_radius_bottom : OPTIONAL length_measure;
+ int_depth : OPTIONAL length_measure;
+ top_flange_slope : OPTIONAL ratio_measure;
+ btm_flange_slope : OPTIONAL ratio_measure;
+ edge_radius : OPTIONAL length_measure;
+WHERE
+  WR1 : (SELF\SECTION_PROFILE.profile_shape = ASYMMETRIC) OR
+             (SELF\SECTION_PROFILE.profile_shape = I_TYPE);
+END_ENTITY;
+
+ENTITY ANGLE_SECT
+SUBTYPE OF (SECTION_PROFILE);
+ depth : length_measure;
+ width : OPTIONAL length_measure;
+ thickness : length_measure;
+ int_fillet_radius : OPTIONAL length_measure;
+ edge_fillet_radius : OPTIONAL length_measure;
+ leg_slope : OPTIONAL ratio_measure;
+WHERE
+  WR1 : SELF\SECTION_PROFILE.profile_shape = ANGLE;
+END_ENTITY;
+
+ENTITY CIRCLE_SECT
+SUBTYPE OF (SECTION_PROFILE);
+ external_radius : length_measure;
+ wall_thickness : OPTIONAL length_measure;
+WHERE
+   WR1 : (SELF\SECTION_PROFILE.profile_shape = SOLID_CIRCLE) OR
+              (SELF\SECTION_PROFILE.profile_shape = HOLLOW_CIRCLE);
+END_ENTITY;
+
+ENTITY RECTANGLE_SECT
+SUBTYPE OF (SECTION_PROFILE);
+ overall_depth : length_measure;
+ overall_width : OPTIONAL length_measure;
+ wall_thickness : OPTIONAL length_measure;
+ int_fillet_radius : OPTIONAL length_measure;
+ ext_fillet_radius : OPTIONAL length_measure;
+WHERE
+   WR1 : (SELF\SECTION_PROFILE.profile_shape = HOLLOW_RECTANGLE) OR
+              (SELF\SECTION_PROFILE.profile_shape = SOLID_RECTANGLE);
+END_ENTITY;
+
+ENTITY T_TYPE_SECT
+SUBTYPE OF (SECTION_PROFILE);
+ overall_depth : length_measure;
+ flange_width : length_measure;
+ flange_thickness : length_measure;
+ web_thickness : length_measure;
+ root_radius : OPTIONAL length_measure;
+ flange_slope : OPTIONAL ratio_measure;
+ web_slope : OPTIONAL ratio_measure;
+WHERE
+   WR1 : SELF\SECTION_PROFILE.profile_shape = T_TYPE;
+END_ENTITY;
+
+ENTITY SECTION_PROPERTIES;  -- Mandatory to support
+ profile : SECTION_PROFILE; -- Mandatory to support
+ torsional_constant_Ix : OPTIONAL INERTIA_MEASURE;
+ inertia_moment_Iy : OPTIONAL INERTIA_MEASURE;
+    (* Mandatory to support - if instanced, use a user/application-defined value *)
+inertia_moment_Iz : OPTIONAL INERTIA_MEASURE;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ section_area_Ax : OPTIONAL area_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ shear_area_Ay : OPTIONAL area_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ shear_area_Az : OPTIONAL area_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ surface_per_length : OPTIONAL SURFACE_AREA_PER_LENGTH_MEASURE;
+ radius_of_gyration_ry : OPTIONAL length_measure;
+ radius_of_gyration_rz : OPTIONAL length_measure;
+ plastic_modulus_Sy : OPTIONAL MODULUS_MEASURE;
+ plastic_modulus_Sz : OPTIONAL MODULUS_MEASURE;
+ warping_constant : OPTIONAL REAL;
+ torsional_index : OPTIONAL REAL;
+ buckling_parameter : OPTIONAL REAL;
+ hor_dist_na_shear_centre : OPTIONAL length_measure;
+ vert_dist_na_shear_centre : OPTIONAL length_measure;
+ theta_angle_z_axis_v_axis : OPTIONAL plane_angle_measure;
+ hor_dist_centroid_origin : OPTIONAL length_measure;
+ vert_dist_centroid_origin : OPTIONAL length_measure;
+ inertia_moment_Iu : OPTIONAL INERTIA_MEASURE;
+ inertia_moment_Iv : OPTIONAL INERTIA_MEASURE;
+ radius_of_gyration_ru : OPTIONAL length_measure;
+ radius_of_gyration_rv : OPTIONAL length_measure;
+ section_modulus_Zy_top : OPTIONAL MODULUS_MEASURE;
+ section_modulus_Zy_bottom : OPTIONAL MODULUS_MEASURE;
+ section_modulus_Zz_left : OPTIONAL MODULUS_MEASURE;
+ section_modulus_Zz_right : OPTIONAL MODULUS_MEASURE;
+ section_modulus_Zu_v_pos : OPTIONAL MODULUS_MEASURE;
+ section_modulus_Zv_u_pos : OPTIONAL MODULUS_MEASURE;
+ section_modulus_Zu_v_neg : OPTIONAL MODULUS_MEASURE;
+ section_modulus_Zv_u_neg : OPTIONAL MODULUS_MEASURE;
+END_ENTITY;
+
+ENTITY POINT;  -- Mandatory to support
+ point_type : POINT_SELECT;  -- discriminator
+   (* Mandatory to support - if instanced, use a CIS-defined value *)
+ x_coord : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ y_coord : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+ z_coord : OPTIONAL length_measure;
+   (* Mandatory to support - if instanced, use a user/application-defined value *)
+INVERSE
+ nodes : SET [0:?] OF NODE
+   FOR node_coords;
+ coord_systems : SET [0:?] OF COORD_SYSTEM
+   FOR origin;
+ grid_pts_1 : SET [0:?] OF GRIDLINE
+   FOR ref_point_1;
+ grid_pts_2 : SET [0:?] OF GRIDLINE
+   FOR ref_point_2;
+WHERE
+   WR1 : SELF\POINT.point_type = CARTESIAN_PT;
+   WR2 : EXISTS (x_coord) OR EXISTS (y_coord) OR EXISTS (z_coord);
+END_ENTITY;
+
+TYPE POINT_SELECT = ENUMERATION OF (CARTESIAN_PT, UNDEFINED);  -- Mandatory to support
+END_TYPE;
+ (* 13.  units_for_LPM_schema *)
+
+TYPE length_measure  =  REAL;   -- Mandatory to support
+END_TYPE;
+(* length_unit = millimetre (SI), inch (US_Imperial) *)
+
+TYPE  mass_measure  =  REAL;
+END_TYPE;
+ (* mass_unit = kilogram (SI), pound (US_Imperial) *)
+
+TYPE  time_measure  =  REAL;
+END_TYPE;
+(* time_unit = second *)
+
+TYPE  temperature_measure = REAL;
+END_TYPE;
+(* temperature_unit = degree_Celsius (SI), degree_Fahrenheit (US_Imperial) *)
+
+TYPE area_measure = REAL;  -- Mandatory to support
+END_TYPE; 
+(* area_unit = square_centimetre (SI), square_inch (US_Imperial) *)
+
+TYPE  ratio_measure = REAL;
+END_TYPE;
+(* ratio_unit = percent *)
+
+TYPE  plane_angle_measure  =  REAL;  -- Mandatory to support
+(* plane_angle_unit = radian (SI), degree (US_Imperial) *)
+END_TYPE;
+
+TYPE solid_angle_measure = REAL;
+END_TYPE;
+(* solid_angle_unit = steradian (SI), degree (US_Imperial) *)
+
+TYPE volume_measure = REAL;
+END_TYPE;
+(* volume_unit = cubic_metre (SI), cubic_inch (US_Imperial) *)
+
+TYPE ACCELERATION_MEASURE = REAL;
+END_TYPE;
+(* ACCELERATION_UNIT = 
+   metres_per_second_per_second (SI), feet_per_second_per_second (US_Imperial) *)
+
+TYPE  AREA_DENSITY_MEASURE = REAL;
+END_TYPE;
+(* AREA_DENSITY_UNIT = 
+   kilograms_per_square_metre (SI), pounds_per_square_inch (US_Imperial) *)
+
+TYPE  ELASTICITY_MEASURE = REAL;  -- Mandatory to support
+END_TYPE;
+(* ELASTICITY_UNIT =
+   kiloNewtons_per_square_millimetre, (SI) kips_per_square_inch (US_Imperial) *)
+
+TYPE  FORCE_MEASURE = REAL;  -- Mandatory to support
+END_TYPE;
+(* FORCE_UNIT =  kiloNewton (SI), kips (US_Imperial) *)
+
+TYPE  FORCE_PER_LENGTH_MEASURE = REAL;  -- Mandatory to support
+END_TYPE;
+(* FORCE_PER_LENGTH_UNIT =
+   kiloNewtons_per_metre (SI), kips_per_foot  (US_Imperial) *)
+
+TYPE FREQUENCY_MEASURE = REAL;
+END_TYPE;
+(* FREQUENCY_UNIT = (Hertz) *)
+
+TYPE  INERTIA_MEASURE = REAL;  -- Mandatory to support
+END_TYPE;
+(* INERTIA_UNIT  =
+   centimetre_to_power_four (SI), inch_to_power_four (US_Imperial) *)
+
+TYPE  LINEAR_STIFFNESS_MEASURE = REAL;   -- Mandatory to support
+END_TYPE;
+(* LINEAR_STIFFNESS_UNIT =
+  kiloNewtons_per_millimetre (SI), kips_per_inch (US_Imperial) *)
+
+TYPE  LIN_THERM_EXP_MEASURE = REAL;
+END_TYPE;
+(* LIN_THERM_EXP_UNIT =
+  millimetres_per_degree_Celsius (SI), inches_per_degree_Fahrenheit (US_Imperial) *)
+
+TYPE  MASS_DENSITY_MEASURE = REAL;
+END_TYPE;
+(* MASS_DENSITY_UNIT =
+   kilograms_per_cubic_metre (SI), pounds_per_cubic_foot (US_Imperial) *)
+
+TYPE  MODULUS_MEASURE = REAL;
+END_TYPE;
+(* MODULUS_UNIT = cubic_millimetre (SI), cubic_inch (US_Imperial) *)
+
+TYPE  MOMENT_PER_LENGTH_MEASURE = REAL;  -- Mandatory to support
+END_TYPE;
+(* MOMENT_PER_LENGTH_UNIT =
+   kiloNewton_metres_per_metre (SI), kip_feet_per_foot (US_Imperial) *)
+
+TYPE  MOMENT_MEASURE = REAL;  -- Mandatory to support
+END_TYPE;
+(* MOMENT_UNIT =  kiloNewton_metre (SI), kip_feet (US_Imperial) *)
+
+TYPE  PRESSURE_MEASURE = REAL;
+END_TYPE;
+(*  PRESSURE_UNIT = kiloPascal (SI), kips_per_square_inch (US_Imperial) *)
+
+TYPE  ROTATIONAL_STIFFNESS_MEASURE = REAL;  -- Mandatory to support
+END_TYPE;
+(*  ROTATIONAL_STIFFNESS_UNIT = 
+   kiloNewton_metres_per_radian (SI), kip_feet_per_degree (US_Imperial) *)
+
+TYPE  STRAIN_MEASURE = REAL;
+END_TYPE;
+(* STRAIN_UNIT = percent *)
+
+TYPE  STRESS_MEASURE = REAL;
+END_TYPE;
+(* STRESS_UNIT = Newtons_per_square_millimetre (SI), kips_per_square_inch (US_Imperial) *)
+
+TYPE  SURFACE_AREA_PER_LENGTH_MEASURE = REAL;
+END_TYPE;
+(* SURFACE_AREA_PER_LENGTH_UNIT = 
+   square_metres_per_metre (SI), square_feet_per_foot (US_Imperial) *)
+
+TYPE VELOCITY_MEASURE = REAL;
+END_TYPE;
+(* VELOCITY_UNIT = metres_per_second (SI), feet_per_second (US_Imperial) *)
+
+TYPE MASS_PER_LENGTH_MEASURE = REAL;
+END_TYPE;
+(* MASS_PER_LENGTH_UNIT = kilograms_per_metre (SI), pounds_per_foot (US_Imperial) *)
+
+TYPE INERTIA_PER_LENGTH_MEASURE = REAL;
+END_TYPE;
+(* INERTIA_PER_LENGTH_UNIT = 
+centimetre_to_power_four_per_metre (SI), inch_to_power_four_per_foot (US_Imperial) *)
+
+TYPE MODULUS_PER_LENGTH_MEASURE = REAL;
+END_TYPE;
+(* MODULUS_PER_LENGTH_UNIT = 
+cubic_millimetres_per_metre (SI), cubic_inches_per_foot (US_Imperial) *)
+
+TYPE TEMP_GRADIENT_MEASURE = REAL;
+END_TYPE;
+(* TEMP_GRADIENT_UNIT = 
+degree_Celsius_per_millimetre (SI), degree_Fahrenheit_per_inch (US_Imperial) *)
+
+END_SCHEMA; -- end of  Schema LPM4DEP1 version 1.1

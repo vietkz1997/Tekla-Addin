@@ -1,0 +1,33 @@
+//
+// This is customizable mapping file for rebar coupler and anchor symbols. This mapping file can be placed under the model folder or any of the system folders (XS_PROJECT, XS_FIRM, XS_SYSTEM).
+// Lines beginning with // are comment lines and will be ignored in the file reading process.
+// 
+// With this mapping file you can map certain UDA values to specific symbols of different symbol files located in "\Environments\common\symbols" folder.
+//
+// Each row should contain fields separated by semicolon.
+// The line below will introduce the rebar uda pairs holding the end specific UDA values. These are the same UDAs which are introduced in RebarCoupler.Udas.dat file and thus managed automatically by the Rebar Coupler and Anchor tools.
+//
+METHOD_START/METHOD_END;TYPE_START/TYPE_END;CODE_START/CODE_END
+//
+// You can find out the option numerical values by looking the UDA definitions in the 'objects.inp' file. For example: 
+//
+//   unique_attribute("METHOD_START", "Method (start)", option, "%s", yes, none, "0.0", "0.0", 370, 30, 200)
+//   {
+//             value("", 2)
+//             value("Coupler", 0)           ==>  numerical value = 0
+//             value("Coupler female", 0)    ==>  numerical value = 1
+//             value("Coupler male", 0)      ==>  numerical value = 2
+//             value("Threaded", 0)          ==>  numerical value = 3
+//             value("Anchor", 0)            ==>  numerical value = 4
+//   }
+//
+// The lines below should contain numerical values for the above UDAs.
+// Special value '*' is matching with any value. When using '*' be careful on placing the more specific value rows before the less specific rows. First row and symbol number matching with the given values will be used to look for the symbol number.
+// The second last value in the row is the name of the symbol file. The last value is the symbol number in the ".sym" file. For example with a row 4;*;*;CouplerSymbols;4 user will get symbol number 4 from the "CouplerSymbols.sym" file.
+// If no symbol file is specified in the row the symbol will be taken from the default file "CouplerSymbols.sym".
+//
+0;*;*;CouplerSymbols;0
+1;*;*;CouplerSymbols;2
+2;*;*;CouplerSymbols;1
+3;*;*;CouplerSymbols;3
+4;*;*;CouplerSymbols;7

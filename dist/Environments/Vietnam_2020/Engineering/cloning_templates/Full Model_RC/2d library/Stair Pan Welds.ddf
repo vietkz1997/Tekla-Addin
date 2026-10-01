@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Stair Pan Welds">
+  <Line StartPointX="-15.6939189544126" StartPointY="-14.1454494507548" EndPointX="-18.4421784204367" EndPointY="-11.3971899847299" Color="NewLine2" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.976563" ArrowHeight="1.984375" ArrowHead="16" />
+  <Line StartPointX="-15.6939189544126" StartPointY="-14.1454494507548" EndPointX="-18.4421784204369" EndPointY="-16.8937089167796" Color="NewLine2" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.976563" ArrowHeight="1.984375" ArrowHead="16" />
+  <Line StartPointX="-15.6939189544126" StartPointY="-14.1454494507548" EndPointX="-5.95122128424532" EndPointY="-14.1454494507548" Color="NewLine2" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="2.976563" ArrowHeight="1.984375" ArrowHead="16" />
+  <PolyLine Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="Start" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="-4.94301187022792" Y="7.97429454036354" />
+    <Point X="-10.6586718908481" Y="-5.13472235904992" />
+    <Point X="-5.95122128424591" Y="-14.1454494507548" />
+  </PolyLine>
+  <PolyLine Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="Start" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="16.3686746895159" Y="8.10018718766514E-13" />
+    <Point X="5.0030500712143" Y="-12.3653263517705" />
+    <Point X="-5.95122128424754" Y="-14.1454494507538" />
+  </PolyLine>
+  <PolyLine Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="Start" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="0" Y="0" />
+    <Point X="0.380666853244653" Y="-9.7557850611653" />
+    <Point X="-5.95122128424557" Y="-14.1454494507555" />
+  </PolyLine>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="None" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="-11.6285954954933" Y="-17.3204494507548" />
+    <Point X="-11.6285954954933" Y="-14.1454494507548" />
+    <Point X="-8.4535954954931" Y="-14.1454494507548" />
+  </Polygon>
+  <Text InsertionPointX="-7.988070489494" InsertionPointY="-16.3954859330462" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Right" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">1"</Text>
+  <Text InsertionPointX="-21.462077699572" InsertionPointY="-14.1820357311927" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Right" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">TYP.</Text>
+  <Text InsertionPointX="-13.9840019776033" InsertionPointY="-16.4422008252645" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">1/8"</Text>
+</DrawingDetail>

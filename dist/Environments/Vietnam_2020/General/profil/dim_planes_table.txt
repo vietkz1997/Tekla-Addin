@@ -1,0 +1,20 @@
+/*** DIMENSION PLANES TABLE for different profile types and sizes ***/
+/***
+//Values: -1.0 in max size means no size limit!
+
+                         FLANGE                      WEB       
+ProfType,MaxSize, middle,right, left,       middle, right, left
+=================================================================
+1,       200.0,   TRUE,  FALSE, FALSE,      TRUE,   FALSE, FALSE
+***/
+
+// I-Profile - 300mm or less do not use mid-web plane and only
+// mid-flange plane...
+1,       300.0,   TRUE*, FALSE, FALSE,      FALSE,  TRUE*,  TRUE
+1,        -1.0,   TRUE,  TRUE,  TRUE,       TRUE,   TRUE,   TRUE
+
+// L-Profile - this is the same as hardcoded one - just for example
+2,        -1.0,   FALSE,  TRUE, FALSE,      FALSE,  TRUE,  FALSE
+
+// Round bar - this enables dimensioning to center line
+6,        -1.0,   TRUE,  TRUE,  TRUE,       TRUE,  TRUE,  TRUE

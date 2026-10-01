@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TeklaStructuresModels>
+<TeklaStructuresModels>
+    <Model>
+        <Name>Full Model_RC</Name>
+        <Designer> </Designer>
+        <Description></Description>
+        <Version>2016 Service Pack 3</Version>
+        <Language>kor</Language>
+        <Template></Template>
+        <Environment>korea</Environment>
+        <IsTemplate>FALSE</IsTemplate>
+        <XS_PROJECT></XS_PROJECT>
+        <XS_FIRM></XS_FIRM>
+        <XS_SYSTEM>C:\TeklaStructures\2016\environments\korea\roles\CastInPlace\inp\;C:\TeklaStructures\2016\environments\korea\roles\CastInPlace\system\;C:\TeklaStructures\2016\\environments\korea\system\;C:\TeklaStructures\2016\environments\common\system\</XS_SYSTEM>
+    </Model>
+</TeklaStructuresModels>

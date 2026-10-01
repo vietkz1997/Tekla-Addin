@@ -1,0 +1,7 @@
+# Example pop mark configuration file
+# Lines beginning with '#' are comments
+
+# [Main part profile type] [Main part name] [Sec. part profile type] [Sec. part name] [Position case] [Pop mark type] [Edge distance]
+* * * PLATE ALL HOLESLEFT 30.0
+* * R? * ALL CENTER 10.0
+I * B * ALL LEFT 30.0

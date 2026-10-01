@@ -1,0 +1,13 @@
+joint_attributes.saveas_file "standard"
+joint_attributes.get_menu "standard"
+joint_attributes.group "99"
+joint_attributes.grade ""
+joint_attributes.part_num ""
+joint_attributes.part_str ""
+joint_attributes.assem_num ""
+joint_attributes.assem_str ""
+joint_attributes.min_length -2147483648.000000
+joint_attributes.seam_angle ""
+joint_attributes.std_length -2147483648.000000
+joint_attributes.wall_thick -2147483648.000000
+joint_attributes.std_dia -2147483648.000000

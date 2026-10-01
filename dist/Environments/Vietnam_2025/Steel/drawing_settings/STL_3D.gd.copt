@@ -1,0 +1,35 @@
+TITLE_CLASSIFIER 
+{
+    Version= 1.00 
+    Count= 5 
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Part 
+        BEAM 
+        Yellow 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Part 
+        BRACE 
+        Blue 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Part 
+        COLUMN 
+        Red 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Part 
+        GIRDER 
+        Green 
+        }
+    SECTION_CLASSIFIER_GROUP 
+    {
+        albl_Part 
+        PURLIN 
+        Sky_Blue 
+        }
+    }

@@ -714,7 +714,9 @@ public class SplitSlabDialog : Form
 			newSlab = global::Tekla.Structures.Model.Operations.Operation.Split(slab, splitPoly);
 			if (newSlab != null)
 			{
+				CopyPartProperties(slab, newSlab);
 				ApplyClassToSlab(newSlab, slab.Class, selectedIndex, 0);
+				CopyPhaseAndUdas(slab, newSlab);
 				newSlab.Modify();
 				_model.CommitChanges();
 				Log(string.Format("✅ POLYLINE SPLIT SUCCESSFUL! (Original ID: {0}, New ID: {1})", slab.Identifier.ID, newSlab.Identifier.ID));
@@ -800,18 +802,9 @@ public class SplitSlabDialog : Form
 			Chamfer ch = FindOriginalChamfer(contourPoints, pt);
 			c1.AddContourPoint(new ContourPoint(pt, ch));
 		}
-		slab.Contour = c1;
-		slab.Modify();
 
 		newSlab = new ContourPlate();
-		newSlab.Profile.ProfileString = slab.Profile.ProfileString;
-		newSlab.Material.MaterialString = slab.Material.MaterialString;
-		newSlab.Finish = slab.Finish;
-		newSlab.Position.Plane = slab.Position.Plane;
-		newSlab.Position.Depth = slab.Position.Depth;
-		newSlab.Position.PlaneOffset = slab.Position.PlaneOffset;
-		newSlab.Position.DepthOffset = slab.Position.DepthOffset;
-		newSlab.Name = slab.Name;
+		CopyPartProperties(slab, newSlab);
 		ApplyClassToSlab(newSlab, slab.Class, selectedIndex, 0);
 
 		Contour c2 = new Contour();
@@ -821,7 +814,17 @@ public class SplitSlabDialog : Form
 			c2.AddContourPoint(new ContourPoint(pt, ch));
 		}
 		newSlab.Contour = c2;
-		newSlab.Insert();
+		if (!newSlab.Insert())
+		{
+			Log("⚠️ Cannot insert newly split slab into model.");
+			return false;
+		}
+
+		CopyPhaseAndUdas(slab, newSlab);
+		newSlab.Modify();
+
+		slab.Contour = c1;
+		slab.Modify();
 
 		_model.CommitChanges();
 		Log($"✅ POLYLINE (GEOMETRIC) SPLIT SUCCESSFUL! Slab 1: {loop1.Count} vertices | Slab 2: {loop2.Count} vertices");
@@ -1017,6 +1020,269 @@ public class SplitSlabDialog : Form
 		}
 	}
 
+	/// <summary>
+	/// Copies all basic part attributes from source slab to target slab before inserting into model.
+	/// </summary>
+	private void CopyPartProperties(ContourPlate source, ContourPlate target)
+	{
+		if (source == null || target == null) return;
+
+		target.Name = source.Name;
+		target.Profile.ProfileString = source.Profile.ProfileString;
+		target.Material.MaterialString = source.Material.MaterialString;
+		target.Finish = source.Finish;
+		target.CastUnitType = source.CastUnitType;
+		target.PourPhase = source.PourPhase;
+
+		if (source.Position != null && target.Position != null)
+		{
+			target.Position.Plane = source.Position.Plane;
+			target.Position.PlaneOffset = source.Position.PlaneOffset;
+			target.Position.Depth = source.Position.Depth;
+			target.Position.DepthOffset = source.Position.DepthOffset;
+			target.Position.Rotation = source.Position.Rotation;
+			target.Position.RotationOffset = source.Position.RotationOffset;
+		}
+
+		if (source.PartNumber != null && target.PartNumber != null)
+		{
+			target.PartNumber.Prefix = source.PartNumber.Prefix;
+			target.PartNumber.StartNumber = source.PartNumber.StartNumber;
+		}
+
+		if (source.AssemblyNumber != null && target.AssemblyNumber != null)
+		{
+			target.AssemblyNumber.Prefix = source.AssemblyNumber.Prefix;
+			target.AssemblyNumber.StartNumber = source.AssemblyNumber.StartNumber;
+		}
+
+		if (source.DeformingData != null && target.DeformingData != null)
+		{
+			target.DeformingData.Angle = source.DeformingData.Angle;
+			target.DeformingData.Angle2 = source.DeformingData.Angle2;
+			target.DeformingData.Cambering = source.DeformingData.Cambering;
+			target.DeformingData.Shortening = source.DeformingData.Shortening;
+		}
+	}
+
+	/// <summary>
+	/// Copies Phase, all User-Defined Attributes (UDAs), and Assembly information from source slab to target slab.
+	/// </summary>
+	private void CopyPhaseAndUdas(ContourPlate source, ContourPlate target)
+	{
+		if (source == null || target == null) return;
+
+		// 1. Copy Phase
+		try
+		{
+			Phase phase;
+			if (source.GetPhase(out phase) && phase != null)
+			{
+				target.SetPhase(phase);
+			}
+		}
+		catch { }
+
+		// 2. Copy Part UDAs by exact type
+		try
+		{
+			Hashtable strProps = new Hashtable();
+			source.GetStringUserProperties(ref strProps);
+			if (strProps != null)
+			{
+				foreach (DictionaryEntry de in strProps)
+				{
+					if (de.Key != null && de.Value != null)
+					{
+						string key = de.Key.ToString();
+						if (!string.IsNullOrEmpty(key))
+							target.SetUserProperty(key, de.Value.ToString());
+					}
+				}
+			}
+
+			Hashtable intProps = new Hashtable();
+			source.GetIntegerUserProperties(ref intProps);
+			if (intProps != null)
+			{
+				foreach (DictionaryEntry de in intProps)
+				{
+					if (de.Key != null && de.Value != null)
+					{
+						string key = de.Key.ToString();
+						if (!string.IsNullOrEmpty(key))
+						{
+							if (de.Value is int iVal)
+								target.SetUserProperty(key, iVal);
+							else if (int.TryParse(de.Value.ToString(), out int parsedInt))
+								target.SetUserProperty(key, parsedInt);
+						}
+					}
+				}
+			}
+
+			Hashtable dblProps = new Hashtable();
+			source.GetDoubleUserProperties(ref dblProps);
+			if (dblProps != null)
+			{
+				foreach (DictionaryEntry de in dblProps)
+				{
+					if (de.Key != null && de.Value != null)
+					{
+						string key = de.Key.ToString();
+						if (!string.IsNullOrEmpty(key))
+						{
+							if (de.Value is double dVal)
+								target.SetUserProperty(key, dVal);
+							else if (double.TryParse(de.Value.ToString(), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out double parsedDbl))
+								target.SetUserProperty(key, parsedDbl);
+						}
+					}
+				}
+			}
+
+			// Any other UDAs from GetAllUserProperties not covered above
+			Hashtable allProps = new Hashtable();
+			source.GetAllUserProperties(ref allProps);
+			if (allProps != null)
+			{
+				foreach (DictionaryEntry de in allProps)
+				{
+					if (de.Key == null || de.Value == null) continue;
+					string key = de.Key.ToString();
+					if (string.IsNullOrEmpty(key)) continue;
+					if ((strProps != null && strProps.ContainsKey(key)) ||
+						(intProps != null && intProps.ContainsKey(key)) ||
+						(dblProps != null && dblProps.ContainsKey(key)))
+					{
+						continue;
+					}
+
+					if (de.Value is int iVal) target.SetUserProperty(key, iVal);
+					else if (de.Value is double dVal) target.SetUserProperty(key, dVal);
+					else target.SetUserProperty(key, de.Value.ToString());
+				}
+			}
+		}
+		catch { }
+
+		// 3. Copy Assembly Information & Assembly UDAs
+		try
+		{
+			target.Select();
+
+			Assembly srcAss = source.GetAssembly();
+			Assembly tgtAss = target.GetAssembly();
+			if (srcAss != null && tgtAss != null)
+			{
+				bool assemblyModified = false;
+
+				if (!string.IsNullOrEmpty(srcAss.Name))
+				{
+					tgtAss.Name = srcAss.Name;
+					assemblyModified = true;
+				}
+
+				if (srcAss.AssemblyNumber != null && tgtAss.AssemblyNumber != null)
+				{
+					tgtAss.AssemblyNumber.Prefix = srcAss.AssemblyNumber.Prefix;
+					tgtAss.AssemblyNumber.StartNumber = srcAss.AssemblyNumber.StartNumber;
+					assemblyModified = true;
+				}
+
+				Phase srcAssPhase;
+				if (srcAss.GetPhase(out srcAssPhase) && srcAssPhase != null)
+				{
+					tgtAss.SetPhase(srcAssPhase);
+					assemblyModified = true;
+				}
+
+				Hashtable assStr = new Hashtable();
+				srcAss.GetStringUserProperties(ref assStr);
+				if (assStr != null)
+				{
+					foreach (DictionaryEntry de in assStr)
+					{
+						if (de.Key != null && de.Value != null)
+						{
+							string key = de.Key.ToString();
+							if (!string.IsNullOrEmpty(key))
+							{
+								tgtAss.SetUserProperty(key, de.Value.ToString());
+								assemblyModified = true;
+							}
+						}
+					}
+				}
+
+				Hashtable assInt = new Hashtable();
+				srcAss.GetIntegerUserProperties(ref assInt);
+				if (assInt != null)
+				{
+					foreach (DictionaryEntry de in assInt)
+					{
+						if (de.Key != null && de.Value != null)
+						{
+							string key = de.Key.ToString();
+							if (!string.IsNullOrEmpty(key))
+							{
+								if (de.Value is int iVal) tgtAss.SetUserProperty(key, iVal);
+								else if (int.TryParse(de.Value.ToString(), out int parsedInt)) tgtAss.SetUserProperty(key, parsedInt);
+								assemblyModified = true;
+							}
+						}
+					}
+				}
+
+				Hashtable assDbl = new Hashtable();
+				srcAss.GetDoubleUserProperties(ref assDbl);
+				if (assDbl != null)
+				{
+					foreach (DictionaryEntry de in assDbl)
+					{
+						if (de.Key != null && de.Value != null)
+						{
+							string key = de.Key.ToString();
+							if (!string.IsNullOrEmpty(key))
+							{
+								if (de.Value is double dVal) tgtAss.SetUserProperty(key, dVal);
+								else if (double.TryParse(de.Value.ToString(), System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out double parsedDbl)) tgtAss.SetUserProperty(key, parsedDbl);
+								assemblyModified = true;
+							}
+						}
+					}
+				}
+
+				Hashtable assProps = new Hashtable();
+				srcAss.GetAllUserProperties(ref assProps);
+				if (assProps != null)
+				{
+					foreach (DictionaryEntry de in assProps)
+					{
+						if (de.Key == null || de.Value == null) continue;
+						string key = de.Key.ToString();
+						if (string.IsNullOrEmpty(key)) continue;
+						if ((assStr != null && assStr.ContainsKey(key)) ||
+							(assInt != null && assInt.ContainsKey(key)) ||
+							(assDbl != null && assDbl.ContainsKey(key)))
+						{
+							continue;
+						}
+
+						if (de.Value is int iVal) tgtAss.SetUserProperty(key, iVal);
+						else if (de.Value is double dVal) tgtAss.SetUserProperty(key, dVal);
+						else tgtAss.SetUserProperty(key, de.Value.ToString());
+						assemblyModified = true;
+					}
+				}
+
+				if (assemblyModified)
+					tgtAss.Modify();
+			}
+		}
+		catch { }
+	}
+
 	private global::Tekla.Structures.Geometry3d.Point StraightenCutLine(ContourPlate slab, global::Tekla.Structures.Geometry3d.Point p1, global::Tekla.Structures.Geometry3d.Point p2, out string alignReason)
 	{
 		alignReason = "";
@@ -1180,45 +1446,10 @@ public class SplitSlabDialog : Form
 			Chamfer ch = FindOriginalChamfer(contourPoints, item2);
 			contour.AddContourPoint(new ContourPoint(item2, ch));
 		}
-		slab.Contour = contour;
-		slab.Modify();
 		newSlab = new ContourPlate();
-		newSlab.Profile.ProfileString = slab.Profile.ProfileString;
-		newSlab.Material.MaterialString = slab.Material.MaterialString;
-		newSlab.Finish = slab.Finish;
-		newSlab.Position.Plane = slab.Position.Plane;
-		newSlab.Position.Depth = slab.Position.Depth;
-		newSlab.Position.PlaneOffset = slab.Position.PlaneOffset;
-		newSlab.Position.DepthOffset = slab.Position.DepthOffset;
-		newSlab.Name = slab.Name;
-		string text = slab.Class;
-		switch (classOption)
-		{
-		case 1:
-		{
-			if (int.TryParse(text, out var result))
-			{
-				newSlab.Class = (result + 1).ToString();
-			}
-			else
-			{
-				newSlab.Class = text;
-			}
-			break;
-		}
-		case 2:
-			newSlab.Class = "6";
-			break;
-		case 3:
-			newSlab.Class = "3";
-			break;
-		case 4:
-			newSlab.Class = "1";
-			break;
-		default:
-			newSlab.Class = text;
-			break;
-		}
+		CopyPartProperties(slab, newSlab);
+		ApplyClassToSlab(newSlab, slab.Class, classOption, 0);
+
 		Contour contour2 = new Contour();
 		foreach (global::Tekla.Structures.Geometry3d.Point item3 in list3)
 		{
@@ -1226,7 +1457,18 @@ public class SplitSlabDialog : Form
 			contour2.AddContourPoint(new ContourPoint(item3, ch));
 		}
 		newSlab.Contour = contour2;
-		newSlab.Insert();
+		if (!newSlab.Insert())
+		{
+			Log("⚠️ Cannot insert newly split slab into model.");
+			return false;
+		}
+
+		CopyPhaseAndUdas(slab, newSlab);
+		newSlab.Modify();
+
+		slab.Contour = contour;
+		slab.Modify();
+
 		Log($"-> Slab 1: {list2.Count} vertices | Slab 2: {list3.Count} vertices");
 		return true;
 	}

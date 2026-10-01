@@ -1,0 +1,85 @@
+/***************************************************************************/
+/* Rebar set length adjustment custom attributes                           */
+/***************************************************************************/
+rebar(0,"j_Reinforcing_bar")
+{
+  tab_page("","j_Length_adjustment",4)
+  {
+    attribute("Rounding", "j_Rounding", label, "%s", no, none, "0.0", "0.0", 20, 20)
+    attribute("StraightBars", "j_Straight_bars", label, "%s", no, none, "0.0", "0.0", 30, 50)
+    attribute("__ROUNDING_TYPE_ST", "", option, "%s", yes, none, "0.0", "0.0", 300, 50, 180)
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Down", 0)
+        value("j_Up", 0)
+        value("j_Nearest", 0)
+    }
+    attribute("__ROUNDING_ST", "", distance, "%d", yes, none, "0.0", "0.0", 560, 50, 180)
+    {
+        value("", 0)
+    }
+    attribute("FirstAndLastLegs", "j_First_and_last_legs", label, "%s", no, none, "0.0", "0.0", 30, 80)
+    attribute("__ROUNDING_TYPE_FL", "", option, "%s", yes, none, "0.0", "0.0", 300, 80, 180)
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Down", 0)
+        value("j_Up", 0)
+        value("j_Nearest", 0)
+    }
+    attribute("__ROUNDING_FL", "", distance, "%d", yes, none, "0.0", "0.0", 560, 80, 180)
+    {
+        value("", 0)
+    }
+    attribute("IntermediateLegs", "j_Intermediate_legs", label, "%s", no, none, "0.0", "0.0", 30, 110)
+    attribute("__ROUNDING_TYPE_IM", "", option, "%s", yes, none, "0.0", "0.0", 300, 110, 180)
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Down", 0)
+        value("j_Up", 0)
+        value("j_Nearest", 0)
+    }
+    attribute("__ROUNDING_IM", "", distance, "%d", yes, none, "0.0", "0.0", 560, 110, 180)
+    {
+        value("", 0)
+    }
+    attribute("RoundingUpInSplitters", "j_Rounding_up_in_splitters", label, "%s", no, none, "0.0", "0.0", 30, 140)
+    attribute("__ROUNDING_SPLITTER", "", distance, "%d", yes, none, "0.0", "0.0", 560, 140, 180)
+    {
+        value("", 0)
+    }
+    picture("line.bmp", 457, 10, 100, 170)
+    attribute("StepTapering", "j_Step_tapering", label, "%s", no, none, "0.0", "0.0", 20, 190)
+    attribute("StepTaperingType", "j_Type", label, "%s", no, none, "0.0", "0.0", 30, 220)
+    attribute("__STEPTAPER_TYPE", "", option, "%s", no, none,  "0.0", "0.0", 300, 220, 180,
+              "toggle_field:!StraightBars=0,1,3;!__STEPTAPER_ST=0,1,3;!FirstAndLastLegs=0,1,3;!__STEPTAPER_FL=0,1,3;!IntermediateLegs=0,1,3;!__STEPTAPER_IM=0,1,3;!__STEPTAPER_NOB=0,1,2")
+    {
+        value("", 2)
+        value("j_None", 0)
+        value("j_Distance", 0)
+        value("j_Number_of_bars", 0)
+    }
+    attribute("StraightBars", "j_Straight_bars", label, "%s", no, none, "0.0", "0.0", 30, 250)
+    attribute("__STEPTAPER_ST", "", distance, "%d", yes, none, "0.0", "0.0", 560, 250, 180)
+    {
+        value("", 0)
+    }
+    attribute("FirstAndLastLegs", "j_First_and_last_legs", label, "%s", no, none, "0.0", "0.0", 30, 280)
+    attribute("__STEPTAPER_FL", "", distance, "%d", yes, none, "0.0", "0.0", 560, 280, 180)
+    {
+        value("", 0)
+    }
+    attribute("IntermediateLegs", "j_Intermediate_legs", label, "%s", no, none, "0.0", "0.0", 30, 310)
+    attribute("__STEPTAPER_IM", "", distance, "%d", yes, none, "0.0", "0.0", 560, 310, 180)
+    {
+        value("", 0)
+    }
+    attribute("__STEPTAPER_NOB", "", integer, "%d", yes, none, "0.0", "0.0", 560, 220, 180)
+    {
+        value("", 0)
+    }
+  }
+  modify(1)
+}

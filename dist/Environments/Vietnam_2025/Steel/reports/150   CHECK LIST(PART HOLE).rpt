@@ -1,0 +1,1013 @@
+
+template _tmp_8016
+{
+    name = "tpled_template1";
+    type = TEXTUAL;
+    width = 80;
+    maxheight = 2147483647;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "27.06.2012 14:13";
+    modified = "28.06.2012 16:12";
+    notes = "";
+
+    header _tmp_8048
+    {
+        name = "Header";
+        height = 2;
+
+        text _tmp_8049
+        {
+            name = "Mark";
+            x1 = 0;
+            y1 = 1;
+            x2 = 0;
+            y2 = 1;
+            string = "Part Pos.";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8051
+        {
+            name = "Text";
+            x1 = 15;
+            y1 = 1;
+            x2 = 15;
+            y2 = 1;
+            string = "Profile";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8053
+        {
+            name = "Text_1";
+            x1 = 34;
+            y1 = 1;
+            x2 = 34;
+            y2 = 1;
+            string = "Q'ty";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8055
+        {
+            name = "Text_2";
+            x1 = 43;
+            y1 = 1;
+            x2 = 43;
+            y2 = 1;
+            string = "Hole Size";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8057
+        {
+            name = "Text_3";
+            x1 = 58;
+            y1 = 1;
+            x2 = 58;
+            y2 = 1;
+            string = "Hole Q'ty";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8058
+        {
+            name = "天天天天天天天天天天天天天天天天";
+            x1 = 0;
+            y1 = 0;
+            x2 = 0;
+            y2 = 0;
+            string = "--------------------------------------------------------------------";
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8059
+        {
+            name = "\\t";
+            x1 = 12;
+            y1 = 1;
+            x2 = 12;
+            y2 = 1;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8061
+        {
+            name = "Text_4";
+            x1 = 40;
+            y1 = 1;
+            x2 = 40;
+            y2 = 1;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8062
+        {
+            name = "Text_5";
+            x1 = 55;
+            y1 = 1;
+            x2 = 55;
+            y2 = 1;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8063
+        {
+            name = "Text_6";
+            x1 = 69;
+            y1 = 1;
+            x2 = 69;
+            y2 = 1;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_9282
+        {
+            name = "Text_7";
+            x1 = 31;
+            y1 = 1;
+            x2 = 31;
+            y2 = 1;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_8047
+    {
+        name = "H";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if GetValue(\"HAS_HOLES\") == \"0\" then\r\nStepOver()\r\nelse\r\nif GetValue(\"PROFILE_TYPE\") == \"B\" then\r\nStepOver()\r\nelse\r\nOutput()\r\nendif\r\nendif";
+        contenttype = "PART";
+        sorttype = DISTINCT;
+
+        valuefield _tmp_9280
+        {
+            name = "ValueField_1";
+            location = (15, 0);
+            formula = "GetValue(\"PROFILE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_10290
+        {
+            name = "ID_field";
+            location = (65, 0);
+            formula = "GetValue(\"ID\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 13;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_8285
+        {
+            name = "PART_POS_field";
+            location = (0, 0);
+            formula = "GetValue(\"PART_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_9283
+        {
+            name = "Text_8";
+            x1 = 31;
+            y1 = 0;
+            x2 = 31;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_10278
+        {
+            name = "Text_9";
+            x1 = 12;
+            y1 = 0;
+            x2 = 12;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_10280
+        {
+            name = "Text_10";
+            x1 = 40;
+            y1 = 0;
+            x2 = 40;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_10284
+        {
+            name = "Text_12";
+            x1 = 55;
+            y1 = 0;
+            x2 = 55;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_10289
+        {
+            name = "NUMBER_field";
+            location = (34, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_26047
+        {
+            name = "Id:";
+            x1 = 61;
+            y1 = 0;
+            x2 = 61;
+            y2 = 0;
+            string = "Id:";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        row _tmp_8094
+        {
+            name = "BOLT";
+            height = 1;
+            visibility = TRUE;
+            usecolumns = FALSE;
+            rule = "";
+            contenttype = "HOLE";
+            sorttype = COMBINE;
+
+            valuefield _tmp_8125
+            {
+                name = "DIAMETER_field";
+                location = (44, 0);
+                formula = "GetValue(\"DIAMETER\")";
+                datatype = DOUBLE;
+                class = "Length";
+                cacheable = TRUE;
+                justify = RIGHT;
+                visibility = TRUE;
+                angle = 0;
+                length = 5;
+                decimals = 0;
+                sortdirection = ASCENDING;
+                fontname = "fixfont";
+                fontcolor = 153;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontstyle = 0;
+                fontslant = 0;
+                pen = -1;
+                oncombine = NONE;
+                unit = "mm";
+            };
+
+            valuefield _tmp_8127
+            {
+                name = "HOLE_No.";
+                location = (59, 0);
+                formula = "GetValue(\"NUMBER\")";
+                datatype = INTEGER;
+                class = "";
+                cacheable = TRUE;
+                justify = LEFT;
+                visibility = TRUE;
+                angle = 0;
+                length = 5;
+                decimals = 0;
+                sortdirection = NONE;
+                fontname = "fixfont";
+                fontcolor = 153;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontstyle = 0;
+                fontslant = 0;
+                pen = -1;
+                oncombine = SUM;
+            };
+
+            text _tmp_10282
+            {
+                name = "Text_11";
+                x1 = 40;
+                y1 = 0;
+                x2 = 40;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_10285
+            {
+                name = "Text_13";
+                x1 = 55;
+                y1 = 0;
+                x2 = 55;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_10287
+            {
+                name = "Text_14";
+                x1 = 31;
+                y1 = 0;
+                x2 = 31;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_16959
+            {
+                name = "Text_16";
+                x1 = 12;
+                y1 = 0;
+                x2 = 12;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+        };
+
+        row _tmp_16955
+        {
+            name = "ASSEMBLY";
+            height = 1;
+            visibility = TRUE;
+            usecolumns = FALSE;
+            rule = "";
+            contenttype = "HOLE";
+            sorttype = COMBINE;
+
+            text _tmp_16957
+            {
+                name = "Text_15";
+                x1 = 1;
+                y1 = 0;
+                x2 = 1;
+                y2 = 0;
+                string = "--------------------------------------------------------------------";
+                fontname = "fixfont";
+                fontcolor = 153;
+                fonttype = 4;
+                fontsize = 1;
+                fontratio = 1;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+        };
+    };
+
+    row _tmp_5273
+    {
+        name = "MIS";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "if GetValue(\"HAS_HOLES\") == \"0\" then\r\nStepOver()\r\nelse\r\nif GetValue(\"PROFILE_TYPE\") != \"B\" then\r\nStepOver()\r\nelse\r\nOutput()\r\nendif\r\nendif";
+        contenttype = "PART";
+        sorttype = DISTINCT;
+
+        valuefield _tmp_5283
+        {
+            name = "ValueField_3";
+            location = (15, 0);
+            formula = "GetValue(\"PROFILE\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 14;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_5284
+        {
+            name = "ValueField_4";
+            location = (65, 0);
+            formula = "GetValue(\"ID\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 13;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_5285
+        {
+            name = "ValueField_5";
+            location = (0, 0);
+            formula = "GetValue(\"PART_POS\")";
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_5286
+        {
+            name = "Text_22";
+            x1 = 31;
+            y1 = 0;
+            x2 = 31;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_5287
+        {
+            name = "Text_23";
+            x1 = 12;
+            y1 = 0;
+            x2 = 12;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_5288
+        {
+            name = "Text_24";
+            x1 = 40;
+            y1 = 0;
+            x2 = 40;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_5289
+        {
+            name = "Text_25";
+            x1 = 55;
+            y1 = 0;
+            x2 = 55;
+            y2 = 0;
+            string = "\\t";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_5290
+        {
+            name = "ValueField_6";
+            location = (34, 0);
+            formula = "GetValue(\"NUMBER\")";
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 5;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_5291
+        {
+            name = "Text_26";
+            x1 = 61;
+            y1 = 0;
+            x2 = 61;
+            y2 = 0;
+            string = "Id:";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        row _tmp_5274
+        {
+            name = "Row_1";
+            height = 1;
+            visibility = TRUE;
+            usecolumns = FALSE;
+            rule = "";
+            contenttype = "HOLE";
+            sorttype = COMBINE;
+
+            valuefield _tmp_5275
+            {
+                name = "ValueField";
+                location = (44, 0);
+                formula = "GetValue(\"DIAMETER\")";
+                datatype = DOUBLE;
+                class = "Length";
+                cacheable = TRUE;
+                justify = RIGHT;
+                visibility = TRUE;
+                angle = 0;
+                length = 5;
+                decimals = 0;
+                sortdirection = ASCENDING;
+                fontname = "fixfont";
+                fontcolor = 153;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontstyle = 0;
+                fontslant = 0;
+                pen = -1;
+                oncombine = NONE;
+                unit = "mm";
+            };
+
+            valuefield _tmp_5276
+            {
+                name = "ValueField_2";
+                location = (59, 0);
+                formula = "GetValue(\"NUMBER\")";
+                datatype = INTEGER;
+                class = "";
+                cacheable = TRUE;
+                justify = LEFT;
+                visibility = TRUE;
+                angle = 0;
+                length = 5;
+                decimals = 0;
+                sortdirection = NONE;
+                fontname = "fixfont";
+                fontcolor = 153;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontstyle = 0;
+                fontslant = 0;
+                pen = -1;
+                oncombine = SUM;
+            };
+
+            text _tmp_5277
+            {
+                name = "Text_17";
+                x1 = 40;
+                y1 = 0;
+                x2 = 40;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_5278
+            {
+                name = "Text_18";
+                x1 = 55;
+                y1 = 0;
+                x2 = 55;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_5279
+            {
+                name = "Text_19";
+                x1 = 31;
+                y1 = 0;
+                x2 = 31;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+
+            text _tmp_5280
+            {
+                name = "Text_20";
+                x1 = 12;
+                y1 = 0;
+                x2 = 12;
+                y2 = 0;
+                string = "\\t";
+                fontname = "fixfont";
+                fontcolor = 160;
+                fonttype = 4;
+                fontsize = 5;
+                fontratio = 1.5;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+        };
+
+        row _tmp_5281
+        {
+            name = "Row_2";
+            height = 1;
+            visibility = TRUE;
+            usecolumns = FALSE;
+            rule = "";
+            contenttype = "HOLE";
+            sorttype = COMBINE;
+
+            text _tmp_5282
+            {
+                name = "Text_21";
+                x1 = 1;
+                y1 = 0;
+                x2 = 1;
+                y2 = 0;
+                string = "--------------------------------------------------------------------";
+                fontname = "fixfont";
+                fontcolor = 153;
+                fonttype = 4;
+                fontsize = 1;
+                fontratio = 1;
+                fontslant = 0;
+                fontstyle = 0;
+                angle = 0;
+                justify = LEFT;
+                pen = -1;
+            };
+        };
+    };
+};

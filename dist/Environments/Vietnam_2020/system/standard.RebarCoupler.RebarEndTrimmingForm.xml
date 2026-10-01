@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <FreeSpace>
+    <Millimeters>10</Millimeters>
+  </FreeSpace>
+  <TargetOption>-2147483648</TargetOption>
+  <AutoFreeSpace>1</AutoFreeSpace>
+</config>

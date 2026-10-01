@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="New detail" OriginalScale="20" Scale="20" InsertionPointX="1233" InsertionPointY="-36.3081707289383" ViewGuid="882ed662-cc8d-4801-be2b-e1edd58503b9">
+  <Line StartPointX="0.4" StartPointY="0.165408536446904" EndPointX="0.369551813004512" EndPointY="0.31848190939294" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0.369551813004512" StartPointY="0.31848190939294" EndPointX="0.282842712474621" EndPointY="0.448251248921523" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0.282842712474621" StartPointY="0.448251248921523" EndPointX="0.153073372946051" EndPointY="0.534960349451419" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0.153073372946051" StartPointY="0.534960349451419" EndPointX="0" EndPointY="0.565408536446904" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="0.565408536446904" EndPointX="-0.153073372946028" EndPointY="0.534960349451419" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-0.153073372946028" StartPointY="0.534960349451419" EndPointX="-0.282842712474621" EndPointY="0.448251248921523" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-0.282842712474621" StartPointY="0.448251248921523" EndPointX="-0.369551813004512" EndPointY="0.31848190939294" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-0.369551813004512" StartPointY="0.31848190939294" EndPointX="-0.4" EndPointY="0.165408536446904" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-0.4" StartPointY="0.165408536446904" EndPointX="-0.369551813004512" EndPointY="0.0123351635008682" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-0.369551813004512" StartPointY="0.0123351635008682" EndPointX="-0.282842712474621" EndPointY="-0.117434176027715" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-0.282842712474621" StartPointY="-0.117434176027715" EndPointX="-0.153073372946028" EndPointY="-0.20414327655761" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="-0.153073372946028" StartPointY="-0.20414327655761" EndPointX="0" EndPointY="-0.234591463553096" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="-0.234591463553096" EndPointX="0.153073372946051" EndPointY="-0.204143276557611" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0.153073372946051" StartPointY="-0.204143276557611" EndPointX="0.282842712474621" EndPointY="-0.117434176027715" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0.282842712474621" StartPointY="-0.117434176027715" EndPointX="0.369551813004512" EndPointY="0.0123351635008675" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0.369551813004512" StartPointY="0.0123351635008675" EndPointX="0.4" EndPointY="0.165408536446904" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="0.165408536446995" EndPointX="0" EndPointY="0.165408536446813" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="0.165408536446813" EndPointX="0" EndPointY="0.165408536446813" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="0.165408536446813" EndPointX="0" EndPointY="0.165408536446995" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="0.165408536446813" EndPointX="0" EndPointY="0.165408536446995" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="0.165408536446995" EndPointX="0" EndPointY="0.165408536446995" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Line StartPointX="0" StartPointY="0.165408536446995" EndPointX="0" EndPointY="0.165408536446813" Color="Cyan" LineType="SolidLine" Bulge="0" ArrowPosition="None" ArrowWidth="1" ArrowHeight="2" ArrowHead="FilledArrow" />
+  <Polygon Color="Invisible" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="Cyan" HatchDrawBackgroundColor="False" HatchFactorType="0" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="0.4" Y="0.165408536446904" />
+    <Point X="0.369551813004512" Y="0.31848190939294" />
+    <Point X="0.369551813004512" Y="0.31848190939294" />
+    <Point X="0.282842712474621" Y="0.448251248921523" />
+    <Point X="0.282842712474621" Y="0.448251248921523" />
+    <Point X="0.153073372946051" Y="0.534960349451419" />
+    <Point X="0.153073372946051" Y="0.534960349451419" />
+    <Point X="0" Y="0.565408536446904" />
+    <Point X="0" Y="0.565408536446904" />
+    <Point X="-0.153073372946028" Y="0.534960349451419" />
+    <Point X="-0.153073372946028" Y="0.534960349451419" />
+    <Point X="-0.282842712474621" Y="0.448251248921523" />
+    <Point X="-0.282842712474621" Y="0.448251248921523" />
+    <Point X="-0.369551813004512" Y="0.31848190939294" />
+    <Point X="-0.369551813004512" Y="0.31848190939294" />
+    <Point X="-0.4" Y="0.165408536446904" />
+    <Point X="-0.4" Y="0.165408536446904" />
+    <Point X="-0.369551813004512" Y="0.0123351635008682" />
+    <Point X="-0.369551813004512" Y="0.0123351635008682" />
+    <Point X="-0.282842712474621" Y="-0.117434176027715" />
+    <Point X="-0.282842712474621" Y="-0.117434176027715" />
+    <Point X="-0.153073372946028" Y="-0.20414327655761" />
+    <Point X="-0.153073372946028" Y="-0.20414327655761" />
+    <Point X="0" Y="-0.234591463553096" />
+    <Point X="0" Y="-0.234591463553096" />
+    <Point X="0.153073372946051" Y="-0.204143276557611" />
+    <Point X="0.153073372946051" Y="-0.204143276557611" />
+    <Point X="0.282842712474621" Y="-0.117434176027715" />
+    <Point X="0.282842712474621" Y="-0.117434176027715" />
+    <Point X="0.369551813004512" Y="0.0123351635008675" />
+    <Point X="0.369551813004512" Y="0.0123351635008675" />
+    <Point X="0.4" Y="0.165408536446904" />
+  </Polygon>
+  <Polygon Color="Invisible" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="Cyan" HatchDrawBackgroundColor="False" HatchFactorType="0" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="0" Y="0.165408536446995" />
+    <Point X="0" Y="0.165408536446813" />
+    <Point X="0" Y="0.165408536446813" />
+    <Point X="0" Y="0.165408536446813" />
+    <Point X="0" Y="0.165408536446813" />
+    <Point X="0" Y="0.165408536446995" />
+  </Polygon>
+  <Polygon Color="Invisible" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="Cyan" HatchDrawBackgroundColor="False" HatchFactorType="0" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="0" Y="0.165408536446813" />
+    <Point X="0" Y="0.165408536446995" />
+    <Point X="0" Y="0.165408536446995" />
+    <Point X="0" Y="0.165408536446995" />
+    <Point X="0" Y="0.165408536446995" />
+    <Point X="0" Y="0.165408536446813" />
+  </Polygon>
+</DrawingDetail>

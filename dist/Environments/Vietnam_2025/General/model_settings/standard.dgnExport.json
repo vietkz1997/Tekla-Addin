@@ -1,0 +1,9 @@
+{
+  "DialogType": "export.common",
+  "TargetFileName": "3D DGN",
+  "Folder": null,
+  "LocationByIndex": 0,
+  "SelectionTypeIndex": 0,
+  "SelectedObjectColoring": "By object class",
+  "SelectedExportLayerAsItem": "Name"
+}

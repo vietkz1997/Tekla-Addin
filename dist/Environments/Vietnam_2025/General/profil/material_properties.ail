@@ -1,0 +1,134 @@
+﻿// $Id: material_properties.ail, Tekla Structures 17.1 Beta 1, 2011-06-07
+
+string_utf8 mlbl_Ultimate_strength
+{
+    entry = ("chs", "最大强度");
+    entry = ("cht", "極限強度");
+    entry = ("csy", "Mez pevnosti");
+    entry = ("deu", "Zugfestigkeit");
+    entry = ("esp", "Resistencia última");
+    entry = ("fra", "Contrainte ultime");
+    entry = ("hun", "Végső szilárdság");
+    entry = ("ita", "Resistenza limite");
+    entry = ("jpn", "終局強度");
+    entry = ("nld", "Uiterste sterkte");
+    entry = ("plk", "Wytrzymałość graniczna");
+    entry = ("ptb", "Resistência máxima");
+    entry = ("ptg", "Última resistência");
+    entry = ("rus", "Предел прочности");
+    entry = ("enu", "Ultimate strength");
+};
+
+string_utf8 mlbl_Yield_strength
+{
+    entry = ("chs", "屈服强度");
+    entry = ("cht", "降伏強度");
+    entry = ("csy", "Mez kluzu");
+    entry = ("deu", "Streckgrenze");
+    entry = ("esp", "Resistencia a fluencia");
+    entry = ("fra", "Contrainte d’élasticité");
+    entry = ("hun", "Képlékenységi küszöb");
+    entry = ("ita", "Resistenza allo snervamento");
+    entry = ("jpn", "降伏強度");
+    entry = ("nld", "Vloeigrens");
+    entry = ("plk", "Granica plastyczności");
+    entry = ("ptb", "Resistência de tensão");
+    entry = ("ptg", "Resistência ao esforço");
+    entry = ("rus", "Предел текучести");
+    entry = ("enu", "Yield strength");
+};
+
+string_utf8 mlbl_Ultima_strength__40_100_mm
+{
+    entry = ("chs", "最大强度，40-100 mm");
+    entry = ("cht", "極限強度，40-100 公釐");
+    entry = ("csy", "Mez pevnosti, 40 - 100 mm");
+    entry = ("deu", "Zugfestigkeit, 40-100 mm");
+    entry = ("esp", "Resistencia última, 40-100 mm");
+    entry = ("fra", "Contrainte ultime, 40-100 mm");
+    entry = ("hun", "Végső szilárdság, 40–100 mm");
+    entry = ("ita", "Resistenza limite, 40-100 mm");
+    entry = ("jpn", "終局強度: 40～100mm");
+    entry = ("nld", "Uiterste sterkte, 40-100 mm");
+    entry = ("plk", "Wytrzymałość graniczna, 40–100 mm");
+    entry = ("ptb", "Resistência máxima, 40-100 mm");
+    entry = ("ptg", "Última resistência, 40-100 mm");
+    entry = ("rus", "Предел прочности, 40–100 мм");
+    entry = ("enu", "Ultimate strength, 40-100 mm");
+};
+
+string_utf8 mlbl_Ultimate_strength___40_mm
+{
+    entry = ("chs", "最大强度，<40 mm");
+    entry = ("cht", "極限強度，<40 公釐");
+    entry = ("csy", "Mez pevnosti, <40 mm");
+    entry = ("deu", "Zugfestigkeit, <40 mm");
+    entry = ("esp", "Resistencia última, <40 mm");
+    entry = ("fra", "Contrainte ultime, < 40 mm");
+    entry = ("hun", "Végső szilárdság, <40 mm");
+    entry = ("ita", "Resistenza limite, <40 mm");
+    entry = ("jpn", "終局強度: 40mm未満");
+    entry = ("nld", "Uiterste sterkte, <40 mm");
+    entry = ("plk", "Wytrzymałość graniczna, <40 mm");
+    entry = ("ptb", "Resistência máxima, <40 mm");
+    entry = ("ptg", "Última resistência, <40 mm");
+    entry = ("rus", "Предел прочности, <40 мм");
+    entry = ("enu", "Ultimate strength, <40 mm");
+};
+
+string_utf8 mlbl_Yield_strength__40_100_mm
+{
+    entry = ("chs", "屈服强度，40-100 mm");
+    entry = ("cht", "降伏強度，40-100 公釐");
+    entry = ("csy", "Mez kluzu, 40 - 100 mm");
+    entry = ("deu", "Streckgrenze, 40-100 mm");
+    entry = ("esp", "Resistencia a fluencia, 40-100 mm");
+    entry = ("fra", "Contrainte d’élasticité, 40-100 mm");
+    entry = ("hun", "Képlékenységi küszöb, 40–100 mm");
+    entry = ("ita", "Resistenza allo snervamento, 40-100 mm");
+    entry = ("jpn", "降伏強度: 40～100mm");
+    entry = ("nld", "Vloeigrens, 40-100 mm");
+    entry = ("plk", "Granica plastyczności, 40–100 mm");
+    entry = ("ptb", "Resistência de tensão, 40-100 mm");
+    entry = ("ptg", "Resistência ao esforço, 40-100 mm");
+    entry = ("rus", "Предел текучести, 40–100 мм");
+    entry = ("enu", "Yield strength, 40-100 mm");
+};
+
+string_utf8 mlbl_Yield_strength___40_mm
+{
+    entry = ("chs", "屈服强度，<40 mm");
+    entry = ("cht", "降伏強度，<40 公釐");
+    entry = ("csy", "Mez kluzu, <40 mm");
+    entry = ("deu", "Streckgrenze, <40 mm");
+    entry = ("esp", "Resistencia a fluencia, <40 mm");
+    entry = ("fra", "Contrainte d’élasticité, < 40 mm");
+    entry = ("hun", "Képlékenységi küszöb, <40 mm");
+    entry = ("ita", "Resistenza allo snervamento, <40 mm");
+    entry = ("jpn", "降伏強度: 40mm未満");
+    entry = ("nld", "Vloeigrens, <40 mm");
+    entry = ("plk", "Granica plastyczności, <40 mm");
+    entry = ("ptb", "Resistência de tensão, <40 mm");
+    entry = ("ptg", "Resistência ao esforço, <40 mm");
+    entry = ("rus", "Предел текучести, <40 мм");
+    entry = ("enu", "Yield strength, <40 mm");
+};
+
+string_utf8 mlbl_Steel_grade
+{
+    entry = ("chs", "钢等级");
+    entry = ("cht", "鋼等級");
+    entry = ("csy", "Třída oceli");
+    entry = ("deu", "Stahlgüte");
+    entry = ("esp", "Calidad acero");
+    entry = ("fra", "Nuance d'acier");
+    entry = ("hun", "Acélminőség");
+    entry = ("ita", "Classe acciaio");
+    entry = ("jpn", "鋼材材質");
+    entry = ("nld", "Staalkwaliteit");
+    entry = ("plk", "Klasa stali");
+    entry = ("ptb", "Aço da ligação");
+    entry = ("ptg", "Classe do aço");
+    entry = ("rus", "Марка стали");
+    entry = ("enu", "Steel grade");
+};

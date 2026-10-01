@@ -1,0 +1,13 @@
+encoding 949
+aInFile "standard"
+aOutFile "standard"
+AutomaticRefresh 0
+CreateReportSelected 0
+CurrentDate 1449619200
+DateStep 7
+ObjectRepresentation "standard"
+ReportMode 0
+ReportTemplate "100---STEEL DETAIL"
+ScalePosition 0.000000
+ScaleStartDate 1449619200
+ScaleEndDate 1465430400

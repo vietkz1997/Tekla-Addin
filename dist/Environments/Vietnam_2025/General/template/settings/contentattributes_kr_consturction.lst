@@ -1,0 +1,161 @@
+﻿// ---------------------------------------------------------------------------------------
+// Template Editor 3.71 - User defined attributes (=UDA)
+// =====================================================
+// 
+// This file contains attributes which are defined in the 'objects.inp'.
+// 
+// Notes:
+// - Please use the predefined folder 'USERDEFINED' for the each attributes in this file.
+// - Installation of Tekla Structures overwrites always this file.
+//
+// ---------------------------------------------------------------------------------------
+// This file contains the defined attributes and their default values for a value field.
+// 
+// The structure of 'contentattributes_USERDEFINED.lst' is the following. The file is divided
+// into two sections, which are sperated with the line [BINDINGS]. The first section defines
+// all attributes and the default settings for those attributes. The 2nd section assigns
+// the attributes to contenttypes. Attributes are presented to the user in the order they
+// appear in the definition list for contenttypes.
+//
+// A special case of a component type is ALL, which defines that the attributes defined in 
+// the following lines are available to all types of components. Other special types are
+// HEADER, PAGEHEADER, PAGEFOOTER and FOOTER.
+// 
+// You can use a virtual node to group certain attributes under a common subnode. A virtual
+// node is defined inside []. This doesn't affect the name of the actual attribute - text
+// between [] is removed when the attribute name is inserted into a template definition.
+//
+// You can add comment text for the user attributes by defining it between "-characters after
+// the attribute name.
+// 
+// The attribute definition line is divided into nine different columns. The star character
+// '*' means that the default value should be used or that this property doesn't apply to
+// this type of valuefield.
+// 
+// The attribute dividing to the different versions can be done by using extension #1...N
+// in attribute name.
+//
+// The columns are
+// 
+// 1. Attribute name (maximum of 63 characters. Use only letters, numbers, dots and underlines)
+// 2. Data type (FLOAT, CHARACTER, INTEGER)
+// 3. Value field justification (LEFT, CENTER, RIGHT)
+// 4. Is the field cacheable (TRUE or FALSE, TRUE is default)
+// 5. Value field length (characters)
+// 6. The number of decimals (present only if data type is FLOAT, and no precision defined)
+// 7. The unit type
+// 8. The unit
+// 9. The precision
+// 										
+// Name                         Datatype    Justify  Cacheable  Length  Decimals  Unit type  Unit     Precision
+// XXXXX                        FLOAT       RIGHT    TRUE       8       2         Length     ft-frac  1/8
+// ------------------------------------------------------------------------------------------------------------
+// === ConstructionManagement Extension attributes ===
+F_FITUP	 			CHARACTER   LEFT     TRUE      20
+F_WELD	 			CHARACTER   LEFT     TRUE      20
+F_WELD_INSTEPC	 		CHARACTER   LEFT     TRUE      20
+F_PAINTING	 		CHARACTER   LEFT     TRUE      20
+F_PACKAGE	 		CHARACTER   LEFT     TRUE      20
+F_DELIVERY_1	 		CHARACTER   LEFT     TRUE      20
+F_DELIVERY_2	 		CHARACTER   LEFT     TRUE      20
+F_DELIVERY_3	 		CHARACTER   LEFT     TRUE      20
+F_ERECTION	 		CHARACTER   LEFT     TRUE      20
+
+D_DELIVERY	 		CHARACTER   LEFT     TRUE      20
+D_REVISION	 		CHARACTER   LEFT     TRUE      20
+F_FABRICATION	 		CHARACTER   LEFT     TRUE      20
+F_INSPECTION	 		CHARACTER   LEFT     TRUE      20
+F_DELIVERY	 		CHARACTER   LEFT     TRUE      20
+F_RETURN	 		CHARACTER   LEFT     TRUE      20
+C_ORDER    	 		CHARACTER   LEFT     TRUE      20
+C_INCOME	 		CHARACTER   LEFT     TRUE      20
+C_ELECTION	 		CHARACTER   LEFT     TRUE      20
+
+F_BEFORE	 		CHARACTER   LEFT     TRUE      20
+F_ING   	 		CHARACTER   LEFT     TRUE      20
+F_FINISH                	CHARACTER   LEFT     TRUE      20
+D_ING                   	CHARACTER   LEFT     TRUE      20
+D_FINISH                	CHARACTER   LEFT     TRUE      20
+
+F_REPORT			CHARACTER   LEFT     TRUE      20
+
+// ------------------------------------------------------------------------------------------------
+// Binding of attributes according to the object types.
+// (available object types for Row component have saved in the contenttypes.lst)
+// ------------------------------------------------------------------------------------------------
+
+[BINDINGS] // Do NOT remove this line
+ASSEMBLY          =		       USERDEFINED.[Construction].F_FITUP	"F_FITUP"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_FITUP	"F_FITUP"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_WELD	"F_WELD"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_WELD	"F_WELD"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_WELD_INSTEPC	"F_WELD_INSTEPC"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_WELD_INSTEPC	"F_WELD_INSTEPC"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_PAINTING	"F_PAINTING"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_PAINTING	"F_PAINTING"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_PACKAGE	"F_PACKAGE"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_PACKAGE	"F_PACKAGE"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_DELIVERY_1	"F_DELIVERY_1"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_DELIVERY_1	"F_DELIVERY_1"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_DELIVERY_2	"F_DELIVERY_2"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_DELIVERY_2	"F_DELIVERY_2"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_DELIVERY_3	"F_DELIVERY_3"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_DELIVERY_3	"F_DELIVERY_3"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_ERECTION	"F_ERECTION"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_ERECTION	"F_ERECTION"
+
+//
+ASSEMBLY          =		       USERDEFINED.[Construction].D_DELIVERY	"D_DELIVERY"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].D_DELIVERY	"D_DELIVERY"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].D_REVISION	"D_REVISION"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].D_REVISION	"D_REVISION"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_FABRICATION	"F_FABRICATION"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_FABRICATION	"F_FABRICATION"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_INSPECTION	"F_INSPECTION"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_INSPECTION	"F_INSPECTION"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_DELIVERY	"F_DELIVERY"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_DELIVERY	"F_DELIVERY"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_RETURN	"F_RETURN"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_RETURN	"F_RETURN"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].C_ORDER	"C_ORDER"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].C_ORDER	"C_ORDER"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].C_INCOME	"C_INCOME"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].C_INCOME	"C_INCOME"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].C_ELECTION	"C_ELECTION"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].C_ELECTION	"C_ELECTION"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_BEFORE	"F_BEFORE"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_BEFORE	"F_BEFORE"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_ING	"F_ING"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_ING	"F_ING"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_FINISH	"F_FINISH"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_FINISH	"F_FINISH"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].D_ING	"D_ING"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].D_ING	"D_ING"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].D_FINISH	"D_FINISH"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].D_FINISH	"D_FINISH"
+
+ASSEMBLY          =		       USERDEFINED.[Construction].F_REPORT	"F_REPORT"
+SIMILAR_ASSEMBLY  =		       USERDEFINED.[Construction].F_REPORT	"F_REPORT"
+
+[ALL]

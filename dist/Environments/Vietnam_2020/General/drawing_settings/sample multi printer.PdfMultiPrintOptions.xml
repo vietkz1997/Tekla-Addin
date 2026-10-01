@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PdfPrintOptions Version="1.3">
+  <Options>
+    <PrintTarget>PDF</PrintTarget>
+    <PrinterName>SINDOH N601 PCL-8</PrinterName>
+    <PDFAndPlotFileLocation>.\Plotfiles</PDFAndPlotFileLocation>
+    <EmbedFonts>false</EmbedFonts>
+    <OpenFolderWhenFinished>false</OpenFolderWhenFinished>
+    <OpenFileWhenFinished>false</OpenFileWhenFinished>
+    <OutputToSingleFile>false</OutputToSingleFile>
+    <SinglePDFFileName>albl_combined</SinglePDFFileName>
+    <PlotFileExtension>plt</PlotFileExtension>
+    <PlotFilePrefix />
+    <PlotFileSuffix />
+    <ScalingMethod>Auto</ScalingMethod>
+    <ScaleFactor>1</ScaleFactor>
+    <CenterDrawingOnPaper>false</CenterDrawingOnPaper>
+    <PrintOnMultipleSheets>false</PrintOnMultipleSheets>
+    <MultipleSheetOrder>LeftToRightTopToBottom</MultipleSheetOrder>
+    <PaperSize>Auto</PaperSize>
+    <Orientation>Auto</Orientation>
+    <ColorMode>Color</ColorMode>
+    <NumberOfCopies>1</NumberOfCopies>
+    <Collate>false</Collate>
+    <IncludeRevision>false</IncludeRevision>
+  </Options>
+  <PreviewMinimumPenWidth>0.5</PreviewMinimumPenWidth>
+  <MultiPrinterTargets>
+    <SettingsFileName>pdf_A3</SettingsFileName>
+    <SettingsFileName>plot_A3</SettingsFileName>
+  </MultiPrinterTargets>
+</PdfPrintOptions>

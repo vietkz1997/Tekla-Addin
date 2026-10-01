@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <Format>2</Format>
+  <ExportType>0</ExportType>
+  <OutputFile>.\IFC\TeklaBIMsight</OutputFile>
+  <BaseQuantities>1</BaseQuantities>
+  <GridExport>1</GridExport>
+  <Assemblies>0</Assemblies>
+  <Bolts>1</Bolts>
+  <ReinforcingBars>1</ReinforcingBars>
+  <PourObjects>1</PourObjects>
+  <Welds>1</Welds>
+  <LayersNameAsPart>1</LayersNameAsPart>
+  <SurfaceTreatments>1</SurfaceTreatments>
+  <ExcludeSnglPrtAsmb>0</ExcludeSnglPrtAsmb>
+  <LocsFromOrganizer>1</LocsFromOrganizer>
+  <AdditionalPSets>LocationBreakdownStructure</AdditionalPSets>
+  <CreateAll>0</CreateAll>
+</config>

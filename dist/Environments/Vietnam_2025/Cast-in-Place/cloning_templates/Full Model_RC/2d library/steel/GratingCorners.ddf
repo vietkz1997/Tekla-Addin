@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Adds Partial Hatching Corners and directional Symbol for Grating.">
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="13.3271142993797" Y="12.5032238211839" />
+    <Point X="9.65641346380383" Y="12.5032238211839" />
+    <Point X="11.5687674245724" Y="14.4155777819525" />
+    <Point X="11.5687674245724" Y="13.2785024539279" />
+    <Point X="13.585614358223" Y="13.2785024539279" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="hardware_SOLID" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="14.4135451941781" Y="13.2718157452688" />
+    <Point X="18.0842460297539" Y="13.2718157452688" />
+    <Point X="16.1718920689854" Y="11.3594617845002" />
+    <Point X="16.1718920689854" Y="12.4965371125248" />
+    <Point X="14.1550451353347" Y="12.4965371125248" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="HLNST" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="12.1285931376695" Y="0" />
+    <Point X="0" Y="0" />
+    <Point X="3.89566897259404E-11" Y="8.68112344854605" />
+    <Point X="2.8962297524547" Y="6.55036348051052" />
+    <Point X="6.15597035336099" Y="5.48498349648461" />
+    <Point X="6.78284354583508" Y="3.542231760932" />
+    <Point X="10.3560207429863" Y="3.22888470679472" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="HLNST" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="12.1285931376695" Y="25.3999999999998" />
+    <Point X="0" Y="25.3999999999998" />
+    <Point X="3.89566897259404E-11" Y="16.7188765514538" />
+    <Point X="2.8962297524547" Y="18.8496365194893" />
+    <Point X="6.15597035336099" Y="19.9150165035152" />
+    <Point X="6.78284354583508" Y="21.8577682390678" />
+    <Point X="10.3560207429863" Y="22.1711152932051" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="HLNST" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="16.1317478161104" Y="25.3999999999998" />
+    <Point X="28.2603409537744" Y="25.3999999999998" />
+    <Point X="28.2603409537354" Y="16.7188765514538" />
+    <Point X="25.364111201321" Y="18.8496365194893" />
+    <Point X="22.1043706004162" Y="19.9150165035152" />
+    <Point X="21.4774974079424" Y="21.8577682390678" />
+    <Point X="17.9043202107928" Y="22.1711152932051" />
+  </Polygon>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="HLNST" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="0.5" HatchAngle="0">
+    <Point X="16.1317478161104" Y="0" />
+    <Point X="28.2603409537744" Y="0" />
+    <Point X="28.2603409537354" Y="8.68112344854605" />
+    <Point X="25.364111201321" Y="6.55036348051052" />
+    <Point X="22.1043706004162" Y="5.48498349648461" />
+    <Point X="21.4774974079424" Y="3.542231760932" />
+    <Point X="17.9043202107928" Y="3.22888470679472" />
+  </Polygon>
+</DrawingDetail>

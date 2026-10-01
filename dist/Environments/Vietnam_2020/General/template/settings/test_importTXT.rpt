@@ -1,0 +1,163 @@
+
+template _tmp_0
+{
+    name = "tpled_template1";
+    type = TEXTUAL;
+    width = 80;
+    maxheight = 40;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    fillstartfrom = TOPLEFT;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.5;
+    created = "06.07.2017 13:37";
+    modified = "06.07.2017 14:05";
+    notes = "";
+
+    pageheader _tmp_7
+    {
+        name = "PageHeader";
+        height = 5;
+        outputpolicy = NONE;
+
+        text _tmp_9
+        {
+            name = "ghjgj\r\nfghfgh";
+            x1 = 0;
+            y1 = 3;
+            x2 = 0;
+            y2 = 3;
+            string = "ghjgj\r\nfghfgh";
+            fontname = "fixfont";
+            fontcolor = 160;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_1
+    {
+        name = "ASSEMBLY";
+        height = 5;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "ASSEMBLY";
+        sorttype = COMBINE;
+
+        valuefield _tmp_2
+        {
+            name = "ASSEMBLY_POS_field";
+            location = (1, 2);
+            formula = "GetValue(\"ASSEMBLY_POS\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_3
+        {
+            name = "ValueField";
+            location = (16, 2);
+            formula = "fvf(\"test_for_import_template.dat\", \"2\", 3)";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_6
+        {
+            name = "ValueField_1";
+            location = (30, 2);
+            formula = "fvf(\"test_for_import_template.dat\", \"0\", 3)";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_10
+        {
+            name = "AREA_field";
+            location = (43, 2);
+            formula = "GetValue(\"AREA_PROJECTION_YZ_GROSS\")";
+            maxnumoflines = 3;
+            datatype = DOUBLE;
+            class = "Area";
+            cacheable = TRUE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 0;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "mm2";
+        };
+    };
+};

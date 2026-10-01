@@ -1,0 +1,20 @@
+//
+// Customized rebar end UDA atributes for rebar couplers and end anchors.
+// 
+// each row shall contain 5 or 6 fields separated by tab(s) or semicolon. 
+// If the label is not given the labels set for the start uda will be used. 
+// Please note that all names shall be unique
+//
+// Field 1: The data type of the attribute. Valid values are 'distance', 'float', 'option', 'integer' and 'string'
+//          compatible with the actual user defined attributes
+// Field 2: Left_attribute_name. This name is used as the property name for the primary (1) rebar in the auto attributes table
+// Field 3: Right_attribute_name. This name is used as the property name for the secondary (1) rebar in the auto attributes table
+// Field 4: Start_uda_name. This name is the UDA name when the value is stored to first or short leg end of the rebar (secodary or primary)	
+// Field 5: End_uda_name. This name is the UDA name when the value is stored to last end or long leg end of the rebar (secodary or primary)
+// Field 6: Label. This text is shown in coupler or anchor component dialog. It can ba translatable label (albl_) or any text.
+//
+option		MethodLeft	MethodRight	CPLRSTATE_S	CPLRSTATE_L	albl_Method
+option		TypeLeft	TypeRight	CPLRTYPE_S	CPLRTYPE_L	albl_Type
+string		CodeLeft	CodeRight 	CPLRCODE_S	CPLRCODE_L	albl_Code
+distance	Left1		Right1 		FREE_1_START	FREE_1_END	Free distance (1)
+string		Left2 		Right2 		FREE_2_START	FREE_2_END	Free text (2)

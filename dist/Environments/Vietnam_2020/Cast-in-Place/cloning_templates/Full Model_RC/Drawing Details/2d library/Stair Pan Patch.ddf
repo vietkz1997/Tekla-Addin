@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Symbol for adding a stair pan patch">
+  <PolyLine Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="Start" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="0.866827087030629" Y="-14.8166666661116" />
+    <Point X="10.1573247567047" Y="-24.2182090905607" />
+    <Point X="14.0265738470118" Y="-24.691935644497" />
+  </PolyLine>
+  <Polygon Color="Green" LineType="SolidLine" Bulge="0.5" HatchBackGroundColor="Invisible" HatchColor="NewLine2" HatchDrawBackgroundColor="False" HatchFactorType="1" HatchName="None" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="2" HatchScaleY="1" HatchAngle="0">
+    <Point X="16.5318785629905" Y="-19.7750642922647" />
+    <Point X="21.6570642849191" Y="-19.7317652367766" />
+    <Point X="26.7822500068479" Y="-19.6884661812884" />
+    <Point X="31.9074357287765" Y="-19.6451671258003" />
+    <Point X="37.0326214507051" Y="-19.6018680703122" />
+    <Point X="42.1578071726342" Y="-19.558569014824" />
+    <Point X="47.2829928945625" Y="-19.5152699593359" />
+    <Point X="52.4081786164913" Y="-19.4719709038478" />
+    <Point X="57.5333643384199" Y="-19.4286718483597" />
+    <Point X="62.6585500603485" Y="-19.3853727928715" />
+    <Point X="63.0483529180658" Y="-25.5338386722481" />
+    <Point X="63.4381557757829" Y="-31.6823045516247" />
+    <Point X="63.8279586334996" Y="-37.8307704310014" />
+    <Point X="58.5150900541484" Y="-37.8596364679933" />
+    <Point X="53.2022214747972" Y="-37.8885025049852" />
+    <Point X="47.8893528954454" Y="-37.9173685419771" />
+    <Point X="42.5764843160943" Y="-37.946234578969" />
+    <Point X="37.263615736743" Y="-37.9751006159609" />
+    <Point X="31.9507471573916" Y="-38.0039666529528" />
+    <Point X="26.6378785780401" Y="-38.0328326899447" />
+    <Point X="21.3250099986886" Y="-38.0616987269366" />
+    <Point X="16.0121414193371" Y="-38.0905647639285" />
+    <Point X="16.1853871338882" Y="-31.9853979400406" />
+    <Point X="16.3586328484394" Y="-25.8802311161527" />
+  </Polygon>
+  <Rectangle StartPointX="-6.34999999999991" StartPointY="-14.8166666661116" EndPointX="6.3500000000001" EndPointY="-2.11666666611166" Color="Blue" LineType="SolidLine" HatchBackGroundColor="Invisible" HatchColor="NewLine6" HatchDrawBackgroundColor="False" HatchFactorType="0" HatchName="ANSI31" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="1" HatchAngle="0" />
+  <Text InsertionPointX="35.6019919239305" InsertionPointY="-33.237319776895" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">CUT 6"X6" PATCH FOR
+FIELD ACCESS</Text>
+  <Text InsertionPointX="37.8013099867875" InsertionPointY="-26.0911260185171" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Green" FrameType="Line" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="4.7625" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">SHOP NOTE:</Text>
+</DrawingDetail>

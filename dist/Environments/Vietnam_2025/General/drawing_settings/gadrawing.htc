@@ -1,0 +1,79 @@
+/**************************************/
+/* Tekla Structures hatch schema file */
+/**************************************/
+
+/************************************************************************************************************
+
+	Purpose
+	-------
+	This file is used to define the hatch patterns for different materials for
+	Tekla Structures automatic hatching functionality. These settings will be used
+	when the hatching option is set to "Automatic" in the drawing.
+
+	Syntax
+	-------
+	Material Type, Cast unit type (optional), Material Name, Hatch name, Scale, Color, Automatic scaling and rotation
+
+	Available options
+	-----------------
+	Material Type:
+	STEEL
+	CONCRETE
+	TIMBER
+	MISCELLANEOUS
+
+	Cast unit type: (optional)
+	Precast
+	CIP
+	
+	Colors:
+	BLACK       0 (default)
+	WHITE       1 
+	RED         2
+	GREEN       3 
+	BLUE        4 
+	CYAN        5 
+	YELLOW      6
+	MAGENTA     7
+	Special     120 (use this color for gray shade)
+	GRAYSCALE 1 130
+	GRAYSCALE 2 131
+	GRAYSCALE 3 132
+	GRAYSCALE 4 133
+
+	Automatic scaling and rotation:
+	TRUE	   1
+	FALSE	   0 (default)
+
+	Instructions for use
+	--------------------
+	- material and hatch names are case sensitive
+	- automatic scaling and rotation option requires additional processing, so use it only when necessary
+	- to adjust the gray shade for Special color 120, use the variables
+	  XS_HATCH_SPECIAL_COLOR_R
+	  XS_HATCH_SPECIAL_COLOR_G
+	  XS_HATCH_SPECIAL_COLOR_B
+
+	Examples
+	--------
+	CONCRETE,,hardware_SOLID,,120               (gray shade)
+	CONCRETE,Precast,C25/30,CONC,0.3,1          ("traditional" concrete Precast)
+	CONCRETE,CIP,C25/30,CONCRE,0.3,1            ("traditional" concrete CIP)
+	CONCRETE,,CROSS,2,1                         (small crosses)
+	MISCELLANEOUS,Insulation,HARD_INS1,1,,1     (straight lines)
+	MISCELLANEOUS,Insulation,SOFT_INS,1,,1      (rounded lines)
+	MISCELLANEOUS,Insulation,SOFT_INS2,1,,1     (completely round)
+
+************************************************************************************************************/
+
+CONCRETE,CIP,,hardware_SOLID,,133,0
+CONCRETE,Precast,,hardware_SOLID,,131,0
+CONCRETE,,,hardware_SOLID,,133,0
+STEEL,,,0.7,1,0
+TIMBER,,WOOD1,1.5,1,0
+MISCELLANEOUS,Insulation,HARD_INS1,1,,1
+MISCELLANEOUS,Insulation_hard,HARD_INS1,1,,1
+MISCELLANEOUS,Insulation_soft,SOFT_INS2,1,,1
+MISCELLANEOUS,Mineral wool,SOFT_INS2,1,,1
+MISCELLANEOUS,Polystyrene,HARD_INS1,1,,1
+MISCELLANEOUS,Polyurethane,HARD_INS1,1,,1

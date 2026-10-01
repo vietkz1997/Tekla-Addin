@@ -1,0 +1,36 @@
+encoding 949
+xcoord "0.0 3*6000.0"
+ycoord "0.0 4*6000.0"
+zcoord "0.0 4000.0 8000.0"
+xtext "A B C D"
+ytext "1 2 3 4 5"
+ztext "EL+0 EL+4000 EL+8000"
+xleft 2000.000000
+xright 2000.000000
+yleft 2000.000000
+yright 2000.000000
+zleft 2000.000000
+zright 2000.000000
+x0 0.000000
+y0 0.000000
+z0 0.000000
+aInFile "standard"
+aOutFile ""
+XCoordEnabled 1
+YCoordEnabled 1
+ZCoordEnabled 1
+XLabelEnabled 1
+YLabelEnabled 1
+ZLabelEnabled 1
+XLeftBelowEnabled 1
+YLeftBelowEnabled 1
+ZLeftBelowEnabled 1
+XRightAboveEnabled 1
+YRightAboveEnabled 1
+ZRightAboveEnabled 1
+X0Enabled 1
+Y0Enabled 1
+Z0Enabled 1
+MagneticEnabled 1
+Magnetic 0
+UserDefinedAttrEnabled 1

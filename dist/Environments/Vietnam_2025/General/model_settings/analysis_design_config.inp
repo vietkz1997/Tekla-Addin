@@ -1,0 +1,495 @@
+//-------------------------------------------------------------
+// Preferable design code for analysis
+CurrentAnalysisCode="EuroCode"
+
+//-------------------------------------------------------------
+// Preferable design code for steel member design
+CurrentSteelDesignCode="EC3(STAAD)"
+
+//-------------------------------------------------------------
+// Preferable design code for concrete member design
+CurrentConcreteDesignCode="EC2(STAAD)"
+
+//-------------------------------------------------------------
+// Preferable design code for concrete member design
+CurrentTimberDesignCode="EC5"
+
+//-------------------------------------------------------------
+// Steel design code property names for materials. These names are used to fetch 
+// material design data from material database.
+//
+SteelDesignCodePropertyNames_EC3(STAAD)[1]=" "
+SteelDesignCodePropertyNames_EC3(STAAD)[2]=" "
+SteelDesignCodePropertyNames_EC3(STAAD)[3]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_EC3(STAAD)[4]="EC3.STEEL_GRADE"
+SteelDesignCodePropertyNames_EC3(STAAD)[5]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_EC3(STAAD)[6]=" "
+SteelDesignCodePropertyNames_EC3(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_BS(STAAD)[1]="BS.YIELD_STRENGTH"
+SteelDesignCodePropertyNames_BS(STAAD)[2]=" "
+SteelDesignCodePropertyNames_BS(STAAD)[3]="BS.ULTIMATE_STRENGTH"
+SteelDesignCodePropertyNames_BS(STAAD)[4]=" "
+SteelDesignCodePropertyNames_BS(STAAD)[5]=" "
+SteelDesignCodePropertyNames_BS(STAAD)[6]=" "
+SteelDesignCodePropertyNames_BS(STAAD)[7]="BS.STEEL_GRADE"
+
+SteelDesignCodePropertyNames_AiscASD(STAAD)[1]="AISC.YIELD_STRENGTH"
+SteelDesignCodePropertyNames_AiscASD(STAAD)[2]="AISC.ALLOWABLE_WELDING_STRENGTH"
+SteelDesignCodePropertyNames_AiscASD(STAAD)[3]="AISC.ULTIMATE_STRENGTH"
+SteelDesignCodePropertyNames_AiscASD(STAAD)[4]=" "
+SteelDesignCodePropertyNames_AiscASD(STAAD)[5]=" "
+SteelDesignCodePropertyNames_AiscASD(STAAD)[6]=" "
+SteelDesignCodePropertyNames_AiscASD(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_AiscLRFD(STAAD)[1]="AISC.YIELD_STRENGTH"
+SteelDesignCodePropertyNames_AiscLRFD(STAAD)[2]=" "
+SteelDesignCodePropertyNames_AiscLRFD(STAAD)[3]="AISC.ULTIMATE_STRENGTH"
+SteelDesignCodePropertyNames_AiscLRFD(STAAD)[4]=" "
+SteelDesignCodePropertyNames_AiscLRFD(STAAD)[5]=" "
+SteelDesignCodePropertyNames_AiscLRFD(STAAD)[6]=" "
+SteelDesignCodePropertyNames_AiscLRFD(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_CM66(STAAD)[1]="STEEL.FY"
+SteelDesignCodePropertyNames_CM66(STAAD)[2]=" "
+SteelDesignCodePropertyNames_CM66(STAAD)[3]=" "
+SteelDesignCodePropertyNames_CM66(STAAD)[4]=" "
+SteelDesignCodePropertyNames_CM66(STAAD)[5]=" "
+SteelDesignCodePropertyNames_CM66(STAAD)[6]=" "
+SteelDesignCodePropertyNames_CM66(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_IS800(STAAD)[1]="IS800.YIELD_STRENGTH"
+SteelDesignCodePropertyNames_IS800(STAAD)[2]="IS800.ALLOWABLE_WELDING_STRENGTH"
+SteelDesignCodePropertyNames_IS800(STAAD)[3]="IS800.ULTIMATE_STRENGTH"
+SteelDesignCodePropertyNames_IS800(STAAD)[4]=" "
+SteelDesignCodePropertyNames_IS800(STAAD)[5]=" "
+SteelDesignCodePropertyNames_IS800(STAAD)[6]=" "
+SteelDesignCodePropertyNames_IS800(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_CSA-S16(STAAD)[1]="USMETRIC.YIELD_STRENGTH"
+SteelDesignCodePropertyNames_CSA-S16(STAAD)[2]="USMETRIC.ALLOWABLE_WELDING_STRENGTH"
+SteelDesignCodePropertyNames_CSA-S16(STAAD)[3]="USMETRIC.ULTIMATE_STRENGTH"
+SteelDesignCodePropertyNames_CSA-S16(STAAD)[4]=" "
+SteelDesignCodePropertyNames_CSA-S16(STAAD)[5]=" "
+SteelDesignCodePropertyNames_CSA-S16(STAAD)[6]=" "
+SteelDesignCodePropertyNames_CSA-S16(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_DIN18800(STAAD)[1]=" "
+SteelDesignCodePropertyNames_DIN18800(STAAD)[2]=" "
+SteelDesignCodePropertyNames_DIN18800(STAAD)[3]="DIN18800.FU"
+SteelDesignCodePropertyNames_DIN18800(STAAD)[4]="DIN18800.STEEL_GRADE"
+SteelDesignCodePropertyNames_DIN18800(STAAD)[5]="DIN18800.FY"
+SteelDesignCodePropertyNames_DIN18800(STAAD)[6]=" "
+SteelDesignCodePropertyNames_DIN18800(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_NEN6770(STAAD)[1]=" "
+SteelDesignCodePropertyNames_NEN6770(STAAD)[2]=" "
+SteelDesignCodePropertyNames_NEN6770(STAAD)[3]="STEEL.FU"
+SteelDesignCodePropertyNames_NEN6770(STAAD)[4]="STEEL.STEEL_GRADE"
+SteelDesignCodePropertyNames_NEN6770(STAAD)[5]="STEEL.FY"
+SteelDesignCodePropertyNames_NEN6770(STAAD)[6]=" "
+SteelDesignCodePropertyNames_NEN6770(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_EA95(STAAD)[1]="EA95.FY"
+SteelDesignCodePropertyNames_EA95(STAAD)[2]=" "
+SteelDesignCodePropertyNames_EA95(STAAD)[3]=" "
+SteelDesignCodePropertyNames_EA95(STAAD)[4]=" "
+SteelDesignCodePropertyNames_EA95(STAAD)[5]=" "
+SteelDesignCodePropertyNames_EA95(STAAD)[6]=" "
+SteelDesignCodePropertyNames_EA95(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_B7(STAAD)[1]=" "
+SteelDesignCodePropertyNames_B7(STAAD)[2]=" "
+SteelDesignCodePropertyNames_B7(STAAD)[3]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_B7(STAAD)[4]="EC3.STEEL_GRADE"
+SteelDesignCodePropertyNames_B7(STAAD)[5]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_B7(STAAD)[6]=" "
+SteelDesignCodePropertyNames_B7(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_BSK99(STAAD)[1]=" "
+SteelDesignCodePropertyNames_BSK99(STAAD)[2]=" "
+SteelDesignCodePropertyNames_BSK99(STAAD)[3]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_BSK99(STAAD)[4]="EC3.STEEL_GRADE"
+SteelDesignCodePropertyNames_BSK99(STAAD)[5]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_BSK99(STAAD)[6]=" "
+SteelDesignCodePropertyNames_BSK99(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_DS412(STAAD)[1]=" "
+SteelDesignCodePropertyNames_DS412(STAAD)[2]=" "
+SteelDesignCodePropertyNames_DS412(STAAD)[3]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_DS412(STAAD)[4]="EC3.STEEL_GRADE"
+SteelDesignCodePropertyNames_DS412(STAAD)[5]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_DS412(STAAD)[6]=" "
+SteelDesignCodePropertyNames_DS412(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_NPD(STAAD)[1]=" "
+SteelDesignCodePropertyNames_NPD(STAAD)[2]=" "
+SteelDesignCodePropertyNames_NPD(STAAD)[3]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_NPD(STAAD)[4]="EC3.STEEL_GRADE"
+SteelDesignCodePropertyNames_NPD(STAAD)[5]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_NPD(STAAD)[6]=" "
+SteelDesignCodePropertyNames_NPD(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_NS3472(STAAD)[1]=" "
+SteelDesignCodePropertyNames_NS3472(STAAD)[2]=" "
+SteelDesignCodePropertyNames_NS3472(STAAD)[3]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_NS3472(STAAD)[4]="EC3.STEEL_GRADE"
+SteelDesignCodePropertyNames_NS3472(STAAD)[5]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_NS3472(STAAD)[6]=" "
+SteelDesignCodePropertyNames_NS3472(STAAD)[7]=" "
+
+//SNiP.PY  : 1=GOST27772-88, 2=GOST10705-80, 3=GOST10706-80, 4=GOST8731-87, 5=TY14-3-567-76
+//SNiP.SGR : 1=C235, 2=C245, 3=C255, 4=C275, 5=C285, 6=C345, 7=C345K, 8=C375, 9=C390, 10=C390K, 11=C440, 12=C590, 13=C590K, 14=BCT3KP, 15=BCT3PC, 16=BCT3CP, 17=20, 18=16G2AF
+SteelDesignCodePropertyNames_SNiP-II-23-81(STAAD)[1]=" "
+SteelDesignCodePropertyNames_SNiP-II-23-81(STAAD)[2]=" "
+SteelDesignCodePropertyNames_SNiP-II-23-81(STAAD)[3]=" "
+SteelDesignCodePropertyNames_SNiP-II-23-81(STAAD)[4]="SNIP.SGR"
+SteelDesignCodePropertyNames_SNiP-II-23-81(STAAD)[5]="SNIP.PY"
+SteelDesignCodePropertyNames_SNiP-II-23-81(STAAD)[6]=" "
+SteelDesignCodePropertyNames_SNiP-II-23-81(STAAD)[7]=" "
+
+//AS1250.IST : 1=SR, 2=HR, 3=CF, 4=LW, 5=HW
+SteelDesignCodePropertyNames_AS1250(STAAD)[1]="AS1250.FYLD"
+SteelDesignCodePropertyNames_AS1250(STAAD)[2]=" "
+SteelDesignCodePropertyNames_AS1250(STAAD)[3]="AS1250.FU"
+SteelDesignCodePropertyNames_AS1250(STAAD)[4]="AS1250.IST"
+SteelDesignCodePropertyNames_AS1250(STAAD)[5]=" "
+SteelDesignCodePropertyNames_AS1250(STAAD)[6]=" "
+SteelDesignCodePropertyNames_AS1250(STAAD)[7]=" "
+
+SteelDesignCodePropertyNames_EC3[1]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_EC3[2]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_EC3[3]="EC3.FY_40_TO_100_MM"
+SteelDesignCodePropertyNames_EC3[4]="EC3.FU_40_TO_100_MM"
+
+SteelDesignCodePropertyNames_NEN[1]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_NEN[2]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_NEN[3]="EC3.FY_40_TO_100_MM"
+SteelDesignCodePropertyNames_NEN[4]="EC3.FU_40_TO_100_MM"
+
+SteelDesignCodePropertyNames_DIN[1]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_DIN[2]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_DIN[3]="EC3.FY_40_TO_100_MM"
+SteelDesignCodePropertyNames_DIN[4]="EC3.FU_40_TO_100_MM"
+
+SteelDesignCodePropertyNames_CM66[1]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_CM66[2]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_CM66[3]="EC3.FY_40_TO_100_MM"
+SteelDesignCodePropertyNames_CM66[4]="EC3.FU_40_TO_100_MM"
+
+SteelDesignCodePropertyNames_EA95[1]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_EA95[2]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_EA95[3]="EC3.FY_40_TO_100_MM"
+SteelDesignCodePropertyNames_EA95[4]="EC3.FU_40_TO_100_MM"
+
+SteelDesignCodePropertyNames_AMS[1]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_AMS[2]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_AMS[3]="EC3.FY_40_TO_100_MM"
+SteelDesignCodePropertyNames_AMS[4]="EC3.FU_40_TO_100_MM"
+
+SteelDesignCodePropertyNames_BS[1]="EC3.FY_UNDER_40_MM"
+SteelDesignCodePropertyNames_BS[2]="EC3.FU_UNDER_40_MM"
+SteelDesignCodePropertyNames_BS[3]="EC3.FY_40_TO_100_MM"
+SteelDesignCodePropertyNames_BS[4]="EC3.FU_40_TO_100_MM"
+
+//-------------------------------------------------------------
+// Steel three design code factors for 
+// - Section classes 1, 2 and 3 ,
+// - Section class 4 and buckling resistance,
+// - Resistance of net section at bolt holes.
+SteelDesignCodeFactor_EC3[1]=1.1
+SteelDesignCodeFactor_EC3[2]=1.1
+SteelDesignCodeFactor_EC3[3]=1.25
+
+SteelDesignCodeFactor_NEN[1]=1.1
+SteelDesignCodeFactor_NEN[2]=1.1
+SteelDesignCodeFactor_NEN[3]=1.25
+
+SteelDesignCodeFactor_DIN[1]=1.1
+SteelDesignCodeFactor_DIN[2]=1.1
+SteelDesignCodeFactor_DIN[3]=1.25
+
+SteelDesignCodeFactor_CM66[1]=1.1
+SteelDesignCodeFactor_CM66[2]=1.1
+SteelDesignCodeFactor_CM66[3]=1.25
+
+SteelDesignCodeFactor_EA95[1]=1.1
+SteelDesignCodeFactor_EA95[2]=1.1
+SteelDesignCodeFactor_EA95[3]=1.25
+
+SteelDesignCodeFactor_AMS[1]=1.1
+SteelDesignCodeFactor_AMS[2]=1.1
+SteelDesignCodeFactor_AMS[3]=1.25
+
+SteelDesignCodeFactor_BS[1]=1.1
+SteelDesignCodeFactor_BS[2]=1.1
+SteelDesignCodeFactor_BS[3]=1.25
+
+//-------------------------------------------------------------
+// Concrete design code dependent factors for EC2, DIN1045E, NBN, EC2NL:
+// Factors[1] = Compressive strength fck
+// Factors[2] = Partial safety factor
+// Factors[3] = Modulus of elasticity
+// Factors[4] = Creep factor f(t, t0)
+// Factors[5] = >0 : maximum admitted concrete compressive stress under rare combinations; -1 : no maximum
+// Factors[6] = 1 : maximum admitted concrete compressive stress under rare combinations is after creep; -1 : maximum admitted concrete compressive stress under rare combinations is not after creep 
+// Factors[7] = >0 : maximum admitted concrete compressive stress under quasi-permanent combinations; -1 : no maximum
+// Factors[8] = 1 : maximum admitted concrete compressive stress under quasi-permanent combinations is after creep; -1 : maximum admitted concrete compressive stress under quasi-permanent combinations is not after creep 
+// Factors[9] = the factor of the concrete shear resistance that is taken into account.
+// Factors[10] = 1 : Verify buckling for additional excentricity; -1 : Not verify buckling
+// Factors[11] = additional excentricity
+//
+// Reinforcement factors
+// Factors[12] = Longitudal reinforcement fyk
+// Factors[13] = Transverse reinforcement fywk
+// Factors[14] = Partial safety factor
+// Factors[15] = Gross reinforcement cover
+// Factors[16] = Minimum reinforcement ratio
+// Factors[17] = Maximum total reinforcement ratio
+// Factors[18] = X so that we limit the steel stresses (Rare combinations) to X.fyk
+ConcreteDesignCodeFactor_EC2[1]=25000000.0
+ConcreteDesignCodeFactor_EC2[2]=1.5
+ConcreteDesignCodeFactor_EC2[3]=30472000000.0
+ConcreteDesignCodeFactor_EC2[4]=1.29
+ConcreteDesignCodeFactor_EC2[5]=15000000.0
+ConcreteDesignCodeFactor_EC2[6]=1.0
+ConcreteDesignCodeFactor_EC2[7]=11250000.
+ConcreteDesignCodeFactor_EC2[8]=1.0
+ConcreteDesignCodeFactor_EC2[9]=1.0
+ConcreteDesignCodeFactor_EC2[10]=1.0
+ConcreteDesignCodeFactor_EC2[11]=0.020
+ConcreteDesignCodeFactor_EC2[12]=500000000.0
+ConcreteDesignCodeFactor_EC2[13]=500000000.0
+ConcreteDesignCodeFactor_EC2[14]=1.15
+ConcreteDesignCodeFactor_EC2[15]=0.035
+ConcreteDesignCodeFactor_EC2[16]=0.0015
+ConcreteDesignCodeFactor_EC2[17]=0.04
+ConcreteDesignCodeFactor_EC2[18]=0.80
+
+ConcreteDesignCodeFactor_NewDIN[1]=25000000.0
+ConcreteDesignCodeFactor_NewDIN[2]=1.5
+ConcreteDesignCodeFactor_NewDIN[3]=30472000000.0
+ConcreteDesignCodeFactor_NewDIN[4]=1.29
+ConcreteDesignCodeFactor_NewDIN[5]=15000000.0
+ConcreteDesignCodeFactor_NewDIN[6]=1.0
+ConcreteDesignCodeFactor_NewDIN[7]=11250000.
+ConcreteDesignCodeFactor_NewDIN[8]=1.0
+ConcreteDesignCodeFactor_NewDIN[9]=1.0
+ConcreteDesignCodeFactor_NewDIN[10]=1.0
+ConcreteDesignCodeFactor_NewDIN[11]=0.020
+ConcreteDesignCodeFactor_NewDIN[12]=500000000.0
+ConcreteDesignCodeFactor_NewDIN[13]=500000000.0
+ConcreteDesignCodeFactor_NewDIN[14]=1.15
+ConcreteDesignCodeFactor_NewDIN[15]=0.035
+ConcreteDesignCodeFactor_NewDIN[16]=0.0015
+ConcreteDesignCodeFactor_NewDIN[17]=0.04
+ConcreteDesignCodeFactor_NewDIN[18]=0.80
+
+ConcreteDesignCodeFactor_NBN[1]=25000000.0
+ConcreteDesignCodeFactor_NBN[2]=1.5
+ConcreteDesignCodeFactor_NBN[3]=30472000000.0
+ConcreteDesignCodeFactor_NBN[4]=1.29
+ConcreteDesignCodeFactor_NBN[5]=15000000.0
+ConcreteDesignCodeFactor_NBN[6]=1.0
+ConcreteDesignCodeFactor_NBN[7]=11250000.
+ConcreteDesignCodeFactor_NBN[8]=1.0
+ConcreteDesignCodeFactor_NBN[9]=1.0
+ConcreteDesignCodeFactor_NBN[10]=1.0
+ConcreteDesignCodeFactor_NBN[11]=0.020
+ConcreteDesignCodeFactor_NBN[12]=500000000.0
+ConcreteDesignCodeFactor_NBN[13]=500000000.0
+ConcreteDesignCodeFactor_NBN[14]=1.15
+ConcreteDesignCodeFactor_NBN[15]=0.035
+ConcreteDesignCodeFactor_NBN[16]=0.0015
+ConcreteDesignCodeFactor_NBN[17]=0.040
+ConcreteDesignCodeFactor_NBN[18]=0.80
+
+ConcreteDesignCodeFactor_EC2NL[1]=25000000.0
+ConcreteDesignCodeFactor_EC2NL[2]=1.5
+ConcreteDesignCodeFactor_EC2NL[3]=30472000000.0
+ConcreteDesignCodeFactor_EC2NL[4]=1.29
+ConcreteDesignCodeFactor_EC2NL[5]=15000000.0
+ConcreteDesignCodeFactor_EC2NL[6]=1.0
+ConcreteDesignCodeFactor_EC2NL[7]=11250000.
+ConcreteDesignCodeFactor_EC2NL[8]=1.0
+ConcreteDesignCodeFactor_EC2NL[9]=1.0
+ConcreteDesignCodeFactor_EC2NL[10]=1.0
+ConcreteDesignCodeFactor_EC2NL[11]=0.020
+ConcreteDesignCodeFactor_EC2NL[12]=500000000.0
+ConcreteDesignCodeFactor_EC2NL[13]=500000000.0
+ConcreteDesignCodeFactor_EC2NL[14]=1.15
+ConcreteDesignCodeFactor_EC2NL[15]=0.0350
+ConcreteDesignCodeFactor_EC2NL[16]=0.0015
+ConcreteDesignCodeFactor_EC2NL[17]=0.040
+ConcreteDesignCodeFactor_EC2NL[18]=0.80
+
+//-------------------------------------------------------------
+// Concrete design code dependent factors for BAEL :
+// Factors[1] = Compressive strength fck
+// Factors[2] = Partial safety factor
+// Factors[3] = Modulus of elasticity
+// Factors[4] = Creep factor f(t, t0)
+// Factors[5] = >0 : maximum admitted concrete compressive stress under rare combinations; -1 : no maximum
+// Factors[6] = 1 : maximum admitted concrete compressive stress under rare combinations is after creep; -1 : maximum admitted concrete compressive stress under rare combinations is not after creep 
+// Factors[7] = 1 : Verify buckling for additional excentricity; -1 : Not verify buckling
+// Factors[8] = additional excentricity
+// Factors[9] = Cracking is 0.0 : harmless; 1.0 : harmful; 2.0 : very harmful
+// 
+// Reinforcement factors
+// Factors[10] = Longitudal reinforcement fyk
+// Factors[11] = Transverse reinforcement fywk
+// Factors[12] = Partial safety factor
+// Factors[13] = Gross reinforcement cover
+// Factors[14] = Minimum reinforcement ratio
+// Factors[15] = Maximum total reinforcement ratio
+// Factors[16] = X so that we limit the steel stresses (Rare combinations) to X.fyk
+ConcreteDesignCodeFactor_BAEL[1]=25000000.0
+ConcreteDesignCodeFactor_BAEL[2]=1.5
+ConcreteDesignCodeFactor_BAEL[3]=30472000000.0
+ConcreteDesignCodeFactor_BAEL[4]=1.29
+ConcreteDesignCodeFactor_BAEL[5]=15000000.0
+ConcreteDesignCodeFactor_BAEL[6]=1.0
+ConcreteDesignCodeFactor_BAEL[7]=1.0
+ConcreteDesignCodeFactor_BAEL[8]=0.020
+ConcreteDesignCodeFactor_BAEL[9]=0.0
+ConcreteDesignCodeFactor_BAEL[10]=500000000.0
+ConcreteDesignCodeFactor_BAEL[11]=500000000.0
+ConcreteDesignCodeFactor_BAEL[12]=1.15
+ConcreteDesignCodeFactor_BAEL[13]=0.035
+ConcreteDesignCodeFactor_BAEL[14]=0.15
+ConcreteDesignCodeFactor_BAEL[15]=4.0
+ConcreteDesignCodeFactor_BAEL[16]=0.80
+
+//-------------------------------------------------------------
+// Concrete design code dependent factors for ACL318 :
+// Factors[1] = Specific characteristic strength fc''
+// Factors[2] = 1.0 : Verify buckling for additional excentricity; -.01 : Not verify buckling
+// Factors[3] = additional excentricity
+// 
+// Reinforcement factors
+// Factors[4] = Longitudal reinforcement fy'
+// Factors[5] = Transverse reinforcement fy'
+// Factors[6] = Gross reinforcement cover
+// Factors[7] = Minimum reinforcement ratio
+// Factors[8] = Maximum total reinforcement ratio
+ConcreteDesignCodeFactor_ACL318[1]=25000000.0
+ConcreteDesignCodeFactor_ACL318[2]=1.0
+ConcreteDesignCodeFactor_ACL318[3]=0.020
+ConcreteDesignCodeFactor_ACL318[4]=500000000.0
+ConcreteDesignCodeFactor_ACL318[5]=500000000.0
+ConcreteDesignCodeFactor_ACL318[6]=0.035
+ConcreteDesignCodeFactor_ACL318[7]=0.15
+ConcreteDesignCodeFactor_ACL318[8]=4.0
+
+//-------------------------------------------------------------
+// Concrete design code dependent factors for DIN 1045
+// Factors[1] = Strength Class : 1 = B15; 2 = B25; 3 = B35; 4 = B45; 5 = B55;
+// Factors[2] = 1.0 : Verify buckling for additional excentricity; -1.0 : Not verify buckling
+// Factors[3] = additional excentricity
+// 
+// Reinforcement factors
+// Factors[4] = Longitudal reinforcement bS
+// Factors[5] = Transverse reinforcement bS
+// Factors[6] = Gross reinforcement cover
+// Factors[7] = Minimum reinforcement ratio
+// Factors[8] = Maximum total reinforcement ratio
+ConcreteDesignCodeFactor_OldDIN[1]=2.0
+ConcreteDesignCodeFactor_OldDIN[2]=1.0
+ConcreteDesignCodeFactor_OldDIN[3]=0.020
+ConcreteDesignCodeFactor_OldDIN[4]=500000000.0
+ConcreteDesignCodeFactor_OldDIN[5]=500000000.0
+ConcreteDesignCodeFactor_OldDIN[6]=0.025
+ConcreteDesignCodeFactor_OldDIN[7]=0.15
+ConcreteDesignCodeFactor_OldDIN[8]=4.0
+
+//-------------------------------------------------------------
+// Concrete design code dependent factors for BS8110
+// Factors[1] = Compressive strength fcu
+// Factors[2] = Partial safety factor
+// Factors[3] = Modulus of elasticity
+// Factors[4] = Creep factor f(t, t0)
+// Factors[5] = 1.0 : Verify buckling for additional excentricity; -1.0 : Not verify buckling
+// Factors[6] = additional excentricity
+// Factors[7] = Cracking is 0.0 : harmless; 1.0 : harmful; 2.0 : very harmful
+// 
+// Reinforcement factors
+// Factors[8] = Longitudal reinforcement fyk
+// Factors[9] = Transverse reinforcement fywk
+// Factors[10] = Partial safety factor
+// Factors[11] = Gross reinforcement cover
+// Factors[12] = Minimum reinforcement ratio
+// Factors[13] = Maximum total reinforcement ratio
+ConcreteDesignCodeFactor_BS8110[1]=25000000.0
+ConcreteDesignCodeFactor_BS8110[2]=1.5
+ConcreteDesignCodeFactor_BS8110[3]=30472000000.0
+ConcreteDesignCodeFactor_BS8110[4]=1.29
+ConcreteDesignCodeFactor_BS8110[5]=1.0
+ConcreteDesignCodeFactor_BS8110[6]=0.020
+ConcreteDesignCodeFactor_BS8110[7]=0.0
+ConcreteDesignCodeFactor_BS8110[8]=500000000.0
+ConcreteDesignCodeFactor_BS8110[9]=500000000.0
+ConcreteDesignCodeFactor_BS8110[10]=1.15
+ConcreteDesignCodeFactor_BS8110[11]=0.035
+ConcreteDesignCodeFactor_BS8110[12]=0.15
+ConcreteDesignCodeFactor_BS8110[13]=4.0
+
+//-------------------------------------------------------------
+// Concrete design code dependent factors for NEN6720
+// Factors[1] = Compressive strength f'ck
+// Factors[2] = Partial safety factor
+// Factors[3] = Modulus of elasticity
+// Factors[4] = Creep factor f(t, t0)
+// Factors[5] = >0 : maximum admitted concrete compressive stress under rare combinations; -1 : no maximum
+// Factors[6] = 1 : maximum admitted concrete compressive stress under rare combinations is after creep; -1 : maximum admitted concrete compressive stress under rare combinations is not after creep 
+// Factors[7] = >0 : maximum admitted concrete compressive stress under quasi-permanent combinations; -1 : no maximum
+// Factors[8] = 1 : maximum admitted concrete compressive stress under quasi-permanent combinations is after creep; -1 : maximum admitted concrete compressive stress under quasi-permanent combinations is not after creep 
+// Factors[9] = the factor of the concrete shear resistance that is taken into account.
+// Factors[10] = 1 : Verify buckling for additional excentricity; -1 : Not verify buckling
+// Factors[11] = additional excentricity
+// 
+// Reinforcement factors
+// Factors[12] = Longitudal reinforcement fsrep
+// Factors[13] = Transverse reinforcement fsrep
+// Factors[14] = Partial safety factor
+// Factors[15] = Gross reinforcement cover
+// Factors[16] = Minimum reinforcement ratio
+// Factors[17] = Maximum total reinforcement ratio
+// Factors[18] = X so that we limit the steel stresses (Rare combinations) to X.fsrep
+ConcreteDesignCodeFactor_NEN6720[1]=25000000.0
+ConcreteDesignCodeFactor_NEN6720[2]=1.5
+ConcreteDesignCodeFactor_NEN6720[3]=28500000000.0
+ConcreteDesignCodeFactor_NEN6720[4]=1.14
+ConcreteDesignCodeFactor_NEN6720[5]=15000000.0
+ConcreteDesignCodeFactor_NEN6720[6]=1.0
+ConcreteDesignCodeFactor_NEN6720[7]=11250000.
+ConcreteDesignCodeFactor_NEN6720[8]=1.0
+ConcreteDesignCodeFactor_NEN6720[9]=1.0
+ConcreteDesignCodeFactor_NEN6720[10]=1.0
+ConcreteDesignCodeFactor_NEN6720[11]=0.020
+ConcreteDesignCodeFactor_NEN6720[12]=500000000.0
+ConcreteDesignCodeFactor_NEN6720[13]=500000000.0
+ConcreteDesignCodeFactor_NEN6720[14]=1.15
+ConcreteDesignCodeFactor_NEN6720[15]=0.035
+ConcreteDesignCodeFactor_NEN6720[16]=0.0015
+ConcreteDesignCodeFactor_NEN6720[17]=0.040
+ConcreteDesignCodeFactor_NEN6720[18]=0.80
+
+//-------------------------------------------------------------
+// Timber design code dependent factors for EC5
+// Factors[1] = Tensile strength in fiber direction
+// Factors[2] = Compressive strength in fiber direction
+// Factors[3] = Bending strength
+// Factors[4] = Shear strength
+// Factors[5] = Modulus of eleasticity E
+// Factors[6] = Shear modulus G
+// Factors[7] = Factor for humidity and for long duration of loads : kMod
+// Factors[8] = Partial safety factor Ym
+
+TimberDesignCodeFactor_EC5[1]=10000000.0
+TimberDesignCodeFactor_EC5[2]=17000000.0
+TimberDesignCodeFactor_EC5[3]=16000000.0
+TimberDesignCodeFactor_EC5[4]=1.8
+TimberDesignCodeFactor_EC5[5]=10000000000.0
+TimberDesignCodeFactor_EC5[6]=625000000.0
+TimberDesignCodeFactor_EC5[7]=0.60
+TimberDesignCodeFactor_EC5[8]=1.3

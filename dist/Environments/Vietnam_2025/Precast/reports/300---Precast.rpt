@@ -1,0 +1,25 @@
+template 
+{
+    name = "template_319";
+    type = TEXTUAL;
+    width = 100;
+    maxheight = 150;
+    columns = (1, 1);
+    gap = 1;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.21;
+    created = "29.10.2004 12:04";
+    modified = "07.12.2015 14:49";
+    notes = "Converted template";
+
+    pageheader 
+    {
+        name = "pageheader_2590";
+        height = 4;
+        outputpolicy = NONE;
+    };
+};

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LayoutConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <DetailingConfigItems>
+    <DetailingConfigItem>
+      <Name>Hollowcore reinforcement strands (60)</Name>
+      <ComponentName>140000060</ComponentName>
+      <ComponentNumber>140000060</ComponentNumber>
+    </DetailingConfigItem>
+  </DetailingConfigItems>
+</LayoutConfig>

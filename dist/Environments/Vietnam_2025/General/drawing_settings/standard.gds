@@ -1,0 +1,16 @@
+encoding 949
+in_file " "
+out_file "standard"
+main 1
+sec 0
+draw_as 2
+sym_hole 1
+sym_axis 1
+line_colour 153
+Subassembly 1
+main_en 1
+sec_en 1
+draw_as_en 1
+sym_en 1
+line_colour_en 1
+Subassembly_en 1

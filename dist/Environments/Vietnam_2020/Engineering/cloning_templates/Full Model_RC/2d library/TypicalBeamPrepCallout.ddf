@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DrawingDetail xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Description="Moment Weld Prep Detail Callout for Beam">
+  <PolyLine Color="Black" LineType="SolidLine" Bulge="0" ArrowPosition="Start" ArrowWidth="2.9765625" ArrowHeight="1.984375" ArrowHead="LineArrow">
+    <Point X="-4.88246488750747" Y="-37.2607082800485" />
+    <Point X="-1.68666968841175" Y="-42.5932580748678" />
+    <Point X="-7.8159700933611E-14" Y="-42.5932580748677" />
+  </PolyLine>
+  <Rectangle StartPointX="-18.7131563324832" StartPointY="-37.2607082800485" EndPointX="5.68141368728142" EndPointY="9.05528161838246" Color="Blue" LineType="SlashedLine" HatchBackGroundColor="Invisible" HatchColor="NewLine6" HatchDrawBackgroundColor="False" HatchFactorType="0" HatchName="None" HatchOffsetX="0" HatchOffsetY="0" HatchScaleX="1" HatchScaleY="1" HatchAngle="0" />
+  <Text InsertionPointX="15.7389989336376" InsertionPointY="-43.9814394247085" Placing="Tekla.Structures.Drawing.PointPlacingType" Alignment="Left" FrameColor="Black" FrameType="None" FontBold="False" FontColor="Green" FontName="Arial" FontHeight="2.38125" FontItalic="False" Angle="0" ArrowPosition="Start" ArrowWidth="2.38125" ArrowHeight="1.5875" ArrowHead="FilledArrow">SEE TYP. 
+WELD PREP DETAIL</Text>
+</DrawingDetail>

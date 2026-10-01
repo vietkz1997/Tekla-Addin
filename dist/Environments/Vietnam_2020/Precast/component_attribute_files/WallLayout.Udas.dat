@@ -1,0 +1,17 @@
+//
+// Customized user defined attributes (UDA) for layer parts created by wall layout component
+// 
+// Each row shall contain 2 or 3 fields separated by tab(s) or semicolon. 
+// Please note that all uda names shall be unique
+//
+// Field 1: The data type of the attribute. Valid values are 'distance', 'float', 'option', 'integer' and 'string'
+//          compatible with the actual user defined attributes as specified in objects.inp
+// Field 2: UDA name. This is the name of the user defined attribute set for the layer part.
+// Field 3: Label. This text is shown in the attributes dialog. It can be a translatable label (albl_) or any text.
+//		
+option		UT_product_type		j_UT_product_type
+integer		UT_UD_product_type	j_user_defined_product_type
+option		EP_TYPE			j_Product_type
+string		EP_CODE			j_Product_code
+option		FixedMainView		j_TopInFormFace
+

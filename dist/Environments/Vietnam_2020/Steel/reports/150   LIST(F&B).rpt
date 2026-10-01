@@ -1,0 +1,1754 @@
+template _tmp_0
+{
+    name = "tpled_template1";
+    type = TEXTUAL;
+    width = 300;
+    maxheight = 2147483647;
+    columns = (1, 1);
+    gap = 0;
+    fillpolicy = EVEN;
+    filldirection = HORIZONTAL;
+    fillstartfrom = TOPLEFT;
+    margins = (0, 0, 0, 0);
+    gridxspacing = 1;
+    gridyspacing = 1;
+    version = 3.6;
+    created = "01.10.2018 13:08";
+    modified = "02.10.2018 09:25";
+    notes = "";
+
+    header _tmp_3
+    {
+        name = "헤더";
+        height = 1;
+
+        text _tmp_4
+        {
+            name = "어셈블리 마크";
+            x1 = 10;
+            y1 = 0;
+            x2 = 10;
+            y2 = 0;
+            string = "어셈블리 마크";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_6
+        {
+            name = "텍스트";
+            x1 = 23;
+            y1 = 0;
+            x2 = 23;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_14
+        {
+            name = "텍스트_2";
+            x1 = 8;
+            y1 = 0;
+            x2 = 8;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_17
+        {
+            name = "텍스트_4";
+            x1 = 1;
+            y1 = 0;
+            x2 = 1;
+            y2 = 0;
+            string = "  절주";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_21
+        {
+            name = "텍스트_5";
+            x1 = 39;
+            y1 = 0;
+            x2 = 39;
+            y2 = 0;
+            string = "도장(m²)";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_25
+        {
+            name = "텍스트_6";
+            x1 = 48;
+            y1 = 0;
+            x2 = 48;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_28
+        {
+            name = "텍스트_8";
+            x1 = 51;
+            y1 = 0;
+            x2 = 51;
+            y2 = 0;
+            string = "무게(kg)";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_32
+        {
+            name = "텍스트_9";
+            x1 = 60;
+            y1 = 0;
+            x2 = 60;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_35
+        {
+            name = "텍스트_11";
+            x1 = 65;
+            y1 = 0;
+            x2 = 65;
+            y2 = 0;
+            string = "FIT_UP";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_37
+        {
+            name = "텍스트_12";
+            x1 = 74;
+            y1 = 0;
+            x2 = 74;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_38
+        {
+            name = "텍스트_13";
+            x1 = 116;
+            y1 = 0;
+            x2 = 116;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_40
+        {
+            name = "텍스트_14";
+            x1 = 79;
+            y1 = 0;
+            x2 = 79;
+            y2 = 0;
+            string = "용접";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_46
+        {
+            name = "텍스트_17";
+            x1 = 108;
+            y1 = 0;
+            x2 = 108;
+            y2 = 0;
+            string = "도장";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_13
+        {
+            name = "텍스트_30";
+            x1 = 88;
+            y1 = 0;
+            x2 = 88;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_16
+        {
+            name = "텍스트_15";
+            x1 = 94;
+            y1 = 0;
+            x2 = 94;
+            y2 = 0;
+            string = "용점검사";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_22
+        {
+            name = "텍스트_32";
+            x1 = 102;
+            y1 = 0;
+            x2 = 102;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_27
+        {
+            name = "텍스트_19";
+            x1 = 121;
+            y1 = 0;
+            x2 = 121;
+            y2 = 0;
+            string = "패킹";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_33
+        {
+            name = "텍스트_35";
+            x1 = 130;
+            y1 = 0;
+            x2 = 130;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_36
+        {
+            name = "텍스트_21";
+            x1 = 135;
+            y1 = 0;
+            x2 = 135;
+            y2 = 0;
+            string = "공장출고";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_41
+        {
+            name = "텍스트_16";
+            x1 = 145;
+            y1 = 0;
+            x2 = 145;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_44
+        {
+            name = "텍스트_23";
+            x1 = 149;
+            y1 = 0;
+            x2 = 149;
+            y2 = 0;
+            string = "현장도착";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_48
+        {
+            name = "텍스트_20";
+            x1 = 160;
+            y1 = 0;
+            x2 = 160;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_52
+        {
+            name = "텍스트_24";
+            x1 = 164;
+            y1 = 0;
+            x2 = 164;
+            y2 = 0;
+            string = "현장검사";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_59
+        {
+            name = "텍스트_38";
+            x1 = 175;
+            y1 = 0;
+            x2 = 175;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_62
+        {
+            name = "텍스트_26";
+            x1 = 178;
+            y1 = 0;
+            x2 = 178;
+            y2 = 0;
+            string = "설치완료";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_66
+        {
+            name = "텍스트_22";
+            x1 = 189;
+            y1 = 0;
+            x2 = 189;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_68
+        {
+            name = "GUID";
+            x1 = 194;
+            y1 = 0;
+            x2 = 194;
+            y2 = 0;
+            string = "GUID";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_73
+        {
+            name = "텍스트_28";
+            x1 = 37;
+            y1 = 0;
+            x2 = 37;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_76
+        {
+            name = "텍스트_41";
+            x1 = 29;
+            y1 = 0;
+            x2 = 29;
+            y2 = 0;
+            string = "이름";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_104
+        {
+            name = "텍스트_56";
+            x1 = 239;
+            y1 = 0;
+            x2 = 239;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    row _tmp_1
+    {
+        name = "ASSEMBLY";
+        height = 1;
+        visibility = TRUE;
+        usecolumns = FALSE;
+        rule = "";
+        contenttype = "ASSEMBLY";
+        sorttype = COMBINE;
+
+        valuefield _tmp_19
+        {
+            name = "필드 값";
+            location = (0, 0);
+            formula = "GetValue(\"PHASE\")";
+            maxnumoflines = 1;
+            datatype = INTEGER;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 6;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        valuefield _tmp_2
+        {
+            name = "ASSEMBLY_POS_필드";
+            location = (10, 0);
+            formula = "GetValue(\"ASSEMBLY_POS\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_15
+        {
+            name = "텍스트_3";
+            x1 = 8;
+            y1 = 0;
+            x2 = 8;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_23
+        {
+            name = "AREA";
+            location = (39, 0);
+            formula = "GetValue(\"AREA\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Area";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "m2";
+        };
+
+        text _tmp_26
+        {
+            name = "텍스트_7";
+            x1 = 48;
+            y1 = 0;
+            x2 = 48;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_30
+        {
+            name = "WEIGHT";
+            location = (50, 0);
+            formula = "GetValue(\"WEIGHT\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "kg";
+        };
+
+        text _tmp_33
+        {
+            name = "텍스트_10";
+            x1 = 60;
+            y1 = 0;
+            x2 = 60;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_3
+        {
+            name = "필드 값_3";
+            location = (62, 0);
+            formula = "GetValue(\"USERDEFINED.F_FITUP\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        text _tmp_7
+        {
+            name = "텍스트_29";
+            x1 = 74;
+            y1 = 0;
+            x2 = 74;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_9
+        {
+            name = "필드 값_5";
+            location = (76, 0);
+            formula = "GetValue(\"USERDEFINED.F_WELD\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        text _tmp_14
+        {
+            name = "텍스트_31";
+            x1 = 88;
+            y1 = 0;
+            x2 = 88;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_8
+        {
+            name = "텍스트_1";
+            x1 = 23;
+            y1 = 0;
+            x2 = 23;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_18
+        {
+            name = "필드 값_6";
+            location = (90, 0);
+            formula = "GetValue(\"USERDEFINED.F_WELD_INSPEC\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        text _tmp_23
+        {
+            name = "텍스트_33";
+            x1 = 102;
+            y1 = 0;
+            x2 = 102;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_25
+        {
+            name = "필드 값_7";
+            location = (104, 0);
+            formula = "GetValue(\"USERDEFINED.F_PAINTING\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        valuefield _tmp_31
+        {
+            name = "필드 값_8";
+            location = (118, 0);
+            formula = "GetValue(\"USERDEFINED.F_PACKAGE\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        valuefield _tmp_38
+        {
+            name = "필드 값_9";
+            location = (132, 0);
+            formula = "GetValue(\"USERDEFINED.F_DELIVERY_1\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        valuefield _tmp_46
+        {
+            name = "필드 값_10";
+            location = (147, 0);
+            formula = "GetValue(\"USERDEFINED.F_DELIVERY_2\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        valuefield _tmp_54
+        {
+            name = "필드 값_11";
+            location = (162, 0);
+            formula = "GetValue(\"USERDEFINED.F_DELIVERY_3\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = CENTERED;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        valuefield _tmp_64
+        {
+            name = "필드 값_4";
+            location = (177, 0);
+            formula = "GetValue(\"USERDEFINED.F_ERECTION\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Date";
+            cacheable = TRUE;
+            formatzeroasempty = TRUE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "yyyy.mm.dd";
+        };
+
+        valuefield _tmp_69
+        {
+            name = "GUID_필드";
+            location = (197, 0);
+            formula = "GetValue(\"GUID\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 40;
+            decimals = 2;
+            sortdirection = ASCENDING;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_34
+        {
+            name = "텍스트_36";
+            x1 = 130;
+            y1 = 0;
+            x2 = 130;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_29
+        {
+            name = "텍스트_34";
+            x1 = 116;
+            y1 = 0;
+            x2 = 116;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_49
+        {
+            name = "텍스트_37";
+            x1 = 160;
+            y1 = 0;
+            x2 = 160;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_42
+        {
+            name = "텍스트_18";
+            x1 = 145;
+            y1 = 0;
+            x2 = 145;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_60
+        {
+            name = "텍스트_39";
+            x1 = 175;
+            y1 = 0;
+            x2 = 175;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_67
+        {
+            name = "텍스트_25";
+            x1 = 189;
+            y1 = 0;
+            x2 = 189;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_71
+        {
+            name = "텍스트_27";
+            x1 = 191;
+            y1 = 0;
+            x2 = 191;
+            y2 = 0;
+            string = "GUID:";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_74
+        {
+            name = "텍스트_40";
+            x1 = 37;
+            y1 = 0;
+            x2 = 37;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_79
+        {
+            name = "필드 값_12";
+            location = (25, 0);
+            formula = "GetValue(\"ASSEMBLY_NAME\")";
+            maxnumoflines = 1;
+            datatype = STRING;
+            class = "";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = LEFT;
+            visibility = TRUE;
+            angle = 0;
+            length = 12;
+            decimals = 2;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+        };
+
+        text _tmp_105
+        {
+            name = "텍스트_57";
+            x1 = 239;
+            y1 = 0;
+            x2 = 239;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+
+    footer _tmp_80
+    {
+        name = "꼬리말";
+        height = 1;
+
+        valuefield _tmp_82
+        {
+            name = "필드 값_13";
+            location = (39, 0);
+            formula = "Total(\"AREA\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Area";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 8;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "m2";
+        };
+
+        text _tmp_84
+        {
+            name = "텍스트_42";
+            x1 = 48;
+            y1 = 0;
+            x2 = 48;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_85
+        {
+            name = "텍스트_43";
+            x1 = 37;
+            y1 = 0;
+            x2 = 37;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_86
+        {
+            name = "텍스트_44";
+            x1 = 60;
+            y1 = 0;
+            x2 = 60;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        valuefield _tmp_90
+        {
+            name = "필드 값_1";
+            location = (50, 0);
+            formula = "Total(\"WEIGHT\")";
+            maxnumoflines = 1;
+            datatype = DOUBLE;
+            class = "Weight";
+            cacheable = TRUE;
+            formatzeroasempty = FALSE;
+            justify = RIGHT;
+            visibility = TRUE;
+            angle = 0;
+            length = 10;
+            decimals = 1;
+            sortdirection = NONE;
+            fontname = "fixfont";
+            fontcolor = 153;
+            fonttype = 4;
+            fontsize = 5;
+            fontratio = 1.5;
+            fontstyle = 0;
+            fontslant = 0;
+            pen = -1;
+            oncombine = NONE;
+            unit = "kg";
+        };
+
+        text _tmp_91
+        {
+            name = "TOTAL:";
+            x1 = 30;
+            y1 = 0;
+            x2 = 30;
+            y2 = 0;
+            string = "TOTAL:";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 5;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_93
+        {
+            name = "텍스트_45";
+            x1 = 8;
+            y1 = 0;
+            x2 = 8;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_94
+        {
+            name = "텍스트_46";
+            x1 = 23;
+            y1 = 0;
+            x2 = 23;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_95
+        {
+            name = "텍스트_47";
+            x1 = 74;
+            y1 = 0;
+            x2 = 74;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_96
+        {
+            name = "텍스트_48";
+            x1 = 88;
+            y1 = 0;
+            x2 = 88;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_97
+        {
+            name = "텍스트_49";
+            x1 = 102;
+            y1 = 0;
+            x2 = 102;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_98
+        {
+            name = "텍스트_50";
+            x1 = 116;
+            y1 = 0;
+            x2 = 116;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_99
+        {
+            name = "텍스트_51";
+            x1 = 130;
+            y1 = 0;
+            x2 = 130;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_100
+        {
+            name = "텍스트_52";
+            x1 = 145;
+            y1 = 0;
+            x2 = 145;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_101
+        {
+            name = "텍스트_53";
+            x1 = 160;
+            y1 = 0;
+            x2 = 160;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_102
+        {
+            name = "텍스트_54";
+            x1 = 175;
+            y1 = 0;
+            x2 = 175;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_103
+        {
+            name = "텍스트_55";
+            x1 = 189;
+            y1 = 0;
+            x2 = 189;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+
+        text _tmp_106
+        {
+            name = "텍스트_58";
+            x1 = 239;
+            y1 = 0;
+            x2 = 239;
+            y2 = 0;
+            string = "\\t";
+            fontname = "Arial";
+            fontcolor = 160;
+            fonttype = 2;
+            fontsize = 1;
+            fontratio = 1;
+            fontslant = 0;
+            fontstyle = 0;
+            angle = 0;
+            justify = LEFT;
+            pen = -1;
+        };
+    };
+};

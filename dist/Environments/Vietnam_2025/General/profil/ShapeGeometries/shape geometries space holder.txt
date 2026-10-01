@@ -1,0 +1,3 @@
+THIS IS SHAPE GEOMETRIES FOLDER SPACEHOLDER.
+
+can be removed only when this folder has some other file(s) 
