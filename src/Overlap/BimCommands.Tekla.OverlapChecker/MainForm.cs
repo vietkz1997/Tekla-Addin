@@ -7,10 +7,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using GeometryHelper;
+using GeometryHelper.Clash;
+using GeometryHelper.Enums;
+using GeometryHelper.Geometry;
+using GeometryHelper.TeklaConvert;
 using Tekla.Structures.Model;
 using Tekla.Structures.Model.UI;
 using Color = System.Drawing.Color;
 using TeklaPoint = global::Tekla.Structures.Geometry3d.Point;
+using TeklaAabb = global::Tekla.Structures.Geometry3d.AABB;
 using TeklaPicker = Tekla.Structures.Model.UI.Picker;
 using UIModelObjectSelector = Tekla.Structures.Model.UI.ModelObjectSelector;
 using View = System.Windows.Forms.View;
@@ -46,6 +52,12 @@ namespace BimCommands.Tekla.OverlapChecker
             public double SizeZ;
             public double Radius;
 
+            // GeometryHelper 3D geometric solid representation
+            public GeoSolid3 Solid;
+            public List<GeoSolid3> RebarPipes;
+            public GeoAabb3 Box;
+            public bool IsRebar;
+
             // Rebar centerline cache for precision rebar overlap checking
             public List<TeklaPoint> RebarPoints;
         }
@@ -66,6 +78,7 @@ namespace BimCommands.Tekla.OverlapChecker
         private List<OverlapItem> _allOverlapList = new List<OverlapItem>();
         private List<OverlapItem> _displayedOverlapList = new List<OverlapItem>();
         private BackgroundWorker _bgWorker;
+        private List<ControlPolycurve> _drawnPolycurves = new List<ControlPolycurve>();
 
         // UI Components - Header & Dashboard
         private Panel pnlHeader;
@@ -93,6 +106,8 @@ namespace BimCommands.Tekla.OverlapChecker
         private Button btnFromSelection;
         private Button btnCancelScan;
         private Button btnHighlightTekla;
+        private Button btnDrawClash3D;
+        private Button btnClearDraw3D;
         private Button btnDeleteDuplicates;
         private Button btnQuarantineClass;
         private Button btnExportCsv;
@@ -103,8 +118,12 @@ namespace BimCommands.Tekla.OverlapChecker
         private TextBox txtSearch;
         private ComboBox cboFilterType;
         private ComboBox cboFilterOverlap;
+        private ComboBox cboFilterClass;
+        private ComboBox cboFilterPhase;
+        private ComboBox cboFilterRatio;
         private CheckBox chkSelectAll;
         private Label lblFilterSummary;
+        private ContextMenuStrip ctxResults;
 
         // UI Components - Results Split Container
         private SplitContainer splitResults;
@@ -134,6 +153,12 @@ namespace BimCommands.Tekla.OverlapChecker
             ConnectTekla();
         }
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            ClearDrawn3D();
+            base.OnFormClosing(e);
+        }
+
         private void SetupBackgroundWorker()
         {
             _bgWorker = new BackgroundWorker
@@ -148,9 +173,9 @@ namespace BimCommands.Tekla.OverlapChecker
 
         private void InitializeComponent()
         {
-            Text = "Tekla Overlap & Duplicate Checker Pro - [My-tool]";
-            Size = new Size(1120, 820);
-            MinimumSize = new Size(960, 680);
+            Text = "Tekla Overlap & Duplicate Checker Pro - [GeometryHelper Powered]";
+            Size = new Size(1140, 840);
+            MinimumSize = new Size(980, 680);
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.Sizable;
             TopMost = true;
@@ -169,7 +194,7 @@ namespace BimCommands.Tekla.OverlapChecker
 
             lblTitle = new Label
             {
-                Text = "⚡ TEKLA OVERLAP & DUPLICATE CHECKER PRO",
+                Text = "🎯 TEKLA OVERLAP & DUPLICATE CHECKER PRO",
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 12f, FontStyle.Bold),
                 Location = new Point(16, 10),
@@ -178,7 +203,7 @@ namespace BimCommands.Tekla.OverlapChecker
 
             lblSubtitle = new Label
             {
-                Text = "High-performance spatial grid detection, smart retention rules, and safe model cleanup",
+                Text = "GeometryHelper BVH clash engine, true 3D solid overlap, smart retention rules, and safe model cleanup",
                 ForeColor = Color.FromArgb(148, 163, 184),
                 Font = new Font("Segoe UI", 8.5f, FontStyle.Regular),
                 Location = new Point(18, 36),
@@ -199,10 +224,10 @@ namespace BimCommands.Tekla.OverlapChecker
                 Padding = new Padding(14, 6, 14, 6)
             };
 
-            lblStatScanned = CreateMetricCard("📦 Scanned: 0", Color.FromArgb(30, 41, 59), 14);
-            lblStatDuplicates = CreateMetricCard("🔴 Duplicates: 0", Color.FromArgb(185, 28, 28), 210);
-            lblStatRebars = CreateMetricCard("🔩 Rebars: 0", Color.FromArgb(2, 132, 199), 420);
-            lblStatParts = CreateMetricCard("🏗️ Parts: 0", Color.FromArgb(217, 119, 6), 610);
+            lblStatScanned = CreateMetricCard("🔍 Scanned: 0", Color.FromArgb(30, 41, 59), 14);
+            lblStatDuplicates = CreateMetricCard("⚠️ Overlaps: 0", Color.FromArgb(220, 38, 38), 240);
+            lblStatRebars = CreateMetricCard("🔩 Rebars: 0", Color.FromArgb(37, 99, 235), 470);
+            lblStatParts = CreateMetricCard("🏗️ Parts: 0", Color.FromArgb(16, 185, 129), 690);
 
             pnlStats.Controls.Add(lblStatScanned);
             pnlStats.Controls.Add(lblStatDuplicates);
@@ -210,13 +235,13 @@ namespace BimCommands.Tekla.OverlapChecker
             pnlStats.Controls.Add(lblStatParts);
 
             // =========================================================================
-            // 3. Settings Group
+            // 3. Settings & Rules Configuration
             // =========================================================================
             grpSettings = new GroupBox
             {
                 Text = " ⚙️ DETECTION CRITERIA & RETENTION STRATEGY ",
                 Location = new Point(14, 120),
-                Size = new Size(1076, 78),
+                Size = new Size(1096, 78),
                 Font = new Font("Segoe UI", 9f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(30, 41, 59),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
@@ -278,9 +303,9 @@ namespace BimCommands.Tekla.OverlapChecker
                 DropDownStyle = ComboBoxStyle.DropDownList,
                 Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
-            cboRetentionRule.Items.Add("⭐ Smart: Keep Numbered / Drawing Part");
-            cboRetentionRule.Items.Add("⏱️ Keep Older Object (Smaller ID)");
-            cboRetentionRule.Items.Add("🆕 Keep Newer Object (Larger ID)");
+            cboRetentionRule.Items.Add("🌟 Smart: Keep Numbered / Drawing Part");
+            cboRetentionRule.Items.Add("🏛️ Keep Older Object (Smaller ID)");
+            cboRetentionRule.Items.Add("🚀 Keep Newer Object (Larger ID)");
             cboRetentionRule.SelectedIndex = 0;
 
             chkAutoSelectTekla = new CheckBox
@@ -306,41 +331,47 @@ namespace BimCommands.Tekla.OverlapChecker
             // =========================================================================
             grpActions = new GroupBox
             {
-                Text = " 🎯 SCAN & MODEL MANAGEMENT ACTIONS ",
+                Text = " 🚀 SCAN & MODEL MANAGEMENT ACTIONS ",
                 Location = new Point(14, 204),
-                Size = new Size(1076, 75),
+                Size = new Size(1096, 75),
                 Font = new Font("Segoe UI", 9f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(30, 41, 59),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
 
-            btnPickObjects = CreateActionButton("🎯  PICK WINDOW", 14, 22, 140, Color.FromArgb(37, 99, 235), Color.White);
+            btnPickObjects = CreateActionButton("🎯 PICK WINDOW", 12, 22, 125, Color.FromArgb(37, 99, 235), Color.White);
             btnPickObjects.Click += (s, e) => StartScan(true);
 
-            btnFromSelection = CreateActionButton("⚡  FROM SELECTION", 160, 22, 155, Color.FromArgb(16, 185, 129), Color.White);
+            btnFromSelection = CreateActionButton("⚡ SELECTION", 142, 22, 125, Color.FromArgb(16, 185, 129), Color.White);
             btnFromSelection.Click += (s, e) => StartScan(false);
 
-            btnCancelScan = CreateActionButton("⛔  CANCEL", 321, 22, 95, Color.FromArgb(100, 116, 139), Color.White);
+            btnCancelScan = CreateActionButton("⛔ CANCEL", 272, 22, 85, Color.FromArgb(100, 116, 139), Color.White);
             btnCancelScan.Enabled = false;
             btnCancelScan.Click += (s, e) => CancelScan();
 
-            btnHighlightTekla = CreateActionButton("👁️  HIGHLIGHT 3D", 422, 22, 135, Color.FromArgb(245, 158, 11), Color.White);
+            btnHighlightTekla = CreateActionButton("👁️ SELECT 3D", 362, 22, 110, Color.FromArgb(245, 158, 11), Color.White);
             btnHighlightTekla.Click += (s, e) => HighlightDuplicatesInTekla();
 
-            btnDeleteDuplicates = CreateActionButton("🗑️  DELETE DUPLICATES", 563, 22, 165, Color.FromArgb(239, 68, 68), Color.White);
+            btnDrawClash3D = CreateActionButton("✏️ DRAW 3D", 477, 22, 105, Color.FromArgb(139, 92, 246), Color.White);
+            btnDrawClash3D.Click += (s, e) => DrawSelectedOrAllClashes();
+
+            btnClearDraw3D = CreateActionButton("🧹 CLEAR 3D", 587, 22, 95, Color.FromArgb(107, 114, 128), Color.White);
+            btnClearDraw3D.Click += (s, e) => ClearDrawn3D();
+
+            btnDeleteDuplicates = CreateActionButton("🗑️ DELETE", 687, 22, 125, Color.FromArgb(239, 68, 68), Color.White);
             btnDeleteDuplicates.Click += (s, e) => DeleteDuplicates();
 
-            btnQuarantineClass = CreateActionButton("🛡️  QUARANTINE CLASS", 734, 22, 160, Color.FromArgb(147, 51, 234), Color.White);
+            btnQuarantineClass = CreateActionButton("🛡️ QUARANTINE", 817, 22, 130, Color.FromArgb(147, 51, 234), Color.White);
             btnQuarantineClass.Click += (s, e) => QuarantineDuplicates();
 
-            btnExportCsv = CreateActionButton("📊  EXPORT CSV", 900, 22, 120, Color.FromArgb(15, 118, 110), Color.White);
+            btnExportCsv = CreateActionButton("📊 EXPORT", 952, 22, 95, Color.FromArgb(15, 118, 110), Color.White);
             btnExportCsv.Click += (s, e) => ExportToCsv();
 
             btnReconnect = new Button
             {
                 Text = "🔄",
-                Location = new Point(1026, 22),
-                Size = new Size(38, 38),
+                Location = new Point(1052, 22),
+                Size = new Size(36, 38),
                 BackColor = Color.FromArgb(241, 245, 249),
                 ForeColor = Color.FromArgb(51, 65, 85),
                 Font = new Font("Segoe UI", 11f, FontStyle.Bold),
@@ -354,27 +385,29 @@ namespace BimCommands.Tekla.OverlapChecker
             grpActions.Controls.Add(btnFromSelection);
             grpActions.Controls.Add(btnCancelScan);
             grpActions.Controls.Add(btnHighlightTekla);
+            grpActions.Controls.Add(btnDrawClash3D);
+            grpActions.Controls.Add(btnClearDraw3D);
             grpActions.Controls.Add(btnDeleteDuplicates);
             grpActions.Controls.Add(btnQuarantineClass);
             grpActions.Controls.Add(btnExportCsv);
             grpActions.Controls.Add(btnReconnect);
 
             // =========================================================================
-            // 5. Search & Filter Bar
+            // 5. Search & Multi-Filter Bar
             // =========================================================================
             pnlFilter = new Panel
             {
                 Location = new Point(14, 285),
-                Size = new Size(1076, 36),
+                Size = new Size(1096, 72),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
 
             chkSelectAll = new CheckBox
             {
-                Text = "Select All",
+                Text = "All",
                 Location = new Point(4, 8),
                 AutoSize = true,
-                Checked = true,
+                Checked = false,
                 Font = new Font("Segoe UI", 9f, FontStyle.Bold)
             };
             chkSelectAll.CheckedChanged += (s, e) =>
@@ -387,117 +420,259 @@ namespace BimCommands.Tekla.OverlapChecker
 
             Label lblSearch = new Label
             {
-                Text = "🔍 Search:",
-                Location = new Point(110, 9),
+                Text = "Search:",
+                Location = new Point(56, 8),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
 
             txtSearch = new TextBox
             {
-                Location = new Point(180, 6),
-                Width = 220,
+                Location = new Point(106, 5),
+                Width = 180,
                 Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
             txtSearch.TextChanged += (s, e) => ApplyFilter();
 
-            Label lblTypeFilter = new Label
+            Label lblFilterType = new Label
             {
                 Text = "Type:",
-                Location = new Point(415, 9),
+                Location = new Point(296, 8),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
 
             cboFilterType = new ComboBox
             {
-                Location = new Point(460, 6),
-                Width = 140,
+                Location = new Point(336, 5),
+                Width = 120,
                 DropDownStyle = ComboBoxStyle.DropDownList,
                 Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
-            cboFilterType.Items.AddRange(new object[] { "All Object Types", "Rebar Only", "Part (Beam/Col/Slab)" });
+            cboFilterType.Items.AddRange(new object[] { "All Types", "Rebar Only", "Part Only" });
             cboFilterType.SelectedIndex = 0;
             cboFilterType.SelectedIndexChanged += (s, e) => ApplyFilter();
 
+            Label lblFilterOverlap = new Label
+            {
+                Text = "Mode:",
+                Location = new Point(466, 8),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            };
+
             cboFilterOverlap = new ComboBox
             {
-                Location = new Point(610, 6),
-                Width = 160,
+                Location = new Point(512, 5),
+                Width = 135,
                 DropDownStyle = ComboBoxStyle.DropDownList,
                 Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
-            cboFilterOverlap.Items.AddRange(new object[] { "All Overlap Modes", "100% Duplicate", "Volume Overlap" });
+            cboFilterOverlap.Items.AddRange(new object[] { "All Modes", "100% Duplicate", "Volume Overlap" });
             cboFilterOverlap.SelectedIndex = 0;
             cboFilterOverlap.SelectedIndexChanged += (s, e) => ApplyFilter();
 
             lblFilterSummary = new Label
             {
                 Text = "No scan performed yet.",
-                Location = new Point(780, 9),
+                Location = new Point(660, 8),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 8.5f, FontStyle.Italic),
                 ForeColor = Color.FromArgb(71, 85, 105)
             };
 
+            // Row 2 Filters: Class, Phase, Overlap %, Reset
+            Label lblFilterClass = new Label
+            {
+                Text = "Class:",
+                Location = new Point(4, 42),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            };
+
+            cboFilterClass = new ComboBox
+            {
+                Location = new Point(50, 39),
+                Width = 110,
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            };
+            cboFilterClass.Items.Add("All Classes");
+            cboFilterClass.SelectedIndex = 0;
+            cboFilterClass.SelectedIndexChanged += (s, e) => ApplyFilter();
+
+            Label lblFilterPhase = new Label
+            {
+                Text = "Phase:",
+                Location = new Point(170, 42),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            };
+
+            cboFilterPhase = new ComboBox
+            {
+                Location = new Point(220, 39),
+                Width = 100,
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            };
+            cboFilterPhase.Items.Add("All Phases");
+            cboFilterPhase.SelectedIndex = 0;
+            cboFilterPhase.SelectedIndexChanged += (s, e) => ApplyFilter();
+
+            Label lblFilterRatio = new Label
+            {
+                Text = "Overlap %:",
+                Location = new Point(330, 42),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            };
+
+            cboFilterRatio = new ComboBox
+            {
+                Location = new Point(400, 39),
+                Width = 130,
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+            };
+            cboFilterRatio.Items.AddRange(new object[] { "All Overlap %", ">= 95% (Exact)", "50% - 95%", "< 50% (Minor)" });
+            cboFilterRatio.SelectedIndex = 0;
+            cboFilterRatio.SelectedIndexChanged += (s, e) => ApplyFilter();
+
+            Button btnResetFilter = new Button
+            {
+                Text = "Reset Filters",
+                Location = new Point(540, 37),
+                Size = new Size(95, 26),
+                BackColor = Color.FromArgb(241, 245, 249),
+                ForeColor = Color.FromArgb(71, 85, 105),
+                Font = new Font("Segoe UI", 8.5f, FontStyle.Regular),
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
+            };
+            btnResetFilter.FlatAppearance.BorderColor = Color.FromArgb(203, 213, 225);
+            btnResetFilter.Click += (s, e) =>
+            {
+                txtSearch.Text = "";
+                cboFilterType.SelectedIndex = 0;
+                cboFilterOverlap.SelectedIndex = 0;
+                if (cboFilterClass.Items.Count > 0) cboFilterClass.SelectedIndex = 0;
+                if (cboFilterPhase.Items.Count > 0) cboFilterPhase.SelectedIndex = 0;
+                cboFilterRatio.SelectedIndex = 0;
+                ApplyFilter();
+            };
+
             pnlFilter.Controls.Add(chkSelectAll);
             pnlFilter.Controls.Add(lblSearch);
             pnlFilter.Controls.Add(txtSearch);
-            pnlFilter.Controls.Add(lblTypeFilter);
+            pnlFilter.Controls.Add(lblFilterType);
             pnlFilter.Controls.Add(cboFilterType);
+            pnlFilter.Controls.Add(lblFilterOverlap);
             pnlFilter.Controls.Add(cboFilterOverlap);
             pnlFilter.Controls.Add(lblFilterSummary);
+            pnlFilter.Controls.Add(lblFilterClass);
+            pnlFilter.Controls.Add(cboFilterClass);
+            pnlFilter.Controls.Add(lblFilterPhase);
+            pnlFilter.Controls.Add(cboFilterPhase);
+            pnlFilter.Controls.Add(lblFilterRatio);
+            pnlFilter.Controls.Add(cboFilterRatio);
+            pnlFilter.Controls.Add(btnResetFilter);
 
             // =========================================================================
-            // 6. Split Container: Results List & Side-by-Side Inspector
+            // 6. Results & Side-by-Side Inspector (SplitContainer)
             // =========================================================================
             splitResults = new SplitContainer
             {
-                Location = new Point(14, 325),
-                Size = new Size(1076, 420),
                 Orientation = Orientation.Horizontal,
-                SplitterDistance = 270,
-                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right
+                Location = new Point(14, 362),
+                Size = new Size(1096, 415),
+                SplitterDistance = 250,
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
+                BackColor = Color.FromArgb(203, 213, 225)
             };
 
-            // Main Results List
+            // Context Menu for Right-Click on Results
+            ctxResults = new ContextMenuStrip();
+            var mnuDelete = new ToolStripMenuItem("Delete Duplicate (Del)", null, (s, e) => DeleteDuplicates());
+            mnuDelete.Font = new Font("Segoe UI", 9f, FontStyle.Bold);
+            mnuDelete.ForeColor = Color.FromArgb(220, 38, 38);
+
+            var mnuSwap = new ToolStripMenuItem("Swap Kept <-> Duplicate (S)", null, (s, e) => BtnSwapSelected_Click(s, e));
+            var mnuQuarantine = new ToolStripMenuItem("Quarantine to Class 99", null, (s, e) => QuarantineDuplicates());
+            var mnuSelect3D = new ToolStripMenuItem("Select in Tekla 3D", null, (s, e) => HighlightDuplicatesInTekla());
+            var mnuZoom = new ToolStripMenuItem("Zoom to Clash", null, (s, e) => LstResults_DoubleClick(s, e));
+            var mnuDraw3D = new ToolStripMenuItem("Draw 3D Clash Box", null, (s, e) => DrawSelectedOrAllClashes());
+
+            var mnuCheckSelected = new ToolStripMenuItem("Check Selected Rows", null, (s, e) =>
+            {
+                foreach (int idx in lstResults.SelectedIndices)
+                {
+                    lstResults.Items[idx].Checked = true;
+                }
+            });
+            var mnuUncheckSelected = new ToolStripMenuItem("Uncheck Selected Rows", null, (s, e) =>
+            {
+                foreach (int idx in lstResults.SelectedIndices)
+                {
+                    lstResults.Items[idx].Checked = false;
+                }
+            });
+
+            ctxResults.Items.Add(mnuDelete);
+            ctxResults.Items.Add(new ToolStripSeparator());
+            ctxResults.Items.Add(mnuSwap);
+            ctxResults.Items.Add(mnuQuarantine);
+            ctxResults.Items.Add(new ToolStripSeparator());
+            ctxResults.Items.Add(mnuSelect3D);
+            ctxResults.Items.Add(mnuZoom);
+            ctxResults.Items.Add(mnuDraw3D);
+            ctxResults.Items.Add(new ToolStripSeparator());
+            ctxResults.Items.Add(mnuCheckSelected);
+            ctxResults.Items.Add(mnuUncheckSelected);
+
+            // Main Results ListView
             lstResults = new ListView
             {
                 Dock = DockStyle.Fill,
                 View = View.Details,
-                CheckBoxes = true,
                 FullRowSelect = true,
+                CheckBoxes = true,
                 GridLines = true,
-                Font = new Font("Segoe UI", 9f, FontStyle.Regular)
+                ContextMenuStrip = ctxResults,
+                Font = new Font("Segoe UI", 9f, FontStyle.Regular),
+                BackColor = Color.White
             };
 
-            lstResults.Columns.Add("Duplicate ID (Delete)", 140);
-            lstResults.Columns.Add("Kept ID (Original)", 130);
-            lstResults.Columns.Add("Object Type", 110);
-            lstResults.Columns.Add("Name", 120);
-            lstResults.Columns.Add("Profile", 110);
-            lstResults.Columns.Add("Mark Diff", 90);
-            lstResults.Columns.Add("Center (X, Y, Z)", 140);
+            lstResults.Columns.Add("Dup ID", 75);
+            lstResults.Columns.Add("Keep ID", 75);
+            lstResults.Columns.Add("Type", 95);
+            lstResults.Columns.Add("Name", 100);
+            lstResults.Columns.Add("Profile", 95);
+            lstResults.Columns.Add("Material", 80);
             lstResults.Columns.Add("Overlap Mode", 110);
-            lstResults.Columns.Add("Retention Reason", 200);
+            lstResults.Columns.Add("Clash Vol", 90);
+            lstResults.Columns.Add("Overlap %", 75);
+            lstResults.Columns.Add("Keep Reason", 220);
 
             lstResults.SelectedIndexChanged += LstResults_SelectedIndexChanged;
             lstResults.DoubleClick += LstResults_DoubleClick;
+            lstResults.KeyDown += LstResults_KeyDown;
 
             splitResults.Panel1.Controls.Add(lstResults);
 
-            // Inspector Panel
+            // Side-by-Side Inspector Panel
             grpInspector = new GroupBox
             {
-                Text = " 🔍 SIDE-BY-SIDE PROPERTY INSPECTOR (COMPARE KEPT VS DUPLICATE) ",
                 Dock = DockStyle.Fill,
+                Text = " 🔍 SIDE-BY-SIDE PROPERTY INSPECTOR (COMPARE KEPT vs DUPLICATE) ",
                 Font = new Font("Segoe UI", 9f, FontStyle.Bold),
-                ForeColor = Color.FromArgb(30, 41, 59)
+                ForeColor = Color.FromArgb(30, 41, 59),
+                BackColor = Color.FromArgb(248, 250, 252)
             };
 
             btnSwapSelected = new Button
             {
-                Text = "🔄  SWAP KEPT ⮂ DUPLICATE",
+                Text = "🔄 SWAP KEPT ⮂ DUPLICATE",
                 Location = new Point(12, 22),
                 Size = new Size(210, 30),
                 BackColor = Color.FromArgb(79, 70, 229),
@@ -511,7 +686,7 @@ namespace BimCommands.Tekla.OverlapChecker
 
             lblInspectorTip = new Label
             {
-                Text = "💡 Select any duplicate item above to inspect detailed differences. Click [SWAP] if you wish to keep the other object instead.",
+                Text = "💡 Select any duplicate item above to inspect differences. Double-click to zoom and draw 3D clash in Tekla.",
                 Location = new Point(235, 28),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 8.5f, FontStyle.Regular),
@@ -521,7 +696,7 @@ namespace BimCommands.Tekla.OverlapChecker
             lstInspector = new ListView
             {
                 Location = new Point(12, 58),
-                Size = new Size(1050, 80),
+                Size = new Size(1070, 100),
                 Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right,
                 View = View.Details,
                 FullRowSelect = true,
@@ -529,9 +704,9 @@ namespace BimCommands.Tekla.OverlapChecker
                 Font = new Font("Segoe UI", 9f, FontStyle.Regular)
             };
 
-            lstInspector.Columns.Add("Property", 140);
-            lstInspector.Columns.Add("✅ ORIGINAL (TO BE KEPT)", 430);
-            lstInspector.Columns.Add("❌ DUPLICATE (TO BE REMOVED)", 430);
+            lstInspector.Columns.Add("Property", 150);
+            lstInspector.Columns.Add("🟢 ORIGINAL (TO BE KEPT)", 450);
+            lstInspector.Columns.Add("🔴 DUPLICATE (TO BE REMOVED)", 450);
 
             grpInspector.Controls.Add(btnSwapSelected);
             grpInspector.Controls.Add(lblInspectorTip);
@@ -627,7 +802,7 @@ namespace BimCommands.Tekla.OverlapChecker
                     string modelName = _model.GetInfo().ModelName;
                     lblStatusModel.Text = "🟢 Connected: " + modelName;
                     lblStatusModel.ForeColor = Color.FromArgb(22, 101, 52);
-                    Text = $"Tekla Overlap & Duplicate Checker Pro ({modelName}) - [My-tool]";
+                    Text = $"Tekla Overlap & Duplicate Checker Pro ({modelName}) - [GeometryHelper Powered]";
                     lblStatusCount.Text = "Connected to Tekla Structures. Ready to scan.";
                 }
                 else
@@ -668,7 +843,7 @@ namespace BimCommands.Tekla.OverlapChecker
 
         #endregion
 
-        #region High-Performance Scanning Engine (Spatial Grid)
+        #region High-Performance Scanning Engine (GeometryHelper Clash3.Find)
 
         private struct ScanWorkerArgs
         {
@@ -689,7 +864,7 @@ namespace BimCommands.Tekla.OverlapChecker
                 if (pickWindow)
                 {
                     TeklaPicker picker = new TeklaPicker();
-                    lblStatusCount.Text = "👉 Pick window area in Tekla 3D view (Middle-click to finish)...";
+                    lblStatusCount.Text = "🎯 Pick window area in Tekla 3D view (Middle-click to finish)...";
                     statusStrip.Refresh();
                     ModelObjectEnumerator enumerator = picker.PickObjects(
                         TeklaPicker.PickObjectsEnum.PICK_N_OBJECTS,
@@ -730,7 +905,25 @@ namespace BimCommands.Tekla.OverlapChecker
                 return;
             }
 
-            if (list.Count < 2)
+            // Expand any RebarSets into their constituent reinforcements
+            var expandedList = new List<ModelObject>();
+            foreach (var obj in list)
+            {
+                if (obj is RebarSet rSet)
+                {
+                    var enumRebars = rSet.GetReinforcements();
+                    while (enumRebars != null && enumRebars.MoveNext())
+                    {
+                        if (enumRebars.Current != null) expandedList.Add(enumRebars.Current);
+                    }
+                }
+                else
+                {
+                    expandedList.Add(obj);
+                }
+            }
+
+            if (expandedList.Count < 2)
             {
                 MessageBox.Show(
                     "At least 2 objects are required to check for duplicates!",
@@ -741,12 +934,13 @@ namespace BimCommands.Tekla.OverlapChecker
             }
 
             // Prepare UI state for scanning
+            ClearDrawn3D();
             btnPickObjects.Enabled = false;
             btnFromSelection.Enabled = false;
             btnCancelScan.Enabled = true;
             prgScan.Visible = true;
             prgScan.Value = 0;
-            lblStatusCount.Text = $"Analyzing {list.Count} objects using Spatial Grid Acceleration...";
+            lblStatusCount.Text = $"Analyzing {expandedList.Count} objects with GeometryHelper 3D Engine...";
 
             RetentionMode retMode = RetentionMode.SmartNumberedFirst;
             if (cboRetentionRule.SelectedIndex == 1) retMode = RetentionMode.OlderObjectFirst;
@@ -754,7 +948,7 @@ namespace BimCommands.Tekla.OverlapChecker
 
             ScanWorkerArgs args = new ScanWorkerArgs
             {
-                Objects = list,
+                Objects = expandedList,
                 Tolerance = (double)numTolerance.Value,
                 ExactOnly = radExactDuplicate.Checked,
                 Retention = retMode
@@ -780,7 +974,7 @@ namespace BimCommands.Tekla.OverlapChecker
             bool exactOnly = args.ExactOnly;
             RetentionMode retention = args.Retention;
 
-            // Phase 1: Feature Extraction
+            // Phase 1: Feature & Solid Extraction
             List<ObjectGeoData> geoList = new List<ObjectGeoData>();
             int total = rawObjects.Count;
             for (int i = 0; i < total; i++)
@@ -797,62 +991,34 @@ namespace BimCommands.Tekla.OverlapChecker
                     geoList.Add(geo);
                 }
 
-                if (i % 200 == 0 || i == total - 1)
+                if (i % 100 == 0 || i == total - 1)
                 {
-                    int pct = (int)((i + 1) * 30.0 / total);
-                    _bgWorker.ReportProgress(pct, $"Extracting geometry {i + 1}/{total}...");
+                    int pct = (int)((i + 1) * 35.0 / total);
+                    _bgWorker.ReportProgress(pct, $"Extracting 3D solids {i + 1}/{total}...");
                 }
             }
 
-            // Phase 2: Spatial Grid Partitioning (O(N log N))
-            double cellSize = 1200.0; // 1.2m default cell
-            var grid = new Dictionary<long, List<ObjectGeoData>>();
-
-            long HashCell(int cx, int cy, int cz)
-            {
-                unchecked
-                {
-                    long h = 17;
-                    h = h * 31 + cx;
-                    h = h * 31 + cy;
-                    h = h * 31 + cz;
-                    return h;
-                }
-            }
+            // Phase 2: Index Solids for GeometryHelper Clash3.Find
+            var solidsToCheck = new List<GeoSolid3>();
+            var solidOwners = new List<ObjectGeoData>();
 
             for (int i = 0; i < geoList.Count; i++)
             {
                 var g = geoList[i];
-                int minX = (int)Math.Floor(g.Min.X / cellSize);
-                int maxX = (int)Math.Floor(g.Max.X / cellSize);
-                int minY = (int)Math.Floor(g.Min.Y / cellSize);
-                int maxY = (int)Math.Floor(g.Max.Y / cellSize);
-                int minZ = (int)Math.Floor(g.Min.Z / cellSize);
-                int maxZ = (int)Math.Floor(g.Max.Z / cellSize);
-
-                // Add to overlapping cells
-                for (int x = minX; x <= maxX; x++)
+                if (g.Solid != null)
                 {
-                    for (int y = minY; y <= maxY; y++)
+                    solidsToCheck.Add(g.Solid);
+                    solidOwners.Add(g);
+                }
+                else if (g.RebarPipes != null && g.RebarPipes.Count > 0)
+                {
+                    foreach (var pipe in g.RebarPipes)
                     {
-                        for (int z = minZ; z <= maxZ; z++)
-                        {
-                            long key = HashCell(x, y, z);
-                            if (!grid.TryGetValue(key, out var cellBucket))
-                            {
-                                cellBucket = new List<ObjectGeoData>();
-                                grid[key] = cellBucket;
-                            }
-                            cellBucket.Add(g);
-                        }
+                        solidsToCheck.Add(pipe);
+                        solidOwners.Add(g);
                     }
                 }
             }
-
-            // Phase 3: Candidate Collision Checking
-            List<OverlapItem> results = new List<OverlapItem>();
-            HashSet<int> duplicateIds = new HashSet<int>();
-            HashSet<long> testedPairs = new HashSet<long>();
 
             long PairKey(int idA, int idB)
             {
@@ -861,108 +1027,222 @@ namespace BimCommands.Tekla.OverlapChecker
                 return ((long)min << 32) | (uint)max;
             }
 
-            int processedCount = 0;
-            int totalGeos = geoList.Count;
+            var pairMap = new Dictionary<long, (ObjectGeoData A, ObjectGeoData B, double TotalVol, List<GeoSolid3> Solids, ClashKind Kind)>();
 
-            foreach (var g in geoList)
+            if (solidsToCheck.Count >= 2)
             {
+                _bgWorker.ReportProgress(40, $"Running multi-core BVH clash check on {solidsToCheck.Count} bodies...");
+
+                ClashOptions clashOptions = new ClashOptions(
+                    clearance: tolerance,
+                    includeTouching: false, // Disregard surface touching contacts to prevent false positives
+                    maxDegreeOfParallelism: Environment.ProcessorCount
+                );
+
+                ClashResult[] rawClashes = Clash3.Find(solidsToCheck, clashOptions);
+
                 if (_bgWorker.CancellationPending)
                 {
                     e.Cancel = true;
                     return;
                 }
 
-                processedCount++;
-                if (processedCount % 100 == 0 || processedCount == totalGeos)
+                if (rawClashes != null)
                 {
-                    int pct = 30 + (int)(processedCount * 70.0 / totalGeos);
-                    _bgWorker.ReportProgress(pct, $"Checking collisions {processedCount}/{totalGeos}...");
-                }
-
-                if (duplicateIds.Contains(g.Id)) continue;
-
-                // Lookup cells
-                int minX = (int)Math.Floor(g.Min.X / cellSize);
-                int maxX = (int)Math.Floor(g.Max.X / cellSize);
-                int minY = (int)Math.Floor(g.Min.Y / cellSize);
-                int maxY = (int)Math.Floor(g.Max.Y / cellSize);
-                int minZ = (int)Math.Floor(g.Min.Z / cellSize);
-                int maxZ = (int)Math.Floor(g.Max.Z / cellSize);
-
-                HashSet<ObjectGeoData> candidates = new HashSet<ObjectGeoData>();
-                for (int x = minX; x <= maxX; x++)
-                {
-                    for (int y = minY; y <= maxY; y++)
+                    foreach (var c in rawClashes)
                     {
-                        for (int z = minZ; z <= maxZ; z++)
+                        if (c == null) continue;
+                        var ownerA = solidOwners[c.First];
+                        var ownerB = solidOwners[c.Second];
+
+                        if (ownerA.Id == ownerB.Id) continue;
+                        if (ownerA.IsRebar != ownerB.IsRebar) continue;
+                        // Structural types must match (e.g. Beam with Beam, Plate with Plate)
+                        if (!string.Equals(ownerA.TypeName, ownerB.TypeName, StringComparison.OrdinalIgnoreCase)) continue;
+
+                        long pKey = PairKey(ownerA.Id, ownerB.Id);
+                        if (!pairMap.TryGetValue(pKey, out var existing))
                         {
-                            long key = HashCell(x, y, z);
-                            if (grid.TryGetValue(key, out var bucket))
-                            {
-                                foreach (var other in bucket)
-                                {
-                                    if (other.Id != g.Id) candidates.Add(other);
-                                }
-                            }
+                            var solids = new List<GeoSolid3>();
+                            if (c.Overlaps != null) solids.AddRange(c.Overlaps);
+                            pairMap[pKey] = (ownerA, ownerB, c.Volume, solids, c.Kind);
+                        }
+                        else
+                        {
+                            double newVol = existing.TotalVol + c.Volume;
+                            if (c.Overlaps != null) existing.Solids.AddRange(c.Overlaps);
+                            pairMap[pKey] = (existing.A, existing.B, newVol, existing.Solids, c.Kind == ClashKind.Hard ? ClashKind.Hard : existing.Kind);
                         }
                     }
                 }
+            }
 
-                foreach (var other in candidates)
+            // Phase 3: Fallback check for objects without solid bodies (e.g. unmeshed rebars/parts)
+            // using spatial centerline or bounding box matching
+            var unconverted = geoList.Where(g => g.Solid == null && (g.RebarPipes == null || g.RebarPipes.Count == 0)).ToList();
+            if (unconverted.Count > 0)
+            {
+                for (int i = 0; i < unconverted.Count; i++)
                 {
-                    if (duplicateIds.Contains(other.Id)) continue;
-
-                    long pKey = PairKey(g.Id, other.Id);
-                    if (testedPairs.Contains(pKey)) continue;
-                    testedPairs.Add(pKey);
-
-                    if (CheckIsOverlap(g, other, tolerance, exactOnly))
+                    var a = unconverted[i];
+                    for (int j = i + 1; j < unconverted.Count; j++)
                     {
-                        // Decide which object to keep and which to delete based on Smart Retention
-                        ObjectGeoData kept;
-                        ObjectGeoData dup;
-                        string reason;
+                        var b = unconverted[j];
+                        if (a.Id == b.Id || a.IsRebar != b.IsRebar) continue;
+                        if (!string.Equals(a.TypeName, b.TypeName, StringComparison.OrdinalIgnoreCase)) continue;
 
-                        DecideRetention(g, other, retention, out kept, out dup, out reason);
+                        long pKey = PairKey(a.Id, b.Id);
+                        if (pairMap.ContainsKey(pKey)) continue;
 
-                        duplicateIds.Add(dup.Id);
-
-                        OverlapItem item = new OverlapItem
+                        if (CheckFallbackOverlap(a, b, tolerance, exactOnly))
                         {
-                            IsSelected = true,
-                            OriginalObject = kept.Obj,
-                            DuplicateObject = dup.Obj,
-                            OriginalId = kept.Id,
-                            DuplicateId = dup.Id,
-                            OriginalGuid = kept.Guid,
-                            DuplicateGuid = dup.Guid,
-                            TypeName = dup.TypeName,
-                            OriginalName = kept.Name,
-                            DuplicateName = dup.Name,
-                            OriginalProfile = kept.Profile,
-                            DuplicateProfile = dup.Profile,
-                            OriginalMaterial = kept.Material,
-                            DuplicateMaterial = dup.Material,
-                            OriginalClass = kept.ClassStr,
-                            DuplicateClass = dup.ClassStr,
-                            OriginalPhase = kept.Phase,
-                            DuplicatePhase = dup.Phase,
-                            OriginalMark = kept.PartMark,
-                            DuplicateMark = dup.PartMark,
-                            OriginalLength = kept.Length,
-                            DuplicateLength = dup.Length,
-                            OriginalVolume = kept.Volume,
-                            DuplicateVolume = dup.Volume,
-                            CenterPoint = dup.Center,
-                            CenterStr = $"{dup.Center.X:0}, {dup.Center.Y:0}, {dup.Center.Z:0}",
-                            OverlapType = exactOnly ? "100% Duplicate" : "Volume Overlap",
-                            RetentionReason = reason
-                        };
+                            // Calculate approximate intersection volume between bounding boxes
+                            double interMinX = Math.Max(a.Min.X, b.Min.X);
+                            double interMaxX = Math.Min(a.Max.X, b.Max.X);
+                            double interMinY = Math.Max(a.Min.Y, b.Min.Y);
+                            double interMaxY = Math.Min(a.Max.Y, b.Max.Y);
+                            double interMinZ = Math.Max(a.Min.Z, b.Min.Z);
+                            double interMaxZ = Math.Min(a.Max.Z, b.Max.Z);
 
-                        results.Add(item);
-                        break;
+                            double interAabbVol = 0;
+                            if (interMaxX > interMinX && interMaxY > interMinY && interMaxZ > interMinZ)
+                            {
+                                interAabbVol = (interMaxX - interMinX) * (interMaxY - interMinY) * (interMaxZ - interMinZ);
+                            }
+
+                            double aabbVolA = Math.Max(1.0, a.SizeX * a.SizeY * a.SizeZ);
+                            double approxOverlapVol;
+                            if (a.Volume > 0 && b.Volume > 0)
+                            {
+                                double ratio = Math.Min(1.0, interAabbVol / aabbVolA);
+                                approxOverlapVol = Math.Min(a.Volume, b.Volume) * ratio;
+                            }
+                            else
+                            {
+                                approxOverlapVol = interAabbVol;
+                            }
+
+                            pairMap[pKey] = (a, b, approxOverlapVol, new List<GeoSolid3>(), ClashKind.Hard);
+                        }
                     }
                 }
+            }
+
+            // Phase 4: Construct OverlapItems & Decide Retention
+            List<OverlapItem> results = new List<OverlapItem>();
+            HashSet<int> duplicateIds = new HashSet<int>();
+
+            int pairIndex = 0;
+            int totalPairs = pairMap.Count;
+
+            foreach (var entry in pairMap.Values)
+            {
+                pairIndex++;
+                if (pairIndex % 50 == 0 || pairIndex == totalPairs)
+                {
+                    int pct = 70 + (int)(pairIndex * 30.0 / Math.Max(1, totalPairs));
+                    _bgWorker.ReportProgress(pct, $"Classifying overlap results {pairIndex}/{totalPairs}...");
+                }
+
+                var a = entry.A;
+                var b = entry.B;
+
+                // Chain duplicate prevention: skip if either object was already handled/deleted in another duplicate pair
+                if (duplicateIds.Contains(a.Id) || duplicateIds.Contains(b.Id))
+                {
+                    continue;
+                }
+
+                double overlapVol = entry.TotalVol;
+                double volA = a.Volume > 0 ? a.Volume : (a.Solid != null ? a.Solid.Volume : 1.0);
+                double volB = b.Volume > 0 ? b.Volume : (b.Solid != null ? b.Solid.Volume : 1.0);
+                double minVol = Math.Min(volA, volB);
+                double overlapRatio = minVol > 0 ? Math.Min(1.0, overlapVol / minVol) : 0.0;
+
+                double centerDist = Distance(a.Center, b.Center);
+
+                // High-fidelity exact duplicate logic (requiring >= 95% volume overlap or aligned bounding box & profile)
+                bool isGeometricMatch = centerDist <= tolerance &&
+                    Math.Abs(a.SizeX - b.SizeX) <= tolerance &&
+                    Math.Abs(a.SizeY - b.SizeY) <= tolerance &&
+                    Math.Abs(a.SizeZ - b.SizeZ) <= tolerance;
+
+                bool isProfileMatch = string.Equals(a.Profile, b.Profile, StringComparison.OrdinalIgnoreCase);
+
+                bool isExactDuplicate = (overlapRatio >= 0.95 && (isProfileMatch || a.IsRebar)) ||
+                    (isGeometricMatch && (isProfileMatch || a.IsRebar));
+
+                // For rebars, also check centerline agreement
+                if (!isExactDuplicate && a.IsRebar && a.RebarPoints != null && b.RebarPoints != null && a.RebarPoints.Count == b.RebarPoints.Count)
+                {
+                    bool match = true;
+                    for (int p = 0; p < a.RebarPoints.Count; p++)
+                    {
+                        if (Distance(a.RebarPoints[p], b.RebarPoints[p]) > tolerance)
+                        {
+                            match = false;
+                            break;
+                        }
+                    }
+                    if (match) isExactDuplicate = true;
+                }
+
+                if (exactOnly && !isExactDuplicate)
+                {
+                    continue;
+                }
+
+                string overlapType = isExactDuplicate ? "100% Duplicate" : "Volume Overlap";
+
+                ObjectGeoData kept;
+                ObjectGeoData dup;
+                string reason;
+                DecideRetention(a, b, retention, out kept, out dup, out reason);
+                duplicateIds.Add(dup.Id);
+
+                TeklaPoint clashCenter = new TeklaPoint(
+                    (dup.Center.X + kept.Center.X) / 2.0,
+                    (dup.Center.Y + kept.Center.Y) / 2.0,
+                    (dup.Center.Z + kept.Center.Z) / 2.0);
+
+                OverlapItem item = new OverlapItem
+                {
+                    IsSelected = true,
+                    OriginalObject = kept.Obj,
+                    DuplicateObject = dup.Obj,
+                    OriginalId = kept.Id,
+                    DuplicateId = dup.Id,
+                    OriginalGuid = kept.Guid,
+                    DuplicateGuid = dup.Guid,
+                    TypeName = dup.TypeName,
+                    OriginalName = kept.Name,
+                    DuplicateName = dup.Name,
+                    OriginalProfile = kept.Profile,
+                    DuplicateProfile = dup.Profile,
+                    OriginalMaterial = kept.Material,
+                    DuplicateMaterial = dup.Material,
+                    OriginalClass = kept.ClassStr,
+                    DuplicateClass = dup.ClassStr,
+                    OriginalPhase = kept.Phase,
+                    DuplicatePhase = dup.Phase,
+                    OriginalMark = kept.PartMark,
+                    DuplicateMark = dup.PartMark,
+                    OriginalLength = kept.Length,
+                    DuplicateLength = dup.Length,
+                    OriginalVolume = kept.Volume,
+                    DuplicateVolume = dup.Volume,
+                    CenterPoint = clashCenter,
+                    CenterStr = $"{clashCenter.X:0}, {clashCenter.Y:0}, {clashCenter.Z:0}",
+                    MinPoint = new TeklaPoint(Math.Min(a.Min.X, b.Min.X), Math.Min(a.Min.Y, b.Min.Y), Math.Min(a.Min.Z, b.Min.Z)),
+                    MaxPoint = new TeklaPoint(Math.Max(a.Max.X, b.Max.X), Math.Max(a.Max.Y, b.Max.Y), Math.Max(a.Max.Z, b.Max.Z)),
+                    ClashVolume = overlapVol,
+                    OverlapRatio = isExactDuplicate ? 1.0 : overlapRatio,
+                    ClashSolids = entry.Solids,
+                    OverlapType = overlapType,
+                    RetentionReason = reason
+                };
+
+                results.Add(item);
             }
 
             e.Result = new Tuple<List<OverlapItem>, int>(results, rawObjects.Count);
@@ -1002,11 +1282,12 @@ namespace BimCommands.Tekla.OverlapChecker
             int rebarsCount = _allOverlapList.Count(x => x.TypeName.Contains("Rebar") || x.TypeName.Contains("Reinforcement"));
             int partsCount = _allOverlapList.Count - rebarsCount;
 
-            lblStatScanned.Text = $"📦 Scanned: {totalScanned}";
-            lblStatDuplicates.Text = $"🔴 Duplicates: {_allOverlapList.Count}";
+            lblStatScanned.Text = $"🔍 Scanned: {totalScanned}";
+            lblStatDuplicates.Text = $"⚠️ Overlaps: {_allOverlapList.Count}";
             lblStatRebars.Text = $"🔩 Rebars: {rebarsCount}";
             lblStatParts.Text = $"🏗️ Parts: {partsCount}";
 
+            PopulateDynamicFilterOptions();
             ApplyFilter();
 
             if (_allOverlapList.Count > 0 && chkAutoSelectTekla.Checked)
@@ -1025,7 +1306,7 @@ namespace BimCommands.Tekla.OverlapChecker
 
         #endregion
 
-        #region Smart Retention & Overlap Algorithms
+        #region Smart Retention & Fallback Algorithms
 
         private void DecideRetention(ObjectGeoData a, ObjectGeoData b, RetentionMode mode, out ObjectGeoData kept, out ObjectGeoData dup, out string reason)
         {
@@ -1039,14 +1320,13 @@ namespace BimCommands.Tekla.OverlapChecker
                         reason = $"Kept ID {a.Id} (Has Mark: {a.PartMark})";
                         return;
                     }
-                    if (!a.HasMark && b.HasMark)
+                    if (b.HasMark && !a.HasMark)
                     {
                         kept = b;
                         dup = a;
                         reason = $"Kept ID {b.Id} (Has Mark: {b.PartMark})";
                         return;
                     }
-                    // If both or neither has mark, fall back to older ID
                     if (a.Id < b.Id)
                     {
                         kept = a;
@@ -1094,75 +1374,28 @@ namespace BimCommands.Tekla.OverlapChecker
             }
         }
 
-        private bool CheckIsOverlap(ObjectGeoData a, ObjectGeoData b, double tol, bool exactOnly)
+        private bool CheckFallbackOverlap(ObjectGeoData a, ObjectGeoData b, double tol, bool exactOnly)
         {
             double dist = Distance(a.Center, b.Center);
-            if (dist > a.Radius + b.Radius + tol)
-            {
-                return false;
-            }
-
-            // Quick type compatibility check
-            bool aIsRebar = a.TypeName.Contains("Rebar") || a.TypeName.Contains("Reinforcement");
-            bool bIsRebar = b.TypeName.Contains("Rebar") || b.TypeName.Contains("Reinforcement");
-            if (aIsRebar != bIsRebar) return false;
+            if (dist > a.Radius + b.Radius + tol) return false;
 
             if (exactOnly)
             {
-                if (a.TypeName != b.TypeName) return false;
+                if (!string.Equals(a.TypeName, b.TypeName, StringComparison.OrdinalIgnoreCase)) return false;
+                if (!string.Equals(a.Profile, b.Profile, StringComparison.OrdinalIgnoreCase)) return false;
                 if (dist > tol) return false;
 
                 double diffX = Math.Abs(a.SizeX - b.SizeX);
                 double diffY = Math.Abs(a.SizeY - b.SizeY);
                 double diffZ = Math.Abs(a.SizeZ - b.SizeZ);
-                if (diffX > tol || diffY > tol || diffZ > tol)
-                {
-                    return false;
-                }
-
-                // If Beam-like: compare start & end points
-                if (a.Obj is Beam beamA && b.Obj is Beam beamB)
-                {
-                    double d1 = Distance(beamA.StartPoint, beamB.StartPoint);
-                    double d2 = Distance(beamA.EndPoint, beamB.EndPoint);
-                    double d3 = Distance(beamA.StartPoint, beamB.EndPoint);
-                    double d4 = Distance(beamA.EndPoint, beamB.StartPoint);
-
-                    bool sameDir = d1 <= tol && d2 <= tol;
-                    bool revDir = d3 <= tol && d4 <= tol;
-                    if (!sameDir && !revDir)
-                    {
-                        return false;
-                    }
-                }
-
-                // If Rebar: compare centerline polygon points
-                if (aIsRebar && a.RebarPoints != null && b.RebarPoints != null)
-                {
-                    if (a.RebarPoints.Count != b.RebarPoints.Count) return false;
-                    for (int i = 0; i < a.RebarPoints.Count; i++)
-                    {
-                        if (Distance(a.RebarPoints[i], b.RebarPoints[i]) > tol)
-                        {
-                            return false;
-                        }
-                    }
-                }
-
-                return true;
+                return diffX <= tol && diffY <= tol && diffZ <= tol;
             }
 
-            // Volume Clash Mode (AABB intersection with radius limit)
             bool overlapX = a.Min.X <= b.Max.X + tol && a.Max.X >= b.Min.X - tol;
             bool overlapY = a.Min.Y <= b.Max.Y + tol && a.Max.Y >= b.Min.Y - tol;
             bool overlapZ = a.Min.Z <= b.Max.Z + tol && a.Max.Z >= b.Min.Z - tol;
 
-            if (overlapX && overlapY && overlapZ)
-            {
-                return dist <= Math.Max(a.Radius, b.Radius);
-            }
-
-            return false;
+            return overlapX && overlapY && overlapZ && dist <= Math.Max(a.Radius, b.Radius);
         }
 
         private ObjectGeoData ExtractGeoData(ModelObject obj)
@@ -1184,6 +1417,9 @@ namespace BimCommands.Tekla.OverlapChecker
                 TeklaPoint minPt = null;
                 TeklaPoint maxPt = null;
                 List<TeklaPoint> rebarPts = null;
+                GeoSolid3 geoSolid = null;
+                List<GeoSolid3> rebarPipes = null;
+                bool isRebar = false;
 
                 if (obj is Part part)
                 {
@@ -1191,15 +1427,24 @@ namespace BimCommands.Tekla.OverlapChecker
                     profile = part.Profile.ProfileString;
                     material = part.Material.MaterialString;
                     classStr = part.Class;
-                    Solid solid = part.GetSolid();
-                    if (solid != null)
+                    try
                     {
-                        minPt = solid.MinimumPoint;
-                        maxPt = solid.MaximumPoint;
+                        var s = part.GetSolid();
+                        if (s != null)
+                        {
+                            minPt = s.MinimumPoint;
+                            maxPt = s.MaximumPoint;
+                            if (s.TryToGeoSolid3(out GeoSolid3 parsedSolid))
+                            {
+                                geoSolid = parsedSolid;
+                            }
+                        }
                     }
+                    catch { }
                 }
                 else if (obj is Reinforcement rebar)
                 {
+                    isRebar = true;
                     name = rebar.Name;
                     material = rebar.Grade;
                     classStr = rebar.Class.ToString();
@@ -1208,32 +1453,66 @@ namespace BimCommands.Tekla.OverlapChecker
                     rebar.GetReportProperty("SIZE", ref size);
                     profile = rebar.Grade + " d" + size;
 
-                    Solid solid = rebar.GetSolid();
-                    if (solid != null)
-                    {
-                        minPt = solid.MinimumPoint;
-                        maxPt = solid.MaximumPoint;
-                    }
-
-                    // Extract rebar polygon centerline points
                     try
                     {
-                        var rebarGeos = rebar.GetRebarGeometries(true);
-                        if (rebarGeos != null && rebarGeos.Count > 0 && rebarGeos[0] is RebarGeometry rGeo && rGeo.Shape != null)
+                        var s = rebar.GetSolid();
+                        if (s != null)
                         {
-                            rebarPts = new List<TeklaPoint>();
-                            foreach (var pt in rGeo.Shape.Points)
+                            minPt = s.MinimumPoint;
+                            maxPt = s.MaximumPoint;
+                        }
+                    }
+                    catch { }
+
+                    // Extract rebar geometries with GeometryHelper TeklaConvert
+                    try
+                    {
+                        var rebarGeos = rebar.GetRebarGeometriesWithoutClashes(true);
+                        if (rebarGeos != null)
+                        {
+                            rebarPipes = new List<GeoSolid3>();
+                            foreach (RebarGeometry rGeo in rebarGeos.OfType<RebarGeometry>())
                             {
-                                if (pt is TeklaPoint p) rebarPts.Add(p);
+                                try
+                                {
+                                    var arc = rGeo.ToGeoPolylineArc3();
+                                    double barRad = rGeo.ToBarRadius();
+                                    if (barRad > 0 && arc.Length > 0)
+                                    {
+                                        var pipe = GeoSolid3.Pipe(arc, barRad, 1.0);
+                                        rebarPipes.Add(pipe);
+                                    }
+                                }
+                                catch { }
+
+                                if (rebarPts == null && rGeo.Shape != null)
+                                {
+                                    rebarPts = new List<TeklaPoint>();
+                                    foreach (var pt in rGeo.Shape.Points)
+                                    {
+                                        if (pt is TeklaPoint p) rebarPts.Add(p);
+                                    }
+                                }
                             }
                         }
                     }
                     catch { }
                 }
 
-                if (minPt == null || maxPt == null) return null;
+                if (minPt == null || maxPt == null)
+                {
+                    if (geoSolid != null)
+                    {
+                        var aabb = geoSolid.GetAabb();
+                        minPt = new TeklaPoint(aabb.Min.X, aabb.Min.Y, aabb.Min.Z);
+                        maxPt = new TeklaPoint(aabb.Max.X, aabb.Max.Y, aabb.Max.Z);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
 
-                // Extract standard report properties
                 try
                 {
                     obj.GetReportProperty("PHASE", ref phase);
@@ -1243,6 +1522,11 @@ namespace BimCommands.Tekla.OverlapChecker
                     obj.GetReportProperty("VOLUME", ref volume);
                 }
                 catch { }
+
+                if (volume <= 0 && geoSolid != null)
+                {
+                    volume = geoSolid.Volume;
+                }
 
                 bool hasMark = !string.IsNullOrWhiteSpace(partPos) && partPos != "?" && partPos != "0";
 
@@ -1255,6 +1539,11 @@ namespace BimCommands.Tekla.OverlapChecker
                 double szY = Math.Abs(maxPt.Y - minPt.Y);
                 double szZ = Math.Abs(maxPt.Z - minPt.Z);
                 double radius = Math.Sqrt(szX * szX + szY * szY + szZ * szZ) / 2.0;
+
+                GeoAabb3 box = geoSolid != null ? geoSolid.GetAabb() :
+                    (rebarPipes != null && rebarPipes.Count > 0 ?
+                        GeoAabb3.FromPoints(rebarPipes.SelectMany(p => new[] { p.GetAabb().Min, p.GetAabb().Max })) :
+                        new GeoAabb3(new GeoPoint3(minPt.X, minPt.Y, minPt.Z), new GeoPoint3(maxPt.X, maxPt.Y, maxPt.Z)));
 
                 return new ObjectGeoData
                 {
@@ -1279,6 +1568,10 @@ namespace BimCommands.Tekla.OverlapChecker
                     SizeY = szY,
                     SizeZ = szZ,
                     Radius = radius,
+                    Solid = geoSolid,
+                    RebarPipes = rebarPipes,
+                    Box = box,
+                    IsRebar = isRebar,
                     RebarPoints = rebarPts
                 };
             }
@@ -1292,11 +1585,61 @@ namespace BimCommands.Tekla.OverlapChecker
 
         #region UI Filtering & Selection
 
+        private void PopulateDynamicFilterOptions()
+        {
+            try
+            {
+                // Populate unique Classes
+                if (cboFilterClass != null)
+                {
+                    cboFilterClass.Items.Clear();
+                    cboFilterClass.Items.Add("All Classes");
+                    var uniqueClasses = _allOverlapList
+                        .Select(x => x.DuplicateClass)
+                        .Where(c => !string.IsNullOrWhiteSpace(c))
+                        .Distinct()
+                        .OrderBy(c => c)
+                        .ToList();
+                    foreach (var cls in uniqueClasses)
+                    {
+                        cboFilterClass.Items.Add($"Class {cls}");
+                    }
+                    cboFilterClass.SelectedIndex = 0;
+                }
+
+                // Populate unique Phases
+                if (cboFilterPhase != null)
+                {
+                    cboFilterPhase.Items.Clear();
+                    cboFilterPhase.Items.Add("All Phases");
+                    var uniquePhases = _allOverlapList
+                        .Select(x => x.DuplicatePhase)
+                        .Distinct()
+                        .OrderBy(p => p)
+                        .ToList();
+                    foreach (var ph in uniquePhases)
+                    {
+                        cboFilterPhase.Items.Add($"Phase {ph}");
+                    }
+                    cboFilterPhase.SelectedIndex = 0;
+                }
+            }
+            catch { }
+        }
+
         private void ApplyFilter()
         {
             string keyword = txtSearch.Text.Trim().ToLowerInvariant();
             int typeFilter = cboFilterType.SelectedIndex;
             int overlapFilter = cboFilterOverlap.SelectedIndex;
+            string selectedClass = (cboFilterClass != null && cboFilterClass.SelectedIndex > 0) ? cboFilterClass.SelectedItem.ToString().Replace("Class ", "").Trim() : "";
+            int selectedPhase = -1;
+            if (cboFilterPhase != null && cboFilterPhase.SelectedIndex > 0)
+            {
+                string phStr = cboFilterPhase.SelectedItem.ToString().Replace("Phase ", "").Trim();
+                int.TryParse(phStr, out selectedPhase);
+            }
+            int ratioFilter = (cboFilterRatio != null) ? cboFilterRatio.SelectedIndex : 0;
 
             _displayedOverlapList = _allOverlapList.Where(item =>
             {
@@ -1325,6 +1668,32 @@ namespace BimCommands.Tekla.OverlapChecker
                 if (overlapFilter == 1 && !item.OverlapType.Contains("100%")) return false;
                 if (overlapFilter == 2 && !item.OverlapType.Contains("Volume")) return false;
 
+                // Class filter
+                if (!string.IsNullOrEmpty(selectedClass))
+                {
+                    if (item.DuplicateClass != selectedClass && item.OriginalClass != selectedClass) return false;
+                }
+
+                // Phase filter
+                if (selectedPhase >= 0)
+                {
+                    if (item.DuplicatePhase != selectedPhase && item.OriginalPhase != selectedPhase) return false;
+                }
+
+                // Ratio filter
+                if (ratioFilter == 1) // >= 95%
+                {
+                    if (item.OverlapRatio < 0.95) return false;
+                }
+                else if (ratioFilter == 2) // 50% - 95%
+                {
+                    if (item.OverlapRatio < 0.50 || item.OverlapRatio >= 0.95) return false;
+                }
+                else if (ratioFilter == 3) // < 50%
+                {
+                    if (item.OverlapRatio >= 0.50) return false;
+                }
+
                 return true;
             }).ToList();
 
@@ -1340,19 +1709,26 @@ namespace BimCommands.Tekla.OverlapChecker
                 lvi.SubItems.Add(item.TypeName);
                 lvi.SubItems.Add(item.DuplicateName);
                 lvi.SubItems.Add(item.DuplicateProfile);
-
-                string markStatus = (item.OriginalMark == item.DuplicateMark) ? "Same" : $"{item.OriginalMark} vs {item.DuplicateMark}";
-                lvi.SubItems.Add(markStatus);
-                lvi.SubItems.Add(item.CenterStr);
+                lvi.SubItems.Add(item.DuplicateMaterial);
                 lvi.SubItems.Add(item.OverlapType);
+                lvi.SubItems.Add(item.ClashVolumeFormatted);
+                lvi.SubItems.Add(item.OverlapPercentageFormatted);
                 lvi.SubItems.Add(item.RetentionReason);
 
-                lvi.ForeColor = Color.FromArgb(185, 28, 28);
+                if (item.OverlapType.Contains("100%"))
+                {
+                    lvi.ForeColor = Color.FromArgb(185, 28, 28);
+                }
+                else
+                {
+                    lvi.ForeColor = Color.FromArgb(30, 41, 59);
+                }
+
                 lstResults.Items.Add(lvi);
             }
             lstResults.EndUpdate();
 
-            lblFilterSummary.Text = $"Showing: {_displayedOverlapList.Count} / {_allOverlapList.Count} duplicates";
+            lblFilterSummary.Text = $"Showing: {_displayedOverlapList.Count} / {_allOverlapList.Count} overlaps";
             lblStatusCount.Text = $"Found {_allOverlapList.Count} duplicate items ({_displayedOverlapList.Count} shown).";
         }
 
@@ -1369,6 +1745,66 @@ namespace BimCommands.Tekla.OverlapChecker
 
             OverlapItem item = _displayedOverlapList[index];
             PopulateInspector(item);
+
+            // Auto-highlight in Tekla 3D when navigating rows with Up/Down arrow keys or mouse
+            if (chkAutoSelectTekla.Checked && item.DuplicateObject != null)
+            {
+                try
+                {
+                    ArrayList list = new ArrayList { item.DuplicateObject };
+                    if (item.OriginalObject != null) list.Add(item.OriginalObject);
+                    UIModelObjectSelector selector = new UIModelObjectSelector();
+                    selector.Select(list);
+                }
+                catch { }
+            }
+        }
+
+        private void LstResults_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.Handled = true;
+                DeleteDuplicates();
+            }
+            else if (e.KeyCode == Keys.S && (e.Modifiers == Keys.None || e.Modifiers == Keys.Control))
+            {
+                e.Handled = true;
+                BtnSwapSelected_Click(sender, EventArgs.Empty);
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                LstResults_DoubleClick(sender, EventArgs.Empty);
+            }
+        }
+
+        private List<OverlapItem> GetTargetItems()
+        {
+            List<OverlapItem> targets = new List<OverlapItem>();
+
+            // 1. First priority: items with checked checkboxes
+            for (int i = 0; i < lstResults.Items.Count; i++)
+            {
+                if (lstResults.Items[i].Checked && i < _displayedOverlapList.Count)
+                {
+                    targets.Add(_displayedOverlapList[i]);
+                }
+            }
+
+            // 2. If NO checkbox is checked, fallback to currently selected row(s) (Up/Down arrow navigation or Mouse)
+            if (targets.Count == 0 && lstResults.SelectedIndices.Count > 0)
+            {
+                foreach (int selIdx in lstResults.SelectedIndices)
+                {
+                    if (selIdx >= 0 && selIdx < _displayedOverlapList.Count)
+                    {
+                        targets.Add(_displayedOverlapList[selIdx]);
+                    }
+                }
+            }
+
+            return targets;
         }
 
         private void PopulateInspector(OverlapItem item)
@@ -1376,7 +1812,7 @@ namespace BimCommands.Tekla.OverlapChecker
             lstInspector.BeginUpdate();
             lstInspector.Items.Clear();
 
-            void AddRow(string prop, string origVal, string dupVal)
+            void AddRow(string prop, string dupVal, string origVal)
             {
                 ListViewItem row = new ListViewItem(prop);
                 row.SubItems.Add(origVal ?? "");
@@ -1389,16 +1825,22 @@ namespace BimCommands.Tekla.OverlapChecker
                 lstInspector.Items.Add(row);
             }
 
-            AddRow("ID", item.OriginalId.ToString(), item.DuplicateId.ToString());
-            AddRow("GUID", item.OriginalGuid, item.DuplicateGuid);
-            AddRow("Name", item.OriginalName, item.DuplicateName);
-            AddRow("Profile", item.OriginalProfile, item.DuplicateProfile);
-            AddRow("Material", item.OriginalMaterial, item.DuplicateMaterial);
-            AddRow("Class", item.OriginalClass, item.DuplicateClass);
-            AddRow("Phase", item.OriginalPhase.ToString(), item.DuplicatePhase.ToString());
-            AddRow("Part Mark", item.OriginalMark, item.DuplicateMark);
-            AddRow("Length (mm)", $"{item.OriginalLength:0.0}", $"{item.DuplicateLength:0.0}");
-            AddRow("Retention Logic", item.RetentionReason, "Marked for Deletion");
+            AddRow("ID", item.DuplicateId.ToString(), item.OriginalId.ToString());
+            AddRow("GUID", item.DuplicateGuid, item.OriginalGuid);
+            AddRow("Object Type", item.TypeName, item.TypeName);
+            AddRow("Name", item.DuplicateName, item.OriginalName);
+            AddRow("Profile", item.DuplicateProfile, item.OriginalProfile);
+            AddRow("Material", item.DuplicateMaterial, item.OriginalMaterial);
+            AddRow("Class", item.DuplicateClass, item.OriginalClass);
+            AddRow("Phase", item.DuplicatePhase.ToString(), item.OriginalPhase.ToString());
+            AddRow("Part Mark", item.DuplicateMark, item.OriginalMark);
+            AddRow("Length (mm)", $"{item.DuplicateLength:0.0}", $"{item.OriginalLength:0.0}");
+            AddRow("Volume (cm³)", $"{item.DuplicateVolume / 1e3:0.0}", $"{item.OriginalVolume / 1e3:0.0}");
+            AddRow("3D Clash Volume", item.ClashVolumeFormatted, item.ClashVolumeFormatted);
+            AddRow("Overlap Ratio", item.OverlapPercentageFormatted, item.OverlapPercentageFormatted);
+            AddRow("Overlap Type", item.OverlapType, item.OverlapType);
+            AddRow("Clash Center", item.CenterStr, item.CenterStr);
+            AddRow("Retention Logic", "Marked for Deletion", item.RetentionReason);
 
             lstInspector.EndUpdate();
         }
@@ -1422,7 +1864,10 @@ namespace BimCommands.Tekla.OverlapChecker
             ListViewItem lvi = lstResults.Items[index];
             lvi.Text = item.DuplicateId.ToString();
             lvi.SubItems[1].Text = item.OriginalId.ToString();
-            lvi.SubItems[8].Text = item.RetentionReason;
+            lvi.SubItems[3].Text = item.DuplicateName;
+            lvi.SubItems[4].Text = item.DuplicateProfile;
+            lvi.SubItems[5].Text = item.DuplicateMaterial;
+            lvi.SubItems[9].Text = item.RetentionReason;
 
             global::Tekla.Structures.Model.Operations.Operation.DisplayPrompt($"Swapped duplicate pair. Kept: ID {item.OriginalId}, Duplicate to delete: ID {item.DuplicateId}");
         }
@@ -1443,32 +1888,42 @@ namespace BimCommands.Tekla.OverlapChecker
                 UIModelObjectSelector selector = new UIModelObjectSelector();
                 selector.Select(list);
 
+                // Zoom to clash location
+                try
+                {
+                    double pad = 400.0;
+                    var min = new TeklaPoint(item.MinPoint.X - pad, item.MinPoint.Y - pad, item.MinPoint.Z - pad);
+                    var max = new TeklaPoint(item.MaxPoint.X + pad, item.MaxPoint.Y + pad, item.MaxPoint.Z + pad);
+                    ViewHandler.ZoomToBoundingBox(new TeklaAabb(min, max));
+                }
+                catch { }
+
+                // Draw 3D clash boundary in Tekla view
+                DrawClashInTekla(item);
+
                 global::Tekla.Structures.Model.Operations.Operation.DisplayPrompt(
-                    $"Selected Duplicate ID {item.DuplicateId} and Kept ID {item.OriginalId} in Tekla.");
+                    $"Zoomed & Selected Duplicate ID {item.DuplicateId} (Kept ID {item.OriginalId}) in Tekla. Clash Volume: {item.ClashVolumeFormatted}.");
             }
         }
 
         #endregion
 
-        #region Actions: Highlight, Delete, Quarantine, Export
+        #region Actions (Highlight, Draw 3D, Delete, Quarantine, Export)
 
         private void HighlightDuplicatesInTekla()
         {
             if (_allOverlapList.Count == 0) return;
 
+            List<OverlapItem> targets = GetTargetItems();
             ArrayList listToHighlight = new ArrayList();
-            for (int i = 0; i < lstResults.Items.Count; i++)
+            foreach (var item in targets)
             {
-                if (lstResults.Items[i].Checked && i < _displayedOverlapList.Count)
-                {
-                    var dup = _displayedOverlapList[i].DuplicateObject;
-                    if (dup != null) listToHighlight.Add(dup);
-                }
+                if (item.DuplicateObject != null) listToHighlight.Add(item.DuplicateObject);
             }
 
             if (listToHighlight.Count == 0)
             {
-                MessageBox.Show("No items are checked to highlight!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No items are selected or checked to highlight!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -1480,34 +1935,157 @@ namespace BimCommands.Tekla.OverlapChecker
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Highlight error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selection error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearDrawn3D()
+        {
+            try
+            {
+                if (_drawnPolycurves.Count > 0)
+                {
+                    foreach (var p in _drawnPolycurves)
+                    {
+                        try { p.Delete(); } catch { }
+                    }
+                    _drawnPolycurves.Clear();
+                    if (_model != null && _model.GetConnectionStatus())
+                    {
+                        _model.CommitChanges();
+                    }
+                }
+                lblStatusCount.Text = "Cleared 3D temporary drawings from Tekla view.";
+            }
+            catch { }
+        }
+
+        private void DrawClashInTekla(OverlapItem item)
+        {
+            try
+            {
+                ClearDrawn3D();
+                if (item.ClashSolids != null && item.ClashSolids.Count > 0)
+                {
+                    foreach (var solid in item.ClashSolids)
+                    {
+                        var polycurves = solid.DrawToTekla(ControlObjectColorEnum.RED, ControlObjectColorEnum.WHITE);
+                        if (polycurves != null) _drawnPolycurves.AddRange(polycurves);
+                    }
+                }
+                else
+                {
+                    // Draw bounding box if exact boolean solid is not cached
+                    var aabb = new GeoAabb3(
+                        new GeoPoint3(item.MinPoint.X, item.MinPoint.Y, item.MinPoint.Z),
+                        new GeoPoint3(item.MaxPoint.X, item.MaxPoint.Y, item.MaxPoint.Z));
+                    var corners = aabb.GetCorners();
+                    if (corners.Length >= 8)
+                    {
+                        var pts1 = new[] { corners[0], corners[1], corners[2], corners[3] }.Select(p => new TeklaPoint(p.X, p.Y, p.Z));
+                        var pts2 = new[] { corners[4], corners[5], corners[6], corners[7] }.Select(p => new TeklaPoint(p.X, p.Y, p.Z));
+                        var poly1 = pts1.DrawPolyline(true, ControlObjectColorEnum.RED);
+                        var poly2 = pts2.DrawPolyline(true, ControlObjectColorEnum.RED);
+                        if (poly1 != null) _drawnPolycurves.Add(poly1);
+                        if (poly2 != null) _drawnPolycurves.Add(poly2);
+                    }
+                }
+
+                if (_drawnPolycurves.Count > 0 && _model != null && _model.GetConnectionStatus())
+                {
+                    _model.CommitChanges();
+                }
+            }
+            catch { }
+        }
+
+        private void DrawSelectedOrAllClashes()
+        {
+            if (_displayedOverlapList.Count == 0)
+            {
+                MessageBox.Show("No overlaps to draw. Please scan first!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            ClearDrawn3D();
+
+            var toDraw = new List<OverlapItem>();
+            for (int i = 0; i < lstResults.Items.Count; i++)
+            {
+                if (lstResults.Items[i].Checked && i < _displayedOverlapList.Count)
+                {
+                    toDraw.Add(_displayedOverlapList[i]);
+                }
+            }
+
+            if (toDraw.Count == 0 && lstResults.SelectedIndices.Count > 0)
+            {
+                int selIdx = lstResults.SelectedIndices[0];
+                if (selIdx >= 0 && selIdx < _displayedOverlapList.Count)
+                {
+                    toDraw.Add(_displayedOverlapList[selIdx]);
+                }
+            }
+
+            if (toDraw.Count == 0) toDraw.AddRange(_displayedOverlapList);
+
+            foreach (var item in toDraw)
+            {
+                if (item.ClashSolids != null && item.ClashSolids.Count > 0)
+                {
+                    foreach (var solid in item.ClashSolids)
+                    {
+                        var polycurves = solid.DrawToTekla(ControlObjectColorEnum.RED, ControlObjectColorEnum.WHITE);
+                        if (polycurves != null) _drawnPolycurves.AddRange(polycurves);
+                    }
+                }
+                else
+                {
+                    var aabb = new GeoAabb3(
+                        new GeoPoint3(item.MinPoint.X, item.MinPoint.Y, item.MinPoint.Z),
+                        new GeoPoint3(item.MaxPoint.X, item.MaxPoint.Y, item.MaxPoint.Z));
+                    var corners = aabb.GetCorners();
+                    if (corners.Length >= 8)
+                    {
+                        var pts1 = new[] { corners[0], corners[1], corners[2], corners[3] }.Select(p => new TeklaPoint(p.X, p.Y, p.Z));
+                        var pts2 = new[] { corners[4], corners[5], corners[6], corners[7] }.Select(p => new TeklaPoint(p.X, p.Y, p.Z));
+                        var poly1 = pts1.DrawPolyline(true, ControlObjectColorEnum.RED);
+                        var poly2 = pts2.DrawPolyline(true, ControlObjectColorEnum.RED);
+                        if (poly1 != null) _drawnPolycurves.Add(poly1);
+                        if (poly2 != null) _drawnPolycurves.Add(poly2);
+                    }
+                }
+            }
+
+            if (_drawnPolycurves.Count > 0)
+            {
+                if (_model != null && _model.GetConnectionStatus())
+                {
+                    _model.CommitChanges();
+                }
+                lblStatusCount.Text = $"Drew {_drawnPolycurves.Count} 3D clash boundary curves in Tekla view.";
             }
         }
 
         private void DeleteDuplicates()
         {
-            List<OverlapItem> toDelete = new List<OverlapItem>();
-            for (int i = 0; i < lstResults.Items.Count; i++)
-            {
-                if (lstResults.Items[i].Checked && i < _displayedOverlapList.Count)
-                {
-                    toDelete.Add(_displayedOverlapList[i]);
-                }
-            }
+            if (!EnsureTeklaConnected()) return;
+
+            List<OverlapItem> toDelete = GetTargetItems();
 
             if (toDelete.Count == 0)
             {
-                MessageBox.Show("Please check at least one duplicate object in the list to delete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select or check at least one duplicate item in the list to delete!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             DialogResult confirm = MessageBox.Show(
                 $"Are you sure you want to permanently delete {toDelete.Count} duplicate object(s) from Tekla Structures?\n\n" +
-                $"✅ All corresponding original/kept objects will be preserved.\n" +
+                $"✓ All corresponding original/kept objects will be preserved.\n" +
                 $"💡 Tip: You can also use [QUARANTINE CLASS] to isolate them before deleting.",
-                "Confirm Delete Duplicates",
+                "Confirm Permanent Deletion",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+                MessageBoxIcon.Warning);
 
             if (confirm != DialogResult.Yes) return;
 
@@ -1525,15 +2103,26 @@ namespace BimCommands.Tekla.OverlapChecker
                 catch { }
             }
 
-            _model.CommitChanges();
-            MessageBox.Show(
-                $"Successfully deleted {deletedCount} duplicate object(s) from Tekla model!",
-                "Delete Complete",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            if (_model != null && _model.GetConnectionStatus())
+            {
+                _model.CommitChanges();
+            }
+            ClearDrawn3D();
 
             ApplyFilter();
-            lblStatusCount.Text = $"Deleted {deletedCount} duplicate object(s).";
+
+            // Refresh Metrics
+            int rebarsCount = _allOverlapList.Count(x => x.TypeName.Contains("Rebar") || x.TypeName.Contains("Reinforcement"));
+            int partsCount = _allOverlapList.Count - rebarsCount;
+            lblStatDuplicates.Text = $"⚠️ Overlaps: {_allOverlapList.Count}";
+            lblStatRebars.Text = $"🔩 Rebars: {rebarsCount}";
+            lblStatParts.Text = $"🏗️ Parts: {partsCount}";
+
+            MessageBox.Show(
+                $"Successfully deleted {deletedCount} duplicate object(s) from the Tekla model.",
+                "Deletion Complete",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void QuarantineDuplicates()
@@ -1560,24 +2149,27 @@ namespace BimCommands.Tekla.OverlapChecker
                 {
                     if (item.DuplicateObject is Part part)
                     {
-                        part.Class = "99"; // Class 99 is standard quarantine/gray
-                        part.Modify();
-                        changedCount++;
+                        part.Class = "99";
+                        if (part.Modify()) changedCount++;
                     }
                     else if (item.DuplicateObject is Reinforcement rebar)
                     {
                         rebar.Class = 99;
-                        rebar.Modify();
-                        changedCount++;
+                        if (rebar.Modify()) changedCount++;
                     }
                 }
                 catch { }
             }
 
-            _model.CommitChanges();
+            if (_model != null && _model.GetConnectionStatus())
+            {
+                _model.CommitChanges();
+            }
+
             MessageBox.Show(
-                $"Quarantined {changedCount} duplicate object(s) to Class 99!\n\nYou can now inspect them visually in 3D.",
-                "Quarantine Complete",
+                $"Successfully moved {changedCount} duplicate object(s) to Quarantine Class 99.\n\n" +
+                $"You can now visually inspect them in Tekla 3D views using view color representation.",
+                "Quarantine Applied",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
@@ -1602,19 +2194,24 @@ namespace BimCommands.Tekla.OverlapChecker
             try
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("DuplicateId,KeptId,TypeName,Name,Profile,Material,OriginalMark,DuplicateMark,Center_X,Center_Y,Center_Z,OverlapType,RetentionReason");
+                sb.AppendLine("DuplicateId,KeptId,TypeName,Name,Profile,Material,OriginalMark,DuplicateMark,Center_X,Center_Y,Center_Z,OverlapType,ClashVolume_mm3,OverlapPercentage,RetentionReason");
 
                 foreach (var item in _allOverlapList)
                 {
                     sb.AppendLine(
-                        $"{item.DuplicateId},{item.OriginalId},\"{item.TypeName}\",\"{item.DuplicateName}\",\"{item.DuplicateProfile}\"," +
-                        $"\"{item.DuplicateMaterial}\",\"{item.OriginalMark}\",\"{item.DuplicateMark}\"," +
+                        $"{item.DuplicateId},{item.OriginalId},\"{item.TypeName}\",\"{item.DuplicateName}\"," +
+                        $"\"{item.DuplicateProfile}\",\"{item.DuplicateMaterial}\",\"{item.OriginalMark}\",\"{item.DuplicateMark}\"," +
                         $"{item.CenterPoint.X:0.0},{item.CenterPoint.Y:0.0},{item.CenterPoint.Z:0.0}," +
-                        $"\"{item.OverlapType}\",\"{item.RetentionReason}\"");
+                        $"\"{item.OverlapType}\",{item.ClashVolume:0.0},{item.OverlapRatio * 100.0:0.0},\"{item.RetentionReason}\"");
                 }
 
                 File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
-                MessageBox.Show($"Exported {_allOverlapList.Count} records to:\n{sfd.FileName}", "Export Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show(
+                    $"Report successfully exported to:\n{sfd.FileName}",
+                    "Export Successful",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -1622,8 +2219,9 @@ namespace BimCommands.Tekla.OverlapChecker
             }
         }
 
-        private double Distance(TeklaPoint a, TeklaPoint b)
+        private static double Distance(TeklaPoint a, TeklaPoint b)
         {
+            if (a == null || b == null) return double.MaxValue;
             double dx = a.X - b.X;
             double dy = a.Y - b.Y;
             double dz = a.Z - b.Z;

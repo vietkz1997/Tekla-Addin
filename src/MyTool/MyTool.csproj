@@ -9,12 +9,15 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\..\release</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CodePage>65001</CodePage>
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)MyTool.exe" SkipUnchangedFiles="true" />
     <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)Split-Slab.exe" SkipUnchangedFiles="true" />
     <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)AppSplitSlab.exe" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)Change-shape.exe" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(TargetDir)AppChangeShape.exe" SkipUnchangedFiles="true" />
   </Target>
 
   <ItemGroup>

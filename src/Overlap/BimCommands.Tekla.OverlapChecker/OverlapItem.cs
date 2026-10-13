@@ -1,4 +1,6 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using GeometryHelper.Geometry;
 using Tekla.Structures.Model;
 using TeklaPoint = global::Tekla.Structures.Geometry3d.Point;
 
@@ -6,6 +8,7 @@ namespace BimCommands.Tekla.OverlapChecker
 {
     /// <summary>
     /// Represents an overlap/duplicate pair with comprehensive structural metadata for side-by-side inspection.
+    /// Enhanced with GeometryHelper 3D clash metrics (exact volume, overlap percentage, 3D solids).
     /// </summary>
     public class OverlapItem
     {
@@ -23,7 +26,7 @@ namespace BimCommands.Tekla.OverlapChecker
 
         // Common Classification
         public string TypeName { get; set; } = "";
-        public string OverlapType { get; set; } = "100% Duplicate"; // "100% Duplicate", "Volume Clash", "Coincident Rebar"
+        public string OverlapType { get; set; } = "100% Duplicate"; // "100% Duplicate", "Volume Overlap"
         public string RetentionReason { get; set; } = "Default order";
 
         // Original (Kept) Attributes
@@ -51,6 +54,13 @@ namespace BimCommands.Tekla.OverlapChecker
         public double DuplicateLength { get; set; }
         public double OriginalVolume { get; set; }
         public double DuplicateVolume { get; set; }
+
+        // GeometryHelper 3D Clash Metrics
+        public double ClashVolume { get; set; } // in mm3
+        public double OverlapRatio { get; set; } // 0.0 to 1.0 (e.g. 0.98 = 98%)
+        public string ClashVolumeFormatted => ClashVolume > 1e6 ? $"{ClashVolume / 1e6:0.00} dm³" : (ClashVolume > 1e3 ? $"{ClashVolume / 1e3:0.0} cm³" : $"{ClashVolume:0} mm³");
+        public string OverlapPercentageFormatted => $"{OverlapRatio * 100.0:0.0}%";
+        public List<GeoSolid3> ClashSolids { get; set; } = new List<GeoSolid3>();
 
         // Compatibility Properties
         public string Name => DuplicateName;

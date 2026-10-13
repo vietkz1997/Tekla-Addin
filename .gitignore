@@ -78,3 +78,7 @@ TeklaModel.log
 # Re-ignore any DLLs/EXEs generated in source build output folders
 src/**/[Bb]in/**
 src/**/[Oo]bj/**
+ 
+scratch/
+src/**/*.exe
+

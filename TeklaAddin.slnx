@@ -6,5 +6,6 @@
   <Project Path="src/Overlap/Overlap.csproj" />
   <Project Path="src/IssueTracker/IssueTracker.csproj" />
   <Project Path="src/EnvironmentConverter/EnvironmentConverter.csproj" />
+  <Project Path="src/ChangeShape/ChangeShape.csproj" />
 </Solution>
 

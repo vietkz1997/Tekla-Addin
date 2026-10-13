@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -12,14 +12,20 @@ public class MainForm : Form
 	private Model _model;
 
 	private SplitSlabDialog _splitSlabDlg;
+	private ChangeShapeDialog _changeShapeDlg;
 
 	[STAThread]
 	public static void Main(string[] args)
 	{
 		AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
-		// 1. Direct launching if exe name indicates Split-Slab / AppSplitSlab
+		// 1. Direct launching if exe name indicates Split-Slab or Change-Shape
 		string friendlyName = Path.GetFileNameWithoutExtension(AppDomain.CurrentDomain.FriendlyName ?? "").ToLowerInvariant();
+		if (friendlyName.Contains("change") || friendlyName.Contains("shape"))
+		{
+			RunChangeShapeApp();
+			return;
+		}
 		if (friendlyName.Contains("split") || friendlyName.Contains("slab"))
 		{
 			RunSplitSlabApp();
@@ -30,6 +36,11 @@ public class MainForm : Form
 		if (args != null && args.Length > 0)
 		{
 			string arg = args[0].ToLowerInvariant();
+			if (arg.Contains("change") || arg.Contains("shape"))
+			{
+				RunChangeShapeApp();
+				return;
+			}
 			if (arg.Contains("split") || arg.Contains("slab"))
 			{
 				RunSplitSlabApp();
@@ -60,6 +71,15 @@ public class MainForm : Form
 	}
 
 	[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+	public static void RunChangeShapeApp()
+	{
+		Application.EnableVisualStyles();
+		Application.SetCompatibleTextRenderingDefault(defaultValue: false);
+		Model model = new Model();
+		Application.Run(new ChangeShapeDialog(model));
+	}
+
+	[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
 	public static void RunSplitSlabApp()
 	{
 		Application.EnableVisualStyles();
@@ -83,11 +103,11 @@ public class MainForm : Form
 			string reqName = new System.Reflection.AssemblyName(args.Name).Name;
 			string appDir = AppDomain.CurrentDomain.BaseDirectory;
 
-			// 1. Kiểm tra thư mục ứng dụng hiện tại (release/)
+			// 1. Check local application directory (release/)
 			string localTarget = Path.Combine(appDir, reqName + ".dll");
 			if (File.Exists(localTarget)) return System.Reflection.Assembly.LoadFrom(localTarget);
 
-			// 2. Tìm từ tiến trình TeklaStructures.exe đang chạy
+			// 2. Find from running TeklaStructures.exe process
 			var procs = Process.GetProcessesByName("TeklaStructures");
 			if (procs.Length > 0)
 			{
@@ -116,7 +136,7 @@ public class MainForm : Form
 	private void InitializeToolbar()
 	{
 		Text = "My-tool";
-		base.ClientSize = new Size(1106, 86);
+		base.ClientSize = new Size(1215, 86);
 		base.FormBorderStyle = FormBorderStyle.FixedDialog;
 		base.MaximizeBox = false;
 		base.MinimizeBox = true;
@@ -129,7 +149,9 @@ public class MainForm : Form
 		int h = 34;
 		int num3 = 5;
 		int num4 = 6;
-		Button button = CreateToolButton("✂\ufe0f Split-Slab", num4, num, num2, h, Color.FromArgb(220, 252, 231), Color.FromArgb(22, 101, 52));
+
+		// Row 1 Buttons
+		Button button = CreateToolButton("\u2702\ufe0f Split-Slab", num4, num, num2, h, Color.FromArgb(220, 252, 231), Color.FromArgb(22, 101, 52));
 		button.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
 		button.Click += delegate
 		{
@@ -137,7 +159,8 @@ public class MainForm : Form
 		};
 		base.Controls.Add(button);
 		num4 += num2 + num3;
-		Button button2 = CreateToolButton("⚠\ufe0f Overlap", num4, num, num2, h, Color.FromArgb(254, 243, 199), Color.FromArgb(146, 64, 14));
+
+		Button button2 = CreateToolButton("\u26a0\ufe0f Overlap", num4, num, num2, h, Color.FromArgb(254, 243, 199), Color.FromArgb(146, 64, 14));
 		button2.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
 		button2.Click += delegate
 		{
@@ -145,7 +168,8 @@ public class MainForm : Form
 		};
 		base.Controls.Add(button2);
 		num4 += num2 + num3;
-		Button buttonRebarErr = CreateToolButton("❌ Rebar-Error", num4, num, num2, h, Color.FromArgb(254, 226, 226), Color.FromArgb(185, 28, 28));
+
+		Button buttonRebarErr = CreateToolButton("\u274c Rebar-Error", num4, num, num2, h, Color.FromArgb(254, 226, 226), Color.FromArgb(185, 28, 28));
 		buttonRebarErr.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
 		buttonRebarErr.Click += delegate
 		{
@@ -153,6 +177,7 @@ public class MainForm : Form
 		};
 		base.Controls.Add(buttonRebarErr);
 		num4 += num2 + num3;
+
 		base.Controls.Add(CreateAppButton("\ud83c\udfe2 Slab Deck", "AppSlabDeck.exe", num4, num, num2, h));
 		num4 += num2 + num3;
 		base.Controls.Add(CreateAppButton("\ud83d\udce6 Formwork", "AppFormwork.exe", num4, num, num2, h));
@@ -166,11 +191,23 @@ public class MainForm : Form
 		base.Controls.Add(CreateAppButton("\ud83d\udd32 Sel Filter", "AppSelectionFillter.exe", num4, num, num2, h));
 		num4 += num2 + num3;
 		base.Controls.Add(CreateAppButton("\ud83d\udccb Check List", "AppCheckList.exe", num4, num, num2, h));
+		num4 += num2 + num3;
+
+		// New Change-Shape Button in Row 1
+		Button btnChangeShape = CreateToolButton("Change-Shape", num4, num, num2, h, Color.FromArgb(237, 233, 254), Color.FromArgb(109, 40, 217));
+		btnChangeShape.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
+		btnChangeShape.Click += delegate
+		{
+			OpenChangeShapeDialog();
+		};
+		base.Controls.Add(btnChangeShape);
+
+		// Row 2 Buttons
 		int num5 = 44;
 		num4 = 6;
-		base.Controls.Add(CreateAppButton("↔\ufe0f Split Rebar", "AppSplitRebar.exe", num4, num5, num2, h));
+		base.Controls.Add(CreateAppButton("\u2194\ufe0f Split Rebar", "AppSplitRebar.exe", num4, num5, num2, h));
 		num4 += num2 + num3;
-		base.Controls.Add(CreateAppButton("➗ Divide Rebar", "AppDivideRebar.exe", num4, num5, num2, h));
+		base.Controls.Add(CreateAppButton("\u2797 Divide Rebar", "AppDivideRebar.exe", num4, num5, num2, h));
 		num4 += num2 + num3;
 		base.Controls.Add(CreateAppButton("\ud83e\ude9c Stair Rebar", "StairRebar.exe", num4, num5, num2, h));
 		num4 += num2 + num3;
@@ -182,7 +219,8 @@ public class MainForm : Form
 		num4 += num2 + num3;
 		base.Controls.Add(CreateAppButton("\ud83d\udcd0 RoundUp", "AppRoundUp.exe", num4, num5, num2, h));
 		num4 += num2 + num3;
-		Button buttonClash = CreateToolButton("💥 Clash-Check", num4, num5, num2, h, Color.FromArgb(224, 231, 255), Color.FromArgb(67, 56, 202));
+
+		Button buttonClash = CreateToolButton("\ud83d\udca5 Clash-Check", num4, num5, num2, h, Color.FromArgb(224, 231, 255), Color.FromArgb(67, 56, 202));
 		buttonClash.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
 		buttonClash.Click += delegate
 		{
@@ -190,7 +228,8 @@ public class MainForm : Form
 		};
 		base.Controls.Add(buttonClash);
 		num4 += num2 + num3;
-		Button buttonConvert = CreateToolButton("🔄 Rebarconvert", num4, num5, num2, h, Color.FromArgb(224, 242, 254), Color.FromArgb(3, 105, 161));
+
+		Button buttonConvert = CreateToolButton("Rebar-Convert", num4, num5, num2, h, Color.FromArgb(224, 242, 254), Color.FromArgb(3, 105, 161));
 		buttonConvert.Font = new Font("Segoe UI", 8.5f, FontStyle.Bold);
 		buttonConvert.Click += delegate
 		{
@@ -198,7 +237,8 @@ public class MainForm : Form
 		};
 		base.Controls.Add(buttonConvert);
 		num4 += num2 + num3;
-		base.Controls.Add(CreateAppButton("⚙\ufe0f Preference", "AppPreference.exe", num4, num5, num2, h));
+
+		base.Controls.Add(CreateAppButton("\u2699\ufe0f Preference", "AppPreference.exe", num4, num5, num2, h));
 	}
 
 	private Button CreateToolButton(string text, int x, int y, int w, int h, Color bg, Color fg)
@@ -233,171 +273,94 @@ public class MainForm : Form
 		var candidates = new System.Collections.Generic.List<string>();
 		string baseDir = AppDomain.CurrentDomain.BaseDirectory;
 
-		// 1. Current application directory
 		candidates.Add(Path.Combine(baseDir, exeName));
 		if (!string.IsNullOrEmpty(subFolder))
 		{
 			candidates.Add(Path.Combine(baseDir, subFolder, exeName));
-			candidates.Add(Path.Combine(baseDir, "..", subFolder, exeName));
 		}
 
-		// 2. Active Tekla Structures installation directory
+		string[] fixedRoots = new string[]
+		{
+			@"C:\tekla\My-tool",
+			@"C:\tekla\MyTool",
+			@"D:\tekla\My-tool",
+			@"C:\Users\BIM\Documents\Github\Tekla-Addin\dist\MyTool",
+			@"C:\Users\BIM\Documents\Github\Tekla-Addin\release"
+		};
+
+		foreach (var r in fixedRoots)
+		{
+			candidates.Add(Path.Combine(r, exeName));
+			if (!string.IsNullOrEmpty(subFolder))
+			{
+				candidates.Add(Path.Combine(r, subFolder, exeName));
+			}
+		}
+
 		try
 		{
 			var procs = Process.GetProcessesByName("TeklaStructures");
 			if (procs.Length > 0)
 			{
-				string teklaBin = Path.GetDirectoryName(procs[0].MainModule.FileName);
-				if (!string.IsNullOrEmpty(teklaBin))
-				{
-					string teklaRoot = Path.GetFullPath(Path.Combine(teklaBin, "..", ".."));
-					candidates.Add(Path.Combine(teklaRoot, "applications", exeName));
-					if (!string.IsNullOrEmpty(subFolder))
-					{
-						candidates.Add(Path.Combine(teklaRoot, "applications", subFolder, exeName));
-					}
-				}
+				string bin = Path.GetDirectoryName(procs[0].MainModule.FileName);
+				string app1 = Path.Combine(bin, "applications", exeName);
+				string app2 = Path.Combine(bin, "nt", "bin", "applications", "My-tool", exeName);
+				candidates.Add(app1);
+				candidates.Add(app2);
 			}
 		}
 		catch { }
 
-		// 3. Standard C: drive directories
-		string[] commonCDirs = new string[]
+		foreach (var c in candidates)
 		{
-			@"C:\TeklaStructures\2020.0\applications",
-			@"C:\TeklaStructures\2021.0\applications",
-			@"C:\TeklaStructures\2022.0\applications",
-			@"C:\TeklaStructures\2025.0\applications",
-			@"C:\tekla\My-tool",
-			@"C:\Tekla_\v20\application",
-			@"C:\Tekla_Addin"
-		};
-		foreach (string dir in commonCDirs)
-		{
-			candidates.Add(Path.Combine(dir, exeName));
-			if (!string.IsNullOrEmpty(subFolder))
-			{
-				candidates.Add(Path.Combine(dir, subFolder, exeName));
-			}
-		}
-
-		// 4. Fallback D: drive directories
-		string[] fallbackDDirs = new string[]
-		{
-			@"D:\tekla\My-tool",
-			@"D:\Tekla_\v20\application",
-			@"D:\Tekla_\My-tool"
-		};
-		foreach (string dir in fallbackDDirs)
-		{
-			candidates.Add(Path.Combine(dir, exeName));
-			if (!string.IsNullOrEmpty(subFolder))
-			{
-				candidates.Add(Path.Combine(dir, subFolder, exeName));
-			}
-		}
-
-		foreach (string path in candidates)
-		{
-			if (File.Exists(path)) return path;
+			if (File.Exists(c)) return c;
 		}
 
 		return null;
 	}
 
-	private void LaunchExternalApp(string exeName)
+	private static void LaunchExternalApp(string exeName, string subFolder = null)
 	{
-		string targetPath = FindExecutable(exeName);
-		if (!string.IsNullOrEmpty(targetPath))
+		string target = FindExecutable(exeName, subFolder);
+		if (!string.IsNullOrEmpty(target))
 		{
 			try
 			{
-				Process.Start(targetPath);
+				Process.Start(new ProcessStartInfo
+				{
+					FileName = target,
+					WorkingDirectory = Path.GetDirectoryName(target),
+					UseShellExecute = true
+				});
 				return;
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Lỗi khởi chạy " + exeName + ": " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Error starting " + exeName + ":\n" + ex.Message, "My-tool", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 		}
-		MessageBox.Show("Không tìm thấy công cụ: " + exeName + "\nVui lòng copy ứng dụng vào thư mục công cụ hoặc C:\\tekla\\My-tool\\ hoặc C:\\TeklaStructures\\...\\applications", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		MessageBox.Show("Tool not found: " + exeName + "\nPlease place it in tool directory, release folder, or C:\\tekla\\My-tool\\", "My-tool", MessageBoxButtons.OK, MessageBoxIcon.Information);
 	}
 
 	private static void LaunchOverlapChecker()
 	{
-		string targetPath = FindExecutable("Overlap.exe", "Overlap");
-		if (!string.IsNullOrEmpty(targetPath))
-		{
-			try
-			{
-				Process.Start(targetPath);
-				return;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khởi chạy Overlap: " + ex.Message);
-				return;
-			}
-		}
-		MessageBox.Show("Không tìm thấy Overlap.exe!\nVui lòng đặt Overlap.exe trong cùng thư mục hoặc C:\\tekla\\My-tool\\", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		LaunchExternalApp("Overlap.exe", "Overlap");
 	}
 
 	private static void LaunchClashCheckApp()
 	{
-		string targetPath = FindExecutable("Clash-check.exe", "ClashCheck") ?? FindExecutable("AppClashCheck.exe");
-		if (!string.IsNullOrEmpty(targetPath))
-		{
-			try
-			{
-				Process.Start(targetPath);
-				return;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khởi chạy Clash-check: " + ex.Message);
-				return;
-			}
-		}
-		MessageBox.Show("Không tìm thấy công cụ: Clash-check.exe\nVui lòng đặt vào C:\\tekla\\My-tool\\ hoặc thư mục công cụ.", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		LaunchExternalApp("Clash-check.exe", "ClashCheck");
 	}
 
 	private static void LaunchRebarErrorApp()
 	{
-		string targetPath = FindExecutable("Rebar-error.exe", "RebarError");
-		if (!string.IsNullOrEmpty(targetPath))
-		{
-			try
-			{
-				Process.Start(targetPath);
-				return;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khởi chạy Rebar-error: " + ex.Message);
-				return;
-			}
-		}
-		MessageBox.Show("Không tìm thấy công cụ: Rebar-error.exe\nVui lòng đặt vào C:\\tekla\\My-tool\\ hoặc thư mục công cụ.", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		LaunchExternalApp("Rebar-error.exe", "RebarError");
 	}
 
 	private static void LaunchConvertRebarApp()
 	{
-		string targetPath = FindExecutable("Convert-rebar.exe", "ConvertRebar");
-		if (!string.IsNullOrEmpty(targetPath))
-		{
-			try
-			{
-				Process.Start(targetPath);
-				return;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khởi chạy Convert-rebar: " + ex.Message);
-				return;
-			}
-		}
-		MessageBox.Show("Không tìm thấy công cụ: Convert-rebar.exe\nVui lòng đặt vào C:\\tekla\\My-tool\\ hoặc thư mục công cụ.", "Thông báo My-tool", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+		LaunchExternalApp("Convert-rebar.exe", "ConvertRebar");
 	}
 
 	private void ConnectTekla()
@@ -412,12 +375,28 @@ public class MainForm : Form
 			}
 			else
 			{
-				Text = "My-tool (Chưa kết nối Tekla)";
+				Text = "My-tool (Tekla Not Connected)";
 			}
 		}
 		catch
 		{
-			Text = "My-tool";
+			Text = "My-tool (Offline)";
+		}
+	}
+
+	private void OpenChangeShapeDialog()
+	{
+		if (_changeShapeDlg == null || _changeShapeDlg.IsDisposed)
+		{
+			_changeShapeDlg = new ChangeShapeDialog(_model);
+			_changeShapeDlg.StartPosition = FormStartPosition.Manual;
+			_changeShapeDlg.Location = new Point(base.Location.X, base.Location.Y + base.Height + 5);
+			_changeShapeDlg.Show(this);
+		}
+		else
+		{
+			_changeShapeDlg.BringToFront();
+			_changeShapeDlg.Focus();
 		}
 	}
 

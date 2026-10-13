@@ -1,0 +1,477 @@
+<Window x:Class="ChangeShape.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CHANGE-SHAPE PRO | Rebar Shape Studio - Tiêu Chuẩn SIDD-SHOP"
+        Height="720" Width="1120"
+        MinHeight="650" MinWidth="980"
+        WindowStartupLocation="CenterScreen"
+        Background="#181926" Foreground="#CAD3F5"
+        FontFamily="Segoe UI"
+        KeyDown="Window_KeyDown">
+
+    <Window.Resources>
+        <!-- Modern Dark Theme Styles -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#CAD3F5"/>
+        </Style>
+
+        <Style x:Key="HeaderTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#8AADF4"/>
+        </Style>
+
+        <Style x:Key="CardPanel" TargetType="Border">
+            <Setter Property="Background" Value="#24273A"/>
+            <Setter Property="BorderBrush" Value="#363A4F"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="12"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#1E2030"/>
+            <Setter Property="Foreground" Value="#F4DBD6"/>
+            <Setter Property="BorderBrush" Value="#494D64"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Modern Button Style -->
+        <Style x:Key="ModernBtn" TargetType="Button">
+            <Setter Property="Background" Value="#363A4F"/>
+            <Setter Property="Foreground" Value="#CAD3F5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#494D64"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PrimaryBtn" TargetType="Button" BasedOn="{StaticResource ModernBtn}">
+            <Setter Property="Background" Value="#8AADF4"/>
+            <Setter Property="Foreground" Value="#181926"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#B7BDF8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SuccessBtn" TargetType="Button" BasedOn="{StaticResource ModernBtn}">
+            <Setter Property="Background" Value="#A6DA95"/>
+            <Setter Property="Foreground" Value="#181926"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#8BD5CA"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="AccentBtn" TargetType="Button" BasedOn="{StaticResource ModernBtn}">
+            <Setter Property="Background" Value="#F5A97F"/>
+            <Setter Property="Foreground" Value="#181926"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#EED49F"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Header -->
+            <RowDefinition Height="*"/>    <!-- Main Content -->
+            <RowDefinition Height="Auto"/> <!-- Footer -->
+        </Grid.RowDefinitions>
+
+        <!-- ==================================================================== -->
+        <!-- HEADER BAR -->
+        <!-- ==================================================================== -->
+        <Border Grid.Row="0" Background="#1E2030" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="8" Padding="12,8" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="⚡" FontSize="20" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="CHANGE-SHAPE" FontWeight="Bold" FontSize="17" Foreground="#8AADF4" VerticalAlignment="Center"/>
+                    <Border Background="#363A4F" CornerRadius="4" Padding="6,2" Margin="8,0,0,0" VerticalAlignment="Center">
+                        <TextBlock Text="PRO v2.0" FontSize="11" FontWeight="Bold" Foreground="#A6DA95"/>
+                    </Border>
+                    <TextBlock Text="• Thống Kê &amp; Bẻ Thép SIDD-SHOP" FontSize="12" Foreground="#8087A2" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Status indicator -->
+                <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center">
+                    <Border x:Name="CadStatusBadge" Background="#24273A" BorderBrush="#A6DA95" BorderThickness="1" CornerRadius="12" Padding="8,3" Margin="0,0,8,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="CadStatusDot" Width="8" Height="8" Fill="#A6DA95" Margin="0,0,6,0"/>
+                            <TextBlock x:Name="TxtCadStatus" Text="Kiểm tra CAD..." FontSize="11" Foreground="#A6DA95"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Button x:Name="BtnRefreshCad" Content="🔄 Nối CAD" Style="{StaticResource ModernBtn}" Padding="8,4" FontSize="11" Margin="0,0,8,0" Click="BtnRefreshCad_Click" ToolTip="Nhấn F5 để làm mới kết nối với AutoCAD"/>
+                    <ToggleButton x:Name="ChkTopMost" Content="📌 Ghim Trên Cùng" Style="{StaticResource ModernBtn}" Padding="8,4" FontSize="11" Checked="ChkTopMost_Checked" Unchecked="ChkTopMost_Unchecked"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ==================================================================== -->
+        <!-- MAIN THREE-COLUMN LAYOUT -->
+        <!-- ==================================================================== -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260"/> <!-- Left: Shape Catalog -->
+                <ColumnDefinition Width="*"/>   <!-- Center: Visual Canvas & Inputs -->
+                <ColumnDefinition Width="320"/> <!-- Right: CAD Actions & Presets -->
+            </Grid.ColumnDefinitions>
+
+            <!-- ================================================================ -->
+            <!-- LEFT COLUMN: THƯ VIỆN SHAPE TRỰC QUAN -->
+            <!-- ================================================================ -->
+            <Border Grid.Column="0" Style="{StaticResource CardPanel}" Margin="0,0,8,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="📚 THƯ VIỆN SHAPE THÉP" Style="{StaticResource HeaderTitle}" Margin="0,0,0,8"/>
+
+                    <!-- Search Box -->
+                    <Grid Grid.Row="1" Margin="0,0,0,8">
+                        <TextBox x:Name="TxtSearchShape" TextChanged="TxtSearchShape_TextChanged" Padding="26,6,6,6"/>
+                        <TextBlock Text="🔍" Foreground="#6E738D" VerticalAlignment="Center" Margin="8,0,0,0" IsHitTestVisible="False"/>
+                        <TextBlock x:Name="TxtSearchPlaceholder" Text="Tìm mã (56, 1, đai...)" Foreground="#6E738D" VerticalAlignment="Center" Margin="28,0,0,0" IsHitTestVisible="False"/>
+                    </Grid>
+
+                    <!-- Shape List -->
+                    <ListBox x:Name="LstShapes" Grid.Row="2" Background="Transparent" BorderThickness="0"
+                             SelectionChanged="LstShapes_SelectionChanged"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="#1E2030" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="6" Padding="8,6" Margin="0,2">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" Background="#8AADF4" CornerRadius="4" Width="36" Height="26" Margin="0,0,8,0">
+                                            <TextBlock Text="{Binding ShapeId}" FontWeight="Bold" FontSize="13" Foreground="#181926" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="12" Foreground="#CAD3F5" TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding FormulaDisplay}" FontSize="10" Foreground="#A6DA95"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <!-- ================================================================ -->
+            <!-- CENTER COLUMN: LIVE 2D CANVAS & KÍCH THƯỚC -->
+            <!-- ================================================================ -->
+            <Border Grid.Column="1" Style="{StaticResource CardPanel}" Margin="0,0,8,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/> <!-- Title & Info -->
+                        <RowDefinition Height="*"/>    <!-- Live 2D Canvas -->
+                        <RowDefinition Height="Auto"/> <!-- Length Banner -->
+                        <RowDefinition Height="Auto"/> <!-- Parameters Inputs -->
+                        <RowDefinition Height="Auto"/> <!-- Beam / Column Section Helper -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Shape Header & Description -->
+                    <Grid Grid.Row="0" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="TxtSelectedShapeTitle" Text="Shape 56 - Đai Kín 135°" FontSize="16" FontWeight="Bold" Foreground="#F5A97F"/>
+                                <Border Background="#363A4F" CornerRadius="4" Padding="6,2" Margin="8,0,0,0">
+                                    <TextBlock x:Name="TxtShapeCategory" Text="Đai Kín" FontSize="11" Foreground="#8BD5CA"/>
+                                </Border>
+                            </StackPanel>
+                            <TextBlock x:Name="TxtShapeDescription" Text="Đai kín dầm / cột tiêu chuẩn SIDD-SHOP Hàn Quốc, 2 tai móc 135 độ." FontSize="11" Foreground="#939AB7" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- LIVE 2D VECTOR CANVAS -->
+                    <Border Grid.Row="1" Background="#181926" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="8" ClipToBounds="True">
+                        <Grid>
+                            <Canvas x:Name="RebarCanvas" SizeChanged="RebarCanvas_SizeChanged"/>
+                            <!-- Watermark / Hint -->
+                            <TextBlock Text="📐 Tỷ lệ hình vẽ 2D tự động co giãn theo kích thước thực tế" FontSize="10" Foreground="#494D64" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="8"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- CUTTING LENGTH BANNER -->
+                    <Border Grid.Row="2" Background="#1E2030" BorderBrush="#A6DA95" BorderThickness="1" CornerRadius="6" Padding="12,8" Margin="0,8,0,8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <TextBlock Text="CÔNG THỨC CHIỀU DÀI CẮT THÉP (CUTTING LENGTH)" FontSize="10" Foreground="#8087A2" FontWeight="SemiBold"/>
+                                <TextBlock x:Name="TxtFormulaExpr" Text="L = 2×(A + B) + 2×C = 2×(600 + 400) + 2×120" FontSize="12" Foreground="#F5BDE6" FontWeight="Bold" Margin="0,2,0,0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <TextBlock Text="TỔNG DÀI L" FontSize="10" Foreground="#8087A2" FontWeight="SemiBold" HorizontalAlignment="Right"/>
+                                <TextBlock x:Name="TxtTotalLengthValue" Text="2,240 mm" FontSize="20" FontWeight="Bold" Foreground="#A6DA95" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- PARAMETER INPUTS (A, B, C, D, E...) -->
+                    <Border Grid.Row="3" Background="#1E2030" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="6" Padding="10" Margin="0,0,0,8">
+                        <StackPanel>
+                            <TextBlock Text="⚙️ ĐIỀU CHỈNH KÍCH THƯỚC CHI TIẾT (mm)" FontWeight="Bold" FontSize="12" Foreground="#8AADF4" Margin="0,0,0,6"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Param A -->
+                                <StackPanel x:Name="PanelParamA" Grid.Column="0" Margin="0,0,4,0">
+                                    <TextBlock x:Name="LblParamA" Text="A (Rộng mm):" FontSize="11" Margin="0,0,0,3"/>
+                                    <Grid>
+                                        <TextBox x:Name="TxtParamA" Text="600" TextChanged="ParamInput_TextChanged"/>
+                                        <Button x:Name="BtnPickParamA" Content="📏" Width="24" HorizontalAlignment="Right" Margin="2" Style="{StaticResource ModernBtn}" Padding="0" Click="BtnPickParamA_Click" ToolTip="Đo kích thước A trực tiếp từ CAD"/>
+                                    </Grid>
+                                </StackPanel>
+
+                                <!-- Param B -->
+                                <StackPanel x:Name="PanelParamB" Grid.Column="1" Margin="4,0,4,0">
+                                    <TextBlock x:Name="LblParamB" Text="B (Cao mm):" FontSize="11" Margin="0,0,0,3"/>
+                                    <Grid>
+                                        <TextBox x:Name="TxtParamB" Text="400" TextChanged="ParamInput_TextChanged"/>
+                                        <Button x:Name="BtnPickParamB" Content="📏" Width="24" HorizontalAlignment="Right" Margin="2" Style="{StaticResource ModernBtn}" Padding="0" Click="BtnPickParamB_Click" ToolTip="Đo kích thước B trực tiếp từ CAD"/>
+                                    </Grid>
+                                </StackPanel>
+
+                                <!-- Param C -->
+                                <StackPanel x:Name="PanelParamC" Grid.Column="2" Margin="4,0,0,0">
+                                    <TextBlock x:Name="LblParamC" Text="C (Móc 135° mm):" FontSize="11" Margin="0,0,0,3"/>
+                                    <Grid>
+                                        <TextBox x:Name="TxtParamC" Text="120" TextChanged="ParamInput_TextChanged"/>
+                                        <Button x:Name="BtnHookHelper" Content="⚡" Width="24" HorizontalAlignment="Right" Margin="2" Style="{StaticResource ModernBtn}" Padding="0" Click="BtnHookHelper_Click" ToolTip="Tính móc tự động theo đường kính thép (10d)"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- Extended Params (D, E) for complex shapes -->
+                            <Grid x:Name="PanelExtendedParams" Visibility="Collapsed" Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel x:Name="PanelParamD" Grid.Column="0" Margin="0,0,4,0">
+                                    <TextBlock x:Name="LblParamD" Text="D (Đoạn 4 mm):" FontSize="11" Margin="0,0,0,3"/>
+                                    <TextBox x:Name="TxtParamD" Text="0" TextChanged="ParamInput_TextChanged"/>
+                                </StackPanel>
+                                <StackPanel x:Name="PanelParamE" Grid.Column="1" Margin="4,0,0,0">
+                                    <TextBlock x:Name="LblParamE" Text="E (Đoạn 5 mm):" FontSize="11" Margin="0,0,0,3"/>
+                                    <TextBox x:Name="TxtParamE" Text="0" TextChanged="ParamInput_TextChanged"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- SMART CONCRETE SECTION HELPER -->
+                    <Border Grid.Row="4" Background="#1E2030" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="6" Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="💡 BỘ TÍNH NHANH KÍCH THƯỚC ĐAI TỪ TIẾT DIỆN BÊ TÔNG" FontSize="11" FontWeight="Bold" Foreground="#EED49F" Margin="0,0,0,4"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Bê tông:" FontSize="11" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                    <TextBox x:Name="TxtConcreteW" Text="300" Width="45" Margin="0,0,4,0"/>
+                                    <TextBlock Text="×" FontSize="11" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                    <TextBox x:Name="TxtConcreteH" Text="500" Width="45" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Lớp BV:" FontSize="11" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                    <TextBox x:Name="TxtCover" Text="30" Width="35" Margin="0,0,8,0"/>
+                                    <TextBlock Text="Thép:" FontSize="11" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                    <ComboBox x:Name="CboRebarDia" Width="55" SelectedIndex="1">
+                                        <ComboBoxItem Content="D10"/>
+                                        <ComboBoxItem Content="D12"/>
+                                        <ComboBoxItem Content="D16"/>
+                                        <ComboBoxItem Content="D20"/>
+                                    </ComboBox>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button x:Name="BtnApplyConcreteCalc" Grid.Column="1" Content="⚡ TÍNH ĐAI" Style="{StaticResource AccentBtn}" Padding="10,6" Margin="8,0,0,0" VerticalAlignment="Center" Click="BtnApplyConcreteCalc_Click" ToolTip="Tự động tính A = W - 2×Cover, B = H - 2×Cover, C = 10d"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- ================================================================ -->
+            <!-- RIGHT COLUMN: CAD ACTIONS & PRESETS -->
+            <!-- ================================================================ -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> <!-- Current Rebar Tag Card -->
+                    <RowDefinition Height="Auto"/> <!-- CAD Command Actions -->
+                    <RowDefinition Height="*"/>    <!-- Presets List -->
+                </Grid.RowDefinitions>
+
+                <!-- Current Selected Rebar Status Card -->
+                <Border Grid.Row="0" Style="{StaticResource CardPanel}" Margin="0,0,0,8">
+                    <StackPanel>
+                        <TextBlock Text="🎯 ĐỐI TƯỢNG CAD ĐƯỢC CHỌN" Style="{StaticResource HeaderTitle}" Margin="0,0,0,6"/>
+                        
+                        <Grid Margin="0,0,0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Tiền tố / Thép:" FontSize="11" Foreground="#8087A2" Margin="0,0,6,0"/>
+                            <TextBox x:Name="TxtCadPrefix" Grid.Column="1" Text="1-HD20" FontSize="11" TextChanged="CadPrefix_TextChanged"/>
+                        </Grid>
+
+                        <Grid Margin="0,0,0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Khoảng rải:" FontSize="11" Foreground="#8087A2" Margin="0,0,6,0"/>
+                            <TextBox x:Name="TxtCadSuffix" Grid.Column="1" Text="@200" FontSize="11" TextChanged="CadPrefix_TextChanged"/>
+                        </Grid>
+
+                        <!-- Preview Formatted Tag -->
+                        <TextBlock Text="Xem trước MText sẽ ghi vào CAD:" FontSize="10" Foreground="#8087A2" Margin="0,4,0,2"/>
+                        <Border Background="#181926" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="4" Padding="6,4">
+                            <TextBlock x:Name="TxtPreviewMText" Text="1-HD20 2240 @200\P{\H0.8x;\C1;56,600,400,120}" FontFamily="Consolas" FontSize="11" Foreground="#A6DA95" TextWrapping="Wrap"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <!-- CAD ACTION BUTTONS -->
+                <Border Grid.Row="1" Style="{StaticResource CardPanel}" Margin="0,0,0,8">
+                    <StackPanel>
+                        <!-- Button: Pick from CAD -->
+                        <Button x:Name="BtnPickFromCad" Style="{StaticResource PrimaryBtn}" Margin="0,0,0,6" Click="BtnPickFromCad_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="🖱️ BẮT THANH THÉP TỪ CAD" FontWeight="Bold" Margin="0,0,6,0"/>
+                                <TextBlock Text="(Ctrl+P)" FontSize="10" Opacity="0.7" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Button: Apply Single MText -->
+                        <Button x:Name="BtnApplyToCad" Style="{StaticResource SuccessBtn}" Margin="0,0,0,6" Click="BtnApplyToCad_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="🚀 ÁP DỤNG ĐỔI SHAPE" FontWeight="Bold" Margin="0,0,6,0"/>
+                                <TextBlock Text="(Enter)" FontSize="10" Opacity="0.7" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Button: Batch Apply -->
+                        <Button x:Name="BtnBatchApply" Style="{StaticResource AccentBtn}" Margin="0,0,0,6" Click="BtnBatchApply_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="⚡ ĐỔI HÀNG LOẠT TRÊN CAD" FontWeight="Bold" Margin="0,0,6,0"/>
+                                <TextBlock Text="(Quét chọn)" FontSize="10" Opacity="0.7" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Button: Draw Polyline -->
+                            <Button x:Name="BtnDrawPolyline" Grid.Column="0" Content="✏️ Vẽ Polyline" Style="{StaticResource ModernBtn}" Margin="0,0,3,0" Click="BtnDrawPolyline_Click" ToolTip="Vẽ đường Polyline thép thật vào CAD"/>
+                            <!-- Button: Copy MText -->
+                            <Button x:Name="BtnCopyMText" Grid.Column="1" Content="📋 Copy Mã" Style="{StaticResource ModernBtn}" Margin="3,0,0,0" Click="BtnCopyMText_Click" ToolTip="Sao chép nội dung MText vào Clipboard"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- PRESETS LIST -->
+                <Border Grid.Row="2" Style="{StaticResource CardPanel}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="⭐ MẪU NHANH (PRESETS)" Style="{StaticResource HeaderTitle}" Margin="0,0,0,6"/>
+
+                        <ListBox x:Name="LstPresets" Grid.Row="1" Background="Transparent" BorderThickness="0"
+                                 SelectionChanged="LstPresets_SelectionChanged"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#1E2030" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="4" Padding="6,4" Margin="0,2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="11" Foreground="#CAD3F5"/>
+                                                <TextBlock Text="{Binding Description}" FontSize="9" Foreground="#6E738D"/>
+                                            </StackPanel>
+                                            <Border Grid.Column="1" Background="#363A4F" CornerRadius="3" Padding="4,2" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Category}" FontSize="9" Foreground="#8BD5CA"/>
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <Button x:Name="BtnSavePreset" Grid.Row="2" Content="➕ Lưu Kích Thước Hiện Tại Thành Mẫu" Style="{StaticResource ModernBtn}" FontSize="11" Margin="0,6,0,0" Click="BtnSavePreset_Click"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- ==================================================================== -->
+        <!-- FOOTER STATUS BAR -->
+        <!-- ==================================================================== -->
+        <Border Grid.Row="2" Background="#1E2030" BorderBrush="#363A4F" BorderThickness="1" CornerRadius="6" Padding="10,5" Margin="0,8,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="TxtStatusMessage" Text="Sẵn sàng! Bấm [Bắt thanh thép từ CAD] hoặc chọn Shape để bắt đầu." FontSize="11" Foreground="#A6DA95" VerticalAlignment="Center"/>
+                <TextBlock Text="Phím tắt: Enter (Áp dụng) | Ctrl+P (Bắt CAD) | Ctrl+D (Vẽ Polyline) | F5 (Làm mới)" FontSize="10" Foreground="#6E738D" Grid.Column="1" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
